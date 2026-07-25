@@ -1221,6 +1221,26 @@ img,video{max-width:100%}
     padding-top:36px;
     padding-bottom:44px;
   }
+  .journalArticleMeta{
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:12px;
+    align-items:start;
+  }
+  .journalArticleMeta span{
+    min-width:0;
+    white-space:nowrap;
+  }
+  .journalArticleHero h1{
+    margin:44px 0 36px;
+    font-size:clamp(44px,13vw,58px);
+    line-height:.9;
+    letter-spacing:-.065em;
+    word-break:keep-all;
+    overflow-wrap:normal;
+    text-wrap:balance;
+  }
+  .journalArticleHero h1 span{width:100%}
+  .journalArticleHero>p{font-size:15px;line-height:1.65}
   .journalArticleBody{padding-top:64px;padding-bottom:72px}
   .journalArticleBody aside{margin-bottom:56px}
   .journalArticleCopy section{padding-bottom:56px}
