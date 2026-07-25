@@ -1,0 +1,29 @@
+{
+  "name": "production-p",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "catalog": "node scripts/build-video-catalog.mjs",
+    "prebuild": "node scripts/build-video-catalog.mjs",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "gray-matter": "^4.0.3",
+    "gsap": "^3.12.7",
+    "lenis": "^1.1.20",
+    "next": "^15.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.173.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/three": "^0.173.0",
+    "typescript": "^5.7.0"
+  }
+}

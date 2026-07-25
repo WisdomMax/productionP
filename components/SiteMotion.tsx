@@ -1,0 +1,403 @@
+"use client";
+
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+let savedHomeScrollY = 0;
+let restoreHomeAfterHistoryTraversal = false;
+let isLeavingHome = false;
+
+export default function SiteMotion() {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const isHome = pathname === "/";
+    const restoreY =
+      isHome && (restoreHomeAfterHistoryTraversal || isLeavingHome)
+        ? savedHomeScrollY
+        : null;
+    if (isHome) isLeavingHome = false;
+    restoreHomeAfterHistoryTraversal = false;
+    const markHistoryTraversal = () => {
+      restoreHomeAfterHistoryTraversal = true;
+    };
+    window.addEventListener("popstate", markHistoryTraversal);
+    const trackHomePosition = () => {
+      if (isHome && !isLeavingHome) savedHomeScrollY = window.scrollY;
+    };
+    const captureHomeBeforeNavigation = (event: MouseEvent) => {
+      if (!(event.target instanceof Element)) return;
+      const anchor = event.target.closest<HTMLAnchorElement>("a[href]");
+      const href = anchor?.getAttribute("href");
+      if (!href || href.startsWith("#")) return;
+      const destination = new URL(href, window.location.href);
+      if (destination.origin !== window.location.origin) return;
+      if (
+        isHome &&
+        destination.origin === window.location.origin &&
+        destination.pathname !== "/"
+      ) {
+        savedHomeScrollY = window.scrollY;
+        isLeavingHome = true;
+      } else if (!isHome && destination.pathname === "/") {
+        isLeavingHome = false;
+        restoreHomeAfterHistoryTraversal = false;
+      }
+    };
+    window.addEventListener("scroll", trackHomePosition, { passive: true });
+    window.addEventListener("click", captureHomeBeforeNavigation, true);
+
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "auto";
+    }
+
+    if (isHome) {
+      if (window.location.hash) {
+        window.history.replaceState(
+          null,
+          "",
+          `${window.location.pathname}${window.location.search}`,
+        );
+      }
+    } else if (window.location.hash) {
+      window.history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}${window.location.search}`,
+      );
+    }
+
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+    const lenis = new Lenis({ duration: 1.02, smoothWheel: true });
+    let isRestoringHome = restoreY !== null;
+    let animationFrame = 0;
+    let restoreFrame = 0;
+    const raf = (time: number) => {
+      lenis.raf(time);
+      animationFrame = requestAnimationFrame(raf);
+    };
+    animationFrame = requestAnimationFrame(raf);
+    lenis.on("scroll", () => {
+      if (isHome && !isRestoringHome && !isLeavingHome) {
+        savedHomeScrollY = window.scrollY;
+      }
+      ScrollTrigger.update();
+    });
+
+    if (restoreY !== null) {
+      restoreFrame = requestAnimationFrame(() => {
+        restoreFrame = requestAnimationFrame(() => {
+          window.scrollTo({ top: restoreY, left: 0, behavior: "instant" });
+          lenis.scrollTo(restoreY, { immediate: true });
+          isRestoringHome = false;
+          ScrollTrigger.refresh();
+        });
+      });
+    }
+
+    const context = gsap.context(() => {
+      if (document.querySelector(".heroReact")) {
+        gsap.fromTo(
+          ".heroReact h1",
+          { y: 90, opacity: 0, clipPath: "inset(0 0 100% 0)" },
+          {
+            y: 0,
+            opacity: 1,
+            clipPath: "inset(0 0 0% 0)",
+            duration: 1.15,
+            delay: 0.72,
+            ease: "power4.out",
+          },
+        );
+        gsap.fromTo(
+          ".heroReact h2, .heroReact small",
+          { x: -65, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.85,
+            delay: 1,
+            stagger: 0.1,
+            ease: "power3.out",
+          },
+        );
+      }
+
+      const headingSelector = [
+        ".reelReact h2",
+        ".manifestReact h2",
+        ".workReact h2",
+        ".awardsShowcaseReact h2",
+        ".labReact h2",
+        ".journalReact h2",
+        ".contactReact h2",
+        ".categoryHeader h1",
+        ".videoArchiveReact > header h2",
+      ].join(",");
+
+      gsap.utils.toArray<HTMLElement>(headingSelector).forEach((heading, headingIndex) => {
+        if (!heading.dataset.motionLines) {
+          const lines = heading.innerHTML.split(/<br\s*\/?>/i);
+          heading.innerHTML = lines
+            .map(
+              (line) =>
+                `<span class="motionLine"><span class="motionLineInner">${line}</span></span>`,
+            )
+            .join("");
+          heading.dataset.motionLines = "true";
+          heading.classList.add("motionHeading");
+        }
+
+        const lines = Array.from(
+          heading.querySelectorAll<HTMLElement>(".motionLineInner"),
+        );
+        lines.forEach((line, lineIndex) => {
+          const fromLeft = (headingIndex + lineIndex) % 2 === 0;
+          gsap.fromTo(
+            line,
+            {
+              xPercent: fromLeft ? -112 : 112,
+              yPercent: 30,
+              autoAlpha: 0,
+              rotate: fromLeft ? -2 : 2,
+            },
+            {
+              xPercent: 0,
+              yPercent: 0,
+              autoAlpha: 1,
+              rotate: 0,
+              duration: 1.02,
+              delay: lineIndex * 0.1,
+              ease: "expo.out",
+              scrollTrigger: {
+                trigger: heading,
+                start: "top 92%",
+                once: true,
+              },
+            },
+          );
+
+          gsap.fromTo(
+            line,
+            { backgroundPosition: "135% 50%" },
+            {
+              backgroundPosition: "-135% 50%",
+              ease: "none",
+              scrollTrigger: {
+                trigger: heading,
+                start: "top 94%",
+                end: "bottom 28%",
+                scrub: 0.65,
+              },
+            },
+          );
+        });
+      });
+
+      gsap.utils
+        .toArray<HTMLElement>(".workRowReact")
+        .forEach((row, index) => {
+          gsap.fromTo(
+            row,
+            {
+              xPercent: index % 2 === 0 ? -20 : 20,
+              y: 22,
+              autoAlpha: 0,
+              skewX: index % 2 === 0 ? -4 : 4,
+            },
+            {
+              xPercent: 0,
+              y: 0,
+              autoAlpha: 1,
+              skewX: 0,
+              duration: 0.82,
+              delay: index * 0.06,
+              ease: "expo.out",
+              scrollTrigger: { trigger: row, start: "top 97%", once: true },
+            },
+          );
+        });
+
+      const cardSelector = [
+        ".featuredWorkCard",
+        ".labGridReact figure",
+        ".categoryCard",
+        ".videoArchiveCard",
+        ".awardsShowcaseFooter a",
+      ].join(",");
+      gsap.utils.toArray<HTMLElement>(cardSelector).forEach((card, index) => {
+        const direction = index % 3 === 0 ? -1 : index % 3 === 2 ? 1 : 0;
+        gsap.fromTo(
+          card,
+          {
+            x: direction * 150,
+            y: 90,
+            autoAlpha: 0,
+            rotateY: direction * 11,
+            scale: 0.9,
+          },
+          {
+            x: 0,
+            y: 0,
+            autoAlpha: 1,
+            rotateY: 0,
+            scale: 1,
+            duration: 0.92,
+            delay: (index % 6) * 0.075,
+            ease: "expo.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 97%",
+              once: true,
+            },
+          },
+        );
+      });
+
+      gsap.utils
+        .toArray<HTMLElement>(".motionArchiveCard")
+        .forEach((card, index) => {
+          gsap.fromTo(
+            card,
+            {
+              y: 72,
+              autoAlpha: 0,
+              scale: 0.94,
+              clipPath: "inset(18% 0 0 0)",
+            },
+            {
+              y: 0,
+              autoAlpha: 1,
+              scale: 1,
+              clipPath: "inset(0% 0 0 0)",
+              duration: 1,
+              delay: index * 0.1,
+              ease: "expo.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 96%",
+                once: true,
+              },
+            },
+          );
+        });
+
+      gsap.utils
+        .toArray<HTMLElement>(
+          ".videoOrientationHeader, .categoryOrientationGroup > header",
+        )
+        .forEach((header) => {
+          gsap.fromTo(
+            header,
+            { scaleX: 0.12, opacity: 0, transformOrigin: "left center" },
+            {
+              scaleX: 1,
+              opacity: 1,
+              duration: 0.9,
+              ease: "expo.out",
+              scrollTrigger: {
+                trigger: header,
+                start: "top 91%",
+                once: true,
+              },
+            },
+          );
+        });
+
+      if (document.querySelector(".manifestReact")) {
+        gsap.fromTo(
+          ".manifestReact em",
+          { color: "#85857d" },
+          {
+            color: "#AF2711",
+            stagger: 0.18,
+            scrollTrigger: {
+              trigger: ".manifestReact",
+              start: "top 72%",
+              end: "center 42%",
+              scrub: 0.6,
+            },
+          },
+        );
+      }
+
+      if (document.querySelector(".awardsRail")) {
+        const awardsTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".awardsShowcaseReact",
+            start: "top 82%",
+            once: true,
+          },
+        });
+        awardsTimeline
+          .fromTo(
+            ".awardsShowcaseIntro > *",
+            { x: 110, autoAlpha: 0 },
+            {
+              x: 0,
+              autoAlpha: 1,
+              stagger: 0.09,
+              duration: 0.72,
+              ease: "power4.out",
+            },
+            0.18,
+          )
+          .fromTo(
+            ".awardWorkCard, .awardsRailMore",
+            {
+              x: 240,
+              y: 70,
+              autoAlpha: 0,
+              rotateY: -10,
+              scale: 0.9,
+            },
+            {
+              x: 0,
+              y: 0,
+              autoAlpha: 1,
+              rotateY: 0,
+              scale: 1,
+              stagger: 0.11,
+              duration: 1.05,
+              ease: "expo.out",
+            },
+            0.28,
+          );
+      }
+
+      if (document.querySelector(".motionArchiveGrid")) {
+        gsap.to(".motionArchiveCard video", {
+          scale: 1.1,
+          yPercent: 3,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".motionArchiveGrid",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.9,
+          },
+        });
+      }
+    });
+
+    const refreshFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
+
+    return () => {
+      window.removeEventListener("popstate", markHistoryTraversal);
+      window.removeEventListener("scroll", trackHomePosition);
+      window.removeEventListener("click", captureHomeBeforeNavigation, true);
+      cancelAnimationFrame(animationFrame);
+      cancelAnimationFrame(refreshFrame);
+      cancelAnimationFrame(restoreFrame);
+      context.revert();
+      lenis.destroy();
+    };
+  }, [pathname]);
+
+  return null;
+}
