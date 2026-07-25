@@ -62,6 +62,80 @@ main{position:relative;z-index:2}
   align-items:end;
   padding:0 5vw clamp(54px,7vh,90px);
 }
+
+/* Home journal — editorial CTA layout. */
+.journalReactInner{
+  width:100%;
+  display:grid;
+  grid-template-columns:minmax(0,1.6fr) minmax(260px,.7fr);
+  gap:20px 8vw;
+  align-items:end;
+}
+.journalReactInner>small{
+  grid-column:1/-1;
+  font:700 10px/1 monospace;
+  letter-spacing:.04em;
+}
+.journalReactInner h2{margin:0}
+.journalReactCopy{padding-bottom:.45em}
+.journalReactCopy p{
+  max-width:390px;
+  margin:0 0 28px;
+  font-size:clamp(16px,1.25vw,21px);
+  line-height:1.35;
+  letter-spacing:-.035em;
+}
+.journalReactCopy nav{display:flex;flex-wrap:wrap;gap:10px 24px}
+.journalReactCopy a{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding-bottom:7px;
+  border-bottom:1px solid currentColor;
+  font:700 11px/1 monospace;
+  letter-spacing:-.03em;
+}
+.journalReactCopy a span{color:var(--signal)}
+@media(max-width:760px){
+  .journalReactInner{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+  }
+  .journalReactInner>small{
+    padding-bottom:36px;
+    color:#494844;
+  }
+  .journalReactInner h2{
+    font-size:clamp(58px,19vw,76px);
+    line-height:.82;
+    letter-spacing:-.085em;
+    white-space:nowrap;
+  }
+  .journalReactCopy{
+    margin-top:42px;
+    padding:24px 0 0;
+    border-top:1px solid rgba(9,10,10,.28);
+  }
+  .journalReactCopy p{
+    margin-bottom:30px;
+    font-size:16px;
+    line-height:1.4;
+  }
+  .journalReactCopy nav{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .journalReactCopy a{
+    justify-content:space-between;
+    padding:13px 0 11px;
+    border-top:1px solid #090a0a;
+    border-bottom:0;
+    font-size:9px;
+  }
+}
 .awardsShowcaseReact>header>div{min-width:0}
 .awardsShowcaseReact>header small{
   display:block;
