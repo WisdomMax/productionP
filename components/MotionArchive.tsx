@@ -1,5 +1,6 @@
 import Link from "next/link";
 import catalogData from "@/data/video-catalog.json";
+import { mediaUrl } from "@/lib/media-url";
 
 type MotionWork = {
   id: string;
@@ -41,7 +42,7 @@ export default function MotionArchive() {
             >
               <div className="motionArchiveMedia">
                 <video
-                  src={work.src}
+                  src={mediaUrl(work.src)}
                   poster={work.poster}
                   autoPlay
                   muted

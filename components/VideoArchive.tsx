@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import catalogData from "@/data/video-catalog.json";
+import { mediaUrl } from "@/lib/media-url";
 
 type VideoItem = {
   id: string;
@@ -67,7 +68,7 @@ function VideoCard({ item, index }: { item: VideoItem; index: number }) {
       <div className="videoArchiveMedia">
         <video
           ref={videoRef}
-          src={item.src}
+          src={mediaUrl(item.src)}
           poster={item.poster}
           muted
           loop

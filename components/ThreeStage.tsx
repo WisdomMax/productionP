@@ -1,5 +1,7 @@
 "use client";
 
+import { mediaUrl } from "@/lib/media-url";
+
 const HERO_VIDEO =
   "/videos/00-hero-depth/web/hero-production-p-web.mp4";
 
@@ -8,7 +10,7 @@ export default function ThreeStage() {
     <div className="threeStage" aria-hidden="true">
       <video
         className="heroBackgroundVideo"
-        src={HERO_VIDEO}
+        src={mediaUrl(HERO_VIDEO)}
         autoPlay
         muted
         loop

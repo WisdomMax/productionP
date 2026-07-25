@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import catalogData from "@/data/video-catalog.json";
+import { mediaUrl } from "@/lib/media-url";
 
 type Work = {
   id: string;
@@ -51,7 +52,7 @@ function Preview({ item }: { item: Work }) {
   return (
     <video
       ref={videoRef}
-      src={item.src}
+      src={mediaUrl(item.src)}
       poster={item.poster}
       muted
       loop
@@ -136,7 +137,7 @@ export default function FeaturedWorks() {
             닫기 ×
           </button>
           <div className={`videoModalFrame is-${selected.orientation}`}>
-            <video src={selected.src} controls autoPlay muted playsInline />
+            <video src={mediaUrl(selected.src)} controls autoPlay muted playsInline />
             <footer>
               <strong>{selected.title}</strong>
               <span>{selected.categoryLabel}</span>

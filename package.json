@@ -7,7 +7,9 @@
     "prebuild": "node scripts/build-video-catalog.mjs",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "npx serve out",
+    "pages:build": "node scripts/build-pages.mjs",
+    "pages:deploy": "node scripts/build-pages.mjs && wrangler pages deploy out"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -24,6 +26,8 @@
     "@types/node": "^22.10.0",
     "@types/react": "^19.0.0",
     "@types/three": "^0.173.0",
-    "typescript": "^5.7.0"
+    "serve": "^14.2.6",
+    "typescript": "^5.7.0",
+    "wrangler": "^4.114.0"
   }
 }

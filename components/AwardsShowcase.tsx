@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import catalogData from "@/data/video-catalog.json";
+import { mediaUrl } from "@/lib/media-url";
 
 type AwardWork = {
   id: string;
@@ -36,7 +37,7 @@ function AwardPreview({ work }: { work: AwardWork }) {
   return (
     <video
       ref={videoRef}
-      src={work.src}
+      src={mediaUrl(work.src)}
       poster={work.poster}
       muted
       loop
@@ -184,7 +185,7 @@ export default function AwardsShowcase() {
             닫기 ×
           </button>
           <div className={`videoModalFrame is-${selected.orientation}`}>
-            <video src={selected.src} controls autoPlay muted playsInline />
+            <video src={mediaUrl(selected.src)} controls autoPlay muted playsInline />
             <footer>
               <strong>{selected.title}</strong>
               <span>P LAB 교육생 수상작</span>

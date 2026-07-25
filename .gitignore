@@ -3,6 +3,7 @@ node_modules/
 
 # Next.js
 .next/
+.open-next/
 out/
 
 # build and type caches
@@ -15,6 +16,7 @@ out/
 
 # local high-resolution video masters
 source-videos/
+cloudflare-deploy/
 
 # logs
 *.log

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import catalogData from "@/data/video-catalog.json";
+import { mediaUrl } from "@/lib/media-url";
 
 type CatalogItem = {
   id: string;
@@ -74,7 +75,7 @@ export default async function WorkPage({
                   {items.map((work, index) => (
                     <article className={`categoryCard is-${work.orientation}`} key={work.id}>
                       <video
-                        src={work.src}
+                        src={mediaUrl(work.src)}
                         poster={work.poster}
                         controls
                         muted
