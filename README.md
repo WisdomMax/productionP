@@ -28,3 +28,8 @@ Open `preview.html` with internet access. It loads Three.js, GSAP, and Lenis fro
 Contact:
 contact@productionp.com
 010-6515-4600
+
+## Contact form email setup
+
+The deployed form needs a verified receiving address and a Resend API key.
+Follow [docs/EMAIL-SETUP.md](docs/EMAIL-SETUP.md).

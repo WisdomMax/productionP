@@ -1152,3 +1152,79 @@ img,video{max-width:100%}
     padding:8vh 16px 10vh;
   }
 }
+
+/* Mobile rhythm — keep the editorial scale, remove excessive empty scrolling. */
+@media(max-width:760px){
+  .heroReact{
+    min-height:min(82svh,760px);
+    padding-top:64px;
+    padding-bottom:40px;
+    align-items:center;
+  }
+  .manifestReact,
+  .workReact,
+  .journalReact{
+    min-height:auto;
+    padding-top:56px;
+    padding-bottom:56px;
+  }
+  .reelReact{
+    min-height:auto;
+    padding:64px 16px;
+  }
+  .motionArchiveHeader{margin-bottom:36px}
+  .featuredWorksReact{padding:64px 0}
+  .featuredWorksReact header{
+    margin-bottom:34px;
+    padding-bottom:0;
+  }
+  .featuredWorkMeta{padding-bottom:18px}
+  .awardsShowcaseReact{
+    min-height:auto;
+    padding-top:64px;
+    padding-bottom:48px;
+  }
+  .awardsShowcaseReact>header{padding-bottom:38px}
+  .awardsShowcaseFooter{padding-top:54px}
+  .awardsShowcaseFooter>p{margin-bottom:32px}
+  .labReact{
+    min-height:auto;
+    padding-top:64px;
+    padding-bottom:64px;
+  }
+  .labIntro{margin:18px 0 30px}
+  .contactReact{
+    min-height:auto;
+    padding-top:64px;
+    padding-bottom:56px;
+  }
+  .contactActions{
+    gap:36px;
+    margin-top:38px;
+  }
+  .categoryPage{padding-bottom:64px}
+  .categoryHeader{margin-bottom:40px}
+  .categoryHeader h1{margin-top:56px;margin-bottom:28px}
+  .categoryOrientationGroup{padding-top:42px}
+  .videoArchiveReact{padding:64px 16px}
+  .videoArchiveReact>header{margin-bottom:36px}
+  .videoArchiveReact>header h2{margin-top:28px}
+  .videoOrientationGroup{padding-top:42px}
+  .journalIndexHero{
+    min-height:auto;
+    padding-top:64px;
+    padding-bottom:40px;
+  }
+  .journalIndexList{padding-bottom:56px}
+  .journalArticleHero{
+    min-height:auto;
+    padding-top:36px;
+    padding-bottom:44px;
+  }
+  .journalArticleBody{padding-top:64px;padding-bottom:72px}
+  .journalArticleBody aside{margin-bottom:56px}
+  .journalArticleCopy section{padding-bottom:56px}
+  .journalArticleChapter+.journalArticleChapter section{padding-top:48px}
+  .journalArticleImage{margin-bottom:56px}
+  .journalRelated{padding-top:56px;padding-bottom:64px}
+}
