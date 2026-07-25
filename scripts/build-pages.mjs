@@ -15,12 +15,18 @@ if (existsSync(videoStash)) {
   );
 }
 
-const catalog = spawnSync(
-  process.execPath,
-  [join(projectRoot, "scripts", "build-video-catalog.mjs")],
-  { cwd: projectRoot, stdio: "inherit" },
-);
-if (catalog.status !== 0) process.exit(catalog.status ?? 1);
+// Cloudflare Pages does not provide ffprobe. The generated catalog is committed,
+// so remote builds can safely reuse it while local builds continue to refresh it.
+if (process.env.CF_PAGES !== "1") {
+  const catalog = spawnSync(
+    process.execPath,
+    [join(projectRoot, "scripts", "build-video-catalog.mjs")],
+    { cwd: projectRoot, stdio: "inherit" },
+  );
+  if (catalog.status !== 0) process.exit(catalog.status ?? 1);
+} else {
+  console.log("Cloudflare Pages detected; using the committed video catalog.");
+}
 
 renameSync(videoDirectory, videoStash);
 
