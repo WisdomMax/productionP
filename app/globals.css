@@ -601,7 +601,11 @@ main{position:relative;z-index:2}
   line-height:1.7;
   text-align:right;
 }
-.labGridReact{gap:clamp(10px,1.2vw,22px);margin-top:10vh}
+.labGridReact{
+  width:min(100%,1050px);
+  gap:clamp(12px,1.4vw,24px);
+  margin:clamp(34px,6vh,68px) auto 0;
+}
 .labGridReact figure{
   aspect-ratio:3/4;
   margin:0;
@@ -648,35 +652,121 @@ main{position:relative;z-index:2}
   color:#aaa9a2;
   font:700 8px/1 monospace;
 }
+@media(min-width:761px){
+  .labGridReact{
+    width:min(88vw,1320px);
+    gap:clamp(16px,1.25vw,24px);
+  }
+}
 
 /* Project inquiry */
 .contactActions{
   display:grid;
-  grid-template-columns:1fr minmax(300px,42vw);
+  grid-template-columns:minmax(210px,.68fr) minmax(420px,1.32fr);
   align-items:end;
-  gap:6vw;
+  gap:clamp(48px,7vw,128px);
   margin-top:7vh;
 }
 .inquiryOpen{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
   width:100%;
-  min-height:112px;
-  padding:20px 0;
-  border:0;
-  border-top:1px solid rgba(241,239,232,.55);
-  border-bottom:1px solid rgba(241,239,232,.55);
-  background:transparent;
+  min-height:clamp(178px,20vh,224px);
+  padding:22px 88px 24px 26px;
+  border:1px solid rgba(241,239,232,.42);
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.045),transparent 52%),
+    #0b0c0c;
   color:var(--paper);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  display:grid;
+  grid-template-columns:minmax(128px,.52fr) minmax(210px,1fr);
+  gap:clamp(22px,3vw,54px);
+  align-items:end;
   text-align:left;
-  transition:color .25s,border-color .25s;
+  cursor:pointer;
+  transition:border-color .35s,transform .45s cubic-bezier(.16,1,.3,1);
 }
-.inquiryOpen span{font-size:clamp(22px,2.35vw,42px);font-weight:800;letter-spacing:-.05em}
-.inquiryOpen b{color:#ff684f;font:800 10px/1 monospace;letter-spacing:.05em}
-.inquiryOpen:hover{color:#ff684f;border-color:#ff684f}
+.inquiryOpen:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  background:var(--signal);
+  transform:translateY(101%);
+  transition:transform .62s cubic-bezier(.16,1,.3,1);
+}
+.inquiryOpen:after{
+  content:"";
+  position:absolute;
+  left:26px;
+  top:22px;
+  width:34px;
+  height:2px;
+  background:var(--signal-hot);
+  transition:width .45s cubic-bezier(.16,1,.3,1),background .25s;
+}
+.inquiryOpenMeta{
+  display:flex;
+  min-height:100%;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+  padding-top:20px;
+}
+.inquiryOpenMeta small{
+  color:#9b9b94;
+  font:750 8px/1 monospace;
+  letter-spacing:.09em;
+}
+.inquiryOpenMeta em{
+  max-width:8em;
+  color:#d7d4cc;
+  font-size:clamp(14px,1.2vw,18px);
+  font-style:normal;
+  font-weight:720;
+  line-height:1.25;
+  letter-spacing:-.035em;
+}
+.inquiryOpen strong{
+  align-self:end;
+  font-size:clamp(38px,4.2vw,68px);
+  font-weight:850;
+  line-height:.8;
+  letter-spacing:-.07em;
+}
+.inquiryOpen b{
+  position:absolute;
+  right:22px;
+  top:22px;
+  display:grid;
+  width:48px;
+  height:48px;
+  place-items:center;
+  border:1px solid rgba(255,104,79,.7);
+  border-radius:50%;
+  color:#ff684f;
+  font:500 22px/1 sans-serif;
+  transition:background .3s,color .3s,transform .45s cubic-bezier(.16,1,.3,1);
+}
+.inquiryOpen:hover{
+  border-color:#ff684f;
+  transform:translateY(-5px);
+}
+.inquiryOpen:hover:before{transform:translateY(0)}
+.inquiryOpen:hover:after{width:72px;background:#fff}
+.inquiryOpen:hover .inquiryOpenMeta small,
+.inquiryOpen:hover .inquiryOpenMeta em{color:#fff}
+.inquiryOpen:hover b{
+  background:#fff;
+  color:var(--signal);
+  border-color:#fff;
+  transform:rotate(45deg);
+}
 .has-inquiry-panel{overflow:hidden}
 .has-inquiry-panel .navReact{opacity:0;pointer-events:none}
+.has-inquiry-panel .disintegrationCanvas{z-index:1401}
+.has-inquiry-panel .temporalCursor{z-index:1402}
 .inquiryOverlay{
   position:fixed;
   z-index:1200;
@@ -752,7 +842,7 @@ html,body{max-width:100%;overflow-x:clip}
 img,video{max-width:100%}
 @media(max-width:1024px){
   .heroReact,.reelReact,.workReact,.awardsReact,.labReact,.journalReact,.contactReact,.manifestReact{padding-left:4vw;padding-right:4vw}
-  .contactActions{grid-template-columns:1fr minmax(290px,45vw)}
+  .contactActions{grid-template-columns:minmax(190px,.62fr) minmax(390px,1.38fr);gap:4vw}
   .labIntro{top:11vh}
   .inquiryPanel{width:min(780px,86vw)}
 }
@@ -793,19 +883,34 @@ img,video{max-width:100%}
   .contactActions>div:first-child{grid-row:2}
   .inquiryOpen{
     min-height:94px;
-    padding:20px;
+    padding:18px 62px 18px 18px;
     border:1px solid #d84a33;
     background:#AF2711;
     color:#fff;
+    grid-template-columns:1fr auto;
+    gap:16px;
     box-shadow:0 18px 54px rgba(175,39,17,.28);
   }
-  .inquiryOpen span{font-size:24px}
-  .inquiryOpen b{
-    color:#fff;
-    font-size:9px;
-    padding-left:16px;
-    text-align:right;
+  .inquiryOpen:before,.inquiryOpen:after{display:none}
+  .inquiryOpenMeta{min-height:58px;padding:0}
+  .inquiryOpenMeta small{color:rgba(255,255,255,.68)}
+  .inquiryOpenMeta em{max-width:none;color:#fff;font-size:13px}
+  .inquiryOpen strong{
+    font-size:clamp(25px,8vw,34px);
+    line-height:.82;
   }
+  .inquiryOpen b{
+    right:14px;
+    top:50%;
+    width:38px;
+    height:38px;
+    transform:translateY(-50%);
+    border-color:rgba(255,255,255,.65);
+    color:#fff;
+    font-size:17px;
+  }
+  .inquiryOpen:hover{transform:none}
+  .inquiryOpen:hover b{transform:translateY(-50%) rotate(45deg)}
   .inquiryPanel{
     width:100vw;
     height:100dvh;
@@ -832,7 +937,7 @@ img,video{max-width:100%}
   .awardWorkCard{flex-basis:84vw}
   .awardWorkCard.is-portrait{flex-basis:66vw}
   .labGridReact figure{flex-basis:78vw}
-  .inquiryOpen span{font-size:21px}
+  .inquiryOpen strong{font-size:24px}
 }
 
 /* Motion index — real work replaces the old placeholder image stack. */
@@ -1599,8 +1704,8 @@ img,video{max-width:100%}
   font-size:clamp(58px,8vw,120px);
 }
 .labReact .labGridReact figure{
-  height:min(42vh,380px);
-  aspect-ratio:auto;
+  height:auto;
+  aspect-ratio:3/4;
 }
 @media(max-width:899px){
   .motionPinStage.is-manifest{height:215svh}

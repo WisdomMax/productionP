@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 const initialFields = { name: "", email: "", subject: "", message: "", website: "" };
@@ -65,10 +66,18 @@ export default function ContactInquiry() {
           setOpen(true);
         }}
       >
-        <span>영상 제작 의뢰하기</span>
-        <b>START A PROJECT ↗</b>
+        <span className="inquiryOpenMeta">
+          <small>PROJECT INQUIRY / 240</small>
+          <em>영상 제작 의뢰하기</em>
+        </span>
+        <strong>
+          START A
+          <br />
+          PROJECT.
+        </strong>
+        <b aria-hidden="true">↗</b>
       </button>
-      {open && (
+      {open && createPortal(
         <div
           className="inquiryOverlay"
           role="presentation"
@@ -117,7 +126,8 @@ export default function ContactInquiry() {
               </footer>
             </form>
           </section>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   );

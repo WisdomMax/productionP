@@ -15,21 +15,6 @@
     "title": "BITE INTO YOUTH"
   },
   {
-    "id": "9cb6ef29bf98",
-    "fileName": "mega-moment.mp4",
-    "src": "/videos/01-commercial/mega-moment.mp4",
-    "poster": "/posters/auto/9cb6ef29bf98.jpg",
-    "category": "commercial",
-    "categoryLabel": "광고",
-    "categoryOrder": 1,
-    "status": null,
-    "orientation": "landscape",
-    "width": 1920,
-    "height": 1080,
-    "duration": 14,
-    "title": "MEGA MOMENT"
-  },
-  {
     "id": "2728a009c32e",
     "fileName": "scent-in-motion.mp4",
     "src": "/videos/01-commercial/scent-in-motion.mp4",
@@ -133,6 +118,21 @@
     "height": 1080,
     "duration": 24,
     "title": "EXTREME TERRAIN"
+  },
+  {
+    "id": "da3222c5c7fa",
+    "fileName": "mega-moment.mp4",
+    "src": "/videos/02-brand-film/mega-moment.mp4",
+    "poster": "/posters/auto/da3222c5c7fa.jpg",
+    "category": "brand-film",
+    "categoryLabel": "브랜드 필름",
+    "categoryOrder": 2,
+    "status": null,
+    "orientation": "landscape",
+    "width": 1920,
+    "height": 1080,
+    "duration": 14,
+    "title": "MEGA MOMENT"
   },
   {
     "id": "8435e807a87a",

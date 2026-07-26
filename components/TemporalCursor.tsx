@@ -142,7 +142,7 @@ export default function TemporalCursor() {
       );
       const onLight = Boolean(
         element?.closest<HTMLElement>(
-          ".manifestReact, .journalReact, .journalIndexPage, .journalArticlePage, .caseStudyNotice, .caseStudyIntro",
+          ".manifestReact, .journalReact, .journalIndexPage, .journalArticlePage, .caseStudyNotice, .caseStudyIntro, .inquiryPanel",
         ),
       );
 
