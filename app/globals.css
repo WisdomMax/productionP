@@ -1390,11 +1390,12 @@ img,video{max-width:100%}
   display:inline-block;
   margin-right:.17em;
   white-space:nowrap;
+  color:var(--paper);
   will-change:transform,opacity,filter,letter-spacing,background-position;
 }
 .heroReactContent>small,.heroReactFooter>*{will-change:transform,opacity}
 .heroReact .heroLine em{font-style:normal}
-.heroReact .heroBeatAccent{color:var(--signal-hot)}
+.heroReact h1 .heroBeatAccent{color:var(--signal-hot)}
 .heroReact .heroBeatCinema{
   color:transparent;
   -webkit-text-fill-color:transparent;
