@@ -367,7 +367,7 @@ export default function SiteMotion() {
 
       if (desktopPinned) {
         gsap.utils
-          .toArray<HTMLElement>("[data-pin-scene]")
+          .toArray<HTMLElement>("[data-pin-scene]:not(.workReact)")
           .forEach((scene, sceneIndex) => {
             const lines = scene.querySelectorAll<HTMLElement>(
               ".motionLineInner",
@@ -436,7 +436,7 @@ export default function SiteMotion() {
           });
       } else {
         gsap.utils
-          .toArray<HTMLElement>("[data-pin-scene]")
+          .toArray<HTMLElement>("[data-pin-scene]:not(.workReact)")
           .forEach((scene, sceneIndex) => {
             const lines = scene.querySelectorAll<HTMLElement>(
               ".motionLineInner",
@@ -515,29 +515,109 @@ export default function SiteMotion() {
           });
       }
 
-      gsap.utils
-        .toArray<HTMLElement>(".workRowReact")
-        .forEach((row, index) => {
-          gsap.fromTo(
-            row,
+      const workScene = document.querySelector<HTMLElement>(".workReact");
+      if (workScene) {
+        const workLines =
+          workScene.querySelectorAll<HTMLElement>(".motionLineInner");
+        const workCounter =
+          workScene.querySelector<HTMLElement>(":scope > div > small");
+        const workRows = Array.from(
+          workScene.querySelectorAll<HTMLElement>(".workRowReact"),
+        );
+
+        const workTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: workScene,
+            start: "top top",
+            end: () =>
+              `+=${window.innerHeight * (desktopPinned ? 1.85 : 1.5)}`,
+            pin: true,
+            scrub: desktopPinned ? 0.82 : 0.72,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        workTimeline
+          .fromTo(
+            workLines,
             {
-              xPercent: index % 2 === 0 ? -20 : 20,
-              y: 22,
+              xPercent: -72,
+              yPercent: 24,
+              scale: 1.1,
               autoAlpha: 0,
-              skewX: index % 2 === 0 ? -4 : 4,
+              backgroundPosition: "135% 50%",
             },
             {
               xPercent: 0,
-              y: 0,
+              yPercent: 0,
+              scale: 1,
               autoAlpha: 1,
-              skewX: 0,
-              duration: 0.82,
-              delay: index * 0.06,
-              ease: "expo.out",
-              scrollTrigger: { trigger: row, start: "top 97%", once: true },
+              backgroundPosition: "38% 50%",
+              duration: 0.2,
+              ease: "power4.out",
             },
+            0,
+          )
+          .fromTo(
+            workCounter,
+            { x: -24, autoAlpha: 0 },
+            {
+              x: 0,
+              autoAlpha: 1,
+              duration: 0.12,
+              ease: "power3.out",
+            },
+            0.08,
           );
+
+        workRows.forEach((row, index) => {
+          const title = row.querySelector<HTMLElement>("strong");
+          const at = 0.2 + index * 0.2;
+
+          workTimeline
+            .fromTo(
+              row,
+              {
+                xPercent: index % 2 === 0 ? -26 : 26,
+                y: 30,
+                autoAlpha: 0,
+                skewX: index % 2 === 0 ? -4 : 4,
+              },
+              {
+                xPercent: 0,
+                y: 0,
+                autoAlpha: 1,
+                skewX: 0,
+                duration: 0.2,
+                ease: "expo.out",
+              },
+              at,
+            )
+            .fromTo(
+              title,
+              { color: "#d63a20" },
+              {
+                color: "#f1efe8",
+                duration: 0.22,
+                ease: "power2.out",
+              },
+              at + 0.08,
+            );
         });
+
+        workTimeline
+          .to(
+            workLines,
+            {
+              backgroundPosition: "-135% 50%",
+              duration: 0.22,
+              ease: "none",
+            },
+            0.72,
+          )
+          .to({}, { duration: 0.2 });
+      }
 
       const cardSelector = [
         ".featuredWorkCard",
