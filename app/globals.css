@@ -1568,6 +1568,89 @@ img,video{max-width:100%}
   line-height:1.75;
   word-break:keep-all;
 }
+.caseReferences{
+  padding:14vh 0 12vh;
+  overflow:hidden;
+  background:#090a0a;
+  color:var(--paper);
+}
+.caseReferences>header{
+  display:grid;
+  grid-template-columns:minmax(0,1.4fr) minmax(300px,.6fr);
+  gap:4vh 7vw;
+  align-items:end;
+  padding:0 5vw 8vh;
+}
+.caseReferences header small{
+  grid-column:1/-1;
+  color:var(--signal-hot);
+  font:700 9px/1 monospace;
+  letter-spacing:.1em;
+}
+.caseReferences h2{
+  margin:0;
+  font-size:clamp(58px,9vw,142px);
+  line-height:.78;
+  letter-spacing:-.085em;
+}
+.caseReferences header p{
+  margin:0;
+  color:#aaa9a3;
+  font-size:14px;
+  line-height:1.72;
+  word-break:keep-all;
+}
+.caseReferenceGrid{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:clamp(12px,1.5vw,24px);
+  padding:0 5vw;
+  align-items:start;
+}
+.caseReferenceGrid figure{
+  grid-column:span 6;
+  position:relative;
+  margin:0;
+  overflow:hidden;
+  border:1px solid #363633;
+  background:#111;
+}
+.caseReferenceGrid figure:nth-child(3),
+.caseReferenceGrid figure:nth-child(4),
+.caseReferenceGrid figure:nth-child(5),
+.caseReferenceGrid figure:nth-child(6){grid-column:span 3}
+.caseReferenceGrid figure:last-child{grid-column:5/span 4}
+.caseReferenceGrid img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:16/10;
+  object-fit:contain;
+  background:#0d0e0e;
+  filter:saturate(.78);
+  transition:transform .75s cubic-bezier(.16,1,.3,1),filter .35s;
+}
+.caseReferenceGrid figure:hover img{transform:scale(1.018);filter:saturate(1)}
+.caseReferenceGrid figcaption{
+  position:absolute;
+  inset:auto 0 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+  padding:24px 18px 15px;
+  color:#fff;
+  background:linear-gradient(transparent,rgba(9,10,10,.92));
+  font-size:inherit;
+}
+.caseReferenceGrid figcaption small{
+  color:var(--signal-hot);
+  font:700 9px/1 monospace;
+}
+.caseReferenceGrid figcaption strong{
+  font-size:clamp(14px,1.2vw,19px);
+  letter-spacing:-.03em;
+}
 .caseStudyProcess{background:#090a0a;color:var(--paper)}
 .caseProcessText{
   display:grid;
@@ -1658,6 +1741,112 @@ img,video{max-width:100%}
   font-size:15px;
   line-height:1.75;
   word-break:keep-all;
+}
+.storyboardRailGuide{
+  display:grid;
+  grid-template-columns:1fr auto auto;
+  gap:14px;
+  align-items:center;
+  margin:0 5vw 18px;
+  padding-top:14px;
+  border-top:1px solid #77766f;
+  color:#575650;
+  font:700 9px/1 monospace;
+  letter-spacing:.1em;
+}
+.storyboardRailGuide i{color:var(--signal);font-style:normal}
+.storyboardRailGuide b{color:#090a0a}
+.storyboardRail{
+  display:flex;
+  gap:clamp(18px,2vw,32px);
+  overflow-x:auto;
+  overscroll-behavior-inline:contain;
+  scroll-snap-type:x mandatory;
+  scroll-padding-inline:5vw;
+  padding:0 5vw 28px;
+  scrollbar-width:thin;
+  scrollbar-color:var(--signal) rgba(9,10,10,.15);
+}
+.storyboardRail figure{
+  flex:0 0 min(68vw,980px);
+  margin:0;
+  scroll-snap-align:start;
+}
+.storyboardRail figure>div{
+  position:relative;
+  overflow:hidden;
+  background:#090a0a;
+}
+.storyboardRail img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  filter:saturate(.66) contrast(1.08);
+  transition:filter .35s,transform .75s cubic-bezier(.16,1,.3,1);
+}
+.storyboardRail figure:hover img{filter:saturate(1);transform:scale(1.015)}
+.storyboardRail figure>div>b,
+.storyboardRail time{
+  position:absolute;
+  top:12px;
+  padding:7px 8px;
+  background:#090a0add;
+  color:#fff;
+  font:700 10px/1 monospace;
+}
+.storyboardRail figure>div>b{left:12px;color:var(--signal-hot)}
+.storyboardRail time{right:12px}
+.storyboardRail figcaption{
+  position:static;
+  display:grid;
+  grid-template-columns:minmax(180px,.65fr) 1.35fr;
+  gap:28px;
+  padding:17px 0 0;
+  background:none;
+  color:#090a0a;
+  font-size:inherit;
+}
+.storyboardRail figcaption strong{font-size:15px;letter-spacing:-.02em}
+.storyboardRail figcaption span{
+  color:#565550;
+  font-size:12px;
+  line-height:1.55;
+  word-break:keep-all;
+}
+.storyboardContactSheet{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:2px;
+  margin:12vh 5vw 0;
+  padding:2px;
+  background:#090a0a;
+}
+.storyboardContactSheet figure{
+  position:relative;
+  margin:0;
+  overflow:hidden;
+  background:#090a0a;
+}
+.storyboardContactSheet img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  filter:saturate(.38) contrast(1.12);
+  transition:filter .25s;
+}
+.storyboardContactSheet figure:hover img{filter:saturate(1)}
+.storyboardContactSheet b{
+  position:absolute;
+  left:7px;
+  top:7px;
+  padding:4px 5px;
+  background:#090a0acc;
+  color:var(--signal-hot);
+  font:700 8px/1 monospace;
 }
 .storyboardGrid{
   display:grid;
@@ -1826,6 +2015,28 @@ img,video{max-width:100%}
   .caseStudyIntro{padding:80px 16px}
   .caseStudyIntro h2{font-size:clamp(42px,12vw,62px)}
   .caseStudyIntro>p{width:100%;margin-top:36px}
+  .caseReferences{padding:76px 0 72px}
+  .caseReferences>header{
+    display:block;
+    padding:0 16px 48px;
+  }
+  .caseReferences h2{
+    margin:28px 0 32px;
+    font-size:clamp(50px,14vw,70px);
+  }
+  .caseReferenceGrid{
+    display:flex;
+    overflow-x:auto;
+    gap:12px;
+    padding:0 16px 20px;
+    scroll-snap-type:x mandatory;
+  }
+  .caseReferenceGrid figure,
+  .caseReferenceGrid figure:nth-child(n),
+  .caseReferenceGrid figure:last-child{
+    flex:0 0 86vw;
+    scroll-snap-align:start;
+  }
   .caseProcessText{
     display:block;
     padding:72px 16px;
@@ -1841,6 +2052,19 @@ img,video{max-width:100%}
   .caseStoryboard>header>span{display:block;margin-bottom:26px}
   .caseStoryboard h2{font-size:clamp(52px,15vw,74px)}
   .caseStoryboard header p{width:100%;margin:0}
+  .storyboardRailGuide{margin-inline:0}
+  .storyboardRail{
+    gap:12px;
+    margin-inline:-16px;
+    padding-inline:16px;
+    scroll-padding-inline:16px;
+  }
+  .storyboardRail figure{flex-basis:88vw}
+  .storyboardRail figcaption{grid-template-columns:1fr;gap:8px}
+  .storyboardContactSheet{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    margin:64px 0 0;
+  }
   .storyboardGrid{grid-template-columns:1fr;gap:48px}
   .storyboardGrid figcaption{grid-template-columns:1fr;gap:8px}
   .caseStudyFinal{padding:76px 16px 42px}

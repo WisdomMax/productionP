@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { mediaUrl } from "@/lib/media-url";
+import StoryboardRail from "@/components/StoryboardRail";
 
 export const metadata: Metadata = {
   title: "SHINHAN BANK — Process Reconstruction | Production P",
@@ -18,45 +19,107 @@ const frames = [
   },
   {
     src: "/case-study/shinhan-bank/frame-02.jpg",
-    time: "00:08",
+    time: "00:07",
     shot: "02 / THE VISITOR",
     note: "비현실적 인물을 수직 구도로 등장시켜 권위와 낯섦을 동시에 만든다.",
   },
   {
     src: "/case-study/shinhan-bank/frame-03.jpg",
-    time: "00:14",
+    time: "00:12",
     shot: "03 / TWO WORLDS",
     note: "같은 프레임 안에서 현실의 고객과 판타지의 안내자를 충돌시킨다.",
   },
   {
     src: "/case-study/shinhan-bank/frame-04.jpg",
-    time: "00:20",
-    shot: "04 / THE OFFER",
-    note: "책과 카드라는 오브제로 복잡한 금융 서비스를 한 장면에 압축한다.",
+    time: "00:17",
+    shot: "04 / ENTER THE WORLD",
+    note: "고객을 서재 안쪽으로 이동시켜 현실에서 서비스의 세계로 진입시킨다.",
   },
   {
     src: "/case-study/shinhan-bank/frame-05.jpg",
-    time: "00:26",
-    shot: "05 / PROOF",
-    note: "핵심 서비스인 세무·상속을 공간 자체가 반응하는 장면으로 시각화한다.",
+    time: "00:22",
+    shot: "05 / THE OFFER",
+    note: "책과 카드라는 오브제로 복잡한 금융 서비스를 한 장면에 압축한다.",
   },
   {
     src: "/case-study/shinhan-bank/frame-06.jpg",
-    time: "00:33",
-    shot: "06 / REVEAL",
-    note: "인물의 정체를 가까이 드러내며 판타지의 밀도를 최고점으로 올린다.",
+    time: "00:27",
+    shot: "06 / CROSSING",
+    note: "두 인물의 시선과 제스처를 연결해 제안이 실제 행동으로 넘어가게 한다.",
   },
   {
     src: "/case-study/shinhan-bank/frame-07.jpg",
-    time: "00:42",
-    shot: "07 / RESOLUTION",
-    note: "고객의 반응으로 긴장을 풀고 서비스가 만든 심리적 변화를 보여준다.",
+    time: "00:32",
+    shot: "07 / SERVICE ARRIVES",
+    note: "전문가와 포트폴리오를 등장시켜 판타지를 구체적인 서비스로 전환한다.",
   },
   {
     src: "/case-study/shinhan-bank/frame-08.jpg",
+    time: "00:37",
+    shot: "08 / HUMAN PROOF",
+    note: "상담자의 정면 쇼트로 신뢰와 전문성을 서사의 중심에 다시 놓는다.",
+  },
+  {
+    src: "/case-study/shinhan-bank/frame-09.jpg",
+    time: "00:42",
+    shot: "09 / THE REVEAL",
+    note: "안내자의 정체를 가까이 드러내며 판타지의 밀도를 최고점으로 올린다.",
+  },
+  {
+    src: "/case-study/shinhan-bank/frame-10.jpg",
+    time: "00:47",
+    shot: "10 / REACTION",
+    note: "고객의 놀란 표정으로 반전의 충격을 짧고 명확하게 받아낸다.",
+  },
+  {
+    src: "/case-study/shinhan-bank/frame-11.jpg",
+    time: "00:52",
+    shot: "11 / RESOLUTION",
+    note: "고객의 변화된 표정으로 긴장을 풀고 서비스가 만든 확신을 보여준다.",
+  },
+  {
+    src: "/case-study/shinhan-bank/frame-12.jpg",
     time: "00:53",
-    shot: "08 / BRAND CLOSE",
+    shot: "12 / BRAND CLOSE",
     note: "야경, 인물, 카피를 하나의 프리미엄 톤으로 정리하며 브랜드로 닫는다.",
+  },
+];
+
+const references = [
+  {
+    src: "/case-study/shinhan-bank/references/client-character-sheet.jpg",
+    label: "CHARACTER 01",
+    title: "THE CLIENT",
+  },
+  {
+    src: "/case-study/shinhan-bank/references/advisor-character-sheet.jpg",
+    label: "CHARACTER 02",
+    title: "THE ADVISOR",
+  },
+  {
+    src: "/case-study/shinhan-bank/references/premier-lounge.jpg",
+    label: "WORLD 01",
+    title: "NIGHT LOUNGE",
+  },
+  {
+    src: "/case-study/shinhan-bank/references/premier-office.jpg",
+    label: "WORLD 02",
+    title: "PRIVATE OFFICE",
+  },
+  {
+    src: "/case-study/shinhan-bank/references/member-card.jpg",
+    label: "PROP 01",
+    title: "MEMBERSHIP CARD",
+  },
+  {
+    src: "/case-study/shinhan-bank/references/wealth-portfolio.jpg",
+    label: "PROP 02",
+    title: "WEALTH PORTFOLIO",
+  },
+  {
+    src: "/case-study/shinhan-bank/references/premier-key-visual.jpg",
+    label: "BRAND FRAME",
+    title: "PREMIER CLOSE",
   },
 ];
 
@@ -106,7 +169,7 @@ export default function ShinhanCaseStudy() {
       <header className="caseStudyHero" data-cursor-contrast="light">
         <video
           src={mediaUrl("/videos/02-brand-film/Shinhan-bank.mp4")}
-          poster="/case-study/shinhan-bank/frame-08.jpg"
+          poster="/case-study/shinhan-bank/frame-01.jpg"
           autoPlay
           muted
           loop
@@ -176,16 +239,50 @@ export default function ShinhanCaseStudy() {
         ))}
       </section>
 
+      <section className="caseReferences">
+        <header>
+          <small>SOURCE MATERIAL / PROVIDED REFERENCES</small>
+          <h2>BUILD THE WORLD.</h2>
+          <p>
+            캐릭터의 전·후·측면, 공간의 재질과 조명, 카드와 포트폴리오 같은
+            핵심 소품을 먼저 고정합니다. 이 기준 이미지가 샷이 바뀌어도 같은
+            인물과 같은 세계로 보이게 만드는 시각적 바이블입니다.
+          </p>
+        </header>
+        <div className="caseReferenceGrid">
+          {references.map((reference) => (
+            <figure key={reference.src}>
+              <Image
+                src={reference.src}
+                alt={`${reference.title} reference`}
+                width={1600}
+                height={1067}
+                sizes="(max-width: 760px) 90vw, 45vw"
+              />
+              <figcaption>
+                <small>{reference.label}</small>
+                <strong>{reference.title}</strong>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
       <section className="caseStoryboard">
         <header>
           <span>03</span>
           <div>
-            <small>STORYBOARD / 8 KEY BEATS</small>
+            <small>STORYBOARD / 12 KEY SHOTS</small>
             <h2>FRAME BY FRAME.</h2>
             <p>{stages[2].body}</p>
           </div>
         </header>
-        <div className="storyboardGrid">
+        <div className="storyboardRailGuide">
+          <span>SCROLL TO REVIEW THE BOARD</span>
+          <i>01</i>
+          <b>12</b>
+        </div>
+        <StoryboardRail>
           {frames.map((frame, index) => (
             <figure key={frame.src}>
               <div>
@@ -203,6 +300,20 @@ export default function ShinhanCaseStudy() {
                 <strong>{frame.shot}</strong>
                 <span>{frame.note}</span>
               </figcaption>
+            </figure>
+          ))}
+        </StoryboardRail>
+        <div className="storyboardContactSheet" aria-label="12 shot contact sheet">
+          {frames.map((frame, index) => (
+            <figure key={`sheet-${frame.src}`}>
+              <Image
+                src={frame.src}
+                alt=""
+                width={1600}
+                height={900}
+                sizes="25vw"
+              />
+              <b>{String(index + 1).padStart(2, "0")}</b>
             </figure>
           ))}
         </div>
@@ -239,7 +350,7 @@ export default function ShinhanCaseStudy() {
         </header>
         <video
           src={mediaUrl("/videos/02-brand-film/Shinhan-bank.mp4")}
-          poster="/case-study/shinhan-bank/frame-08.jpg"
+          poster="/case-study/shinhan-bank/frame-12.jpg"
           controls
           muted
           playsInline
