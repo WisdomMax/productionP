@@ -15,10 +15,12 @@ export default function SiteMotion() {
 
   useEffect(() => {
     const isHome = pathname === "/";
+    const enteredViaHistoryTraversal = restoreHomeAfterHistoryTraversal;
     const restoreY =
       isHome && (restoreHomeAfterHistoryTraversal || isLeavingHome)
         ? savedHomeScrollY
         : null;
+    const resetSubpageToTop = !isHome && !enteredViaHistoryTraversal;
     if (isHome) isLeavingHome = false;
     restoreHomeAfterHistoryTraversal = false;
     const markHistoryTraversal = () => {
@@ -89,11 +91,12 @@ export default function SiteMotion() {
       ScrollTrigger.update();
     });
 
-    if (restoreY !== null) {
+    if (restoreY !== null || resetSubpageToTop) {
+      const targetY = restoreY ?? 0;
       restoreFrame = requestAnimationFrame(() => {
         restoreFrame = requestAnimationFrame(() => {
-          window.scrollTo({ top: restoreY, left: 0, behavior: "instant" });
-          lenis.scrollTo(restoreY, { immediate: true });
+          window.scrollTo({ top: targetY, left: 0, behavior: "instant" });
+          lenis.scrollTo(targetY, { immediate: true });
           isRestoringHome = false;
           ScrollTrigger.refresh();
         });
