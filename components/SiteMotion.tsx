@@ -203,8 +203,10 @@ export default function SiteMotion() {
             scrollTrigger: {
               trigger: hero,
               start: "top top",
-              end: "45% top",
-              scrub: 0.6,
+              end: () => `+=${Math.min(window.innerHeight * 0.88, 760)}`,
+              pin: true,
+              scrub: 0.66,
+              anticipatePin: 1,
               invalidateOnRefresh: true,
             },
           });
@@ -215,30 +217,39 @@ export default function SiteMotion() {
             .set(
               titleLines,
               {
-                yPercent: 34,
-                scale: 1.16,
+                yPercent: 44,
+                scale: 1.38,
                 autoAlpha: 0,
                 clipPath: "inset(0 0 100% 0)",
               },
               0,
             )
+            .to({}, { duration: 0.1 })
             .to(
               titleLines,
               {
                 yPercent: 0,
-                scale: 1,
                 autoAlpha: 1,
                 clipPath: "inset(0 0 0% 0)",
-                duration: 0.58,
-                stagger: 0.08,
+                duration: 0.28,
+                stagger: 0.065,
                 ease: "power4.out",
               },
-              0.08,
+              0.1,
+            )
+            .to(
+              titleLines,
+              {
+                scale: 1,
+                duration: 0.28,
+                ease: "power3.inOut",
+              },
+              0.38,
             )
             .to(
               eyebrow,
               { x: 0, autoAlpha: 1, duration: 0.22, ease: "power3.out" },
-              0.48,
+              0.53,
             )
             .to(
               footerItems,
@@ -249,8 +260,18 @@ export default function SiteMotion() {
                 stagger: 0.06,
                 ease: "power3.out",
               },
-              0.6,
-            );
+              0.59,
+            )
+            .to(
+              ".heroReact .heroLine:last-child",
+              {
+                backgroundPosition: "-35% 50%",
+                duration: 0.26,
+                ease: "none",
+              },
+              0.52,
+            )
+            .to({}, { duration: 0.14 });
         }
       }
 
@@ -262,6 +283,7 @@ export default function SiteMotion() {
         ".labReact h2",
         ".journalReact h2",
         ".contactReact h2",
+        ".caseTeaserContent h2",
         ".categoryHeader h1",
         ".videoArchiveReact > header h2",
       ].join(",");
@@ -283,7 +305,7 @@ export default function SiteMotion() {
           heading.querySelectorAll<HTMLElement>(".motionLineInner"),
         );
         const belongsToPinnedScene = Boolean(
-          desktopPinned && heading.closest("[data-pin-scene]"),
+          heading.closest("[data-pin-scene]"),
         );
         if (belongsToPinnedScene) return;
 
@@ -398,6 +420,85 @@ export default function SiteMotion() {
                 0.36,
               )
               .to({}, { duration: 0.18 });
+          });
+      } else {
+        gsap.utils
+          .toArray<HTMLElement>("[data-pin-scene]")
+          .forEach((scene, sceneIndex) => {
+            const lines = scene.querySelectorAll<HTMLElement>(
+              ".motionLineInner",
+            );
+            const details = scene.querySelectorAll<HTMLElement>(
+              "[data-scene-step]",
+            );
+
+            const sceneTimeline = gsap.timeline({
+              scrollTrigger: {
+                trigger: scene,
+                start: "top top",
+                end: () => `+=${Math.min(window.innerHeight * 0.74, 660)}`,
+                pin: true,
+                scrub: 0.7,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+              },
+            });
+
+            sceneTimeline
+              .fromTo(
+                lines,
+                {
+                  xPercent: (index) =>
+                    (sceneIndex + index) % 2 === 0 ? -92 : 92,
+                  yPercent: 28,
+                  scale: 1.12,
+                  autoAlpha: 0,
+                  rotate: (index) =>
+                    (sceneIndex + index) % 2 === 0 ? -1.5 : 1.5,
+                  backgroundPosition: "135% 50%",
+                  filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
+                },
+                {
+                  xPercent: 0,
+                  yPercent: 0,
+                  scale: 1,
+                  autoAlpha: 1,
+                  rotate: 0,
+                  backgroundPosition: "36% 50%",
+                  filter: "drop-shadow(0 0 10px rgba(175,39,17,.34))",
+                  stagger: 0.075,
+                  duration: 0.4,
+                  ease: "power4.out",
+                },
+              )
+              .fromTo(
+                details,
+                {
+                  x: (index) => (index % 2 === 0 ? -22 : 22),
+                  y: 30,
+                  autoAlpha: 0,
+                },
+                {
+                  x: 0,
+                  y: 0,
+                  autoAlpha: 1,
+                  stagger: 0.06,
+                  duration: 0.24,
+                  ease: "power3.out",
+                },
+                0.22,
+              )
+              .to(
+                lines,
+                {
+                  backgroundPosition: "-135% 50%",
+                  filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
+                  duration: 0.38,
+                  ease: "none",
+                },
+                0.42,
+              )
+              .to({}, { duration: 0.14 });
           });
       }
 

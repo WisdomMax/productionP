@@ -19,7 +19,14 @@ export default function ContactInquiry() {
     };
     document.body.classList.add("has-inquiry-panel");
     window.addEventListener("keydown", close);
-    requestAnimationFrame(() => emailRef.current?.focus());
+    const canAutoFocus = window.matchMedia(
+      "(min-width: 761px) and (pointer: fine)",
+    ).matches;
+    if (canAutoFocus) {
+      requestAnimationFrame(() =>
+        emailRef.current?.focus({ preventScroll: true }),
+      );
+    }
     return () => {
       document.body.classList.remove("has-inquiry-panel");
       window.removeEventListener("keydown", close);
