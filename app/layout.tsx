@@ -57,7 +57,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     telephone: "+82-10-6515-4600",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "동교로22길 19, 4층 (서교동, 청송빌딩)",
+      streetAddress: "동교로22길 19, 4층",
       addressLocality: "마포구",
       addressRegion: "서울특별시",
       addressCountry: "KR",

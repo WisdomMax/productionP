@@ -99,27 +99,29 @@ export default function FeaturedWorks() {
               <p>대표작만 선별했습니다. 마우스를 올려 미리 보고, 클릭하면 전체 영상을 재생합니다.</p>
               <Link href="/archive">전체 작품 보기 <b>↗</b></Link>
             </div>
+            <div className="featuredWorksViewport">
+              <div className="featuredWorksGrid">
+                {featured.map((item, index) => (
+                  <button
+                    className={`featuredWorkCard is-${item.orientation}`}
+                    key={item.id}
+                    onClick={() => setSelected(item)}
+                    type="button"
+                  >
+                    <span className="featuredWorkMedia">
+                      <Preview item={item} />
+                      <i>PLAY</i>
+                      <b>{String(index + 1).padStart(2, "0")}</b>
+                    </span>
+                    <span className="featuredWorkMeta">
+                      <strong>{item.title}</strong>
+                      <small>{item.categoryLabel}</small>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="featuredWorksGrid">
-          {featured.map((item, index) => (
-            <button
-              className={`featuredWorkCard is-${item.orientation}`}
-              key={item.id}
-              onClick={() => setSelected(item)}
-              type="button"
-            >
-              <span className="featuredWorkMedia">
-                <Preview item={item} />
-                <i>PLAY</i>
-                <b>{String(index + 1).padStart(2, "0")}</b>
-              </span>
-              <span className="featuredWorkMeta">
-                <strong>{item.title}</strong>
-                <small>{item.categoryLabel}</small>
-              </span>
-            </button>
-          ))}
         </div>
       </section>
 

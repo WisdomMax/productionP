@@ -76,6 +76,10 @@ export default function SiteMotion() {
 
     gsap.registerPlugin(ScrollTrigger);
     const lenis = new Lenis({ duration: 1.02, smoothWheel: true });
+    const transformedHeadings: Array<{
+      heading: HTMLElement;
+      html: string;
+    }> = [];
     let isRestoringHome = restoreY !== null;
     let animationFrame = 0;
     let restoreFrame = 0;
@@ -131,6 +135,7 @@ export default function SiteMotion() {
               scrub: 0.68,
               anticipatePin: 1,
               invalidateOnRefresh: true,
+              refreshPriority: 1000,
             },
           });
 
@@ -216,6 +221,7 @@ export default function SiteMotion() {
               scrub: 0.66,
               anticipatePin: 1,
               invalidateOnRefresh: true,
+              refreshPriority: 1000,
             },
           });
 
@@ -292,7 +298,6 @@ export default function SiteMotion() {
         ".reelReact h2",
         ".manifestReact h2",
         ".workReact h2",
-        ".awardsShowcaseReact h2",
         ".labReact h2",
         ".journalReact h2",
         ".contactReact h2",
@@ -303,6 +308,10 @@ export default function SiteMotion() {
 
       gsap.utils.toArray<HTMLElement>(headingSelector).forEach((heading, headingIndex) => {
         if (!heading.dataset.motionLines) {
+          transformedHeadings.push({
+            heading,
+            html: heading.innerHTML,
+          });
           const lines = heading.innerHTML.split(/<br\s*\/?>/i);
           heading.innerHTML = lines
             .map(
@@ -371,6 +380,9 @@ export default function SiteMotion() {
         "[data-experiment-scene]",
       );
       if (experimentScene) {
+        const experimentStage = document.querySelector<HTMLElement>(
+          "[data-experiment-stage]",
+        );
         const experimentLines =
           experimentScene.querySelectorAll<HTMLElement>(".motionLineInner");
         const experimentLabel =
@@ -378,32 +390,33 @@ export default function SiteMotion() {
         const experimentCopy =
           experimentScene.querySelector<HTMLElement>("p");
 
+        gsap.set(experimentLines, {
+          xPercent: -125,
+          yPercent: 18,
+          scale: 1.16,
+          skewX: -6,
+          autoAlpha: 0,
+          backgroundPosition: "135% 50%",
+          filter: "blur(10px)",
+        });
+        gsap.set(experimentLabel, { x: -32, autoAlpha: 0 });
+        gsap.set(experimentCopy, { x: 38, y: 24, autoAlpha: 0 });
+
         const experimentTimeline = gsap.timeline({
           scrollTrigger: {
-            trigger: experimentScene,
+            trigger: experimentStage ?? experimentScene,
             start: "top top",
-            end: () =>
-              `+=${window.innerHeight * (desktopPinned ? 1.35 : 1.08)}`,
-            pin: true,
+            end: "bottom bottom",
             scrub: desktopPinned ? 0.82 : 0.72,
-            anticipatePin: 1,
             invalidateOnRefresh: true,
             refreshPriority: 100,
           },
         });
 
         experimentTimeline
-          .fromTo(
+          .to({}, { duration: 0.2 })
+          .to(
             experimentLines,
-            {
-              xPercent: -125,
-              yPercent: 18,
-              scale: 1.16,
-              skewX: -6,
-              autoAlpha: 0,
-              backgroundPosition: "135% 50%",
-              filter: "blur(10px)",
-            },
             {
               xPercent: 0,
               yPercent: 0,
@@ -413,25 +426,23 @@ export default function SiteMotion() {
               backgroundPosition: "36% 50%",
               filter: "blur(0px)",
               stagger: 0.16,
-              duration: 0.48,
+              duration: 0.42,
               ease: "power4.out",
             },
-            0,
+            0.2,
           )
-          .fromTo(
+          .to(
             experimentLabel,
-            { x: -32, autoAlpha: 0 },
             {
               x: 0,
               autoAlpha: 1,
               duration: 0.18,
               ease: "power3.out",
             },
-            0.08,
+            0.28,
           )
-          .fromTo(
+          .to(
             experimentCopy,
-            { x: 38, y: 24, autoAlpha: 0 },
             {
               x: 0,
               y: 0,
@@ -439,7 +450,7 @@ export default function SiteMotion() {
               duration: 0.24,
               ease: "power3.out",
             },
-            0.54,
+            0.68,
           )
           .to(
             experimentLines,
@@ -448,15 +459,15 @@ export default function SiteMotion() {
               duration: 0.28,
               ease: "none",
             },
-            0.58,
+            0.7,
           )
-          .to({}, { duration: 0.2 });
+          .to({}, { duration: 0.34 });
       }
 
       if (desktopPinned) {
         gsap.utils
           .toArray<HTMLElement>(
-            "[data-pin-scene]:not(.workReact):not(.caseTeaserReact)",
+            "[data-pin-scene]:not(.manifestReact):not(.workReact):not(.caseTeaserReact)",
           )
           .forEach((scene, sceneIndex) => {
             const lines = scene.querySelectorAll<HTMLElement>(
@@ -465,32 +476,36 @@ export default function SiteMotion() {
             const details = scene.querySelectorAll<HTMLElement>(
               "[data-scene-step]",
             );
+            const lineStart = (index: number) =>
+              (sceneIndex + index) % 2 === 0 ? -112 : 112;
+            const entranceAt = scene.classList.contains("contactReact")
+              ? 0.22
+              : 0.2;
+
+            gsap.set(lines, {
+              xPercent: lineStart,
+              yPercent: 28,
+              autoAlpha: 0,
+              rotate: (index) =>
+                (sceneIndex + index) % 2 === 0 ? -2 : 2,
+              backgroundPosition: "135% 50%",
+            });
+            gsap.set(details, { y: 42, autoAlpha: 0 });
 
             const sceneTimeline = gsap.timeline({
               scrollTrigger: {
-                trigger: scene,
+                trigger: scene.parentElement ?? scene,
                 start: "top top",
-                end: () => `+=${Math.min(window.innerHeight * 0.82, 860)}`,
-                pin: true,
+                end: "bottom bottom",
                 scrub: 0.72,
-                anticipatePin: 1,
                 invalidateOnRefresh: true,
                 refreshPriority: sceneIndex === 0 ? 90 : 50 - sceneIndex * 10,
               },
             });
 
             sceneTimeline
-              .fromTo(
+              .to(
                 lines,
-                {
-                  xPercent: (index) =>
-                    (sceneIndex + index) % 2 === 0 ? -112 : 112,
-                  yPercent: 28,
-                  autoAlpha: 0,
-                  rotate: (index) =>
-                    (sceneIndex + index) % 2 === 0 ? -2 : 2,
-                  backgroundPosition: "135% 50%",
-                },
                 {
                   xPercent: 0,
                   yPercent: 0,
@@ -501,10 +516,10 @@ export default function SiteMotion() {
                   duration: 0.36,
                   ease: "power4.out",
                 },
+                entranceAt,
               )
-              .fromTo(
+              .to(
                 details,
-                { y: 42, autoAlpha: 0 },
                 {
                   y: 0,
                   autoAlpha: 1,
@@ -512,7 +527,7 @@ export default function SiteMotion() {
                   duration: 0.22,
                   ease: "power3.out",
                 },
-                0.2,
+                entranceAt + 0.2,
               )
               .to(
                 lines,
@@ -521,14 +536,14 @@ export default function SiteMotion() {
                   duration: 0.38,
                   ease: "none",
                 },
-                0.36,
+                entranceAt + 0.36,
               )
-              .to({}, { duration: 0.18 });
+              .to({}, { duration: 0.3 });
           });
       } else {
         gsap.utils
           .toArray<HTMLElement>(
-            "[data-pin-scene]:not(.workReact):not(.caseTeaserReact)",
+            "[data-pin-scene]:not(.manifestReact):not(.workReact):not(.caseTeaserReact)",
           )
           .forEach((scene, sceneIndex) => {
             const lines = scene.querySelectorAll<HTMLElement>(
@@ -537,34 +552,42 @@ export default function SiteMotion() {
             const details = scene.querySelectorAll<HTMLElement>(
               "[data-scene-step]",
             );
+            const lineStart = (index: number) =>
+              (sceneIndex + index) % 2 === 0 ? -92 : 92;
+            const entranceAt = scene.classList.contains("contactReact")
+              ? 0.22
+              : 0.2;
+
+            gsap.set(lines, {
+              xPercent: lineStart,
+              yPercent: 28,
+              scale: 1.12,
+              autoAlpha: 0,
+              rotate: (index) =>
+                (sceneIndex + index) % 2 === 0 ? -1.5 : 1.5,
+              backgroundPosition: "135% 50%",
+              filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
+            });
+            gsap.set(details, {
+              x: (index) => (index % 2 === 0 ? -22 : 22),
+              y: 30,
+              autoAlpha: 0,
+            });
 
             const sceneTimeline = gsap.timeline({
               scrollTrigger: {
-                trigger: scene,
+                trigger: scene.parentElement ?? scene,
                 start: "top top",
-                end: () => `+=${Math.min(window.innerHeight * 0.74, 660)}`,
-                pin: true,
+                end: "bottom bottom",
                 scrub: 0.7,
-                anticipatePin: 1,
                 invalidateOnRefresh: true,
                 refreshPriority: sceneIndex === 0 ? 90 : 50 - sceneIndex * 10,
               },
             });
 
             sceneTimeline
-              .fromTo(
+              .to(
                 lines,
-                {
-                  xPercent: (index) =>
-                    (sceneIndex + index) % 2 === 0 ? -92 : 92,
-                  yPercent: 28,
-                  scale: 1.12,
-                  autoAlpha: 0,
-                  rotate: (index) =>
-                    (sceneIndex + index) % 2 === 0 ? -1.5 : 1.5,
-                  backgroundPosition: "135% 50%",
-                  filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
-                },
                 {
                   xPercent: 0,
                   yPercent: 0,
@@ -577,14 +600,10 @@ export default function SiteMotion() {
                   duration: 0.4,
                   ease: "power4.out",
                 },
+                entranceAt,
               )
-              .fromTo(
+              .to(
                 details,
-                {
-                  x: (index) => (index % 2 === 0 ? -22 : 22),
-                  y: 30,
-                  autoAlpha: 0,
-                },
                 {
                   x: 0,
                   y: 0,
@@ -593,7 +612,7 @@ export default function SiteMotion() {
                   duration: 0.24,
                   ease: "power3.out",
                 },
-                0.22,
+                entranceAt + 0.22,
               )
               .to(
                 lines,
@@ -603,10 +622,94 @@ export default function SiteMotion() {
                   duration: 0.38,
                   ease: "none",
                 },
-                0.42,
+                entranceAt + 0.42,
               )
-              .to({}, { duration: 0.14 });
+              .to({}, { duration: 0.28 });
           });
+      }
+
+      const manifestScene =
+        document.querySelector<HTMLElement>(".manifestReact");
+      if (manifestScene) {
+        const manifestStage = manifestScene.parentElement ?? manifestScene;
+        const manifestLines =
+          manifestScene.querySelectorAll<HTMLElement>(".motionLineInner");
+        const manifestEmphasis =
+          manifestScene.querySelectorAll<HTMLElement>("em");
+        const manifestDetails =
+          manifestScene.querySelectorAll<HTMLElement>("[data-scene-step]");
+
+        gsap.set(manifestLines, {
+          xPercent: (index) => (index % 2 === 0 ? -112 : 112),
+          yPercent: 24,
+          scale: 1.08,
+          autoAlpha: 0,
+          rotate: (index) => (index % 2 === 0 ? -2 : 2),
+          backgroundPosition: "135% 50%",
+        });
+        gsap.set(manifestDetails, { y: 34, autoAlpha: 0 });
+        gsap.set(manifestEmphasis, {
+          color: "#85857d",
+          webkitTextFillColor: "#85857d",
+        });
+
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: manifestStage,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: desktopPinned ? 0.82 : 0.72,
+            invalidateOnRefresh: true,
+            refreshPriority: 95,
+          },
+        })
+          .to({}, { duration: 0.22 })
+          .to(
+            manifestLines,
+            {
+              xPercent: 0,
+              yPercent: 0,
+              scale: 1,
+              autoAlpha: 1,
+              rotate: 0,
+              backgroundPosition: "38% 50%",
+              stagger: 0.16,
+              duration: 0.34,
+              ease: "power4.out",
+            },
+            0.22,
+          )
+          .to(
+            manifestEmphasis,
+            {
+              color: "#AF2711",
+              webkitTextFillColor: "#AF2711",
+              stagger: 0.14,
+              duration: 0.22,
+              ease: "power2.out",
+            },
+            0.6,
+          )
+          .to(
+            manifestDetails,
+            {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.18,
+              ease: "power3.out",
+            },
+            0.64,
+          )
+          .to(
+            manifestLines,
+            {
+              backgroundPosition: "-135% 50%",
+              duration: 0.34,
+              ease: "none",
+            },
+            0.7,
+          )
+          .to({}, { duration: 0.32 });
       }
 
       const workScene = document.querySelector<HTMLElement>(".workReact");
@@ -619,30 +722,36 @@ export default function SiteMotion() {
           workScene.querySelectorAll<HTMLElement>(".workRowReact"),
         );
 
+        gsap.set(workLines, {
+          xPercent: -72,
+          yPercent: 24,
+          scale: 1.1,
+          autoAlpha: 0,
+          backgroundPosition: "135% 50%",
+        });
+        gsap.set(workCounter, { x: -24, autoAlpha: 0 });
+        gsap.set(workRows, {
+          xPercent: (index) => (index % 2 === 0 ? -26 : 26),
+          y: 30,
+          autoAlpha: 0,
+          skewX: (index) => (index % 2 === 0 ? -4 : 4),
+        });
+
         const workTimeline = gsap.timeline({
           scrollTrigger: {
-            trigger: workScene,
+            trigger: workScene.parentElement ?? workScene,
             start: "top top",
-            end: () =>
-              `+=${window.innerHeight * (desktopPinned ? 1.85 : 1.5)}`,
-            pin: true,
+            end: "bottom bottom",
             scrub: desktopPinned ? 0.82 : 0.72,
-            anticipatePin: 1,
             invalidateOnRefresh: true,
             refreshPriority: 80,
           },
         });
 
         workTimeline
-          .fromTo(
+          .to({}, { duration: 0.18 })
+          .to(
             workLines,
-            {
-              xPercent: -72,
-              yPercent: 24,
-              scale: 1.1,
-              autoAlpha: 0,
-              backgroundPosition: "135% 50%",
-            },
             {
               xPercent: 0,
               yPercent: 0,
@@ -652,33 +761,26 @@ export default function SiteMotion() {
               duration: 0.2,
               ease: "power4.out",
             },
-            0,
+            0.18,
           )
-          .fromTo(
+          .to(
             workCounter,
-            { x: -24, autoAlpha: 0 },
             {
               x: 0,
               autoAlpha: 1,
               duration: 0.12,
               ease: "power3.out",
             },
-            0.08,
+            0.27,
           );
 
         workRows.forEach((row, index) => {
           const title = row.querySelector<HTMLElement>("strong");
-          const at = 0.2 + index * 0.2;
+          const at = 0.36 + index * 0.24;
 
           workTimeline
-            .fromTo(
+            .to(
               row,
-              {
-                xPercent: index % 2 === 0 ? -26 : 26,
-                y: 30,
-                autoAlpha: 0,
-                skewX: index % 2 === 0 ? -4 : 4,
-              },
               {
                 xPercent: 0,
                 y: 0,
@@ -709,9 +811,9 @@ export default function SiteMotion() {
               duration: 0.22,
               ease: "none",
             },
-            0.72,
+            0.96,
           )
-          .to({}, { duration: 0.2 });
+          .to({}, { duration: 0.34 });
       }
 
       const selectedMotionStage = document.querySelector<HTMLElement>(
@@ -725,14 +827,35 @@ export default function SiteMotion() {
           selectedMotionScene.querySelector<HTMLElement>("header small");
         const selectedRail =
           selectedMotionScene.querySelector<HTMLElement>(".featuredTypeRail");
-        const selectedRailTrack =
-          selectedMotionScene.querySelector<HTMLElement>(".featuredTypeRail > div");
         const selectedWords =
           selectedMotionScene.querySelectorAll<HTMLElement>(".featuredTypeRail span");
         const selectedArrows =
           selectedMotionScene.querySelectorAll<HTMLElement>(".featuredTypeRail i");
         const selectedToolbar =
           selectedMotionScene.querySelector<HTMLElement>(".featuredWorksToolbar");
+        const selectedWorksTrack =
+          selectedMotionScene.querySelector<HTMLElement>(".featuredWorksGrid");
+        const selectedCards =
+          selectedMotionScene.querySelectorAll<HTMLElement>(".featuredWorkCard");
+
+        gsap.set(selectedLabel, { x: -34, autoAlpha: 0 });
+        gsap.set(selectedRail, {
+          y: 34,
+          scale: 1.035,
+          autoAlpha: 0,
+        });
+        gsap.set(selectedWords, {
+          backgroundPosition: "145% 50%",
+          filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
+        });
+        gsap.set(selectedArrows, {
+          color: "#f1efe8",
+          rotate: -18,
+          scale: 0.7,
+          autoAlpha: 0,
+        });
+        gsap.set(selectedToolbar, { y: 20, autoAlpha: 0 });
+        gsap.set(selectedCards, { y: 80, autoAlpha: 0, scale: 0.92 });
 
         const selectedMotionTimeline = gsap.timeline({
           scrollTrigger: {
@@ -745,52 +868,40 @@ export default function SiteMotion() {
         });
 
         selectedMotionTimeline
-          .fromTo(
+          .to({}, { duration: 0.14 })
+          .to(
             selectedLabel,
-            { x: -34, autoAlpha: 0 },
             {
               x: 0,
               autoAlpha: 1,
               duration: 0.14,
               ease: "power3.out",
             },
-            0,
+            0.14,
           )
-          .fromTo(
+          .to(
             selectedRail,
-            {
-              y: 70,
-              scale: 1.08,
-              autoAlpha: 0,
-              clipPath: "inset(0 100% 0 0)",
-            },
             {
               y: 0,
               scale: 1,
               autoAlpha: 1,
-              clipPath: "inset(0 0% 0 0)",
-              duration: 0.26,
+              duration: 0.2,
               ease: "power4.out",
             },
-            0.06,
+            0.14,
           )
-          .fromTo(
+          .to(
             selectedWords,
-            {
-              backgroundPosition: "145% 50%",
-              filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
-            },
             {
               backgroundPosition: "-145% 50%",
               filter: "drop-shadow(0 0 18px rgba(175,39,17,.28))",
               duration: 0.62,
               ease: "none",
             },
-            0.18,
+            0.32,
           )
-          .fromTo(
+          .to(
             selectedArrows,
-            { color: "#f1efe8", rotate: -18, scale: 0.7, autoAlpha: 0 },
             {
               color: "#d43a22",
               rotate: 0,
@@ -800,27 +911,38 @@ export default function SiteMotion() {
               duration: 0.22,
               ease: "back.out(1.8)",
             },
-            0.28,
+            0.42,
           )
-          .fromTo(
+          .to(
             selectedToolbar,
-            { y: 44, autoAlpha: 0 },
             {
               y: 0,
               autoAlpha: 1,
-              duration: 0.2,
+              duration: 0.16,
               ease: "power3.out",
             },
-            0.58,
+            0.26,
           )
           .to(
-            selectedRailTrack,
+            selectedCards,
             {
-              xPercent: desktopPinned ? -12 : -7,
-              duration: 0.42,
+              y: 0,
+              autoAlpha: 1,
+              scale: 1,
+              stagger: 0.035,
+              duration: 0.24,
+              ease: "expo.out",
+            },
+            0.46,
+          )
+          .to(
+            selectedWorksTrack,
+            {
+              xPercent: desktopPinned ? -49 : -68,
+              duration: 0.58,
               ease: "none",
             },
-            0.48,
+            0.58,
           )
           .to(
             selectedWords,
@@ -828,9 +950,80 @@ export default function SiteMotion() {
               filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
               duration: 0.18,
             },
-            0.82,
+            0.98,
           )
-          .to({}, { duration: 0.18 });
+          .to({}, { duration: 0.28 });
+      }
+
+      const awardsIntroStage =
+        document.querySelector<HTMLElement>("[data-awards-intro-stage]");
+      const awardsIntroScene =
+        document.querySelector<HTMLElement>("[data-awards-intro-scene]");
+      if (awardsIntroStage && awardsIntroScene) {
+        const awardsTitle =
+          awardsIntroScene.querySelector<HTMLElement>("h2");
+        const awardsLabel =
+          awardsIntroScene.querySelector<HTMLElement>("small");
+        const awardsCopy =
+          awardsIntroScene.querySelectorAll<HTMLElement>("p, b");
+
+        gsap.set(awardsTitle, {
+          xPercent: 108,
+          autoAlpha: 0,
+          skewX: 8,
+          backgroundPosition: "170% 50%",
+        });
+        gsap.set(awardsLabel, { x: 70, autoAlpha: 0 });
+        gsap.set(awardsCopy, { y: 34, autoAlpha: 0 });
+
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: awardsIntroStage,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: desktopPinned ? 0.82 : 0.72,
+            invalidateOnRefresh: true,
+          },
+        })
+          .to({}, { duration: 0.18 })
+          .to(
+            awardsTitle,
+            {
+              xPercent: 0,
+              autoAlpha: 1,
+              skewX: 0,
+              backgroundPosition: "35% 50%",
+              duration: 0.46,
+              ease: "power4.out",
+            },
+            0.18,
+          )
+          .to(
+            awardsLabel,
+            { x: 0, autoAlpha: 1, duration: 0.18, ease: "power3.out" },
+            0.34,
+          )
+          .to(
+            awardsCopy,
+            {
+              y: 0,
+              autoAlpha: 1,
+              stagger: 0.08,
+              duration: 0.24,
+              ease: "power3.out",
+            },
+            0.68,
+          )
+          .to(
+            awardsTitle,
+            {
+              backgroundPosition: "-120% 50%",
+              duration: 0.34,
+              ease: "none",
+            },
+            0.76,
+          )
+          .to({}, { duration: 0.34 });
       }
 
       const caseTeaserStage =
@@ -843,6 +1036,21 @@ export default function SiteMotion() {
         const caseDetails =
           caseTeaserScene.querySelectorAll<HTMLElement>("[data-scene-step]");
 
+        gsap.set(caseLines, {
+          xPercent: desktopPinned ? -112 : -92,
+          yPercent: 28,
+          scale: desktopPinned ? 1 : 1.12,
+          autoAlpha: 0,
+          rotate: desktopPinned ? -2 : -1.5,
+          backgroundPosition: "135% 50%",
+          filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
+        });
+        gsap.set(caseDetails, {
+          x: (index) => (index % 2 === 0 ? -22 : 22),
+          y: 30,
+          autoAlpha: 0,
+        });
+
         const caseTimeline = gsap.timeline({
           scrollTrigger: {
             trigger: caseTeaserStage,
@@ -854,17 +1062,9 @@ export default function SiteMotion() {
         });
 
         caseTimeline
-          .fromTo(
+          .to({}, { duration: 0.2 })
+          .to(
             caseLines,
-            {
-              xPercent: desktopPinned ? -112 : -92,
-              yPercent: 28,
-              scale: desktopPinned ? 1 : 1.12,
-              autoAlpha: 0,
-              rotate: desktopPinned ? -2 : -1.5,
-              backgroundPosition: "135% 50%",
-              filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
-            },
             {
               xPercent: 0,
               yPercent: 0,
@@ -877,14 +1077,10 @@ export default function SiteMotion() {
               duration: 0.4,
               ease: "power4.out",
             },
+            0.2,
           )
-          .fromTo(
+          .to(
             caseDetails,
-            {
-              x: (index) => (index % 2 === 0 ? -22 : 22),
-              y: 30,
-              autoAlpha: 0,
-            },
             {
               x: 0,
               y: 0,
@@ -893,7 +1089,7 @@ export default function SiteMotion() {
               duration: 0.22,
               ease: "power3.out",
             },
-            0.2,
+            0.52,
           )
           .to(
             caseLines,
@@ -903,13 +1099,12 @@ export default function SiteMotion() {
               duration: 0.38,
               ease: "none",
             },
-            0.42,
+            0.68,
           )
-          .to({}, { duration: 0.14 });
+          .to({}, { duration: 0.34 });
       }
 
       const cardSelector = [
-        ".featuredWorkCard",
         ".labGridReact figure",
         ".categoryCard",
         ".videoArchiveCard",
@@ -994,44 +1189,15 @@ export default function SiteMotion() {
           );
         });
 
-      if (document.querySelector(".manifestReact")) {
-        gsap.fromTo(
-          ".manifestReact em",
-          { color: "#85857d" },
-          {
-            color: "#AF2711",
-            stagger: 0.18,
-            scrollTrigger: {
-              trigger: ".manifestReact",
-              start: "top 72%",
-              end: "center 42%",
-              scrub: 0.6,
-            },
-          },
-        );
-      }
-
       if (document.querySelector(".awardsRail")) {
         const awardsTimeline = gsap.timeline({
           scrollTrigger: {
-            trigger: ".awardsShowcaseReact",
-            start: "top 82%",
+            trigger: ".awardsRail",
+            start: "top 88%",
             once: true,
           },
         });
         awardsTimeline
-          .fromTo(
-            ".awardsShowcaseIntro > *",
-            { x: 110, autoAlpha: 0 },
-            {
-              x: 0,
-              autoAlpha: 1,
-              stagger: 0.09,
-              duration: 0.72,
-              ease: "power4.out",
-            },
-            0.18,
-          )
           .fromTo(
             ".awardWorkCard, .awardsRailMore",
             {
@@ -1051,7 +1217,7 @@ export default function SiteMotion() {
               duration: 1.05,
               ease: "expo.out",
             },
-            0.28,
+            0,
           );
       }
 
@@ -1080,6 +1246,12 @@ export default function SiteMotion() {
       cancelAnimationFrame(refreshFrame);
       cancelAnimationFrame(restoreFrame);
       context.revert();
+      transformedHeadings.forEach(({ heading, html }) => {
+        if (!heading.isConnected) return;
+        heading.innerHTML = html;
+        heading.removeAttribute("data-motion-lines");
+        heading.classList.remove("motionHeading");
+      });
       lenis.destroy();
     };
   }, [pathname]);

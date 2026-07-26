@@ -91,12 +91,16 @@ export default function AwardsShowcase() {
   return (
     <>
       <section id="awards" className="awardsShowcaseReact" data-cursor-contrast="light">
-        <header>
-          <div>
-            <small>04 / P LAB 교육생 공모전 작품</small>
-            <h2>NEXT<br />VOICES.</h2>
-          </div>
-        </header>
+        <div className="awardsIntroStage" data-awards-intro-stage>
+          <header className="awardsIntroScene" data-awards-intro-scene>
+            <div>
+              <small>04 / P LAB 교육생 공모전 작품</small>
+              <h2>NEXT<br />VOICES.</h2>
+              <p>새로운 시선이 다음 장면을 만듭니다.</p>
+            </div>
+            <b>SCROLL TO REVEAL ↓</b>
+          </header>
+        </div>
 
         <div
           className="awardsRail"

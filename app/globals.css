@@ -242,11 +242,23 @@ main{position:relative;z-index:2}
   .awardsRailMore{flex-basis:76vw}
 }
 
+/* Keep the selected-work modal above the fixed site navigation. */
+.has-video-modal main{z-index:1000}
+.has-video-modal .featuredWorksReact{z-index:1100}
+
 /* Selected motion — oversized moving type establishes the section rhythm. */
-.featuredWorksReact{display:block;padding:0 0 12vh;overflow:visible}
+.featuredWorksReact{
+  position:relative;
+  z-index:5;
+  isolation:isolate;
+  display:block;
+  padding:0 0 12vh;
+  overflow:visible;
+  background:#090a0a;
+}
 .featuredMotionStage{
   position:relative;
-  height:240svh;
+  height:320svh;
   background:#090a0a;
 }
 .featuredMotionScene{
@@ -255,10 +267,10 @@ main{position:relative;z-index:2}
   z-index:4;
   height:100svh;
   min-height:100svh;
-  padding:11vh 0 7vh;
+  padding:8vh 0 3vh;
   display:flex;
   flex-direction:column;
-  justify-content:center;
+  justify-content:flex-start;
   overflow:hidden;
   background:#090a0a;
   color:var(--paper);
@@ -270,7 +282,7 @@ main{position:relative;z-index:2}
   align-items:flex-start;
   gap:40px;
   margin:0;
-  padding:0 5vw 5vh;
+  padding:0 5vw 2vh;
 }
 .featuredWorksReact header>small{
   flex:none;
@@ -284,7 +296,7 @@ main{position:relative;z-index:2}
   overflow:hidden;
   border-top:1px solid rgba(241,239,232,.22);
   border-bottom:1px solid rgba(241,239,232,.22);
-  margin:0 0 clamp(44px,6vh,76px);
+  margin:0 0 clamp(14px,2vh,24px);
 }
 .featuredTypeRail>div{
   display:flex;
@@ -292,11 +304,12 @@ main{position:relative;z-index:2}
   width:max-content;
   padding:.08em 0 .15em;
   will-change:transform;
+  animation:featuredTypeMarquee 18s linear infinite;
 }
 .featuredTypeRail span{
   flex:none;
   padding-left:4vw;
-  font-size:clamp(82px,11.5vw,184px);
+  font-size:clamp(68px,8.6vw,138px);
   font-weight:800;
   line-height:.86;
   letter-spacing:-.08em;
@@ -330,25 +343,71 @@ main{position:relative;z-index:2}
   font-style:normal;
 }
 .featuredWorksGrid{padding:0 5vw}
+@keyframes featuredTypeMarquee{
+  to{transform:translateX(-50%)}
+}
+.featuredWorksViewport{
+  width:100%;
+  overflow:hidden;
+  margin-top:clamp(12px,2vh,24px);
+}
+.featuredWorksViewport .featuredWorksGrid{
+  display:flex;
+  width:max-content;
+  gap:clamp(14px,1.5vw,24px);
+  padding:0 5vw;
+  will-change:transform;
+}
+.featuredWorksViewport .featuredWorkCard{
+  flex:0 0 min(29vw,520px);
+}
+.featuredWorksViewport .featuredWorkMeta{padding-bottom:0}
 @media(prefers-reduced-motion:reduce){
   .featuredTypeRail span{background-position:40% 50%}
+  .featuredTypeRail>div{animation:none}
 }
 @media(max-width:760px){
-  .featuredMotionStage{height:210svh}
-  .featuredMotionScene{min-height:100svh;padding:72px 0 48px}
+  .featuredMotionStage{height:280svh}
+  .featuredMotionScene{min-height:100svh;padding:64px 0 24px}
   .featuredWorksReact header{padding-inline:16px;display:block}
   .featuredIntro{margin-top:28px}
-  .featuredTypeRail span{padding-left:16px;font-size:clamp(68px,22vw,104px)}
+  .featuredTypeRail span{padding-left:16px;font-size:clamp(58px,18vw,82px)}
   .featuredTypeRail i{padding-inline:24px}
-  .featuredWorksGrid{padding-inline:16px}
+  .featuredWorksViewport .featuredWorksGrid{padding-inline:16px}
+  .featuredWorksViewport .featuredWorkCard{flex-basis:76vw}
 }
 
 /* Awards navigation belongs below the horizontal reel, not beside it. */
-.awardsShowcaseReact>header{
-  display:block;
-  padding-bottom:clamp(48px,7vh,86px);
+.awardsIntroStage{
+  position:relative;
+  height:220svh;
+  background:var(--signal);
 }
-.awardsShowcaseReact>header>div{width:100%}
+.awardsShowcaseReact{overflow:visible;padding-top:0}
+.awardsIntroScene{
+  position:sticky;
+  top:0;
+  height:100svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:10vh 5vw 7vh;
+  overflow:hidden;
+  background:var(--signal);
+}
+.awardsIntroScene>div{width:100%}
+.awardsIntroScene>div>p{
+  margin:clamp(24px,4vh,48px) 0 0;
+  font-size:clamp(16px,1.5vw,24px);
+  letter-spacing:-.035em;
+}
+.awardsIntroScene>b{
+  position:absolute;
+  right:5vw;
+  bottom:5vh;
+  font:600 10px/1 monospace;
+  letter-spacing:.1em;
+}
 .awardsShowcaseReact h2{max-width:1200px}
 .awardsRailHint{
   display:flex;
@@ -415,6 +474,9 @@ main{position:relative;z-index:2}
 .videoArchiveCard.is-portrait .videoArchiveMedia video,
 .categoryCard.is-portrait video{object-fit:cover}
 @media(max-width:760px){
+  .awardsIntroStage{height:205svh}
+  .awardsIntroScene{padding:70px 16px 44px}
+  .awardsIntroScene>b{right:16px;bottom:28px}
   .awardsShowcaseFooter{padding-inline:16px}
   .awardsShowcaseFooter nav{grid-template-columns:1fr}
   .awardsShowcaseFooter a+ a{
@@ -777,8 +839,8 @@ img,video{max-width:100%}
 .reelReact{
   display:block;
   min-height:auto;
-  overflow:hidden;
-  padding:13vh 5vw 15vh;
+  overflow:visible;
+  padding:5vh 5vw 10vh;
   background:#090a0a;
 }
 .motionArchiveInner{width:100%}
@@ -790,9 +852,16 @@ img,video{max-width:100%}
   margin-bottom:clamp(52px,8vh,100px);
 }
 .motionArchiveHeader[data-experiment-scene]{
-  min-height:76svh;
+  position:sticky;
+  top:0;
+  height:100svh;
+  min-height:100svh;
   align-content:center;
+  margin:0;
+  padding:9vh 0;
+  background:#090a0a;
 }
+.experimentStage{position:relative;height:230svh;background:#090a0a}
 .motionArchiveHeader small{
   grid-column:1/-1;
   font:600 11px/1.2 "Pretendard Variable",sans-serif;
@@ -917,8 +986,13 @@ img,video{max-width:100%}
   .motionArchiveCard:last-child{grid-column:1/-1;width:50%}
 }
 @media(max-width:760px){
-  .reelReact{padding:11vh 16px}
-  .motionArchiveHeader[data-experiment-scene]{min-height:68svh}
+  .reelReact{padding:4vh 16px 8vh}
+  .experimentStage{height:215svh}
+  .motionArchiveHeader[data-experiment-scene]{
+    height:100svh;
+    min-height:100svh;
+    padding:64px 0 38px;
+  }
   .motionArchiveGrid{grid-template-columns:1fr}
   .motionArchiveCard:last-child{grid-column:auto;width:auto}
   .featuredWorksToolbar{margin-inline:16px;align-items:start}
@@ -1497,9 +1571,48 @@ img,video{max-width:100%}
   .journalReact[data-pin-scene]{min-height:100svh}
 }
 
+/* Stable scroll stages: normal document flow + sticky scenes avoid nested pin duplication. */
+.motionPinStage{
+  position:relative;
+  z-index:1;
+  isolation:isolate;
+  background:#090a0a;
+}
+.motionPinStage.is-manifest{height:225svh;background:var(--paper)}
+.motionPinStage.is-work{height:250svh}
+.motionPinStage.is-lab{height:215svh;background:#111}
+.motionPinStage.is-journal{height:275svh;background:var(--paper)}
+.motionPinStage.is-contact{height:245svh;background:#090a0a}
+.motionPinStage>[data-pin-scene]{
+  position:sticky;
+  top:0;
+  width:100%;
+  height:100svh;
+  min-height:100svh;
+  overflow:hidden;
+}
+.workReact h2,
+.journalReact h2,
+.contactReact h2{margin:clamp(26px,4vh,48px) 0}
+.labReact h2{
+  margin:clamp(14px,2.2vh,28px) 0;
+  font-size:clamp(58px,8vw,120px);
+}
+.labReact .labGridReact figure{
+  height:min(42vh,380px);
+  aspect-ratio:auto;
+}
+@media(max-width:899px){
+  .motionPinStage.is-manifest{height:215svh}
+  .motionPinStage.is-work{height:230svh}
+  .motionPinStage.is-lab{height:205svh}
+  .motionPinStage.is-journal{height:250svh}
+  .motionPinStage.is-contact{height:225svh}
+}
+
 .caseTeaserStage{
   position:relative;
-  height:182svh;
+  height:235svh;
   background:#060707;
 }
 .caseTeaserReact{
@@ -2106,7 +2219,7 @@ img,video{max-width:100%}
   .heroReactFooter b{max-width:110px;padding-left:0;text-align:right;line-height:1.45}
   .heroReactFooter b:before{display:none}
   .sceneCounter{display:none}
-  .caseTeaserStage{height:160svh}
+  .caseTeaserStage{height:205svh}
   .caseTeaserReact,.caseTeaserContent{min-height:82svh}
   .caseTeaserContent{padding:72px 16px 34px}
   .caseTeaserContent h2{font-size:clamp(50px,15vw,76px)}
