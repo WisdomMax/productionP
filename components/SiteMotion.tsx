@@ -318,7 +318,7 @@ export default function SiteMotion() {
           heading.querySelectorAll<HTMLElement>(".motionLineInner"),
         );
         const belongsToPinnedScene = Boolean(
-          heading.closest("[data-pin-scene]"),
+          heading.closest("[data-pin-scene], [data-experiment-scene]"),
         );
         if (belongsToPinnedScene) return;
 
@@ -364,6 +364,91 @@ export default function SiteMotion() {
           );
         });
       });
+
+      const experimentScene = document.querySelector<HTMLElement>(
+        "[data-experiment-scene]",
+      );
+      if (experimentScene) {
+        const experimentLines =
+          experimentScene.querySelectorAll<HTMLElement>(".motionLineInner");
+        const experimentLabel =
+          experimentScene.querySelector<HTMLElement>("small");
+        const experimentCopy =
+          experimentScene.querySelector<HTMLElement>("p");
+
+        const experimentTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: experimentScene,
+            start: "top top",
+            end: () =>
+              `+=${window.innerHeight * (desktopPinned ? 1.35 : 1.08)}`,
+            pin: true,
+            scrub: desktopPinned ? 0.82 : 0.72,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        experimentTimeline
+          .fromTo(
+            experimentLines,
+            {
+              xPercent: -125,
+              yPercent: 18,
+              scale: 1.16,
+              skewX: -6,
+              autoAlpha: 0,
+              backgroundPosition: "135% 50%",
+              filter: "blur(10px)",
+            },
+            {
+              xPercent: 0,
+              yPercent: 0,
+              scale: 1,
+              skewX: 0,
+              autoAlpha: 1,
+              backgroundPosition: "36% 50%",
+              filter: "blur(0px)",
+              stagger: 0.16,
+              duration: 0.48,
+              ease: "power4.out",
+            },
+            0,
+          )
+          .fromTo(
+            experimentLabel,
+            { x: -32, autoAlpha: 0 },
+            {
+              x: 0,
+              autoAlpha: 1,
+              duration: 0.18,
+              ease: "power3.out",
+            },
+            0.08,
+          )
+          .fromTo(
+            experimentCopy,
+            { x: 38, y: 24, autoAlpha: 0 },
+            {
+              x: 0,
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.24,
+              ease: "power3.out",
+            },
+            0.54,
+          )
+          .to(
+            experimentLines,
+            {
+              backgroundPosition: "-135% 50%",
+              duration: 0.28,
+              ease: "none",
+            },
+            0.58,
+          )
+          .to({}, { duration: 0.2 });
+      }
 
       if (desktopPinned) {
         gsap.utils

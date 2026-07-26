@@ -753,6 +753,10 @@ img,video{max-width:100%}
   align-items:end;
   margin-bottom:clamp(52px,8vh,100px);
 }
+.motionArchiveHeader[data-experiment-scene]{
+  min-height:76svh;
+  align-content:center;
+}
 .motionArchiveHeader small{
   grid-column:1/-1;
   font:600 11px/1.2 "Pretendard Variable",sans-serif;
@@ -878,6 +882,7 @@ img,video{max-width:100%}
 }
 @media(max-width:760px){
   .reelReact{padding:11vh 16px}
+  .motionArchiveHeader[data-experiment-scene]{min-height:68svh}
   .motionArchiveGrid{grid-template-columns:1fr}
   .motionArchiveCard:last-child{grid-column:auto;width:auto}
   .featuredWorksToolbar{margin-inline:16px;align-items:start}

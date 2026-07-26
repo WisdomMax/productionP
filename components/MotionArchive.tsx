@@ -28,7 +28,7 @@ export default function MotionArchive() {
   return (
     <section className="reelReact">
       <div className="motionArchiveInner">
-        <header className="motionArchiveHeader">
+        <header className="motionArchiveHeader" data-experiment-scene>
           <small>02 / P LAB EXPERIMENTS</small>
           <h2>IDEAS IN<br />MOTION.</h2>
           <p>대표작과 겹치지 않는 P LAB의 실험 영상만 선별해 보여드립니다.</p>
