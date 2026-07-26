@@ -84,18 +84,22 @@ export default function FeaturedWorks() {
   return (
     <>
       <section className="featuredWorksReact" id="selected">
-        <header>
-          <small>03 / SELECTED MOTION</small>
-        </header>
-        <div className="featuredTypeRail" aria-label="Play the work">
-          <div>
-            <span>PLAY THE WORK.</span><i>↗</i>
-            <span aria-hidden="true">PLAY THE WORK.</span><i aria-hidden="true">↗</i>
+        <div className="featuredMotionStage" data-selected-motion-stage>
+          <div className="featuredMotionScene" data-selected-motion-scene>
+            <header>
+              <small>03 / SELECTED MOTION</small>
+            </header>
+            <div className="featuredTypeRail" aria-label="Play the work">
+              <div>
+                <span>PLAY THE WORK.</span><i>↗</i>
+                <span aria-hidden="true">PLAY THE WORK.</span><i aria-hidden="true">↗</i>
+              </div>
+            </div>
+            <div className="featuredWorksToolbar">
+              <p>대표작만 선별했습니다. 마우스를 올려 미리 보고, 클릭하면 전체 영상을 재생합니다.</p>
+              <Link href="/archive">전체 작품 보기 <b>↗</b></Link>
+            </div>
           </div>
-        </div>
-        <div className="featuredWorksToolbar">
-          <p>대표작만 선별했습니다. 마우스를 올려 미리 보고, 클릭하면 전체 영상을 재생합니다.</p>
-          <Link href="/archive">전체 작품 보기 <b>↗</b></Link>
         </div>
         <div className="featuredWorksGrid">
           {featured.map((item, index) => (

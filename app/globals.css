@@ -243,7 +243,26 @@ main{position:relative;z-index:2}
 }
 
 /* Selected motion — oversized moving type establishes the section rhythm. */
-.featuredWorksReact{display:block;padding:11vh 0 12vh;overflow:hidden}
+.featuredWorksReact{display:block;padding:0 0 12vh;overflow:visible}
+.featuredMotionStage{
+  position:relative;
+  height:240svh;
+  background:#090a0a;
+}
+.featuredMotionScene{
+  position:sticky;
+  top:0;
+  z-index:4;
+  height:100svh;
+  min-height:100svh;
+  padding:11vh 0 7vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  overflow:hidden;
+  background:#090a0a;
+  color:var(--paper);
+}
 .featuredWorksReact header{
   width:100%;
   display:flex;
@@ -272,7 +291,6 @@ main{position:relative;z-index:2}
   align-items:center;
   width:max-content;
   padding:.08em 0 .15em;
-  animation:featuredTypeFlow 18s linear infinite;
   will-change:transform;
 }
 .featuredTypeRail span{
@@ -283,6 +301,26 @@ main{position:relative;z-index:2}
   line-height:.86;
   letter-spacing:-.08em;
   white-space:nowrap;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  background:
+    linear-gradient(
+      108deg,
+      var(--paper) 0%,
+      var(--paper) 26%,
+      #a7a6a1 36%,
+      #f3d2c9 43%,
+      var(--signal-hot) 49%,
+      #7f1d10 54%,
+      #f0a493 60%,
+      var(--paper) 70%,
+      var(--paper) 100%
+    );
+  background-size:320% 100%;
+  background-position:145% 50%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  will-change:background-position,filter;
 }
 .featuredTypeRail i{
   flex:none;
@@ -292,14 +330,12 @@ main{position:relative;z-index:2}
   font-style:normal;
 }
 .featuredWorksGrid{padding:0 5vw}
-@keyframes featuredTypeFlow{
-  from{transform:translate3d(0,0,0)}
-  to{transform:translate3d(-50%,0,0)}
-}
 @media(prefers-reduced-motion:reduce){
-  .featuredTypeRail>div{animation:none}
+  .featuredTypeRail span{background-position:40% 50%}
 }
 @media(max-width:760px){
+  .featuredMotionStage{height:210svh}
+  .featuredMotionScene{min-height:100svh;padding:72px 0 48px}
   .featuredWorksReact header{padding-inline:16px;display:block}
   .featuredIntro{margin-top:28px}
   .featuredTypeRail span{padding-left:16px;font-size:clamp(68px,22vw,104px)}
@@ -1287,7 +1323,7 @@ img,video{max-width:100%}
     padding:64px 16px;
   }
   .motionArchiveHeader{margin-bottom:36px}
-  .featuredWorksReact{padding:64px 0}
+  .featuredWorksReact{padding:0 0 64px}
   .featuredWorksReact header{
     margin-bottom:34px;
     padding-bottom:0;
@@ -1461,9 +1497,16 @@ img,video{max-width:100%}
   .journalReact[data-pin-scene]{min-height:100svh}
 }
 
-.caseTeaserReact{
+.caseTeaserStage{
   position:relative;
+  height:182svh;
+  background:#060707;
+}
+.caseTeaserReact{
+  position:sticky;
+  top:0;
   z-index:3;
+  height:100svh;
   min-height:100svh;
   overflow:hidden;
   background:#060707;
@@ -2063,6 +2106,7 @@ img,video{max-width:100%}
   .heroReactFooter b{max-width:110px;padding-left:0;text-align:right;line-height:1.45}
   .heroReactFooter b:before{display:none}
   .sceneCounter{display:none}
+  .caseTeaserStage{height:160svh}
   .caseTeaserReact,.caseTeaserContent{min-height:82svh}
   .caseTeaserContent{padding:72px 16px 34px}
   .caseTeaserContent h2{font-size:clamp(50px,15vw,76px)}

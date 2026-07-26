@@ -318,7 +318,9 @@ export default function SiteMotion() {
           heading.querySelectorAll<HTMLElement>(".motionLineInner"),
         );
         const belongsToPinnedScene = Boolean(
-          heading.closest("[data-pin-scene], [data-experiment-scene]"),
+          heading.closest(
+            "[data-pin-scene], [data-experiment-scene], [data-case-teaser-scene]",
+          ),
         );
         if (belongsToPinnedScene) return;
 
@@ -386,6 +388,7 @@ export default function SiteMotion() {
             scrub: desktopPinned ? 0.82 : 0.72,
             anticipatePin: 1,
             invalidateOnRefresh: true,
+            refreshPriority: 100,
           },
         });
 
@@ -452,7 +455,9 @@ export default function SiteMotion() {
 
       if (desktopPinned) {
         gsap.utils
-          .toArray<HTMLElement>("[data-pin-scene]:not(.workReact)")
+          .toArray<HTMLElement>(
+            "[data-pin-scene]:not(.workReact):not(.caseTeaserReact)",
+          )
           .forEach((scene, sceneIndex) => {
             const lines = scene.querySelectorAll<HTMLElement>(
               ".motionLineInner",
@@ -470,6 +475,7 @@ export default function SiteMotion() {
                 scrub: 0.72,
                 anticipatePin: 1,
                 invalidateOnRefresh: true,
+                refreshPriority: sceneIndex === 0 ? 90 : 50 - sceneIndex * 10,
               },
             });
 
@@ -521,7 +527,9 @@ export default function SiteMotion() {
           });
       } else {
         gsap.utils
-          .toArray<HTMLElement>("[data-pin-scene]:not(.workReact)")
+          .toArray<HTMLElement>(
+            "[data-pin-scene]:not(.workReact):not(.caseTeaserReact)",
+          )
           .forEach((scene, sceneIndex) => {
             const lines = scene.querySelectorAll<HTMLElement>(
               ".motionLineInner",
@@ -539,6 +547,7 @@ export default function SiteMotion() {
                 scrub: 0.7,
                 anticipatePin: 1,
                 invalidateOnRefresh: true,
+                refreshPriority: sceneIndex === 0 ? 90 : 50 - sceneIndex * 10,
               },
             });
 
@@ -620,6 +629,7 @@ export default function SiteMotion() {
             scrub: desktopPinned ? 0.82 : 0.72,
             anticipatePin: 1,
             invalidateOnRefresh: true,
+            refreshPriority: 80,
           },
         });
 
@@ -702,6 +712,200 @@ export default function SiteMotion() {
             0.72,
           )
           .to({}, { duration: 0.2 });
+      }
+
+      const selectedMotionStage = document.querySelector<HTMLElement>(
+        "[data-selected-motion-stage]",
+      );
+      const selectedMotionScene = document.querySelector<HTMLElement>(
+        "[data-selected-motion-scene]",
+      );
+      if (selectedMotionStage && selectedMotionScene) {
+        const selectedLabel =
+          selectedMotionScene.querySelector<HTMLElement>("header small");
+        const selectedRail =
+          selectedMotionScene.querySelector<HTMLElement>(".featuredTypeRail");
+        const selectedRailTrack =
+          selectedMotionScene.querySelector<HTMLElement>(".featuredTypeRail > div");
+        const selectedWords =
+          selectedMotionScene.querySelectorAll<HTMLElement>(".featuredTypeRail span");
+        const selectedArrows =
+          selectedMotionScene.querySelectorAll<HTMLElement>(".featuredTypeRail i");
+        const selectedToolbar =
+          selectedMotionScene.querySelector<HTMLElement>(".featuredWorksToolbar");
+
+        const selectedMotionTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: selectedMotionStage,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: desktopPinned ? 0.82 : 0.72,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        selectedMotionTimeline
+          .fromTo(
+            selectedLabel,
+            { x: -34, autoAlpha: 0 },
+            {
+              x: 0,
+              autoAlpha: 1,
+              duration: 0.14,
+              ease: "power3.out",
+            },
+            0,
+          )
+          .fromTo(
+            selectedRail,
+            {
+              y: 70,
+              scale: 1.08,
+              autoAlpha: 0,
+              clipPath: "inset(0 100% 0 0)",
+            },
+            {
+              y: 0,
+              scale: 1,
+              autoAlpha: 1,
+              clipPath: "inset(0 0% 0 0)",
+              duration: 0.26,
+              ease: "power4.out",
+            },
+            0.06,
+          )
+          .fromTo(
+            selectedWords,
+            {
+              backgroundPosition: "145% 50%",
+              filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
+            },
+            {
+              backgroundPosition: "-145% 50%",
+              filter: "drop-shadow(0 0 18px rgba(175,39,17,.28))",
+              duration: 0.62,
+              ease: "none",
+            },
+            0.18,
+          )
+          .fromTo(
+            selectedArrows,
+            { color: "#f1efe8", rotate: -18, scale: 0.7, autoAlpha: 0 },
+            {
+              color: "#d43a22",
+              rotate: 0,
+              scale: 1,
+              autoAlpha: 1,
+              stagger: 0.08,
+              duration: 0.22,
+              ease: "back.out(1.8)",
+            },
+            0.28,
+          )
+          .fromTo(
+            selectedToolbar,
+            { y: 44, autoAlpha: 0 },
+            {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.2,
+              ease: "power3.out",
+            },
+            0.58,
+          )
+          .to(
+            selectedRailTrack,
+            {
+              xPercent: desktopPinned ? -12 : -7,
+              duration: 0.42,
+              ease: "none",
+            },
+            0.48,
+          )
+          .to(
+            selectedWords,
+            {
+              filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
+              duration: 0.18,
+            },
+            0.82,
+          )
+          .to({}, { duration: 0.18 });
+      }
+
+      const caseTeaserStage =
+        document.querySelector<HTMLElement>("[data-case-teaser-stage]");
+      const caseTeaserScene =
+        document.querySelector<HTMLElement>("[data-case-teaser-scene]");
+      if (caseTeaserStage && caseTeaserScene) {
+        const caseLines =
+          caseTeaserScene.querySelectorAll<HTMLElement>(".motionLineInner");
+        const caseDetails =
+          caseTeaserScene.querySelectorAll<HTMLElement>("[data-scene-step]");
+
+        const caseTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: caseTeaserStage,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: desktopPinned ? 0.72 : 0.7,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        caseTimeline
+          .fromTo(
+            caseLines,
+            {
+              xPercent: desktopPinned ? -112 : -92,
+              yPercent: 28,
+              scale: desktopPinned ? 1 : 1.12,
+              autoAlpha: 0,
+              rotate: desktopPinned ? -2 : -1.5,
+              backgroundPosition: "135% 50%",
+              filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
+            },
+            {
+              xPercent: 0,
+              yPercent: 0,
+              scale: 1,
+              autoAlpha: 1,
+              rotate: 0,
+              backgroundPosition: "36% 50%",
+              filter: "drop-shadow(0 0 10px rgba(175,39,17,.34))",
+              stagger: 0.075,
+              duration: 0.4,
+              ease: "power4.out",
+            },
+          )
+          .fromTo(
+            caseDetails,
+            {
+              x: (index) => (index % 2 === 0 ? -22 : 22),
+              y: 30,
+              autoAlpha: 0,
+            },
+            {
+              x: 0,
+              y: 0,
+              autoAlpha: 1,
+              stagger: 0.07,
+              duration: 0.22,
+              ease: "power3.out",
+            },
+            0.2,
+          )
+          .to(
+            caseLines,
+            {
+              backgroundPosition: "-135% 50%",
+              filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
+              duration: 0.38,
+              ease: "none",
+            },
+            0.42,
+          )
+          .to({}, { duration: 0.14 });
       }
 
       const cardSelector = [
