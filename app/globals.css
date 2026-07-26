@@ -1385,18 +1385,22 @@ img,video{max-width:100%}
   display:block;
   overflow:hidden;
   padding:.07em .03em .09em 0;
-  will-change:transform,opacity,clip-path;
+}
+.heroReact .heroBeat{
+  display:inline-block;
+  margin-right:.17em;
+  white-space:nowrap;
+  will-change:transform,opacity,filter,letter-spacing,background-position;
 }
 .heroReactContent>small,.heroReactFooter>*{will-change:transform,opacity}
 .heroReact .heroLine em{font-style:normal}
-.heroReact .heroLine:first-child{color:var(--paper)}
-.heroReact .heroLine:first-child em{color:var(--signal-hot)}
-.heroReact .heroLine:last-child{
+.heroReact .heroBeatAccent{color:var(--signal-hot)}
+.heroReact .heroBeatCinema{
   color:transparent;
   -webkit-text-fill-color:transparent;
-  background:linear-gradient(100deg,#f1efe8 0%,#f1efe8 24%,#ff8b75 43%,#af2711 58%,#f1efe8 79%);
-  background-size:240% 100%;
-  background-position:35% 50%;
+  background:linear-gradient(100deg,#f1efe8 0%,#f1efe8 20%,#ff8b75 38%,#af2711 52%,#ff694c 64%,#f1efe8 82%);
+  background-size:280% 100%;
+  background-position:120% 50%;
   -webkit-background-clip:text;
   background-clip:text;
 }

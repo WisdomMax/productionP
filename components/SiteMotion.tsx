@@ -113,10 +113,13 @@ export default function SiteMotion() {
         );
         const titleLines =
           hero.querySelectorAll<HTMLElement>(".heroReact .heroLine");
+        const titleBeats =
+          hero.querySelectorAll<HTMLElement>(".heroReact .heroBeat");
         const footerItems =
           hero.querySelectorAll<HTMLElement>(".heroReactFooter > *");
 
         gsap.set(titleLines, { transformOrigin: "left bottom" });
+        gsap.set(titleBeats, { transformOrigin: "left bottom" });
 
         if (desktopPinned) {
           const heroTimeline = gsap.timeline({
@@ -136,36 +139,35 @@ export default function SiteMotion() {
             .set(footerItems, { y: 30, autoAlpha: 0 }, 0)
             .set(
               titleLines,
+              { autoAlpha: 1, clipPath: "inset(0 0 0% 0)" },
+              0,
+            )
+            .set(
+              titleBeats,
               {
-                yPercent: 48,
-                scale: 1.48,
+                yPercent: 125,
+                scale: 1.42,
                 autoAlpha: 0,
-                clipPath: "inset(0 0 100% 0)",
+                filter: "blur(16px)",
+                letterSpacing: ".025em",
               },
               0,
             )
-            // A short hold lets the moving image establish itself before type arrives.
-            .to({}, { duration: 0.12 })
+            // Establish the moving image, then resolve the statement word by word.
+            .to({}, { duration: 0.1 })
             .to(
-              titleLines,
+              titleBeats,
               {
                 yPercent: 0,
-                autoAlpha: 1,
-                clipPath: "inset(0 0 0% 0)",
-                duration: 0.28,
-                stagger: 0.065,
-                ease: "power4.out",
-              },
-              0.12,
-            )
-            .to(
-              titleLines,
-              {
                 scale: 1,
-                duration: 0.3,
-                ease: "power3.inOut",
+                autoAlpha: 1,
+                filter: "blur(0px)",
+                letterSpacing: "-.055em",
+                duration: 0.24,
+                stagger: 0.095,
+                ease: "expo.out",
               },
-              0.43,
+              0.1,
             )
             .to(
               eyebrow,
@@ -175,7 +177,7 @@ export default function SiteMotion() {
                 duration: 0.17,
                 ease: "power3.out",
               },
-              0.56,
+              0.7,
             )
             .to(
               footerItems,
@@ -186,18 +188,24 @@ export default function SiteMotion() {
                 stagger: 0.045,
                 ease: "power3.out",
               },
-              0.61,
+              0.74,
             )
             .to(
-              ".heroReact .heroLine:last-child",
+              ".heroReact .heroBeatCinema",
               {
-                backgroundPosition: "-35% 50%",
-                duration: 0.25,
+                backgroundPosition: "-120% 50%",
+                filter: "drop-shadow(0 0 12px rgba(175,39,17,.3))",
+                duration: 0.3,
                 ease: "none",
               },
-              0.55,
+              0.66,
             )
-            .to({}, { duration: 0.15 });
+            .to(
+              ".heroReact .heroBeatCinema",
+              { filter: "drop-shadow(0 0 0 rgba(175,39,17,0))", duration: 0.12 },
+              0.9,
+            )
+            .to({}, { duration: 0.12 });
         } else {
           const heroTimeline = gsap.timeline({
             scrollTrigger: {
@@ -216,40 +224,39 @@ export default function SiteMotion() {
             .set(footerItems, { y: 18, autoAlpha: 0 }, 0)
             .set(
               titleLines,
+              { autoAlpha: 1, clipPath: "inset(0 0 0% 0)" },
+              0,
+            )
+            .set(
+              titleBeats,
               {
-                yPercent: 44,
-                scale: 1.38,
+                yPercent: 112,
+                scale: 1.28,
                 autoAlpha: 0,
-                clipPath: "inset(0 0 100% 0)",
+                filter: "blur(11px)",
+                letterSpacing: ".01em",
               },
               0,
             )
-            .to({}, { duration: 0.1 })
+            .to({}, { duration: 0.08 })
             .to(
-              titleLines,
+              titleBeats,
               {
                 yPercent: 0,
-                autoAlpha: 1,
-                clipPath: "inset(0 0 0% 0)",
-                duration: 0.28,
-                stagger: 0.065,
-                ease: "power4.out",
-              },
-              0.1,
-            )
-            .to(
-              titleLines,
-              {
                 scale: 1,
-                duration: 0.28,
-                ease: "power3.inOut",
+                autoAlpha: 1,
+                filter: "blur(0px)",
+                letterSpacing: "-.05em",
+                duration: 0.24,
+                stagger: 0.085,
+                ease: "expo.out",
               },
-              0.38,
+              0.08,
             )
             .to(
               eyebrow,
               { x: 0, autoAlpha: 1, duration: 0.22, ease: "power3.out" },
-              0.53,
+              0.65,
             )
             .to(
               footerItems,
@@ -260,18 +267,24 @@ export default function SiteMotion() {
                 stagger: 0.06,
                 ease: "power3.out",
               },
-              0.59,
+              0.7,
             )
             .to(
-              ".heroReact .heroLine:last-child",
+              ".heroReact .heroBeatCinema",
               {
-                backgroundPosition: "-35% 50%",
+                backgroundPosition: "-120% 50%",
+                filter: "drop-shadow(0 0 9px rgba(175,39,17,.28))",
                 duration: 0.26,
                 ease: "none",
               },
-              0.52,
+              0.62,
             )
-            .to({}, { duration: 0.14 });
+            .to(
+              ".heroReact .heroBeatCinema",
+              { filter: "drop-shadow(0 0 0 rgba(175,39,17,0))", duration: 0.12 },
+              0.84,
+            )
+            .to({}, { duration: 0.12 });
         }
       }
 

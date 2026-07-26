@@ -68,10 +68,13 @@ export default function Home() {
               aria-label="AI makes it possible. We make it cinema."
             >
               <span className="heroLine">
-                AI MAKES <em>IT POSSIBLE.</em>
+                <span className="heroBeat">AI</span>
+                <span className="heroBeat">MAKES IT</span>
+                <em className="heroBeat heroBeatAccent">POSSIBLE.</em>
               </span>
               <span className="heroLine">
-                WE MAKE <em>IT CINEMA.</em>
+                <span className="heroBeat">WE MAKE IT</span>
+                <em className="heroBeat heroBeatCinema">CINEMA.</em>
               </span>
             </h1>
             <div className="heroReactFooter">
