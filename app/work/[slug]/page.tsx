@@ -33,8 +33,8 @@ const categories: Record<string, { catalog: string; label: string; description: 
   },
 };
 const orientationGroups = [
-  { key: "landscape", label: "가로형", ratio: "LANDSCAPE / 16:9" },
-  { key: "portrait", label: "세로형", ratio: "PORTRAIT / 9:16" },
+  { key: "landscape", label: "WIDE FORMAT", ratio: "LANDSCAPE / 16:9" },
+  { key: "portrait", label: "VERTICAL FORMAT", ratio: "PORTRAIT / 9:16" },
 ] as const;
 
 export function generateStaticParams() {

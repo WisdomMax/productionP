@@ -102,30 +102,42 @@ export default function SiteMotion() {
 
     const context = gsap.context(() => {
       if (document.querySelector(".heroReact")) {
-        gsap.fromTo(
-          ".heroReact h1",
-          { y: 90, opacity: 0, clipPath: "inset(0 0 100% 0)" },
-          {
-            y: 0,
-            opacity: 1,
-            clipPath: "inset(0 0 0% 0)",
-            duration: 1.15,
-            delay: 0.72,
-            ease: "power4.out",
-          },
-        );
-        gsap.fromTo(
-          ".heroReact h2, .heroReact small",
-          { x: -65, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.85,
-            delay: 1,
-            stagger: 0.1,
-            ease: "power3.out",
-          },
-        );
+        const heroTimeline = gsap.timeline({ delay: 0.62 });
+        heroTimeline
+          .fromTo(
+            ".heroReact small",
+            { x: -48, autoAlpha: 0 },
+            { x: 0, autoAlpha: 1, duration: 0.68, ease: "power3.out" },
+          )
+          .fromTo(
+            ".heroReact .heroLine",
+            {
+              yPercent: 115,
+              autoAlpha: 0,
+              clipPath: "inset(0 0 100% 0)",
+            },
+            {
+              yPercent: 0,
+              autoAlpha: 1,
+              clipPath: "inset(0 0 0% 0)",
+              duration: 1.08,
+              stagger: 0.13,
+              ease: "power4.out",
+            },
+            "-=.3",
+          )
+          .fromTo(
+            ".heroReactFooter > *",
+            { y: 24, autoAlpha: 0 },
+            {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.68,
+              stagger: 0.08,
+              ease: "power3.out",
+            },
+            "-=.48",
+          );
       }
 
       const headingSelector = [
@@ -139,6 +151,8 @@ export default function SiteMotion() {
         ".categoryHeader h1",
         ".videoArchiveReact > header h2",
       ].join(",");
+
+      const desktopPinned = matchMedia("(min-width: 900px)").matches;
 
       gsap.utils.toArray<HTMLElement>(headingSelector).forEach((heading, headingIndex) => {
         if (!heading.dataset.motionLines) {
@@ -156,6 +170,11 @@ export default function SiteMotion() {
         const lines = Array.from(
           heading.querySelectorAll<HTMLElement>(".motionLineInner"),
         );
+        const belongsToPinnedScene = Boolean(
+          desktopPinned && heading.closest("[data-pin-scene]"),
+        );
+        if (belongsToPinnedScene) return;
+
         lines.forEach((line, lineIndex) => {
           const fromLeft = (headingIndex + lineIndex) % 2 === 0;
           gsap.fromTo(
@@ -198,6 +217,77 @@ export default function SiteMotion() {
           );
         });
       });
+
+      if (desktopPinned) {
+        gsap.utils
+          .toArray<HTMLElement>("[data-pin-scene]")
+          .forEach((scene, sceneIndex) => {
+            const lines = scene.querySelectorAll<HTMLElement>(
+              ".motionLineInner",
+            );
+            const details = scene.querySelectorAll<HTMLElement>(
+              "[data-scene-step]",
+            );
+
+            const sceneTimeline = gsap.timeline({
+              scrollTrigger: {
+                trigger: scene,
+                start: "top top",
+                end: () => `+=${Math.min(window.innerHeight * 0.82, 860)}`,
+                pin: true,
+                scrub: 0.72,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+              },
+            });
+
+            sceneTimeline
+              .fromTo(
+                lines,
+                {
+                  xPercent: (index) =>
+                    (sceneIndex + index) % 2 === 0 ? -112 : 112,
+                  yPercent: 28,
+                  autoAlpha: 0,
+                  rotate: (index) =>
+                    (sceneIndex + index) % 2 === 0 ? -2 : 2,
+                  backgroundPosition: "135% 50%",
+                },
+                {
+                  xPercent: 0,
+                  yPercent: 0,
+                  autoAlpha: 1,
+                  rotate: 0,
+                  backgroundPosition: "38% 50%",
+                  stagger: 0.08,
+                  duration: 0.36,
+                  ease: "power4.out",
+                },
+              )
+              .fromTo(
+                details,
+                { y: 42, autoAlpha: 0 },
+                {
+                  y: 0,
+                  autoAlpha: 1,
+                  stagger: 0.07,
+                  duration: 0.22,
+                  ease: "power3.out",
+                },
+                0.2,
+              )
+              .to(
+                lines,
+                {
+                  backgroundPosition: "-135% 50%",
+                  duration: 0.38,
+                  ease: "none",
+                },
+                0.36,
+              )
+              .to({}, { duration: 0.18 });
+          });
+      }
 
       gsap.utils
         .toArray<HTMLElement>(".workRowReact")

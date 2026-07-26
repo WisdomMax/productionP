@@ -57,17 +57,17 @@ export default function AwardsShowcase() {
   const formGroups = useMemo(
     () => [
       {
-        key: "short",
+        key: "vertical",
         index: "01",
-        label: "SHORT FORM",
-        detail: "세로형 / 9:16",
+        label: "VERTICAL FORMAT",
+        detail: "PORTRAIT / 9:16",
         works: winners.filter((work) => work.orientation === "portrait"),
       },
       {
-        key: "long",
+        key: "wide",
         index: "02",
-        label: "LONG FORM",
-        detail: "가로형 / 16:9",
+        label: "WIDE FORMAT",
+        detail: "LANDSCAPE / 16:9",
         works: winners.filter((work) => work.orientation !== "portrait"),
       },
     ],

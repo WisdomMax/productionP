@@ -29,8 +29,8 @@ const categoryOrder = [
   "awards",
 ];
 const orientationGroups = [
-  { key: "landscape", label: "가로형", ratio: "LANDSCAPE / 16:9" },
-  { key: "portrait", label: "세로형", ratio: "PORTRAIT / 9:16" },
+  { key: "landscape", label: "WIDE FORMAT", ratio: "LANDSCAPE / 16:9" },
+  { key: "portrait", label: "VERTICAL FORMAT", ratio: "PORTRAIT / 9:16" },
 ] as const;
 
 function VideoCard({ item, index }: { item: VideoItem; index: number }) {
@@ -120,7 +120,7 @@ export default function VideoArchive() {
       <header>
         <small>03 / VIDEO ARCHIVE</small>
         <h2>EVERY<br />FRAME.</h2>
-        <p>가로형과 세로형 작품을 화면비에 맞춰 구분해 보여줍니다.</p>
+        <p>각 작품의 원본 화면비와 프레이밍을 그대로 유지합니다.</p>
       </header>
       <nav className="videoArchiveFilters" aria-label="영상 카테고리">
         {categories.map(({ key, label }) => (

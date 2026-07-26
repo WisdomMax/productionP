@@ -8,19 +8,28 @@ type Particle = {
   vx: number;
   vy: number;
   life: number;
+  decay: number;
   size: number;
   length: number;
   rotation: number;
   spin: number;
   color: string;
+  glow: boolean;
 };
+
+const brandColors = ["#AF2711", "#FF4B30", "#F1EFE8", "#4BD9E8"];
 
 export default function TemporalCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
+    if (
+      !window.matchMedia("(pointer: fine)").matches ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
 
     const canvas = canvasRef.current;
     const cursor = cursorRef.current;
@@ -34,6 +43,7 @@ export default function TemporalCursor() {
     let lastSpawn = 0;
     let previousPointer = { x: -100, y: -100 };
     let renderedPointer = { x: -100, y: -100 };
+    let speed = 0;
     const pointer = { x: -100, y: -100 };
     const particles: Particle[] = [];
 
@@ -49,44 +59,58 @@ export default function TemporalCursor() {
     const clearTarget = () => {
       activeTarget?.classList.remove("is-disintegrating");
       activeTarget = null;
-      cursor.classList.remove("is-breaking", "is-link", "is-on-signal");
+      cursor.classList.remove(
+        "is-breaking",
+        "is-link",
+        "is-on-signal",
+        "is-on-light",
+        "is-media",
+      );
     };
 
-    const colorsFor = (target: HTMLElement) => {
-      const specified = target.dataset.particleColors;
+    const colorsFor = (target?: HTMLElement | null) => {
+      const specified = target?.dataset.particleColors;
       if (specified) return specified.split(",").map((color) => color.trim());
-
-      const style = getComputedStyle(target);
-      return [style.color, "#AF2711", "#D63A20"];
+      return brandColors;
     };
 
     const spawnParticles = (
-      target: HTMLElement,
+      amount: number,
       movementX: number,
       movementY: number,
+      target?: HTMLElement | null,
     ) => {
       const colors = colorsFor(target);
+      const intensity = Math.min(Math.hypot(movementX, movementY), 42);
 
-      for (let index = 0; index < 9; index += 1) {
+      for (let index = 0; index < amount; index += 1) {
         const angle = Math.random() * Math.PI * 2;
-        const distance = 10 + Math.random() * 38;
-        const speed = 0.45 + Math.random() * 1.4;
+        const distance = 4 + Math.random() * (target ? 48 : 20);
+        const burst = target ? 1.8 : 0.8;
 
         particles.push({
           x: pointer.x + Math.cos(angle) * distance,
           y: pointer.y + Math.sin(angle) * distance,
-          vx: Math.cos(angle) * speed + movementX * 0.055,
-          vy: Math.sin(angle) * speed + movementY * 0.055,
-          life: 0.72 + Math.random() * 0.28,
-          size: 0.7 + Math.random() * 1.8,
-          length: 1.5 + Math.random() * 7,
-          rotation: Math.random() * Math.PI,
-          spin: (Math.random() - 0.5) * 0.12,
+          vx:
+            Math.cos(angle) * (0.35 + Math.random() * burst) -
+            movementX * (0.018 + Math.random() * 0.018),
+          vy:
+            Math.sin(angle) * (0.35 + Math.random() * burst) -
+            movementY * (0.018 + Math.random() * 0.018),
+          life: 0.58 + Math.random() * 0.42,
+          decay: 0.012 + Math.random() * 0.014,
+          size: 0.65 + Math.random() * (target ? 2.2 : 1.2),
+          length: 2 + Math.random() * (5 + intensity * 0.24),
+          rotation: Math.atan2(movementY, movementX) + (Math.random() - 0.5),
+          spin: (Math.random() - 0.5) * 0.14,
           color: colors[index % colors.length],
+          glow: index % 4 === 0,
         });
       }
 
-      if (particles.length > 240) particles.splice(0, particles.length - 240);
+      if (particles.length > 380) {
+        particles.splice(0, particles.length - 380);
+      }
     };
 
     const onMove = (event: PointerEvent) => {
@@ -101,8 +125,19 @@ export default function TemporalCursor() {
         element?.closest<HTMLElement>("[data-disintegrate]") ?? null;
       const interactive =
         element?.closest<HTMLElement>("a, button, [data-cursor]") ?? null;
+      const media =
+        element?.closest<HTMLElement>(
+          "video, img, .featuredWorkMedia, .awardWorkMedia",
+        ) ?? null;
       const onSignalBackground = Boolean(
-        element?.closest<HTMLElement>(".awardsReact, [data-cursor-contrast='light']"),
+        element?.closest<HTMLElement>(
+          ".awardsReact, .awardsShowcaseReact, [data-cursor-contrast='light']",
+        ),
+      );
+      const onLight = Boolean(
+        element?.closest<HTMLElement>(
+          ".manifestReact, .journalReact, .journalIndexPage, .journalArticlePage, .caseStudyNotice, .caseStudyIntro",
+        ),
       );
 
       if (nextTarget !== activeTarget) {
@@ -112,7 +147,18 @@ export default function TemporalCursor() {
 
       cursor.classList.toggle("is-link", Boolean(interactive));
       cursor.classList.toggle("is-breaking", Boolean(activeTarget));
+      cursor.classList.toggle("is-media", Boolean(media));
       cursor.classList.toggle("is-on-signal", onSignalBackground);
+      cursor.classList.toggle("is-on-light", onLight);
+
+      const movementX = event.clientX - previousPointer.x;
+      const movementY = event.clientY - previousPointer.y;
+      speed = Math.min(Math.hypot(movementX, movementY), 60);
+      cursor.style.setProperty("--cursor-speed", `${speed}`);
+      cursor.style.setProperty(
+        "--cursor-angle",
+        `${Math.atan2(movementY, movementX)}rad`,
+      );
 
       if (activeTarget) {
         const rect = activeTarget.getBoundingClientRect();
@@ -125,15 +171,16 @@ export default function TemporalCursor() {
           "--disintegrate-y",
           `${event.clientY - rect.top}px`,
         );
+      }
 
-        if (event.timeStamp - lastSpawn > 28) {
-          spawnParticles(
-            activeTarget,
-            event.clientX - previousPointer.x,
-            event.clientY - previousPointer.y,
-          );
-          lastSpawn = event.timeStamp;
-        }
+      if (event.timeStamp - lastSpawn > (activeTarget || media ? 15 : 22)) {
+        spawnParticles(
+          activeTarget || media ? 11 : 4,
+          movementX,
+          movementY,
+          activeTarget || media,
+        );
+        lastSpawn = event.timeStamp;
       }
 
       previousPointer = { x: event.clientX, y: event.clientY };
@@ -146,8 +193,8 @@ export default function TemporalCursor() {
     const render = () => {
       context.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-      renderedPointer.x += (pointer.x - renderedPointer.x) * 0.28;
-      renderedPointer.y += (pointer.y - renderedPointer.y) * 0.28;
+      renderedPointer.x += (pointer.x - renderedPointer.x) * 0.25;
+      renderedPointer.y += (pointer.y - renderedPointer.y) * 0.25;
       cursor.style.transform =
         `translate3d(${renderedPointer.x}px, ${renderedPointer.y}px, 0) translate(-50%, -50%)`;
 
@@ -158,7 +205,7 @@ export default function TemporalCursor() {
         particle.vx *= 0.975;
         particle.vy *= 0.975;
         particle.rotation += particle.spin;
-        particle.life -= 0.018;
+        particle.life -= particle.decay;
 
         if (particle.life <= 0) {
           particles.splice(index, 1);
@@ -166,10 +213,14 @@ export default function TemporalCursor() {
         }
 
         context.save();
-        context.globalAlpha = Math.max(0, particle.life) * 0.52;
+        context.globalAlpha = Math.max(0, particle.life) * 0.76;
         context.translate(particle.x, particle.y);
         context.rotate(particle.rotation);
         context.fillStyle = particle.color;
+        if (particle.glow) {
+          context.shadowBlur = 13;
+          context.shadowColor = particle.color;
+        }
         context.fillRect(
           -particle.length / 2,
           -particle.size / 2,
@@ -179,6 +230,7 @@ export default function TemporalCursor() {
         context.restore();
       }
 
+      speed *= 0.9;
       frame = requestAnimationFrame(render);
     };
 
@@ -210,6 +262,8 @@ export default function TemporalCursor() {
       />
       <div ref={cursorRef} className="temporalCursor" aria-hidden="true">
         <i />
+        <b />
+        <span />
       </div>
     </>
   );
