@@ -18,6 +18,7 @@ type Particle = {
 };
 
 const brandColors = ["#AF2711", "#FF4B30", "#F1EFE8", "#4BD9E8"];
+type CursorMode = "default" | "link" | "media" | "breaking";
 
 export default function TemporalCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -44,6 +45,10 @@ export default function TemporalCursor() {
     let previousPointer = { x: -100, y: -100 };
     let renderedPointer = { x: -100, y: -100 };
     let speed = 0;
+    let cursorMode: CursorMode = "default";
+    let contourRadius = 0;
+    let noisePhase = 0;
+    let pressed = false;
     const pointer = { x: -100, y: -100 };
     const particles: Particle[] = [];
 
@@ -66,6 +71,7 @@ export default function TemporalCursor() {
         "is-on-light",
         "is-media",
       );
+      cursorMode = "default";
     };
 
     const colorsFor = (target?: HTMLElement | null) => {
@@ -150,6 +156,13 @@ export default function TemporalCursor() {
       cursor.classList.toggle("is-media", Boolean(media));
       cursor.classList.toggle("is-on-signal", onSignalBackground);
       cursor.classList.toggle("is-on-light", onLight);
+      cursorMode = activeTarget
+        ? "breaking"
+        : media
+          ? "media"
+          : interactive
+            ? "link"
+            : "default";
 
       const movementX = event.clientX - previousPointer.x;
       const movementY = event.clientY - previousPointer.y;
@@ -187,8 +200,50 @@ export default function TemporalCursor() {
     };
 
     const onLeave = () => clearTarget();
-    const onDown = () => cursor.classList.add("is-pressed");
-    const onUp = () => cursor.classList.remove("is-pressed");
+    const onDown = () => {
+      pressed = true;
+      cursor.classList.add("is-pressed");
+    };
+    const onUp = () => {
+      pressed = false;
+      cursor.classList.remove("is-pressed");
+    };
+
+    // Adapted from Codrops' noisy magnetic cursor principle:
+    // a lerped segmented contour, deformed every frame without a heavy library.
+    const drawOrganicContour = (
+      centerX: number,
+      centerY: number,
+      radius: number,
+    ) => {
+      const segments = 11;
+      const points = Array.from({ length: segments }, (_, index) => {
+        const angle = (index / segments) * Math.PI * 2;
+        const noise =
+          Math.sin(noisePhase * 1.7 + index * 1.91) * 2.4 +
+          Math.sin(noisePhase * 0.83 - index * 0.73) * 1.7;
+        const localRadius = Math.max(2, radius + noise);
+        return {
+          x: centerX + Math.cos(angle) * localRadius,
+          y: centerY + Math.sin(angle) * localRadius,
+        };
+      });
+
+      const first = points[0];
+      const last = points[points.length - 1];
+      context.beginPath();
+      context.moveTo((last.x + first.x) / 2, (last.y + first.y) / 2);
+      points.forEach((point, index) => {
+        const next = points[(index + 1) % points.length];
+        context.quadraticCurveTo(
+          point.x,
+          point.y,
+          (point.x + next.x) / 2,
+          (point.y + next.y) / 2,
+        );
+      });
+      context.closePath();
+    };
 
     const render = () => {
       context.clearRect(0, 0, window.innerWidth, window.innerHeight);
@@ -227,6 +282,62 @@ export default function TemporalCursor() {
           particle.length,
           particle.size,
         );
+        context.restore();
+      }
+
+      const targetRadius =
+        cursorMode === "media"
+          ? 35
+          : cursorMode === "breaking"
+            ? 28
+            : cursorMode === "link"
+              ? 21
+              : 0;
+      contourRadius +=
+        ((pressed ? targetRadius * 0.62 : targetRadius) - contourRadius) * 0.16;
+      noisePhase += 0.035 + speed * 0.0008;
+
+      if (contourRadius > 1.5) {
+        context.save();
+        context.globalCompositeOperation = "screen";
+        drawOrganicContour(
+          renderedPointer.x,
+          renderedPointer.y,
+          contourRadius,
+        );
+        context.lineWidth = cursorMode === "media" ? 1.35 : 1.1;
+        context.strokeStyle =
+          cursorMode === "media"
+            ? "rgba(241,239,232,.82)"
+            : "rgba(255,75,48,.92)";
+        context.fillStyle =
+          cursorMode === "media"
+            ? "rgba(175,39,17,.035)"
+            : "rgba(175,39,17,.025)";
+        context.shadowBlur = cursorMode === "media" ? 15 : 9;
+        context.shadowColor = "#AF2711";
+        context.fill();
+        context.stroke();
+
+        if (cursorMode === "media" || cursorMode === "breaking") {
+          const shardColors = ["#AF2711", "#F1EFE8", "#4BD9E8"];
+          shardColors.forEach((color, index) => {
+            const angle =
+              noisePhase * (0.28 + index * 0.06) +
+              index * ((Math.PI * 2) / shardColors.length);
+            const x =
+              renderedPointer.x + Math.cos(angle) * (contourRadius + 5);
+            const y =
+              renderedPointer.y + Math.sin(angle) * (contourRadius + 5);
+            context.save();
+            context.translate(x, y);
+            context.rotate(angle + Math.PI / 2);
+            context.fillStyle = color;
+            context.globalAlpha = 0.7;
+            context.fillRect(-4, -0.6, 8, 1.2);
+            context.restore();
+          });
+        }
         context.restore();
       }
 

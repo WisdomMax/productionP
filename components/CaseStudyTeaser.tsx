@@ -27,7 +27,7 @@ export default function CaseStudyTeaser() {
         <h2 data-disintegrate>
           FROM PROMPT.
           <br />
-          TO PICTURE.
+          TO <em>PICTURE</em>.
         </h2>
         <div className="caseTeaserMeta" data-scene-step>
           <p>

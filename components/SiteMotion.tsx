@@ -101,43 +101,154 @@ export default function SiteMotion() {
     }
 
     const context = gsap.context(() => {
-      if (document.querySelector(".heroReact")) {
-        const heroTimeline = gsap.timeline({ delay: 0.62 });
-        heroTimeline
-          .fromTo(
-            ".heroReact small",
-            { x: -48, autoAlpha: 0 },
-            { x: 0, autoAlpha: 1, duration: 0.68, ease: "power3.out" },
-          )
-          .fromTo(
-            ".heroReact .heroLine",
-            {
-              yPercent: 115,
-              autoAlpha: 0,
-              clipPath: "inset(0 0 100% 0)",
+      const desktopPinned = matchMedia("(min-width: 900px)").matches;
+      const hero = document.querySelector<HTMLElement>(".heroReact");
+
+      if (hero) {
+        const eyebrow = hero.querySelector<HTMLElement>(
+          ".heroReactContent > small",
+        );
+        const titleLines =
+          hero.querySelectorAll<HTMLElement>(".heroReact .heroLine");
+        const footerItems =
+          hero.querySelectorAll<HTMLElement>(".heroReactFooter > *");
+
+        gsap.set(titleLines, { transformOrigin: "left bottom" });
+
+        if (desktopPinned) {
+          const heroTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: hero,
+              start: "top top",
+              end: () => `+=${Math.min(window.innerHeight * 1.28, 1180)}`,
+              pin: true,
+              scrub: 0.68,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
             },
-            {
-              yPercent: 0,
-              autoAlpha: 1,
-              clipPath: "inset(0 0 0% 0)",
-              duration: 1.08,
-              stagger: 0.13,
-              ease: "power4.out",
+          });
+
+          heroTimeline
+            .set(eyebrow, { x: -42, autoAlpha: 0 }, 0)
+            .set(footerItems, { y: 30, autoAlpha: 0 }, 0)
+            .set(
+              titleLines,
+              {
+                yPercent: 48,
+                scale: 1.48,
+                autoAlpha: 0,
+                clipPath: "inset(0 0 100% 0)",
+              },
+              0,
+            )
+            // A short hold lets the moving image establish itself before type arrives.
+            .to({}, { duration: 0.12 })
+            .to(
+              titleLines,
+              {
+                yPercent: 0,
+                autoAlpha: 1,
+                clipPath: "inset(0 0 0% 0)",
+                duration: 0.28,
+                stagger: 0.065,
+                ease: "power4.out",
+              },
+              0.12,
+            )
+            .to(
+              titleLines,
+              {
+                scale: 1,
+                duration: 0.3,
+                ease: "power3.inOut",
+              },
+              0.43,
+            )
+            .to(
+              eyebrow,
+              {
+                x: 0,
+                autoAlpha: 1,
+                duration: 0.17,
+                ease: "power3.out",
+              },
+              0.56,
+            )
+            .to(
+              footerItems,
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.2,
+                stagger: 0.045,
+                ease: "power3.out",
+              },
+              0.61,
+            )
+            .to(
+              ".heroReact .heroLine:last-child",
+              {
+                backgroundPosition: "-35% 50%",
+                duration: 0.25,
+                ease: "none",
+              },
+              0.55,
+            )
+            .to({}, { duration: 0.15 });
+        } else {
+          const heroTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: hero,
+              start: "top top",
+              end: "45% top",
+              scrub: 0.6,
+              invalidateOnRefresh: true,
             },
-            "-=.3",
-          )
-          .fromTo(
-            ".heroReactFooter > *",
-            { y: 24, autoAlpha: 0 },
-            {
-              y: 0,
-              autoAlpha: 1,
-              duration: 0.68,
-              stagger: 0.08,
-              ease: "power3.out",
-            },
-            "-=.48",
-          );
+          });
+
+          heroTimeline
+            .set(eyebrow, { x: -24, autoAlpha: 0 }, 0)
+            .set(footerItems, { y: 18, autoAlpha: 0 }, 0)
+            .set(
+              titleLines,
+              {
+                yPercent: 34,
+                scale: 1.16,
+                autoAlpha: 0,
+                clipPath: "inset(0 0 100% 0)",
+              },
+              0,
+            )
+            .to(
+              titleLines,
+              {
+                yPercent: 0,
+                scale: 1,
+                autoAlpha: 1,
+                clipPath: "inset(0 0 0% 0)",
+                duration: 0.58,
+                stagger: 0.08,
+                ease: "power4.out",
+              },
+              0.08,
+            )
+            .to(
+              eyebrow,
+              { x: 0, autoAlpha: 1, duration: 0.22, ease: "power3.out" },
+              0.48,
+            )
+            .to(
+              footerItems,
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.26,
+                stagger: 0.06,
+                ease: "power3.out",
+              },
+              0.6,
+            );
+        }
       }
 
       const headingSelector = [
@@ -151,8 +262,6 @@ export default function SiteMotion() {
         ".categoryHeader h1",
         ".videoArchiveReact > header h2",
       ].join(",");
-
-      const desktopPinned = matchMedia("(min-width: 900px)").matches;
 
       gsap.utils.toArray<HTMLElement>(headingSelector).forEach((heading, headingIndex) => {
         if (!heading.dataset.motionLines) {

@@ -182,7 +182,7 @@ export default function ShinhanCaseStudy() {
           <h1 data-disintegrate>
             THE FILM,
             <br />
-            DECONSTRUCTED.
+            <span>DECONSTRUCTED.</span>
           </h1>
           <p>완성본에서 제작의 가능성을 역으로 읽어내다.</p>
         </div>
@@ -191,9 +191,7 @@ export default function ShinhanCaseStudy() {
       <aside className="caseStudyNotice">
         <strong>PROCESS RECONSTRUCTION / SAMPLE</strong>
         <p>
-          이 페이지는 완성 영상을 바탕으로 Production P가 재구성한 제작 과정
-          예시입니다. 실제 프로젝트의 원본 프롬프트나 확정된 제작 기록을
-          공개하는 페이지가 아닙니다.
+          완성 영상을 바탕으로 재구성한 제작 과정 예시입니다.
         </p>
       </aside>
 

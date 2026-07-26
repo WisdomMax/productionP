@@ -3,19 +3,47 @@ import TemporalCursor from "@/components/TemporalCursor";
 import SiteMotion from "@/components/SiteMotion";
 import "./globals.css";
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://productionp.pages.dev";
+const socialTitle = "Production P — AI 영상제작 회사";
+const socialDescription =
+  "AI 광고, 브랜드 필름, 영화와 콘텐츠를 기획하고 제작하는 서울의 AI 영상 제작 스튜디오.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://productionp.com"),
-  title: "Production P — AI Film Studio",
-  description:
-    "프로덕션P는 AI 기술을 활용해 광고, 브랜드 필름, 제품 영상, 영화와 콘텐츠를 기획·제작하는 AI 영상 제작 스튜디오입니다.",
+  metadataBase: new URL(siteUrl),
+  applicationName: "Production P",
+  title: socialTitle,
+  description: socialDescription,
+  keywords: [
+    "AI 영상제작",
+    "AI 광고제작",
+    "AI 영상 제작 회사",
+    "브랜드 필름",
+    "Production P",
+    "프로덕션P",
+  ],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Production P — AI Film Studio",
-    description: "상상을, 움직이다.",
-    url: "https://productionp.com",
+    title: socialTitle,
+    description: socialDescription,
+    url: siteUrl,
     siteName: "Production P",
     locale: "ko_KR",
     type: "website",
+    images: [
+      {
+        url: "/og/production-p-social.png",
+        width: 1200,
+        height: 630,
+        alt: "Production P — AI 영상제작 회사",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: socialTitle,
+    description: socialDescription,
+    images: ["/og/production-p-social.png"],
   },
 };
 
@@ -24,7 +52,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: "Production P",
-    url: "https://productionp.com",
+    url: siteUrl,
     email: "contact@productionp.com",
     telephone: "+82-10-6515-4600",
     address: {

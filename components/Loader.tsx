@@ -1,20 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 let loaderHasPlayedInThisDocument = false;
 
 export default function Loader() {
-  const [shouldPlay] = useState(() => {
-    const play = !loaderHasPlayedInThisDocument;
-    loaderHasPlayedInThisDocument = true;
-    return play;
-  });
-  const [frameNumber, setFrameNumber] = useState(shouldPlay ? 0 : 240);
-  const [done, setDone] = useState(!shouldPlay);
+  // Keep the server render and the browser's first render identical. Deciding
+  // from a module variable during render made repeat requests hydrate against
+  // different markup.
+  const playDecision = useRef<boolean | null>(null);
+  const [shouldPlay, setShouldPlay] = useState(true);
+  const [frameNumber, setFrameNumber] = useState(0);
+  const [done, setDone] = useState(false);
 
   useEffect(() => {
-    if (!shouldPlay) return;
+    if (playDecision.current === null) {
+      playDecision.current = !loaderHasPlayedInThisDocument;
+      loaderHasPlayedInThisDocument = true;
+    }
+
+    if (!playDecision.current) {
+      setShouldPlay(false);
+      return;
+    }
 
     const startedAt = performance.now();
     let animationFrame = 0;
@@ -39,7 +47,7 @@ export default function Loader() {
       clearTimeout(finishTimer);
       clearTimeout(safetyTimer);
     };
-  }, [shouldPlay]);
+  }, []);
 
   if (!shouldPlay) return null;
 
