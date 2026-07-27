@@ -258,7 +258,7 @@ main{position:relative;z-index:2}
 }
 .featuredMotionStage{
   position:relative;
-  height:320svh;
+  height:350svh;
   background:#090a0a;
 }
 .featuredMotionScene{
@@ -367,7 +367,7 @@ main{position:relative;z-index:2}
   .featuredTypeRail>div{animation:none}
 }
 @media(max-width:760px){
-  .featuredMotionStage{height:175svh}
+  .featuredMotionStage{height:205svh}
   .featuredMotionScene{
     position:sticky;
     top:0;
@@ -427,7 +427,7 @@ main{position:relative;z-index:2}
 /* Awards navigation belongs below the horizontal reel, not beside it. */
 .awardsIntroStage{
   position:relative;
-  height:220svh;
+  height:255svh;
   background:var(--signal);
 }
 .awardsShowcaseReact{overflow:visible;padding-top:0}
@@ -521,7 +521,7 @@ main{position:relative;z-index:2}
 .videoArchiveCard.is-portrait .videoArchiveMedia video,
 .categoryCard.is-portrait video{object-fit:cover}
 @media(max-width:760px){
-  .awardsIntroStage{height:205svh}
+  .awardsIntroStage{height:240svh}
   .awardsIntroScene{padding:70px 16px 44px}
   .awardsIntroScene>b{right:16px;bottom:28px}
   .awardsShowcaseFooter{padding-inline:16px}
@@ -1282,7 +1282,7 @@ img,video{max-width:100%}
   padding:9vh 0;
   background:#090a0a;
 }
-.experimentStage{position:relative;height:230svh;background:#090a0a}
+.experimentStage{position:relative;height:270svh;background:#090a0a}
 .motionArchiveHeader small{
   grid-column:1/-1;
   font:600 11px/1.2 "Pretendard Variable",sans-serif;
@@ -1408,7 +1408,7 @@ img,video{max-width:100%}
 }
 @media(max-width:760px){
   .reelReact{padding:4vh 16px 8vh}
-  .experimentStage{height:215svh}
+  .experimentStage{height:250svh}
   .motionArchiveHeader[data-experiment-scene]{
     height:100svh;
     min-height:100svh;
@@ -1999,11 +1999,11 @@ img,video{max-width:100%}
   isolation:isolate;
   background:#090a0a;
 }
-.motionPinStage.is-manifest{height:225svh;background:var(--paper)}
-.motionPinStage.is-work{height:250svh}
-.motionPinStage.is-lab{height:215svh;background:#111}
-.motionPinStage.is-journal{height:275svh;background:var(--paper)}
-.motionPinStage.is-contact{height:245svh;background:#090a0a}
+.motionPinStage.is-manifest{height:260svh;background:var(--paper)}
+.motionPinStage.is-work{height:290svh}
+.motionPinStage.is-lab{height:250svh;background:#111}
+.motionPinStage.is-journal{height:320svh;background:var(--paper)}
+.motionPinStage.is-contact{height:285svh;background:#090a0a}
 .motionPinStage>[data-pin-scene]{
   position:sticky;
   top:0;
@@ -2024,16 +2024,16 @@ img,video{max-width:100%}
   aspect-ratio:3/4;
 }
 @media(max-width:899px){
-  .motionPinStage.is-manifest{height:215svh}
-  .motionPinStage.is-work{height:230svh}
-  .motionPinStage.is-lab{height:205svh}
-  .motionPinStage.is-journal{height:250svh}
-  .motionPinStage.is-contact{height:225svh}
+  .motionPinStage.is-manifest{height:250svh}
+  .motionPinStage.is-work{height:270svh}
+  .motionPinStage.is-lab{height:240svh}
+  .motionPinStage.is-journal{height:290svh}
+  .motionPinStage.is-contact{height:260svh}
 }
 
 .caseTeaserStage{
   position:relative;
-  height:235svh;
+  height:275svh;
   background:#060707;
 }
 .caseTeaserReact{
@@ -2640,7 +2640,7 @@ img,video{max-width:100%}
   .heroReactFooter b{max-width:110px;padding-left:0;text-align:right;line-height:1.45}
   .heroReactFooter b:before{display:none}
   .sceneCounter{display:none}
-  .caseTeaserStage{height:205svh}
+  .caseTeaserStage{height:240svh}
   .caseTeaserReact{min-height:100svh}
   .caseTeaserContent{min-height:90svh}
   .caseTeaserContent{padding:72px 16px 34px}

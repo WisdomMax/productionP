@@ -110,6 +110,7 @@ export default function SiteMotion() {
     const context = gsap.context(() => {
       const desktopPinned = matchMedia("(min-width: 900px)").matches;
       const mobileSelectedMotion = matchMedia("(max-width: 760px)").matches;
+      const titleScrub = desktopPinned ? 1.5 : 1.3;
       const hero = document.querySelector<HTMLElement>(".heroReact");
 
       if (hero) {
@@ -131,9 +132,9 @@ export default function SiteMotion() {
             scrollTrigger: {
               trigger: hero,
               start: "top top",
-              end: () => `+=${Math.min(window.innerHeight * 1.28, 1180)}`,
+              end: () => `+=${Math.min(window.innerHeight * 1.5, 1380)}`,
               pin: true,
-              scrub: 0.68,
+              scrub: titleScrub,
               anticipatePin: 1,
               invalidateOnRefresh: true,
               refreshPriority: 1000,
@@ -201,7 +202,7 @@ export default function SiteMotion() {
               {
                 backgroundPosition: "-120% 50%",
                 filter: "drop-shadow(0 0 12px rgba(175,39,17,.3))",
-                duration: 0.3,
+                duration: 0.42,
                 ease: "none",
               },
               0.66,
@@ -217,9 +218,9 @@ export default function SiteMotion() {
             scrollTrigger: {
               trigger: hero,
               start: "top top",
-              end: () => `+=${Math.min(window.innerHeight * 0.88, 760)}`,
+              end: () => `+=${Math.min(window.innerHeight * 1.05, 900)}`,
               pin: true,
-              scrub: 0.66,
+              scrub: titleScrub,
               anticipatePin: 1,
               invalidateOnRefresh: true,
               refreshPriority: 1000,
@@ -281,7 +282,7 @@ export default function SiteMotion() {
               {
                 backgroundPosition: "-120% 50%",
                 filter: "drop-shadow(0 0 9px rgba(175,39,17,.28))",
-                duration: 0.26,
+                duration: 0.38,
                 ease: "none",
               },
               0.62,
@@ -369,8 +370,8 @@ export default function SiteMotion() {
               scrollTrigger: {
                 trigger: heading,
                 start: "top 94%",
-                end: "bottom 28%",
-                scrub: 0.65,
+                end: "bottom 8%",
+                scrub: titleScrub,
               },
             },
           );
@@ -408,7 +409,7 @@ export default function SiteMotion() {
             trigger: experimentStage ?? experimentScene,
             start: "top top",
             end: "bottom bottom",
-            scrub: desktopPinned ? 0.82 : 0.72,
+            scrub: titleScrub,
             invalidateOnRefresh: true,
             refreshPriority: 100,
           },
@@ -457,7 +458,7 @@ export default function SiteMotion() {
             experimentLines,
             {
               backgroundPosition: "-135% 50%",
-              duration: 0.28,
+              duration: 0.44,
               ease: "none",
             },
             0.7,
@@ -498,7 +499,7 @@ export default function SiteMotion() {
                 trigger: scene.parentElement ?? scene,
                 start: "top top",
                 end: "bottom bottom",
-                scrub: 0.72,
+                scrub: titleScrub,
                 invalidateOnRefresh: true,
                 refreshPriority: sceneIndex === 0 ? 90 : 50 - sceneIndex * 10,
               },
@@ -534,7 +535,7 @@ export default function SiteMotion() {
                 lines,
                 {
                   backgroundPosition: "-135% 50%",
-                  duration: 0.38,
+                  duration: 0.52,
                   ease: "none",
                 },
                 entranceAt + 0.36,
@@ -580,7 +581,7 @@ export default function SiteMotion() {
                 trigger: scene.parentElement ?? scene,
                 start: "top top",
                 end: "bottom bottom",
-                scrub: 0.7,
+                scrub: titleScrub,
                 invalidateOnRefresh: true,
                 refreshPriority: sceneIndex === 0 ? 90 : 50 - sceneIndex * 10,
               },
@@ -620,7 +621,7 @@ export default function SiteMotion() {
                 {
                   backgroundPosition: "-135% 50%",
                   filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
-                  duration: 0.38,
+                  duration: 0.52,
                   ease: "none",
                 },
                 entranceAt + 0.42,
@@ -659,7 +660,7 @@ export default function SiteMotion() {
             trigger: manifestStage,
             start: "top top",
             end: "bottom bottom",
-            scrub: desktopPinned ? 0.82 : 0.72,
+            scrub: titleScrub,
             invalidateOnRefresh: true,
             refreshPriority: 95,
           },
@@ -675,7 +676,7 @@ export default function SiteMotion() {
               rotate: 0,
               backgroundPosition: "38% 50%",
               stagger: 0.16,
-              duration: 0.34,
+              duration: 0.5,
               ease: "power4.out",
             },
             0.22,
@@ -743,7 +744,7 @@ export default function SiteMotion() {
             trigger: workScene.parentElement ?? workScene,
             start: "top top",
             end: "bottom bottom",
-            scrub: desktopPinned ? 0.82 : 0.72,
+            scrub: titleScrub,
             invalidateOnRefresh: true,
             refreshPriority: 80,
           },
@@ -809,7 +810,7 @@ export default function SiteMotion() {
             workLines,
             {
               backgroundPosition: "-135% 50%",
-              duration: 0.22,
+              duration: 0.4,
               ease: "none",
             },
             0.96,
@@ -847,7 +848,7 @@ export default function SiteMotion() {
             trigger: selectedMotionStage,
             start: "top top",
             end: "bottom bottom",
-            scrub: 0.55,
+            scrub: titleScrub,
             invalidateOnRefresh: true,
           },
         });
@@ -926,7 +927,7 @@ export default function SiteMotion() {
             trigger: selectedMotionStage,
             start: "top top",
             end: "bottom bottom",
-            scrub: desktopPinned ? 0.82 : 0.72,
+            scrub: titleScrub,
             invalidateOnRefresh: true,
           },
         });
@@ -1045,7 +1046,7 @@ export default function SiteMotion() {
             trigger: awardsIntroStage,
             start: "top top",
             end: "bottom bottom",
-            scrub: desktopPinned ? 0.82 : 0.72,
+            scrub: titleScrub,
             invalidateOnRefresh: true,
           },
         })
@@ -1082,7 +1083,7 @@ export default function SiteMotion() {
             awardsTitle,
             {
               backgroundPosition: "-120% 50%",
-              duration: 0.34,
+              duration: 0.5,
               ease: "none",
             },
             0.76,
@@ -1120,7 +1121,7 @@ export default function SiteMotion() {
             trigger: caseTeaserStage,
             start: "top top",
             end: "bottom bottom",
-            scrub: desktopPinned ? 0.72 : 0.7,
+            scrub: titleScrub,
             invalidateOnRefresh: true,
           },
         });
@@ -1160,7 +1161,7 @@ export default function SiteMotion() {
             {
               backgroundPosition: "-135% 50%",
               filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
-              duration: 0.38,
+              duration: 0.52,
               ease: "none",
             },
             0.68,
