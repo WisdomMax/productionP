@@ -109,6 +109,7 @@ export default function SiteMotion() {
 
     const context = gsap.context(() => {
       const desktopPinned = matchMedia("(min-width: 900px)").matches;
+      const mobileSelectedMotion = matchMedia("(max-width: 760px)").matches;
       const hero = document.querySelector<HTMLElement>(".heroReact");
 
       if (hero) {
@@ -822,7 +823,70 @@ export default function SiteMotion() {
       const selectedMotionScene = document.querySelector<HTMLElement>(
         "[data-selected-motion-scene]",
       );
-      if (selectedMotionStage && selectedMotionScene) {
+      if (
+        selectedMotionStage &&
+        selectedMotionScene &&
+        mobileSelectedMotion
+      ) {
+        const mobileSelectedWords =
+          selectedMotionScene.querySelectorAll<HTMLElement>(".featuredTypeRail span");
+        const mobileSelectedArrows =
+          selectedMotionScene.querySelectorAll<HTMLElement>(".featuredTypeRail i");
+
+        gsap.set(mobileSelectedWords, {
+          backgroundPosition: "145% 50%",
+          filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
+        });
+        gsap.set(mobileSelectedArrows, {
+          color: "#f1efe8",
+          rotate: -14,
+        });
+
+        const mobileSelectedTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: selectedMotionStage,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.55,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        mobileSelectedTimeline
+          .to(
+            mobileSelectedWords,
+            {
+              backgroundPosition: "-145% 50%",
+              filter: "drop-shadow(0 0 18px rgba(175,39,17,.28))",
+              duration: 0.78,
+              ease: "none",
+            },
+            0,
+          )
+          .to(
+            mobileSelectedArrows,
+            {
+              color: "#d43a22",
+              rotate: 0,
+              duration: 0.34,
+              ease: "power2.out",
+            },
+            0.18,
+          )
+          .to(
+            mobileSelectedWords,
+            {
+              filter: "drop-shadow(0 0 0 rgba(175,39,17,0))",
+              duration: 0.22,
+            },
+            0.78,
+          );
+      }
+      if (
+        selectedMotionStage &&
+        selectedMotionScene &&
+        !mobileSelectedMotion
+      ) {
         const selectedLabel =
           selectedMotionScene.querySelector<HTMLElement>("header small");
         const selectedRail =

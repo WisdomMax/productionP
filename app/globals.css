@@ -367,8 +367,15 @@ main{position:relative;z-index:2}
   .featuredTypeRail>div{animation:none}
 }
 @media(max-width:760px){
-  .featuredMotionStage{height:280svh}
-  .featuredMotionScene{min-height:100svh;padding:64px 0 24px}
+  .featuredMotionStage{height:175svh}
+  .featuredMotionScene{
+    position:sticky;
+    top:0;
+    height:100svh;
+    min-height:100svh;
+    padding:48px 0 12px;
+    overflow:hidden;
+  }
   .featuredWorksReact header{padding-inline:16px;display:block}
   .featuredIntro{margin-top:28px}
   .featuredTypeRail span{padding-left:16px;font-size:clamp(58px,18vw,82px)}
@@ -379,17 +386,18 @@ main{position:relative;z-index:2}
 
 /* Mobile selected motion — show the six works at once instead of sliding them. */
 @media(max-width:760px){
-  .featuredMotionScene{padding:58px 0 18px}
-  .featuredWorksReact header{margin-bottom:14px}
-  .featuredTypeRail{margin-bottom:12px}
+  .featuredMotionScene{padding:48px 0 12px}
+  .featuredWorksReact header{margin-bottom:10px}
+  .featuredTypeRail{margin-bottom:8px}
+  .featuredTypeRail>div{animation-duration:12s}
   .featuredTypeRail span{font-size:clamp(46px,14vw,60px)}
   .featuredWorksToolbar{
-    margin-bottom:12px;
-    padding-bottom:10px;
+    margin-bottom:8px;
+    padding-bottom:8px;
   }
   .featuredWorksViewport{
     overflow:visible;
-    margin-top:8px;
+    margin-top:6px;
   }
   .featuredWorksViewport .featuredWorksGrid{
     display:grid;
