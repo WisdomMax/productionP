@@ -12,7 +12,10 @@
     "width": 1920,
     "height": 1080,
     "duration": 15,
-    "title": "BITE INTO YOUTH"
+    "title": "BITE INTO YOUTH",
+    "industries": [
+      "food-hospitality"
+    ]
   },
   {
     "id": "2728a009c32e",
@@ -27,7 +30,10 @@
     "width": 1920,
     "height": 1080,
     "duration": 15,
-    "title": "SCENT IN MOTION"
+    "title": "SCENT IN MOTION",
+    "industries": [
+      "fashion-beauty"
+    ]
   },
   {
     "id": "3fd29b0127d5",
@@ -42,7 +48,10 @@
     "width": 720,
     "height": 1280,
     "duration": 10,
-    "title": "SECOND SKIN"
+    "title": "SECOND SKIN",
+    "industries": [
+      "fashion-beauty"
+    ]
   },
   {
     "id": "963be9be3b34",
@@ -57,7 +66,10 @@
     "width": 1920,
     "height": 1080,
     "duration": 15,
-    "title": "SPACE, REIMAGINED"
+    "title": "SPACE, REIMAGINED",
+    "industries": [
+      "consumer-lifestyle"
+    ]
   },
   {
     "id": "3688fb2808ca",
@@ -72,7 +84,10 @@
     "width": 1920,
     "height": 1080,
     "duration": 15,
-    "title": "TASTE THE SUNSET"
+    "title": "TASTE THE SUNSET",
+    "industries": [
+      "food-hospitality"
+    ]
   },
   {
     "id": "936cf56c5356",
@@ -87,7 +102,10 @@
     "width": 1920,
     "height": 1076,
     "duration": 15,
-    "title": "TRACE OF YOU"
+    "title": "TRACE OF YOU",
+    "industries": [
+      "fashion-beauty"
+    ]
   },
   {
     "id": "136e4b025f7e",
@@ -102,7 +120,10 @@
     "width": 1920,
     "height": 1080,
     "duration": 15,
-    "title": "UNLOCK THE NIGHT"
+    "title": "UNLOCK THE NIGHT",
+    "industries": [
+      "food-hospitality"
+    ]
   },
   {
     "id": "bc55f9637336",
@@ -117,7 +138,10 @@
     "width": 1920,
     "height": 1080,
     "duration": 24,
-    "title": "EXTREME TERRAIN"
+    "title": "EXTREME TERRAIN",
+    "industries": [
+      "mobility-outdoor"
+    ]
   },
   {
     "id": "da3222c5c7fa",
@@ -132,7 +156,10 @@
     "width": 1920,
     "height": 1080,
     "duration": 14,
-    "title": "MEGA MOMENT"
+    "title": "MEGA MOMENT",
+    "industries": [
+      "food-hospitality"
+    ]
   },
   {
     "id": "8435e807a87a",
@@ -147,7 +174,10 @@
     "width": 1920,
     "height": 1080,
     "duration": 57,
-    "title": "SHINHAN BANK"
+    "title": "SHINHAN BANK",
+    "industries": [
+      "finance-corporate"
+    ]
   },
   {
     "id": "93a407234953",
@@ -162,7 +192,10 @@
     "width": 1920,
     "height": 1080,
     "duration": 9,
-    "title": "AFTER HOURS: WONDERLAND"
+    "title": "AFTER HOURS: WONDERLAND",
+    "industries": [
+      "culture-entertainment"
+    ]
   },
   {
     "id": "4108f09a42aa",
@@ -177,7 +210,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 15,
-    "title": "BEYOND THE FRAME"
+    "title": "BEYOND THE FRAME",
+    "industries": []
   },
   {
     "id": "420e47265e27",
@@ -192,7 +226,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 10,
-    "title": "EDIBLE TYPOGRAPHY"
+    "title": "EDIBLE TYPOGRAPHY",
+    "industries": []
   },
   {
     "id": "c72d16fb388b",
@@ -207,7 +242,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 15,
-    "title": "FLUID MACHINE"
+    "title": "FLUID MACHINE",
+    "industries": []
   },
   {
     "id": "2ff7d6b15b15",
@@ -222,7 +258,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 10,
-    "title": "FORM / FUNCTION"
+    "title": "FORM / FUNCTION",
+    "industries": []
   },
   {
     "id": "f00ad68820f4",
@@ -237,7 +274,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 15,
-    "title": "MOLTEN EARTH"
+    "title": "MOLTEN EARTH",
+    "industries": []
   },
   {
     "id": "1dd3afdd7a9d",
@@ -252,7 +290,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 15,
-    "title": "NO SET REQUIRED"
+    "title": "NO SET REQUIRED",
+    "industries": []
   },
   {
     "id": "0b5e10140b70",
@@ -267,7 +306,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 15,
-    "title": "SHIFTING REALITIES"
+    "title": "SHIFTING REALITIES",
+    "industries": []
   },
   {
     "id": "a5e7e6160d82",
@@ -282,7 +322,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 15,
-    "title": "SYNTHETIC TASTE"
+    "title": "SYNTHETIC TASTE",
+    "industries": []
   },
   {
     "id": "10d4a73189e0",
@@ -297,7 +338,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 15,
-    "title": "IRON PULSE"
+    "title": "IRON PULSE",
+    "industries": []
   },
   {
     "id": "7da70973db13",
@@ -312,7 +354,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 62,
-    "title": "P LAB 교육생 출품작 01"
+    "title": "P LAB 교육생 출품작 01",
+    "industries": []
   },
   {
     "id": "ee6d6687c4de",
@@ -327,7 +370,8 @@
     "width": 1080,
     "height": 1080,
     "duration": 90,
-    "title": "P LAB 교육생 출품작 02"
+    "title": "P LAB 교육생 출품작 02",
+    "industries": []
   },
   {
     "id": "a931460344ca",
@@ -342,7 +386,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 29,
-    "title": "P LAB 교육생 출품작 03"
+    "title": "P LAB 교육생 출품작 03",
+    "industries": []
   },
   {
     "id": "15d8283e178b",
@@ -357,7 +402,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 30,
-    "title": "P LAB 교육생 출품작 04"
+    "title": "P LAB 교육생 출품작 04",
+    "industries": []
   },
   {
     "id": "090f822b351a",
@@ -372,7 +418,8 @@
     "width": 1080,
     "height": 1080,
     "duration": 30,
-    "title": "P LAB 교육생 출품작 05"
+    "title": "P LAB 교육생 출품작 05",
+    "industries": []
   },
   {
     "id": "065233fcb7e1",
@@ -387,7 +434,8 @@
     "width": 1080,
     "height": 1080,
     "duration": 84,
-    "title": "P LAB 교육생 출품작 06"
+    "title": "P LAB 교육생 출품작 06",
+    "industries": []
   },
   {
     "id": "b825d0ff3708",
@@ -402,7 +450,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 44,
-    "title": "P LAB 교육생 출품작 07"
+    "title": "P LAB 교육생 출품작 07",
+    "industries": []
   },
   {
     "id": "eef7f72d036c",
@@ -417,7 +466,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 33,
-    "title": "P LAB 교육생 출품작 08"
+    "title": "P LAB 교육생 출품작 08",
+    "industries": []
   },
   {
     "id": "e6d2820d7070",
@@ -432,7 +482,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 56,
-    "title": "P LAB 교육생 출품작 09"
+    "title": "P LAB 교육생 출품작 09",
+    "industries": []
   },
   {
     "id": "21096150847e",
@@ -447,7 +498,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 33,
-    "title": "P LAB 교육생 출품작 10"
+    "title": "P LAB 교육생 출품작 10",
+    "industries": []
   },
   {
     "id": "5576c5c26c7a",
@@ -462,7 +514,8 @@
     "width": 1280,
     "height": 720,
     "duration": 244,
-    "title": "P LAB 교육생 출품작 11"
+    "title": "P LAB 교육생 출품작 11",
+    "industries": []
   },
   {
     "id": "01413e687e8f",
@@ -477,7 +530,8 @@
     "width": 1080,
     "height": 1080,
     "duration": 68,
-    "title": "P LAB 교육생 출품작 12"
+    "title": "P LAB 교육생 출품작 12",
+    "industries": []
   },
   {
     "id": "4699946e033c",
@@ -492,7 +546,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 29,
-    "title": "P LAB 교육생 출품작 13"
+    "title": "P LAB 교육생 출품작 13",
+    "industries": []
   },
   {
     "id": "83ecd4720a39",
@@ -507,7 +562,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 504,
-    "title": "P LAB 교육생 출품작 14"
+    "title": "P LAB 교육생 출품작 14",
+    "industries": []
   },
   {
     "id": "3b80689c6ee2",
@@ -522,7 +578,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 120,
-    "title": "P LAB 교육생 출품작 15"
+    "title": "P LAB 교육생 출품작 15",
+    "industries": []
   },
   {
     "id": "a712b1ed9580",
@@ -537,7 +594,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 181,
-    "title": "P LAB 교육생 출품작 16"
+    "title": "P LAB 교육생 출품작 16",
+    "industries": []
   },
   {
     "id": "62270c1e1796",
@@ -552,7 +610,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 57,
-    "title": "P LAB 교육생 출품작 17"
+    "title": "P LAB 교육생 출품작 17",
+    "industries": []
   },
   {
     "id": "063eb87ab279",
@@ -567,7 +626,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 30,
-    "title": "P LAB 교육생 출품작 18"
+    "title": "P LAB 교육생 출품작 18",
+    "industries": []
   },
   {
     "id": "7dda66a1e2dc",
@@ -582,7 +642,8 @@
     "width": 1080,
     "height": 1080,
     "duration": 30,
-    "title": "부천 국제 판타스틱 영화제"
+    "title": "부천 국제 판타스틱 영화제",
+    "industries": []
   },
   {
     "id": "b97daf44adca",
@@ -597,7 +658,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 167,
-    "title": "상주 AI영상 공모전"
+    "title": "상주 AI영상 공모전",
+    "industries": []
   },
   {
     "id": "9f0621f4be1f",
@@ -612,7 +674,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 60,
-    "title": "전국민AI 경진대회"
+    "title": "전국민AI 경진대회",
+    "industries": []
   },
   {
     "id": "3718efc1d714",
@@ -627,7 +690,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 60,
-    "title": "정선군 AI영상 공모전"
+    "title": "정선군 AI영상 공모전",
+    "industries": []
   },
   {
     "id": "31980fd544be",
@@ -642,7 +706,8 @@
     "width": 1920,
     "height": 1080,
     "duration": 59,
-    "title": "부산철길집 체인점 공모전"
+    "title": "부산철길집 체인점 공모전",
+    "industries": []
   },
   {
     "id": "dd19997c20f6",
@@ -657,6 +722,7 @@
     "width": 1080,
     "height": 1080,
     "duration": 90,
-    "title": "가덕도 신공항 공모전"
+    "title": "가덕도 신공항 공모전",
+    "industries": []
   }
 ]

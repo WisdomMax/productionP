@@ -703,6 +703,232 @@ main{position:relative;z-index:2}
   }
 }
 
+/* NEXT VOICES — one portrait beside a two-row landscape stack. */
+.awardsMagazineSet{
+  flex:0 0 auto;
+  display:grid;
+  grid-template-columns:clamp(300px,22vw,390px) clamp(440px,31vw,550px);
+  gap:clamp(16px,1.5vw,28px);
+  align-items:start;
+}
+.awardsMagazineSet+ .awardsMagazineSet{
+  margin-left:clamp(24px,3vw,56px);
+  padding-left:clamp(28px,4vw,76px);
+  border-left:1px solid rgba(241,239,232,.55);
+}
+.awardsFormatColumn{min-width:0}
+.awardsFormatColumn>header{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:18px;
+  min-height:42px;
+  margin:0 0 16px;
+  padding:0 0 12px;
+  border-bottom:1px solid rgba(241,239,232,.66);
+}
+.awardsFormatColumn>header span{
+  white-space:nowrap;
+  font:800 11px/1 monospace;
+  letter-spacing:.11em;
+}
+.awardsFormatColumn>header strong{
+  white-space:nowrap;
+  font-size:11px;
+  line-height:1;
+  letter-spacing:-.02em;
+}
+.awardsFormatColumn .awardsFormWorks{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.awardsFormatColumn .awardWorkCard,
+.awardsFormatColumn .awardWorkCard.is-square,
+.awardsFormatColumn .awardWorkCard.is-portrait{
+  width:100%;
+  flex:none;
+}
+.awardsFormatColumn.is-vertical .awardWorkMedia{
+  aspect-ratio:9/16;
+}
+.awardsFormatColumn.is-wide .awardWorkMedia{
+  aspect-ratio:16/9;
+}
+.awardsFormatColumn .awardWorkMeta{
+  box-sizing:border-box;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  min-height:58px;
+}
+.awardsFormatColumn .awardWorkMeta strong{
+  min-width:0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.awardsFormatColumn .awardWorkMeta small{
+  white-space:nowrap;
+  flex:none;
+}
+.awardsMagazineSet~.awardsRailMore{
+  align-self:stretch;
+  min-height:0;
+  margin-top:58px;
+  aspect-ratio:auto;
+}
+
+/* Work detail — client-sector discovery before format. */
+.industryExplorer{
+  display:grid;
+  grid-template-columns:minmax(220px,.72fr) 2fr;
+  gap:clamp(32px,5vw,92px);
+  margin:0 0 clamp(30px,5vh,70px);
+  padding:22px 0 26px;
+  border-top:1px solid #3a3a37;
+  border-bottom:1px solid #3a3a37;
+}
+.industryExplorer>div small{
+  color:var(--signal-hot);
+  font:800 10px/1 monospace;
+  letter-spacing:.13em;
+}
+.industryExplorer>div p{
+  max-width:320px;
+  margin:14px 0 0;
+  color:#888882;
+  font-size:12px;
+  line-height:1.55;
+}
+.industryExplorer nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+.industryExplorer button{
+  appearance:none;
+  flex:1 1 220px;
+  min-height:58px;
+  padding:0 16px;
+  border:1px solid #343431;
+  border-radius:0;
+  background:#090a0a;
+  color:#888882;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  cursor:pointer;
+  text-align:left;
+  transition:background-color .24s,color .24s;
+}
+.industryExplorer button span{
+  font:800 10px/1.15 monospace;
+  letter-spacing:.04em;
+}
+.industryExplorer button small{
+  color:inherit;
+  font:9px/1 monospace;
+}
+.industryExplorer button:hover{
+  color:var(--paper);
+}
+.industryExplorer button.is-active{
+  background:var(--signal);
+  color:var(--paper);
+}
+.categoryOrientationGroups{
+  min-height:40vh;
+}
+.categoryCard>div em{
+  grid-column:2/3;
+  margin-top:-5px;
+  color:var(--signal-hot);
+  font:800 8px/1.2 monospace;
+  font-style:normal;
+  letter-spacing:.09em;
+}
+
+@media(max-width:760px){
+  .awardsMagazineSet{
+    grid-template-columns:54vw 72vw;
+    gap:12px;
+  }
+  .awardsMagazineSet+ .awardsMagazineSet{
+    margin-left:18px;
+    padding-left:28px;
+  }
+  .awardsFormatColumn>header{
+    display:block;
+    min-height:38px;
+    margin-bottom:12px;
+    padding-bottom:10px;
+  }
+  .awardsFormatColumn>header span{
+    display:block;
+    font-size:9px;
+  }
+  .awardsFormatColumn>header strong{
+    display:block;
+    margin-top:7px;
+    font-size:8px;
+    opacity:.72;
+  }
+  .awardsFormatColumn .awardsFormWorks{gap:12px}
+  .awardsFormatColumn .awardWorkMeta{
+    min-height:45px;
+    gap:7px;
+    padding-top:9px;
+    padding-bottom:4px;
+  }
+  .awardsFormatColumn .awardWorkMeta strong{
+    font-size:13px;
+  }
+  .awardsFormatColumn .awardWorkMeta small{
+    font-size:7px;
+    letter-spacing:.02em;
+  }
+  .awardsMagazineSet~.awardsRailMore{
+    flex-basis:72vw;
+    margin-top:62px;
+  }
+  .industryExplorer{
+    display:block;
+    margin:8px -16px 12px;
+    padding:18px 0 20px 16px;
+    overflow:hidden;
+  }
+  .industryExplorer>div{
+    padding-right:16px;
+  }
+  .industryExplorer>div p{
+    margin-top:9px;
+    font-size:11px;
+  }
+  .industryExplorer nav{
+    display:flex;
+    flex-wrap:nowrap;
+    gap:7px;
+    margin-top:18px;
+    padding-right:16px;
+    overflow-x:auto;
+    background:transparent;
+    border:0;
+    scrollbar-width:none;
+  }
+  .industryExplorer nav::-webkit-scrollbar{display:none}
+  .industryExplorer button{
+    flex:0 0 auto;
+    min-height:42px;
+    padding:0 13px;
+    border:1px solid #3a3a37;
+  }
+  .industryExplorer button span{
+    font-size:9px;
+    white-space:nowrap;
+  }
+}
+
 /* Project inquiry */
 .contactActions{
   display:grid;

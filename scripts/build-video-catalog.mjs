@@ -16,6 +16,9 @@ const outputPath = join(projectRoot, "data", "video-catalog.json");
 const titleOverrides = JSON.parse(
   readFileSync(join(projectRoot, "data", "video-title-overrides.json"), "utf8"),
 );
+const industryOverrides = JSON.parse(
+  readFileSync(join(projectRoot, "data", "video-industry-overrides.json"), "utf8"),
+);
 
 const categories = {
   "01-commercial": { order: 1, slug: "commercial", label: "광고" },
@@ -164,7 +167,9 @@ const catalog = discovered.map((item) => {
     title = `P LAB 교육생 ${item.status} ${String(awardCounters[item.status]).padStart(2, "0")}`;
   }
   title = titleOverrides[item.fileName] ?? titleOverrides[item.id] ?? title;
-  return { ...item, title };
+  const industries =
+    industryOverrides[item.fileName] ?? industryOverrides[item.id] ?? [];
+  return { ...item, title, industries };
 });
 
 writeFileSync(outputPath, `${JSON.stringify(catalog, null, 2)}\n`);

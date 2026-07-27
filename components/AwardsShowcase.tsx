@@ -54,25 +54,19 @@ export default function AwardsShowcase() {
     () => catalog.filter((item) => item.status === "수상작").slice(0, 6),
     [],
   );
-  const formGroups = useMemo(
-    () => [
-      {
-        key: "vertical",
-        index: "01",
-        label: "VERTICAL FORMAT",
-        detail: "PORTRAIT / 9:16",
-        works: winners.filter((work) => work.orientation === "portrait"),
-      },
-      {
-        key: "wide",
-        index: "02",
-        label: "WIDE FORMAT",
-        detail: "LANDSCAPE / 16:9",
-        works: winners.filter((work) => work.orientation !== "portrait"),
-      },
-    ],
-    [winners],
-  );
+  const editorialSets = useMemo(() => {
+    const verticalWorks = winners.filter(
+      (work) => work.orientation === "portrait",
+    );
+    const wideWorks = winners.filter(
+      (work) => work.orientation !== "portrait",
+    );
+
+    return verticalWorks.map((vertical, index) => ({
+      vertical,
+      wide: wideWorks.slice(index * 2, index * 2 + 2),
+    }));
+  }, [winners]);
   const [selected, setSelected] = useState<AwardWork | null>(null);
 
   useEffect(() => {
@@ -112,14 +106,47 @@ export default function AwardsShowcase() {
             }
           }}
         >
-          {formGroups.map((group) => (
-            <section className={`awardsFormGroup is-${group.key}`} key={group.key}>
-              <header>
-                <span>{group.index} / {group.label}</span>
-                <strong>{group.detail}</strong>
-              </header>
-              <div className="awardsFormWorks">
-                {group.works.map((work) => {
+          {editorialSets.map((set) => (
+            <section className="awardsMagazineSet" key={set.vertical.id}>
+              <div className="awardsFormatColumn is-vertical">
+                <header>
+                  <span>01 / VERTICAL FORMAT</span>
+                  <strong>PORTRAIT / 9:16</strong>
+                </header>
+                <div className="awardsFormWorks">
+                  {[set.vertical].map((work) => {
+                    const winnerIndex = winners.findIndex(
+                      (winner) => winner.id === work.id,
+                    );
+                    return (
+                      <button
+                        className={`awardWorkCard is-${work.orientation}`}
+                        key={work.id}
+                        onClick={() => setSelected(work)}
+                        type="button"
+                      >
+                        <span className="awardWorkMedia">
+                          <AwardPreview work={work} />
+                          <i>PLAY</i>
+                          <b>{String(winnerIndex + 1).padStart(2, "0")}</b>
+                        </span>
+                        <span className="awardWorkMeta">
+                          <strong>{work.title}</strong>
+                          <small>P LAB 교육생 수상작</small>
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="awardsFormatColumn is-wide">
+                <header>
+                  <span>02 / WIDE FORMAT</span>
+                  <strong>LANDSCAPE / 16:9</strong>
+                </header>
+                <div className="awardsFormWorks">
+                  {set.wide.map((work) => {
                   const winnerIndex = winners.findIndex(
                     (winner) => winner.id === work.id,
                   );
@@ -141,7 +168,8 @@ export default function AwardsShowcase() {
                       </span>
                     </button>
                   );
-                })}
+                  })}
+                </div>
               </div>
             </section>
           ))}

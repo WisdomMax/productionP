@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import catalogData from "@/data/video-catalog.json";
-import { mediaUrl } from "@/lib/media-url";
+import WorkPortfolio from "@/components/WorkPortfolio";
 
 type CatalogItem = {
   id: string;
@@ -12,6 +12,7 @@ type CatalogItem = {
   categoryLabel: string;
   orientation: "landscape" | "portrait" | "square";
   duration: number;
+  industries: string[];
 };
 
 const catalog = catalogData as CatalogItem[];
@@ -32,11 +33,6 @@ const categories: Record<string, { catalog: string; label: string; description: 
     description: "내러티브와 영화적 연출을 기반으로 콘텐츠를 제작합니다.",
   },
 };
-const orientationGroups = [
-  { key: "landscape", label: "WIDE FORMAT", ratio: "LANDSCAPE / 16:9" },
-  { key: "portrait", label: "VERTICAL FORMAT", ratio: "PORTRAIT / 9:16" },
-] as const;
-
 export function generateStaticParams() {
   return Object.keys(categories).map((slug) => ({ slug }));
 }
@@ -61,42 +57,7 @@ export default async function WorkPage({
       </header>
 
       {works.length > 0 ? (
-        <div className="categoryOrientationGroups">
-          {orientationGroups.map((group) => {
-            const items = works.filter((work) => work.orientation === group.key);
-            if (items.length === 0) return null;
-            return (
-              <section className={`categoryOrientationGroup is-${group.key}`} key={group.key}>
-                <header>
-                  <h2>{group.label}</h2>
-                  <p>{group.ratio} · {String(items.length).padStart(2, "0")} WORKS</p>
-                </header>
-                <div className="categoryGrid">
-                  {items.map((work, index) => (
-                    <article className={`categoryCard is-${work.orientation}`} key={work.id}>
-                      <video
-                        src={mediaUrl(work.src)}
-                        poster={work.poster}
-                        controls
-                        muted
-                        playsInline
-                        preload="metadata"
-                      />
-                      <div>
-                        <span>{String(index + 1).padStart(2, "0")}</span>
-                        <strong>{work.title}</strong>
-                        <small>
-                          {Math.floor(work.duration / 60)}:
-                          {String(work.duration % 60).padStart(2, "0")}
-                        </small>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </section>
-            );
-          })}
-        </div>
+        <WorkPortfolio works={works} />
       ) : (
         <div className="categoryEmpty">
           <strong>COMING SOON.</strong>
