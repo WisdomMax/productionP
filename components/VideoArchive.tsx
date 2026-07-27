@@ -11,6 +11,8 @@ type VideoItem = {
   title: string;
   category: string;
   categoryLabel: string;
+  categories: string[];
+  categoryLabels: string[];
   status: string | null;
   orientation: "landscape" | "portrait" | "square";
   width: number;
@@ -101,7 +103,12 @@ export default function VideoArchive() {
     if (status === "출품작" || status === "수상작") setActiveStatus(status);
   }, []);
   const categories = useMemo(() => {
-    const labels = new Map(catalog.map((item) => [item.category, item.categoryLabel]));
+    const labels = new Map<string, string>();
+    catalog.forEach((item) => {
+      item.categories.forEach((category, index) => {
+        labels.set(category, item.categoryLabels[index]);
+      });
+    });
     return categoryOrder
       .filter((key) => key === "all" || labels.has(key))
       .map((key) => ({ key, label: key === "all" ? "전체" : labels.get(key)! }));
@@ -111,7 +118,7 @@ export default function VideoArchive() {
       ? catalog.filter((item) => !activeStatus || item.status === activeStatus)
       : catalog.filter(
           (item) =>
-            item.category === activeCategory &&
+            item.categories.includes(activeCategory) &&
             (!activeStatus || item.status === activeStatus),
         );
 

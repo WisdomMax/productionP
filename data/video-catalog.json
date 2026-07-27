@@ -7,6 +7,12 @@
     "category": "commercial",
     "categoryLabel": "광고",
     "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -25,6 +31,12 @@
     "category": "commercial",
     "categoryLabel": "광고",
     "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -43,6 +55,12 @@
     "category": "commercial",
     "categoryLabel": "광고",
     "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
     "status": null,
     "orientation": "portrait",
     "width": 720,
@@ -61,6 +79,12 @@
     "category": "commercial",
     "categoryLabel": "광고",
     "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -79,6 +103,12 @@
     "category": "commercial",
     "categoryLabel": "광고",
     "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -97,6 +127,12 @@
     "category": "commercial",
     "categoryLabel": "광고",
     "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -115,6 +151,12 @@
     "category": "commercial",
     "categoryLabel": "광고",
     "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -133,6 +175,12 @@
     "category": "brand-film",
     "categoryLabel": "브랜드 필름",
     "categoryOrder": 2,
+    "categories": [
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "브랜드 필름"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -151,6 +199,14 @@
     "category": "brand-film",
     "categoryLabel": "브랜드 필름",
     "categoryOrder": 2,
+    "categories": [
+      "commercial",
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "광고",
+      "브랜드 필름"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -169,6 +225,12 @@
     "category": "brand-film",
     "categoryLabel": "브랜드 필름",
     "categoryOrder": 2,
+    "categories": [
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "브랜드 필름"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -187,6 +249,12 @@
     "category": "film-content",
     "categoryLabel": "필름 · 콘텐츠",
     "categoryOrder": 4,
+    "categories": [
+      "film-content"
+    ],
+    "categoryLabels": [
+      "필름 · 콘텐츠"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -205,10 +273,16 @@
     "category": "film-content",
     "categoryLabel": "필름 · 콘텐츠",
     "categoryOrder": 4,
+    "categories": [
+      "film-content"
+    ],
+    "categoryLabels": [
+      "필름 · 콘텐츠"
+    ],
     "status": null,
     "orientation": "landscape",
-    "width": 4096,
-    "height": 2304,
+    "width": 1920,
+    "height": 1080,
     "duration": 10,
     "title": "ECHOES OF THE SEVENTIES",
     "industries": [
@@ -223,6 +297,12 @@
     "category": "p-lab",
     "categoryLabel": "P LAB",
     "categoryOrder": 5,
+    "categories": [
+      "p-lab"
+    ],
+    "categoryLabels": [
+      "P LAB"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -239,6 +319,12 @@
     "category": "p-lab",
     "categoryLabel": "P LAB",
     "categoryOrder": 5,
+    "categories": [
+      "p-lab"
+    ],
+    "categoryLabels": [
+      "P LAB"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -255,6 +341,12 @@
     "category": "p-lab",
     "categoryLabel": "P LAB",
     "categoryOrder": 5,
+    "categories": [
+      "p-lab"
+    ],
+    "categoryLabels": [
+      "P LAB"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -271,6 +363,12 @@
     "category": "p-lab",
     "categoryLabel": "P LAB",
     "categoryOrder": 5,
+    "categories": [
+      "p-lab"
+    ],
+    "categoryLabels": [
+      "P LAB"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -287,6 +385,12 @@
     "category": "p-lab",
     "categoryLabel": "P LAB",
     "categoryOrder": 5,
+    "categories": [
+      "p-lab"
+    ],
+    "categoryLabels": [
+      "P LAB"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -303,6 +407,12 @@
     "category": "p-lab",
     "categoryLabel": "P LAB",
     "categoryOrder": 5,
+    "categories": [
+      "p-lab"
+    ],
+    "categoryLabels": [
+      "P LAB"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -319,6 +429,12 @@
     "category": "p-lab",
     "categoryLabel": "P LAB",
     "categoryOrder": 5,
+    "categories": [
+      "p-lab"
+    ],
+    "categoryLabels": [
+      "P LAB"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -335,6 +451,12 @@
     "category": "p-lab",
     "categoryLabel": "P LAB",
     "categoryOrder": 5,
+    "categories": [
+      "p-lab"
+    ],
+    "categoryLabels": [
+      "P LAB"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -351,10 +473,16 @@
     "category": "animation",
     "categoryLabel": "애니메이션",
     "categoryOrder": 6,
+    "categories": [
+      "animation"
+    ],
+    "categoryLabels": [
+      "애니메이션"
+    ],
     "status": null,
     "orientation": "landscape",
-    "width": 4096,
-    "height": 2304,
+    "width": 1920,
+    "height": 1080,
     "duration": 16,
     "title": "FELINE SPIRIT AWAKENING",
     "industries": [
@@ -369,6 +497,12 @@
     "category": "animation",
     "categoryLabel": "애니메이션",
     "categoryOrder": 6,
+    "categories": [
+      "animation"
+    ],
+    "categoryLabels": [
+      "애니메이션"
+    ],
     "status": null,
     "orientation": "landscape",
     "width": 1920,
@@ -385,6 +519,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "landscape",
     "width": 1920,
@@ -401,6 +541,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "portrait",
     "width": 1080,
@@ -417,6 +563,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "landscape",
     "width": 1920,
@@ -433,6 +585,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "landscape",
     "width": 1920,
@@ -449,6 +607,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "portrait",
     "width": 1080,
@@ -465,6 +629,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "portrait",
     "width": 1080,
@@ -481,6 +651,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "landscape",
     "width": 1920,
@@ -497,6 +673,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "landscape",
     "width": 1920,
@@ -513,6 +695,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "landscape",
     "width": 1920,
@@ -529,6 +717,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "landscape",
     "width": 1920,
@@ -545,6 +739,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "landscape",
     "width": 1280,
@@ -561,6 +761,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "portrait",
     "width": 1080,
@@ -577,6 +783,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "landscape",
     "width": 1920,
@@ -593,6 +805,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "landscape",
     "width": 1920,
@@ -609,6 +827,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "landscape",
     "width": 1920,
@@ -625,6 +849,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "landscape",
     "width": 1920,
@@ -641,6 +871,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "landscape",
     "width": 1920,
@@ -657,6 +893,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "출품작",
     "orientation": "landscape",
     "width": 1920,
@@ -673,6 +915,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "수상작",
     "orientation": "portrait",
     "width": 1080,
@@ -689,6 +937,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "수상작",
     "orientation": "landscape",
     "width": 1920,
@@ -705,6 +959,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "수상작",
     "orientation": "landscape",
     "width": 1920,
@@ -721,6 +981,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "수상작",
     "orientation": "landscape",
     "width": 1920,
@@ -737,6 +1003,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "수상작",
     "orientation": "landscape",
     "width": 1920,
@@ -753,6 +1025,12 @@
     "category": "awards",
     "categoryLabel": "교육생 공모전",
     "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
     "status": "수상작",
     "orientation": "portrait",
     "width": 1080,

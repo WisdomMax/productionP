@@ -8,6 +8,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve out",
+    "r2:upload": "bash scripts/upload-r2-videos.sh",
     "pages:build": "node scripts/build-pages.mjs",
     "pages:deploy": "node scripts/build-pages.mjs && wrangler pages deploy out"
   },

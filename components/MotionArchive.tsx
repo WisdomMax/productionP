@@ -8,6 +8,7 @@ type MotionWork = {
   poster: string;
   title: string;
   category: string;
+  categories: string[];
 };
 
 const catalog = catalogData as MotionWork[];
@@ -19,7 +20,7 @@ const featuredLabTitles = [
 const selections = featuredLabTitles
   .map((title) =>
     catalog.find(
-      (item) => item.category === "p-lab" && item.title === title,
+      (item) => item.categories.includes("p-lab") && item.title === title,
     ),
   )
   .filter((item): item is MotionWork => Boolean(item));

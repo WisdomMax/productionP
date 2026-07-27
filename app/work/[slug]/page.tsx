@@ -10,6 +10,7 @@ type CatalogItem = {
   title: string;
   category: string;
   categoryLabel: string;
+  categories: string[];
   orientation: "landscape" | "portrait" | "square";
   duration: number;
   industries: string[];
@@ -45,7 +46,7 @@ export default async function WorkPage({
   const { slug } = await params;
   const category = categories[slug];
   if (!category) notFound();
-  const works = catalog.filter((item) => item.category === category.catalog);
+  const works = catalog.filter((item) => item.categories.includes(category.catalog));
 
   return (
     <main className="categoryPage">

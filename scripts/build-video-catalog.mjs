@@ -19,6 +19,9 @@ const titleOverrides = JSON.parse(
 const industryOverrides = JSON.parse(
   readFileSync(join(projectRoot, "data", "video-industry-overrides.json"), "utf8"),
 );
+const categoryOverrides = JSON.parse(
+  readFileSync(join(projectRoot, "data", "video-category-overrides.json"), "utf8"),
+);
 
 const categories = {
   "01-commercial": { order: 1, slug: "commercial", label: "광고" },
@@ -29,6 +32,9 @@ const categories = {
   "06-animation": { order: 6, slug: "animation", label: "애니메이션" },
   "07-awards": { order: 7, slug: "awards", label: "교육생 공모전" },
 };
+const categoriesBySlug = new Map(
+  Object.values(categories).map((category) => [category.slug, category]),
+);
 
 function walk(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -118,6 +124,17 @@ const discovered = walk(videoRoot)
     const parts = relative(videoRoot, filePath).split(sep);
     const category = categories[parts[0]];
     if (!category) return null;
+    const fileName = parts.at(-1);
+    const id = createHash("sha1").update(relativeVideo).digest("hex").slice(0, 12);
+    const assignedCategorySlugs =
+      categoryOverrides[fileName] ?? categoryOverrides[id] ?? [category.slug];
+    const assignedCategories = assignedCategorySlugs.map((slug) => {
+      const assignedCategory = categoriesBySlug.get(slug);
+      if (!assignedCategory) {
+        throw new Error(`Unknown category "${slug}" assigned to ${fileName}`);
+      }
+      return assignedCategory;
+    });
 
     const status =
       parts[0] === "07-awards"
@@ -128,7 +145,6 @@ const discovered = walk(videoRoot)
     const metadata = probe(filePath);
     const ratio = metadata.displayRatio;
     const orientation = ratio <= 1.08 ? "portrait" : "landscape";
-    const id = createHash("sha1").update(relativeVideo).digest("hex").slice(0, 12);
     const posterRelative = join("posters", "auto", `${id}.jpg`);
     createPoster(
       filePath,
@@ -139,12 +155,14 @@ const discovered = walk(videoRoot)
 
     return {
       id,
-      fileName: parts.at(-1),
+      fileName,
       src: publicUrl(join("videos", ...parts)),
       poster: publicUrl(posterRelative),
       category: category.slug,
       categoryLabel: category.label,
       categoryOrder: category.order,
+      categories: assignedCategories.map((assignedCategory) => assignedCategory.slug),
+      categoryLabels: assignedCategories.map((assignedCategory) => assignedCategory.label),
       status,
       orientation,
       width: metadata.width,
