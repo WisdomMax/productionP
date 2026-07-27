@@ -707,9 +707,12 @@ main{position:relative;z-index:2}
 .awardsMagazineSet{
   flex:0 0 auto;
   display:grid;
-  grid-template-columns:clamp(300px,22vw,390px) clamp(440px,31vw,550px);
+  grid-template-columns:
+    clamp(278px,calc(27.84vw + 37px),390px)
+    clamp(380px,44vw,550px);
   gap:clamp(16px,1.5vw,28px);
   align-items:start;
+  scroll-snap-align:start;
 }
 .awardsMagazineSet+ .awardsMagazineSet{
   margin-left:clamp(24px,3vw,56px);
@@ -776,6 +779,41 @@ main{position:relative;z-index:2}
   min-height:0;
   margin-top:58px;
   aspect-ratio:auto;
+}
+
+/* Tablet: preserve the portrait / two-landscape height lock.
+   The desktop clamp minima produce mismatched columns around 768–1180px. */
+@media(min-width:761px) and (max-width:1180px){
+  .awardsRail{
+    --awards-rail-gutter:clamp(24px,4vw,48px);
+  }
+  .awardsMagazineSet{gap:clamp(14px,1.6vw,20px)}
+  .awardsMagazineSet+ .awardsMagazineSet{
+    margin-left:clamp(20px,3vw,36px);
+    padding-left:clamp(24px,3.5vw,42px);
+  }
+  .awardsFormatColumn>header{
+    min-height:40px;
+    margin-bottom:14px;
+    padding-bottom:10px;
+  }
+  .awardsFormatColumn .awardsFormWorks{
+    gap:14px;
+  }
+  .awardsFormatColumn .awardWorkMeta{
+    min-height:52px;
+    padding-top:10px;
+    padding-bottom:3px;
+  }
+  .awardsFormatColumn .awardWorkMeta strong{
+    font-size:clamp(15px,1.8vw,20px);
+  }
+  .awardsFormatColumn .awardWorkMeta small{
+    font-size:8px;
+  }
+  .awardsMagazineSet~.awardsRailMore{
+    margin-top:54px;
+  }
 }
 
 /* Work detail — client-sector discovery before format. */
