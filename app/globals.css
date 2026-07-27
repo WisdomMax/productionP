@@ -377,6 +377,45 @@ main{position:relative;z-index:2}
   .featuredWorksViewport .featuredWorkCard{flex-basis:76vw}
 }
 
+/* Mobile selected motion — show the six works at once instead of sliding them. */
+@media(max-width:760px){
+  .featuredMotionScene{padding:58px 0 18px}
+  .featuredWorksReact header{margin-bottom:14px}
+  .featuredTypeRail{margin-bottom:12px}
+  .featuredTypeRail span{font-size:clamp(46px,14vw,60px)}
+  .featuredWorksToolbar{
+    margin-bottom:12px;
+    padding-bottom:10px;
+  }
+  .featuredWorksViewport{
+    overflow:visible;
+    margin-top:8px;
+  }
+  .featuredWorksViewport .featuredWorksGrid{
+    display:grid;
+    width:100%;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+    padding-inline:16px;
+    transform:none!important;
+  }
+  .featuredWorksViewport .featuredWorkCard{
+    min-width:0;
+    flex:none;
+  }
+  .featuredWorksViewport .featuredWorkMeta{
+    padding:8px 0 4px;
+  }
+  .featuredWorksViewport .featuredWorkMeta strong{
+    font-size:12px;
+    line-height:1.05;
+  }
+  .featuredWorksViewport .featuredWorkMeta small{
+    margin-top:4px;
+    font-size:7px;
+  }
+}
+
 /* Awards navigation belongs below the horizontal reel, not beside it. */
 .awardsIntroStage{
   position:relative;
@@ -1504,7 +1543,7 @@ img,video{max-width:100%}
   .motionArchiveHeader{margin-bottom:36px}
   .featuredWorksReact{padding:0 0 64px}
   .featuredWorksReact header{
-    margin-bottom:34px;
+    margin-bottom:14px;
     padding-bottom:0;
   }
   .featuredWorkMeta{padding-bottom:18px}
@@ -2325,7 +2364,8 @@ img,video{max-width:100%}
   .heroReactFooter b:before{display:none}
   .sceneCounter{display:none}
   .caseTeaserStage{height:205svh}
-  .caseTeaserReact,.caseTeaserContent{min-height:82svh}
+  .caseTeaserReact{min-height:100svh}
+  .caseTeaserContent{min-height:90svh}
   .caseTeaserContent{padding:72px 16px 34px}
   .caseTeaserContent h2{font-size:clamp(50px,15vw,76px)}
   .caseTeaserMeta{grid-template-columns:1fr;margin-top:34px}

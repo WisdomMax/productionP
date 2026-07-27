@@ -938,7 +938,7 @@ export default function SiteMotion() {
           .to(
             selectedWorksTrack,
             {
-              xPercent: desktopPinned ? -49 : -68,
+              xPercent: desktopPinned ? -49 : 0,
               duration: 0.58,
               ease: "none",
             },
