@@ -198,6 +198,24 @@
     ]
   },
   {
+    "id": "ee9c7c402818",
+    "fileName": "echoes-of-the-seventies.mp4",
+    "src": "/videos/04-film-content/echoes-of-the-seventies.mp4",
+    "poster": "/posters/auto/ee9c7c402818.jpg",
+    "category": "film-content",
+    "categoryLabel": "필름 · 콘텐츠",
+    "categoryOrder": 4,
+    "status": null,
+    "orientation": "landscape",
+    "width": 4096,
+    "height": 2304,
+    "duration": 10,
+    "title": "ECHOES OF THE SEVENTIES",
+    "industries": [
+      "culture-entertainment"
+    ]
+  },
+  {
     "id": "4108f09a42aa",
     "fileName": "beyond-the-frame.mp4",
     "src": "/videos/05-p-lab/beyond-the-frame.mp4",
@@ -324,6 +342,24 @@
     "duration": 15,
     "title": "SYNTHETIC TASTE",
     "industries": []
+  },
+  {
+    "id": "c46fd10d4911",
+    "fileName": "feline-spirit-awakening.mp4",
+    "src": "/videos/06-animation/feline-spirit-awakening.mp4",
+    "poster": "/posters/auto/c46fd10d4911.jpg",
+    "category": "animation",
+    "categoryLabel": "애니메이션",
+    "categoryOrder": 6,
+    "status": null,
+    "orientation": "landscape",
+    "width": 4096,
+    "height": 2304,
+    "duration": 16,
+    "title": "FELINE SPIRIT AWAKENING",
+    "industries": [
+      "culture-entertainment"
+    ]
   },
   {
     "id": "10d4a73189e0",
