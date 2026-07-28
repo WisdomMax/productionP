@@ -48,6 +48,150 @@
     ]
   },
   {
+    "id": "e40ffec55a22",
+    "fileName": "earthniq-how-to-use.mp4",
+    "src": "/videos/01-commercial/earthniq-how-to-use.mp4",
+    "poster": "/posters/auto/e40ffec55a22.jpg",
+    "category": "commercial",
+    "categoryLabel": "광고",
+    "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
+    "status": null,
+    "orientation": "portrait",
+    "width": 720,
+    "height": 1080,
+    "duration": 16,
+    "title": "EARTHNIQ: HOW TO USE",
+    "industries": [
+      "fashion-beauty"
+    ]
+  },
+  {
+    "id": "59210cb3a1fb",
+    "fileName": "lipcerin-ritual.mp4",
+    "src": "/videos/01-commercial/lipcerin-ritual.mp4",
+    "poster": "/posters/auto/59210cb3a1fb.jpg",
+    "category": "commercial",
+    "categoryLabel": "광고",
+    "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
+    "status": null,
+    "orientation": "portrait",
+    "width": 720,
+    "height": 1080,
+    "duration": 50,
+    "title": "LIPCERIN RITUAL",
+    "industries": [
+      "fashion-beauty"
+    ]
+  },
+  {
+    "id": "d619a25fe8f3",
+    "fileName": "piella-groove-sofa.mp4",
+    "src": "/videos/01-commercial/piella-groove-sofa.mp4",
+    "poster": "/posters/auto/d619a25fe8f3.jpg",
+    "category": "commercial",
+    "categoryLabel": "광고",
+    "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
+    "status": null,
+    "orientation": "portrait",
+    "width": 1080,
+    "height": 1080,
+    "duration": 16,
+    "title": "PIELLA GROOVE",
+    "industries": [
+      "consumer-lifestyle"
+    ]
+  },
+  {
+    "id": "51b7f21846a6",
+    "fileName": "piella-mono-cube-one.mp4",
+    "src": "/videos/01-commercial/piella-mono-cube-one.mp4",
+    "poster": "/posters/auto/51b7f21846a6.jpg",
+    "category": "commercial",
+    "categoryLabel": "광고",
+    "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
+    "status": null,
+    "orientation": "portrait",
+    "width": 1080,
+    "height": 1080,
+    "duration": 14,
+    "title": "MONO CUBE: ONE",
+    "industries": [
+      "consumer-lifestyle"
+    ]
+  },
+  {
+    "id": "f8686bab0663",
+    "fileName": "piella-mono-cube.mp4",
+    "src": "/videos/01-commercial/piella-mono-cube.mp4",
+    "poster": "/posters/auto/f8686bab0663.jpg",
+    "category": "commercial",
+    "categoryLabel": "광고",
+    "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
+    "status": null,
+    "orientation": "portrait",
+    "width": 1080,
+    "height": 1080,
+    "duration": 17,
+    "title": "PIELLA MONO CUBE",
+    "industries": [
+      "consumer-lifestyle"
+    ]
+  },
+  {
+    "id": "cc30ce104b66",
+    "fileName": "piella-sofa-assembly.mp4",
+    "src": "/videos/01-commercial/piella-sofa-assembly.mp4",
+    "poster": "/posters/auto/cc30ce104b66.jpg",
+    "category": "commercial",
+    "categoryLabel": "광고",
+    "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
+    "status": null,
+    "orientation": "portrait",
+    "width": 720,
+    "height": 1080,
+    "duration": 17,
+    "title": "PIELLA: BUILT FOR LIVING",
+    "industries": [
+      "consumer-lifestyle"
+    ]
+  },
+  {
     "id": "2728a009c32e",
     "fileName": "scent-in-motion.mp4",
     "src": "/videos/01-commercial/scent-in-motion.mp4",
@@ -192,6 +336,30 @@
     ]
   },
   {
+    "id": "3275f690d774",
+    "fileName": "beauty-in-brushstrokes.mp4",
+    "src": "/videos/02-brand-film/beauty-in-brushstrokes.mp4",
+    "poster": "/posters/auto/3275f690d774.jpg",
+    "category": "brand-film",
+    "categoryLabel": "브랜드 필름",
+    "categoryOrder": 2,
+    "categories": [
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "브랜드 필름"
+    ],
+    "status": null,
+    "orientation": "portrait",
+    "width": 720,
+    "height": 1080,
+    "duration": 15,
+    "title": "BEAUTY IN BRUSHSTROKES",
+    "industries": [
+      "fashion-beauty"
+    ]
+  },
+  {
     "id": "bc55f9637336",
     "fileName": "extreme-terrain.mp4",
     "src": "/videos/02-brand-film/extreme-terrain.mp4",
@@ -239,6 +407,282 @@
     "title": "MEGA MOMENT",
     "industries": [
       "food-hospitality"
+    ]
+  },
+  {
+    "id": "1ba64e7a2378",
+    "fileName": "piella-alien-invasion.mp4",
+    "src": "/videos/02-brand-film/piella-alien-invasion.mp4",
+    "poster": "/posters/auto/1ba64e7a2378.jpg",
+    "category": "brand-film",
+    "categoryLabel": "브랜드 필름",
+    "categoryOrder": 2,
+    "categories": [
+      "commercial",
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "광고",
+      "브랜드 필름"
+    ],
+    "status": null,
+    "orientation": "landscape",
+    "width": 1920,
+    "height": 1080,
+    "duration": 23,
+    "title": "ALIEN IN THE LIVING ROOM",
+    "industries": [
+      "consumer-lifestyle"
+    ]
+  },
+  {
+    "id": "5b0df615bc37",
+    "fileName": "piella-beauty-curated.mp4",
+    "src": "/videos/02-brand-film/piella-beauty-curated.mp4",
+    "poster": "/posters/auto/5b0df615bc37.jpg",
+    "category": "brand-film",
+    "categoryLabel": "브랜드 필름",
+    "categoryOrder": 2,
+    "categories": [
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "브랜드 필름"
+    ],
+    "status": null,
+    "orientation": "portrait",
+    "width": 720,
+    "height": 1080,
+    "duration": 15,
+    "title": "PIELLA: BEAUTY CURATED",
+    "industries": [
+      "fashion-beauty"
+    ]
+  },
+  {
+    "id": "423a35d079b0",
+    "fileName": "piella-eight-years-later.mp4",
+    "src": "/videos/02-brand-film/piella-eight-years-later.mp4",
+    "poster": "/posters/auto/423a35d079b0.jpg",
+    "category": "brand-film",
+    "categoryLabel": "브랜드 필름",
+    "categoryOrder": 2,
+    "categories": [
+      "commercial",
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "광고",
+      "브랜드 필름"
+    ],
+    "status": null,
+    "orientation": "portrait",
+    "width": 720,
+    "height": 1080,
+    "duration": 74,
+    "title": "EIGHT YEARS LATER",
+    "industries": [
+      "consumer-lifestyle"
+    ]
+  },
+  {
+    "id": "4130c8dfb785",
+    "fileName": "piella-joseon-expert.mp4",
+    "src": "/videos/02-brand-film/piella-joseon-expert.mp4",
+    "poster": "/posters/auto/4130c8dfb785.jpg",
+    "category": "brand-film",
+    "categoryLabel": "브랜드 필름",
+    "categoryOrder": 2,
+    "categories": [
+      "commercial",
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "광고",
+      "브랜드 필름"
+    ],
+    "status": null,
+    "orientation": "landscape",
+    "width": 1920,
+    "height": 1080,
+    "duration": 119,
+    "title": "THE JOSEON FURNITURE EXPERT",
+    "industries": [
+      "consumer-lifestyle"
+    ]
+  },
+  {
+    "id": "fe168abf3ca9",
+    "fileName": "piella-live-beauty.mp4",
+    "src": "/videos/02-brand-film/piella-live-beauty.mp4",
+    "poster": "/posters/auto/fe168abf3ca9.jpg",
+    "category": "brand-film",
+    "categoryLabel": "브랜드 필름",
+    "categoryOrder": 2,
+    "categories": [
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "브랜드 필름"
+    ],
+    "status": null,
+    "orientation": "portrait",
+    "width": 1080,
+    "height": 1080,
+    "duration": 30,
+    "title": "PIELLA LIVE",
+    "industries": [
+      "fashion-beauty"
+    ]
+  },
+  {
+    "id": "c7e1eae8165d",
+    "fileName": "piella-made-for-living.mp4",
+    "src": "/videos/02-brand-film/piella-made-for-living.mp4",
+    "poster": "/posters/auto/c7e1eae8165d.jpg",
+    "category": "brand-film",
+    "categoryLabel": "브랜드 필름",
+    "categoryOrder": 2,
+    "categories": [
+      "commercial",
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "광고",
+      "브랜드 필름"
+    ],
+    "status": null,
+    "orientation": "landscape",
+    "width": 1920,
+    "height": 1080,
+    "duration": 45,
+    "title": "PIELLA: MADE FOR LIVING",
+    "industries": [
+      "consumer-lifestyle"
+    ]
+  },
+  {
+    "id": "5a5e3926237b",
+    "fileName": "piella-myeongdong-vlog.mp4",
+    "src": "/videos/02-brand-film/piella-myeongdong-vlog.mp4",
+    "poster": "/posters/auto/5a5e3926237b.jpg",
+    "category": "brand-film",
+    "categoryLabel": "브랜드 필름",
+    "categoryOrder": 2,
+    "categories": [
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "브랜드 필름"
+    ],
+    "status": null,
+    "orientation": "portrait",
+    "width": 1080,
+    "height": 1080,
+    "duration": 17,
+    "title": "PIELLA IN MYEONGDONG",
+    "industries": [
+      "fashion-beauty"
+    ]
+  },
+  {
+    "id": "ae4eb7e7d8ae",
+    "fileName": "piella-sofa-buying-guide.mp4",
+    "src": "/videos/02-brand-film/piella-sofa-buying-guide.mp4",
+    "poster": "/posters/auto/ae4eb7e7d8ae.jpg",
+    "category": "brand-film",
+    "categoryLabel": "브랜드 필름",
+    "categoryOrder": 2,
+    "categories": [
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "브랜드 필름"
+    ],
+    "status": null,
+    "orientation": "portrait",
+    "width": 1080,
+    "height": 1080,
+    "duration": 45,
+    "title": "THE SOFA BUYING GUIDE",
+    "industries": [
+      "consumer-lifestyle"
+    ]
+  },
+  {
+    "id": "9c5158ee98f4",
+    "fileName": "piella-sofa-guide.mp4",
+    "src": "/videos/02-brand-film/piella-sofa-guide.mp4",
+    "poster": "/posters/auto/9c5158ee98f4.jpg",
+    "category": "brand-film",
+    "categoryLabel": "브랜드 필름",
+    "categoryOrder": 2,
+    "categories": [
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "브랜드 필름"
+    ],
+    "status": null,
+    "orientation": "landscape",
+    "width": 1920,
+    "height": 1080,
+    "duration": 141,
+    "title": "HOW TO CHOOSE A SOFA",
+    "industries": [
+      "consumer-lifestyle"
+    ]
+  },
+  {
+    "id": "790a59c20411",
+    "fileName": "piella-sofa-parkour.mp4",
+    "src": "/videos/02-brand-film/piella-sofa-parkour.mp4",
+    "poster": "/posters/auto/790a59c20411.jpg",
+    "category": "brand-film",
+    "categoryLabel": "브랜드 필름",
+    "categoryOrder": 2,
+    "categories": [
+      "commercial",
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "광고",
+      "브랜드 필름"
+    ],
+    "status": null,
+    "orientation": "portrait",
+    "width": 1080,
+    "height": 1080,
+    "duration": 16,
+    "title": "SOFA PARKOUR",
+    "industries": [
+      "consumer-lifestyle"
+    ]
+  },
+  {
+    "id": "eef2ca171c46",
+    "fileName": "piella-waterproof-sofa.mp4",
+    "src": "/videos/02-brand-film/piella-waterproof-sofa.mp4",
+    "poster": "/posters/auto/eef2ca171c46.jpg",
+    "category": "brand-film",
+    "categoryLabel": "브랜드 필름",
+    "categoryOrder": 2,
+    "categories": [
+      "commercial",
+      "brand-film"
+    ],
+    "categoryLabels": [
+      "광고",
+      "브랜드 필름"
+    ],
+    "status": null,
+    "orientation": "portrait",
+    "width": 1080,
+    "height": 1080,
+    "duration": 101,
+    "title": "THE WATERPROOF SOFA",
+    "industries": [
+      "consumer-lifestyle"
     ]
   },
   {
