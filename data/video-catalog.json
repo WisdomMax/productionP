@@ -24,6 +24,30 @@
     ]
   },
   {
+    "id": "c10f50beb8a6",
+    "fileName": "chromatic-drive.mp4",
+    "src": "/videos/01-commercial/chromatic-drive.mp4",
+    "poster": "/posters/auto/c10f50beb8a6.jpg",
+    "category": "commercial",
+    "categoryLabel": "광고",
+    "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
+    "status": null,
+    "orientation": "landscape",
+    "width": 1920,
+    "height": 1076,
+    "duration": 10,
+    "title": "CHROMATIC DRIVE",
+    "industries": [
+      "mobility-outdoor"
+    ]
+  },
+  {
     "id": "2728a009c32e",
     "fileName": "scent-in-motion.mp4",
     "src": "/videos/01-commercial/scent-in-motion.mp4",
@@ -266,6 +290,30 @@
     ]
   },
   {
+    "id": "1fe797f2f1f8",
+    "fileName": "city-of-glass.mp4",
+    "src": "/videos/04-film-content/city-of-glass.mp4",
+    "poster": "/posters/auto/1fe797f2f1f8.jpg",
+    "category": "film-content",
+    "categoryLabel": "필름 · 콘텐츠",
+    "categoryOrder": 4,
+    "categories": [
+      "film-content"
+    ],
+    "categoryLabels": [
+      "필름 · 콘텐츠"
+    ],
+    "status": null,
+    "orientation": "landscape",
+    "width": 1920,
+    "height": 1080,
+    "duration": 10,
+    "title": "CITY OF GLASS",
+    "industries": [
+      "culture-entertainment"
+    ]
+  },
+  {
     "id": "ee9c7c402818",
     "fileName": "echoes-of-the-seventies.mp4",
     "src": "/videos/04-film-content/echoes-of-the-seventies.mp4",
@@ -285,6 +333,54 @@
     "height": 1080,
     "duration": 10,
     "title": "ECHOES OF THE SEVENTIES",
+    "industries": [
+      "culture-entertainment"
+    ]
+  },
+  {
+    "id": "ea2b5b455e6d",
+    "fileName": "laser-strike.mp4",
+    "src": "/videos/04-film-content/laser-strike.mp4",
+    "poster": "/posters/auto/ea2b5b455e6d.jpg",
+    "category": "film-content",
+    "categoryLabel": "필름 · 콘텐츠",
+    "categoryOrder": 4,
+    "categories": [
+      "film-content"
+    ],
+    "categoryLabels": [
+      "필름 · 콘텐츠"
+    ],
+    "status": null,
+    "orientation": "landscape",
+    "width": 1920,
+    "height": 1080,
+    "duration": 7,
+    "title": "LASER STRIKE",
+    "industries": [
+      "culture-entertainment"
+    ]
+  },
+  {
+    "id": "5b6203728d76",
+    "fileName": "subway-showdown.mp4",
+    "src": "/videos/04-film-content/subway-showdown.mp4",
+    "poster": "/posters/auto/5b6203728d76.jpg",
+    "category": "film-content",
+    "categoryLabel": "필름 · 콘텐츠",
+    "categoryOrder": 4,
+    "categories": [
+      "film-content"
+    ],
+    "categoryLabels": [
+      "필름 · 콘텐츠"
+    ],
+    "status": null,
+    "orientation": "landscape",
+    "width": 1920,
+    "height": 1080,
+    "duration": 10,
+    "title": "SUBWAY SHOWDOWN",
     "industries": [
       "culture-entertainment"
     ]
