@@ -1074,28 +1074,6 @@
     "industries": []
   },
   {
-    "id": "ee6d6687c4de",
-    "fileName": "plab-submission-02.mp4",
-    "src": "/videos/07-awards/submissions/plab-submission-02.mp4",
-    "poster": "/posters/auto/ee6d6687c4de.jpg",
-    "category": "awards",
-    "categoryLabel": "교육생 공모전",
-    "categoryOrder": 7,
-    "categories": [
-      "awards"
-    ],
-    "categoryLabels": [
-      "교육생 공모전"
-    ],
-    "status": "출품작",
-    "orientation": "portrait",
-    "width": 1080,
-    "height": 1080,
-    "duration": 90,
-    "title": "P LAB 교육생 출품작 02",
-    "industries": []
-  },
-  {
     "id": "a931460344ca",
     "fileName": "plab-submission-03.mp4",
     "src": "/videos/07-awards/submissions/plab-submission-03.mp4",
@@ -1114,7 +1092,7 @@
     "width": 1920,
     "height": 1080,
     "duration": 29,
-    "title": "P LAB 교육생 출품작 03",
+    "title": "P LAB 교육생 출품작 02",
     "industries": []
   },
   {
@@ -1136,7 +1114,7 @@
     "width": 1920,
     "height": 1080,
     "duration": 30,
-    "title": "P LAB 교육생 출품작 04",
+    "title": "P LAB 교육생 출품작 03",
     "industries": []
   },
   {
@@ -1158,7 +1136,7 @@
     "width": 1080,
     "height": 1080,
     "duration": 30,
-    "title": "P LAB 교육생 출품작 05",
+    "title": "P LAB 교육생 출품작 04",
     "industries": []
   },
   {
@@ -1180,7 +1158,7 @@
     "width": 1080,
     "height": 1080,
     "duration": 84,
-    "title": "P LAB 교육생 출품작 06",
+    "title": "P LAB 교육생 출품작 05",
     "industries": []
   },
   {
@@ -1202,7 +1180,7 @@
     "width": 1920,
     "height": 1080,
     "duration": 44,
-    "title": "P LAB 교육생 출품작 07",
+    "title": "P LAB 교육생 출품작 06",
     "industries": []
   },
   {
@@ -1224,7 +1202,7 @@
     "width": 1920,
     "height": 1080,
     "duration": 33,
-    "title": "P LAB 교육생 출품작 08",
+    "title": "P LAB 교육생 출품작 07",
     "industries": []
   },
   {
@@ -1246,7 +1224,7 @@
     "width": 1920,
     "height": 1080,
     "duration": 56,
-    "title": "P LAB 교육생 출품작 09",
+    "title": "P LAB 교육생 출품작 08",
     "industries": []
   },
   {
@@ -1268,7 +1246,7 @@
     "width": 1920,
     "height": 1080,
     "duration": 33,
-    "title": "P LAB 교육생 출품작 10",
+    "title": "P LAB 교육생 출품작 09",
     "industries": []
   },
   {
@@ -1290,7 +1268,7 @@
     "width": 1280,
     "height": 720,
     "duration": 244,
-    "title": "P LAB 교육생 출품작 11",
+    "title": "P LAB 교육생 출품작 10",
     "industries": []
   },
   {
@@ -1312,7 +1290,7 @@
     "width": 1080,
     "height": 1080,
     "duration": 68,
-    "title": "P LAB 교육생 출품작 12",
+    "title": "P LAB 교육생 출품작 11",
     "industries": []
   },
   {
@@ -1334,7 +1312,7 @@
     "width": 1920,
     "height": 1080,
     "duration": 29,
-    "title": "P LAB 교육생 출품작 13",
+    "title": "P LAB 교육생 출품작 12",
     "industries": []
   },
   {
@@ -1356,7 +1334,7 @@
     "width": 1920,
     "height": 1080,
     "duration": 504,
-    "title": "P LAB 교육생 출품작 14",
+    "title": "P LAB 교육생 출품작 13",
     "industries": []
   },
   {
@@ -1378,7 +1356,7 @@
     "width": 1920,
     "height": 1080,
     "duration": 120,
-    "title": "P LAB 교육생 출품작 15",
+    "title": "P LAB 교육생 출품작 14",
     "industries": []
   },
   {
@@ -1400,7 +1378,7 @@
     "width": 1920,
     "height": 1080,
     "duration": 181,
-    "title": "P LAB 교육생 출품작 16",
+    "title": "P LAB 교육생 출품작 15",
     "industries": []
   },
   {
@@ -1422,7 +1400,7 @@
     "width": 1920,
     "height": 1080,
     "duration": 57,
-    "title": "P LAB 교육생 출품작 17",
+    "title": "P LAB 교육생 출품작 16",
     "industries": []
   },
   {
@@ -1444,7 +1422,7 @@
     "width": 1920,
     "height": 1080,
     "duration": 30,
-    "title": "P LAB 교육생 출품작 18",
+    "title": "P LAB 교육생 출품작 17",
     "industries": []
   },
   {
@@ -1577,6 +1555,28 @@
     "height": 1080,
     "duration": 90,
     "title": "가덕도 신공항 공모전",
+    "industries": []
+  },
+  {
+    "id": "692bdf4b18ed",
+    "fileName": "plab-winner-07.mp4",
+    "src": "/videos/07-awards/winners/plab-winner-07.mp4",
+    "poster": "/posters/auto/692bdf4b18ed.jpg",
+    "category": "awards",
+    "categoryLabel": "교육생 공모전",
+    "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
+    "status": "수상작",
+    "orientation": "portrait",
+    "width": 1080,
+    "height": 1080,
+    "duration": 90,
+    "title": "P LAB 교육생 수상작 07",
     "industries": []
   }
 ]
