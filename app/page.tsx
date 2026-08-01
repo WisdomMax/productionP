@@ -6,8 +6,8 @@ import ContactInquiry from "@/components/ContactInquiry";
 import FeaturedWorks from "@/components/FeaturedWorks";
 import Loader from "@/components/Loader";
 import MotionArchive from "@/components/MotionArchive";
+import SiteNavigation from "@/components/SiteNavigation";
 import ThreeStage from "@/components/ThreeStage";
-import brandLogo from "@/img/logo/transparent_smooth.png";
 
 const works = [
   ["01", "COMMERCIAL", "PRODUCT / F&B / FASHION / CORPORATE"],
@@ -41,23 +41,7 @@ export default function Home() {
     <>
       <Loader />
       <ThreeStage />
-      <nav className="navReact">
-        <Link
-          href="/"
-          className="brandReact"
-          aria-label="Production P home"
-          data-cursor-label="HOME"
-        >
-          <Image src={brandLogo} alt="Production P" priority />
-        </Link>
-        <div>
-          <a href="#work">WORK</a>
-          <a href="#awards">AWARDS</a>
-          <a href="#lab">P LAB</a>
-          <Link href="/journal">JOURNAL</Link>
-          <a href="#contact">CONTACT ↗</a>
-        </div>
-      </nav>
+      <SiteNavigation />
 
       <main>
         <section className="heroReact" data-cursor-contrast="light">
