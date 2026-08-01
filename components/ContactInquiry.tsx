@@ -14,6 +14,17 @@ export default function ContactInquiry() {
   const emailRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    const openInquiry = () => {
+      setStatus("idle");
+      setFeedback("");
+      setOpen(true);
+    };
+
+    window.addEventListener("productionp:open-inquiry", openInquiry);
+    return () => window.removeEventListener("productionp:open-inquiry", openInquiry);
+  }, []);
+
+  useEffect(() => {
     if (!open) return;
     const close = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);

@@ -16,6 +16,11 @@ const menuItems = [
 export default function SiteNavigation() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const openInquiry = () => {
+    setIsOpen(false);
+    window.dispatchEvent(new CustomEvent("productionp:open-inquiry"));
+  };
+
   useEffect(() => {
     document.body.classList.toggle("has-mobile-menu", isOpen);
 
@@ -47,7 +52,15 @@ export default function SiteNavigation() {
           <a href="#awards">AWARDS</a>
           <a href="#lab">P LAB</a>
           <Link href="/journal">JOURNAL</Link>
-          <a className="navContact" href="#contact" onClick={() => setIsOpen(false)}>
+          <a
+            className="navContact"
+            href="#contact"
+            aria-haspopup="dialog"
+            onClick={(event) => {
+              event.preventDefault();
+              openInquiry();
+            }}
+          >
             CONTACT ↗
           </a>
           <button
@@ -75,7 +88,15 @@ export default function SiteNavigation() {
             <Link
               href={item.href}
               key={item.label}
-              onClick={() => setIsOpen(false)}
+              aria-haspopup={item.href === "#contact" ? "dialog" : undefined}
+              onClick={(event) => {
+                if (item.href === "#contact") {
+                  event.preventDefault();
+                  openInquiry();
+                  return;
+                }
+                setIsOpen(false);
+              }}
               tabIndex={isOpen ? 0 : -1}
             >
               <span>{item.index}</span>
