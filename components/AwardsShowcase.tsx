@@ -182,7 +182,7 @@ export default function AwardsShowcase() {
           </Link>
         </div>
         <div className="awardsRailHint">SCROLL HORIZONTALLY →</div>
-        <footer className="awardsShowcaseFooter">
+        <footer className="awardsShowcaseFooter" id="awards-links">
           <p>P LAB 교육 과정에서 완성된 작품들의 출품과 수상 기록입니다.</p>
           <nav aria-label="P LAB 공모전 전체 작품">
             <Link href="/archive?category=awards&status=출품작">

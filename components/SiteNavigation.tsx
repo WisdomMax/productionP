@@ -6,11 +6,10 @@ import { useEffect, useState } from "react";
 import brandLogo from "@/img/logo/transparent_smooth.png";
 
 const menuItems = [
-  { label: "WORK", href: "#work", index: "01" },
-  { label: "AWARDS", href: "#awards", index: "02" },
-  { label: "P LAB", href: "#lab", index: "03" },
-  { label: "JOURNAL", href: "/journal", index: "04" },
-  { label: "CONTACT", href: "#contact", index: "05" },
+  { label: "WORK", href: "/archive", index: "01" },
+  { label: "AWARDS", href: "#awards-links", index: "02" },
+  { label: "JOURNAL", href: "/journal", index: "03" },
+  { label: "CONTACT", href: "#contact", index: "04" },
 ];
 
 export default function SiteNavigation() {
@@ -19,6 +18,18 @@ export default function SiteNavigation() {
   const openInquiry = () => {
     setIsOpen(false);
     window.dispatchEvent(new CustomEvent("productionp:open-inquiry"));
+  };
+
+  const scrollToSection = (id: string) => {
+    setIsOpen(false);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+    });
   };
 
   useEffect(() => {
@@ -93,6 +104,11 @@ export default function SiteNavigation() {
                 if (item.href === "#contact") {
                   event.preventDefault();
                   openInquiry();
+                  return;
+                }
+                if (item.href === "#awards-links") {
+                  event.preventDefault();
+                  scrollToSection("awards-links");
                   return;
                 }
                 setIsOpen(false);

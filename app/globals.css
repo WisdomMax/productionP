@@ -65,6 +65,7 @@ main{position:relative;z-index:2}
 
 /* Mobile navigation — a fine-line control that keeps CONTACT visible. */
 .mobileMenuToggle,.mobileMenuPanel{display:none}
+.awardsShowcaseFooter{scroll-margin-top:72px}
 
 @media(max-width:760px){
   .navReact{z-index:1020}
