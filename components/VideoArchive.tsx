@@ -21,37 +21,19 @@ type VideoItem = {
 };
 
 const catalog = catalogData as VideoItem[];
-const categoryOrder = [
-  "all",
-  "commercial",
-  "brand-film",
-  "film-content",
-  "p-lab",
-  "animation",
-  "awards",
-];
-const orientationGroups = [
-  { key: "landscape", label: "WIDE FORMAT", ratio: "LANDSCAPE / 16:9" },
-  { key: "portrait", label: "VERTICAL FORMAT", ratio: "PORTRAIT / 9:16" },
-] as const;
+const categoryOrder = ["all", "commercial", "brand-film", "film-content", "p-lab", "animation", "awards"];
 
-function VideoCard({ item, index }: { item: VideoItem; index: number }) {
+function VideoCard({ item, index, onSelect }: { item: VideoItem; index: number; onSelect: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const ratio =
-    item.orientation === "portrait"
-      ? "9:16"
-      : item.orientation === "square"
-        ? "1:1"
-        : "16:9";
 
-  const play = () => {
+  const preview = () => {
     const video = videoRef.current;
     if (!video) return;
     video.preload = "auto";
     void video.play().catch(() => undefined);
   };
 
-  const stop = () => {
+  const pause = () => {
     const video = videoRef.current;
     if (!video) return;
     video.pause();
@@ -59,41 +41,34 @@ function VideoCard({ item, index }: { item: VideoItem; index: number }) {
   };
 
   return (
-    <article
-      className={`videoArchiveCard is-${item.orientation}`}
-      onMouseEnter={play}
-      onMouseLeave={stop}
-      onFocus={play}
-      onBlur={stop}
-      tabIndex={0}
+    <button
+      className={`archiveWorkCard is-${item.orientation}`}
+      type="button"
+      onClick={onSelect}
+      onPointerEnter={preview}
+      onPointerLeave={pause}
+      onFocus={preview}
+      onBlur={pause}
+      aria-label={`${item.title} 재생`}
     >
-      <div className="videoArchiveMedia">
-        <video
-          ref={videoRef}
-          src={mediaUrl(item.src)}
-          poster={item.poster}
-          muted
-          loop
-          playsInline
-          preload="none"
-        />
-        <span className="videoRatio">{ratio}</span>
-        <span className="videoIndex">{String(index + 1).padStart(2, "0")}</span>
-      </div>
-      <div className="videoArchiveMeta">
-        <h3>{item.title}</h3>
-        <p>
-          <span>{item.status ? `P LAB 교육생 ${item.status}` : item.categoryLabel}</span>
-          <span>{Math.floor(item.duration / 60)}:{String(item.duration % 60).padStart(2, "0")}</span>
-        </p>
-      </div>
-    </article>
+      <span className="archiveWorkMedia">
+        <img src={item.poster} alt="" />
+        <video ref={videoRef} src={mediaUrl(item.src)} muted loop playsInline preload="none" />
+        <i>{String(index + 1).padStart(2, "0")}</i>
+        <b>PLAY ↗</b>
+      </span>
+      <span className="archiveWorkMeta">
+        <strong>{item.title}</strong>
+        <small>{item.status ? `P LAB · ${item.status}` : item.categoryLabel}</small>
+      </span>
+    </button>
   );
 }
 
 export default function VideoArchive() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [activeStatus, setActiveStatus] = useState<string | null>(null);
+  const [selected, setSelected] = useState<VideoItem | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -102,34 +77,41 @@ export default function VideoArchive() {
     if (category && categoryOrder.includes(category)) setActiveCategory(category);
     if (status === "출품작" || status === "수상작") setActiveStatus(status);
   }, []);
+
+  useEffect(() => {
+    if (!selected) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelected(null);
+    };
+    document.body.classList.add("has-cinema-player");
+    window.addEventListener("keydown", close);
+    return () => {
+      document.body.classList.remove("has-cinema-player");
+      window.removeEventListener("keydown", close);
+    };
+  }, [selected]);
+
   const categories = useMemo(() => {
     const labels = new Map<string, string>();
-    catalog.forEach((item) => {
-      item.categories.forEach((category, index) => {
-        labels.set(category, item.categoryLabels[index]);
-      });
-    });
+    catalog.forEach((item) => item.categories.forEach((category, index) => labels.set(category, item.categoryLabels[index])));
     return categoryOrder
       .filter((key) => key === "all" || labels.has(key))
-      .map((key) => ({ key, label: key === "all" ? "전체" : labels.get(key)! }));
+      .map((key) => ({ key, label: key === "all" ? "ALL" : labels.get(key)! }));
   }, []);
-  const visible =
-    activeCategory === "all"
-      ? catalog.filter((item) => !activeStatus || item.status === activeStatus)
-      : catalog.filter(
-          (item) =>
-            item.categories.includes(activeCategory) &&
-            (!activeStatus || item.status === activeStatus),
-        );
+
+  const visible = activeCategory === "all"
+    ? catalog.filter((item) => !activeStatus || item.status === activeStatus)
+    : catalog.filter((item) => item.categories.includes(activeCategory) && (!activeStatus || item.status === activeStatus));
 
   return (
-    <section className="videoArchiveReact" id="video-archive">
-      <header>
-        <small>03 / VIDEO ARCHIVE</small>
-        <h2>EVERY<br />FRAME.</h2>
-        <p>각 작품의 원본 화면비와 프레이밍을 그대로 유지합니다.</p>
+    <section className="archiveGallery" id="video-archive">
+      <header className="archiveGalleryHero">
+        <small>PRODUCTION P / FILM INDEX</small>
+        <h1>ALL<br />WORKS</h1>
+        <div><b>{String(visible.length).padStart(2, "0")}</b><p>SELECT A CATEGORY<br />HOVER TO PREVIEW</p></div>
       </header>
-      <nav className="videoArchiveFilters" aria-label="영상 카테고리">
+
+      <nav className="archiveCategoryRail" aria-label="영상 카테고리">
         {categories.map(({ key, label }) => (
           <button
             key={key}
@@ -140,37 +122,35 @@ export default function VideoArchive() {
             }}
             type="button"
           >
-            {label}
+            <span>{label}</span>
           </button>
         ))}
       </nav>
+
       {activeStatus && (
         <div className="archiveStatus">
           <span>P LAB 교육생 {activeStatus}</span>
-          <button type="button" onClick={() => setActiveStatus(null)}>
-            공모전 전체 보기
-          </button>
+          <button type="button" onClick={() => setActiveStatus(null)}>공모전 전체 보기</button>
         </div>
       )}
-      <div className="videoOrientationGroups">
-        {orientationGroups.map((group) => {
-          const items = visible.filter((item) => item.orientation === group.key);
-          if (items.length === 0) return null;
-          return (
-            <section className={`videoOrientationGroup is-${group.key}`} key={group.key}>
-              <header className="videoOrientationHeader">
-                <h3>{group.label}</h3>
-                <p>{group.ratio} · {String(items.length).padStart(2, "0")} WORKS</p>
-              </header>
-              <div className="videoArchiveGrid">
-                {items.map((item, index) => (
-                  <VideoCard item={item} index={index} key={item.id} />
-                ))}
-              </div>
-            </section>
-          );
-        })}
+
+      <div className="archiveWorksGrid">
+        {visible.map((item, index) => (
+          <VideoCard item={item} index={index} key={item.id} onSelect={() => setSelected(item)} />
+        ))}
       </div>
+
+      {selected && (
+        <div className="cinemaPlayerOverlay" role="dialog" aria-modal="true" aria-label={`${selected.title} 영상 재생`}>
+          <button className="cinemaPlayerClose" type="button" onClick={() => setSelected(null)} aria-label="영상 닫기">
+            <span /><span />
+          </button>
+          <div className={`cinemaPlayer is-${selected.orientation}`}>
+            <video src={mediaUrl(selected.src)} controls autoPlay playsInline />
+            <footer><strong>{selected.title}</strong><span>{selected.categoryLabel} / ESC TO CLOSE</span></footer>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 type FormStatus = "idle" | "sending" | "success" | "error";
 const initialFields = { name: "", email: "", subject: "", message: "", website: "" };
 
-export default function ContactInquiry() {
+export default function ContactInquiry({ showTrigger = true }: { showTrigger?: boolean }) {
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<FormStatus>("idle");
   const [feedback, setFeedback] = useState("");
@@ -68,7 +68,7 @@ export default function ContactInquiry() {
 
   return (
     <>
-      <button
+      {showTrigger && <button
         className="inquiryOpen"
         type="button"
         onClick={() => {
@@ -87,7 +87,7 @@ export default function ContactInquiry() {
           PROJECT.
         </strong>
         <b aria-hidden="true">↗</b>
-      </button>
+      </button>}
       {open && createPortal(
         <div
           className="inquiryOverlay"
