@@ -2867,8 +2867,8 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   justify-content:space-between;
   background:linear-gradient(180deg,rgba(154,69,39,.96),rgba(154,69,39,.45) 68%,transparent);
 }
-.cinemaHeader>a{width:clamp(138px,11vw,174px);line-height:0}
-.cinemaHeader img{width:100%;height:auto;filter:grayscale(1) brightness(0) invert(1)}
+.cinemaHeader>a{box-sizing:border-box;width:clamp(178px,14vw,220px);margin:-17px 0 -8px -28px;padding:18px 27px 21px 28px;background:#080909;clip-path:polygon(0 0,100% 0,calc(100% - 14px) 100%,0 100%);line-height:0}
+.cinemaHeader img{width:100%;height:auto;filter:none}
 .cinemaHeader nav{display:flex;align-items:center;gap:clamp(28px,3vw,52px);font:700 14px/1 monospace;letter-spacing:.08em}
 .cinemaHeader nav a,.cinemaHeader nav button{position:relative;padding:12px 2px;border:0;background:none;color:var(--paper);font:inherit;letter-spacing:inherit;transition:color .25s}
 .cinemaHeader nav a:after,.cinemaHeader nav button:after{content:"";position:absolute;left:2px;right:calc(100% - 2px);bottom:5px;height:1px;background:#080909;transition:right .3s}
@@ -3001,7 +3001,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .cinematicHome{width:100%;height:auto;min-height:100svh;overflow-x:hidden;overflow-y:visible}
   .cinemaAmbient i{animation:none}
   .cinemaHeader{position:fixed;min-height:64px;padding:13px 16px 22px}
-  .cinemaHeader>a{width:122px}
+  .cinemaHeader>a{width:160px;margin:-13px 0 -8px -16px;padding:14px 24px 17px 16px;clip-path:polygon(0 0,100% 0,calc(100% - 11px) 100%,0 100%)}
   .cinemaHeader nav{gap:14px;font-size:12px}
   .cinemaHeader nav a:first-child,.cinemaHeader nav a:nth-child(2){display:none}
   .cinemaWorkStage{position:relative;min-height:100svh;padding:92px 16px 74px}
