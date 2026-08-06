@@ -175,7 +175,7 @@ export default function AwardsShowcase() {
           ))}
           <Link
             className="awardsRailMore"
-            href="/archive?category=awards&status=수상작"
+            href="/awards/?status=수상작"
           >
             <span>수상작 전체 보기</span>
             <b>↗</b>
@@ -185,12 +185,12 @@ export default function AwardsShowcase() {
         <footer className="awardsShowcaseFooter" id="awards-links">
           <p>P LAB 교육 과정에서 완성된 작품들의 출품과 수상 기록입니다.</p>
           <nav aria-label="P LAB 공모전 전체 작품">
-            <Link href="/archive?category=awards&status=출품작">
+            <Link href="/awards/?status=출품작">
               <small>01 / SUBMISSIONS</small>
               <strong>출품작</strong>
               <b>VIEW ALL ↗</b>
             </Link>
-            <Link href="/archive?category=awards&status=수상작">
+            <Link href="/awards/?status=수상작">
               <small>02 / WINNERS</small>
               <strong>수상작</strong>
               <b>VIEW ALL ↗</b>

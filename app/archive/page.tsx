@@ -12,8 +12,8 @@ export default function ArchivePage() {
           <Image src={brandLogo} alt="Production P" priority />
         </Link>
         <nav aria-label="주요 메뉴">
-          <a href="/archive/?category=all">ALL WORKS</a>
-          <a href="/archive/?category=awards">AWARDS</a>
+          <a className="is-active" href="/archive/?category=all">ALL WORKS</a>
+          <Link href="/awards/">AWARDS</Link>
           <Link href="/journal/">JOURNAL</Link>
           <Link href="/about/">ABOUT</Link>
           <a href="mailto:contact@productionp.com">CONTACT ↗</a>

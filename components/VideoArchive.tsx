@@ -22,7 +22,9 @@ type VideoItem = {
 };
 
 const catalog = catalogData as VideoItem[];
-const categoryOrder = ["all", "commercial", "brand-film", "film-content", "p-lab", "animation", "awards"];
+const categoryOrder = ["all", "commercial", "brand-film", "film-content", "p-lab", "animation"];
+const workCatalog = catalog.filter((item) => !item.categories.includes("awards"));
+const awardCatalog = catalog.filter((item) => item.categories.includes("awards"));
 
 function VideoCard({ item, index, onSelect }: { item: VideoItem; index: number; onSelect: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -66,7 +68,7 @@ function VideoCard({ item, index, onSelect }: { item: VideoItem; index: number; 
   );
 }
 
-export default function VideoArchive() {
+export default function VideoArchive({ mode = "works" }: { mode?: "works" | "awards" }) {
   const searchParams = useSearchParams();
   const requestedCategory = searchParams.get("category");
   const requestedStatus = searchParams.get("status");
@@ -75,9 +77,9 @@ export default function VideoArchive() {
   const [selected, setSelected] = useState<VideoItem | null>(null);
 
   useEffect(() => {
-    setActiveCategory(requestedCategory && categoryOrder.includes(requestedCategory) ? requestedCategory : "all");
+    setActiveCategory(mode === "awards" ? "awards" : requestedCategory && categoryOrder.includes(requestedCategory) ? requestedCategory : "all");
     setActiveStatus(requestedStatus === "출품작" || requestedStatus === "수상작" ? requestedStatus : null);
-  }, [requestedCategory, requestedStatus]);
+  }, [mode, requestedCategory, requestedStatus]);
 
   useEffect(() => {
     if (!selected) return;
@@ -94,47 +96,56 @@ export default function VideoArchive() {
 
   const categories = useMemo(() => {
     const labels = new Map<string, string>();
-    catalog.forEach((item) => item.categories.forEach((category, index) => labels.set(category, item.categoryLabels[index])));
+    workCatalog.forEach((item) => item.categories.forEach((category, index) => labels.set(category, item.categoryLabels[index])));
     return categoryOrder
       .filter((key) => key === "all" || labels.has(key))
       .map((key) => ({ key, label: key === "all" ? "ALL" : labels.get(key)! }));
   }, []);
 
+  const isAwards = mode === "awards";
+  const source = isAwards ? awardCatalog : workCatalog;
   const visible = activeCategory === "all"
-    ? catalog.filter((item) => !activeStatus || item.status === activeStatus)
-    : catalog.filter((item) => item.categories.includes(activeCategory) && (!activeStatus || item.status === activeStatus));
-  const isAwards = activeCategory === "awards";
+    ? source.filter((item) => !activeStatus || item.status === activeStatus)
+    : source.filter((item) => item.categories.includes(activeCategory) && (!activeStatus || item.status === activeStatus));
 
   return (
-    <section className="archiveGallery" id="video-archive">
+    <section className={`archiveGallery${isAwards ? " awardsGallery" : ""}`} id="video-archive">
       <header className="archiveGalleryHero">
-        <small>PRODUCTION P / FILM INDEX</small>
-        <h1><span>{isAwards ? "AWARD" : "ALL"}</span><span>WORKS</span></h1>
-        <div><b>{String(visible.length).padStart(2, "0")}</b><p>SELECT A CATEGORY<br />HOVER TO PREVIEW</p></div>
+        <small>{isAwards ? "P LAB / CONTEST ARCHIVE" : "PRODUCTION P / FILM INDEX"}</small>
+        <h1><span>{isAwards ? "STUDENT" : "ALL"}</span><span>{isAwards ? "AWARDS" : "WORKS"}</span></h1>
+        <div><b>{String(visible.length).padStart(2, "0")}</b><p>{isAwards ? "ENTRIES & WINNERS" : "SELECT A CATEGORY"}<br />HOVER TO PREVIEW</p></div>
       </header>
 
-      <nav className="archiveCategoryRail" aria-label="영상 카테고리">
-        {categories.map(({ key, label }) => (
-          <button
-            key={key}
-            className={activeCategory === key ? "is-active" : ""}
-            onClick={() => {
-              setActiveCategory(key);
-              setActiveStatus(null);
-            }}
-            type="button"
-          >
-            <span>{label}</span>
-          </button>
-        ))}
-      </nav>
+      {!isAwards && (
+        <nav className="archiveCategoryRail" aria-label="영상 카테고리">
+          {categories.map(({ key, label }) => (
+            <button
+              key={key}
+              className={activeCategory === key ? "is-active" : ""}
+              onClick={() => {
+                setActiveCategory(key);
+                setActiveStatus(null);
+              }}
+              type="button"
+            >
+              <span>{label}</span>
+            </button>
+          ))}
+        </nav>
+      )}
 
       {isAwards && (
-        <div className="archiveAwardFilters" role="group" aria-label="공모전 작품 구분">
-          <button className={!activeStatus ? "is-active" : ""} type="button" onClick={() => setActiveStatus(null)}>공모전 전체</button>
-          <button className={activeStatus === "수상작" ? "is-active" : ""} type="button" onClick={() => setActiveStatus("수상작")}>수상작</button>
-          <button className={activeStatus === "출품작" ? "is-active" : ""} type="button" onClick={() => setActiveStatus("출품작")}>출품작</button>
-        </div>
+        <>
+          <div className="awardsIntroduction">
+            <b>P LAB<br />CREATOR PROGRAM</b>
+            <p>P LAB 교육생들이 AI 영상 제작을 배우고 실제 공모전에 도전하며 완성한 출품작과 수상작을 기록합니다.</p>
+          </div>
+          <div className="archiveAwardFilters" role="group" aria-label="공모전 작품 구분">
+            <button className={!activeStatus ? "is-active" : ""} type="button" onClick={() => setActiveStatus(null)}>공모전 전체</button>
+            <button className={activeStatus === "수상작" ? "is-active" : ""} type="button" onClick={() => setActiveStatus("수상작")}>수상작</button>
+            <button className={activeStatus === "출품작" ? "is-active" : ""} type="button" onClick={() => setActiveStatus("출품작")}>출품작</button>
+          </div>
+        </>
       )}
 
       <div className="archiveWorksGrid">

@@ -23,7 +23,7 @@ export default function AboutPage() {
         </Link>
         <nav aria-label="주요 메뉴">
           <Link href="/archive/?category=all">ALL WORKS</Link>
-          <Link href="/archive/?category=awards">AWARDS</Link>
+          <Link href="/awards/">AWARDS</Link>
           <Link href="/journal/">JOURNAL</Link>
           <Link className="is-active" href="/about/">ABOUT</Link>
           <a href="mailto:contact@productionp.com">CONTACT ↗</a>
@@ -40,6 +40,10 @@ export default function AboutPage() {
             프로덕션 P는 AI 기술과 영화적 연출을 결합해<br />
             브랜드의 상상을 움직이는 영상 제작 스튜디오입니다.
           </p>
+          <div className="aboutRecognition">
+            <small>RECENT RECOGNITION</small>
+            <span><b>대상</b> · 2026 K포럼 AI AD CREATION CHALLENGE</span>
+          </div>
         </div>
 
         <div className="aboutIndex">

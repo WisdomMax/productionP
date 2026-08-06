@@ -16,7 +16,7 @@ export default function JournalIndexPage() {
         <Link href="/" aria-label="Production P 홈으로 이동"><Image src={brandLogo} alt="Production P" priority /></Link>
         <nav aria-label="주요 메뉴">
           <Link href="/archive/?category=all">ALL WORKS</Link>
-          <Link href="/archive/?category=awards">AWARDS</Link>
+          <Link href="/awards/">AWARDS</Link>
           <Link className="is-active" href="/journal/">JOURNAL</Link>
           <Link href="/about/">ABOUT</Link>
           <a href="mailto:contact@productionp.com">CONTACT ↗</a>

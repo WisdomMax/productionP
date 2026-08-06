@@ -3220,8 +3220,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .archiveSiteHeader nav,.journalIndexNav nav,.aboutHeader nav{display:flex;align-items:center;gap:clamp(22px,2.4vw,42px);font:700 14px/1 monospace;letter-spacing:.08em}
 .archiveSiteHeader nav a,.journalIndexNav nav a,.aboutHeader nav a{position:relative;padding:12px 2px;color:#fff}
 .archiveSiteHeader nav a:after,.journalIndexNav nav a:after,.aboutHeader nav a:after{content:"";position:absolute;left:2px;right:calc(100% - 2px);bottom:5px;height:1px;background:#fff;transition:right .3s}
-.archiveSiteHeader nav a:hover:after,.journalIndexNav nav a:hover:after,.journalIndexNav nav a.is-active:after,.aboutHeader nav a:hover:after,.aboutHeader nav a.is-active:after{right:0}
-.archiveSiteHeader nav a:first-child:after{right:42%}
+.archiveSiteHeader nav a:hover:after,.archiveSiteHeader nav a.is-active:after,.journalIndexNav nav a:hover:after,.journalIndexNav nav a.is-active:after,.aboutHeader nav a:hover:after,.aboutHeader nav a.is-active:after{right:0}
 .archiveLoading{min-height:70vh;display:grid;place-items:center;color:#fff;font:700 11px/1 monospace;letter-spacing:.12em}
 .archiveGallery{z-index:1;padding-top:5vh;background:transparent}
 .archiveGallery:before{
@@ -3254,6 +3253,10 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .archiveAwardFilters{border-color:rgba(255,255,255,.34)}
 .archiveAwardFilters button{border-color:rgba(255,255,255,.34);background:rgba(255,255,255,.04);color:#fff}
 .archiveAwardFilters button:hover,.archiveAwardFilters button.is-active{background:#fff;color:#9A4527}
+.awardsIntroduction{display:grid;grid-template-columns:minmax(150px,.28fr) 1fr;gap:28px;margin-top:26px;padding:28px 30px;background:#fff;color:#9A4527;box-shadow:14px 16px 0 rgba(53,14,7,.18)}
+.awardsIntroduction b{font:800 11px/1.45 monospace;letter-spacing:.1em}
+.awardsIntroduction p{max-width:760px;margin:0;font-size:clamp(15px,1.15vw,20px);font-weight:650;line-height:1.65;letter-spacing:-.025em;word-break:keep-all}
+.awardsGallery .archiveAwardFilters{margin-top:38px}
 
 .journalIndexPage{isolation:isolate;background:#9A4527}
 .journalIndexNav{position:relative}
@@ -3355,6 +3358,10 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .aboutStatement{align-self:center;padding:30px;background:#fff;color:#9A4527;box-shadow:16px 18px 0 rgba(53,14,7,.2)}
 .aboutStatement b{display:block;margin-bottom:26px;font:800 11px/1.5 monospace;letter-spacing:.1em}
 .aboutStatement p{margin:0;font-size:clamp(15px,1.15vw,20px);font-weight:650;line-height:1.65;letter-spacing:-.025em;word-break:keep-all}
+.aboutRecognition{margin-top:26px;padding-top:18px;border-top:1px solid rgba(154,69,39,.3)}
+.aboutRecognition small{display:block;margin-bottom:8px;font:800 8px/1 monospace;letter-spacing:.1em;opacity:.66}
+.aboutRecognition span{display:block;font-size:12px;font-weight:650;line-height:1.45;word-break:keep-all}
+.aboutRecognition span b{display:inline;margin:0;font-size:12px;font-weight:800;line-height:1;letter-spacing:0}
 .aboutIndex{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.38);border-bottom:1px solid rgba(255,255,255,.38)}
 .aboutIndex>div{min-height:112px;padding:18px 22px;border-right:1px solid rgba(255,255,255,.3)}
 .aboutIndex>div:last-child{border-right:0}
@@ -3372,4 +3379,6 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .aboutIndex>div{min-height:0;padding:22px 4px;border-right:0;border-bottom:1px solid rgba(255,255,255,.3)}
   .aboutIndex>div:last-child{border-bottom:0}
   .aboutAmbient .aboutArc{left:-50vw;width:150vw}
+  .awardsIntroduction{grid-template-columns:1fr;gap:16px;padding:22px 20px;box-shadow:9px 11px 0 rgba(53,14,7,.18)}
+  .awardsGallery .archiveGalleryHero h1{font-size:18vw}
 }
