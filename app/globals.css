@@ -3046,17 +3046,17 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .cinemaIntro.is-leaving .cinemaIntroPanels i:first-child{transform:translate3d(-102%,-102%,0)}
 .cinemaIntro.is-leaving .cinemaIntroPanels i:last-child{transform:translate3d(102%,102%,0)}
 .cinemaIntroTop{position:absolute;z-index:2;left:30px;right:30px;top:25px;display:flex;justify-content:space-between;color:rgba(0,0,0,.62);font:8px/1 monospace;letter-spacing:.14em;transition:opacity .3s,transform .45s}
-.cinemaIntroCounter{position:absolute;z-index:1;right:3.2vw;bottom:4.8vh;width:min(29vw,330px);display:grid;grid-template-columns:1fr auto;align-items:center;row-gap:7px;color:rgba(28,12,8,.66);transition:opacity .35s,transform .55s}
-.cinemaIntroCounter small{font:700 9px/1 monospace;letter-spacing:.16em}
-.cinemaIntroCounter strong{grid-column:1/-1;grid-row:2;font:800 clamp(130px,18vw,290px)/.72 monospace;text-align:right;letter-spacing:-.1em;color:rgba(154,69,39,.075);-webkit-text-stroke:1.4px rgba(154,69,39,.6)}
-.cinemaIntroCounter em{font:700 9px/1 monospace;font-style:normal;letter-spacing:.12em}
+.cinemaIntroCounter{position:relative;z-index:2;order:3;width:auto;display:flex;align-items:baseline;justify-content:center;gap:9px;margin-top:17px;color:rgba(28,12,8,.68);transition:opacity .35s,transform .55s}
+.cinemaIntroCounter small{font:700 8px/1 monospace;letter-spacing:.17em}
+.cinemaIntroCounter strong{font:800 clamp(28px,2.35vw,40px)/.8 monospace;letter-spacing:-.08em;color:var(--signal)}
+.cinemaIntroCounter em{font:700 8px/1 monospace;font-style:normal;letter-spacing:.13em}
 .cinemaIntroLine{position:absolute;z-index:2;left:30px;right:30px;bottom:28px;height:1px;background:rgba(0,0,0,.2);transition:opacity .25s}
 .cinemaIntroLine i{display:block;height:100%;background:var(--signal);transition:width .08s linear}
-.cinemaIntro h2{position:relative;z-index:2;margin:0;font-size:clamp(70px,9.2vw,150px);line-height:.88;letter-spacing:-.075em}
+.cinemaIntro h2{position:relative;z-index:2;order:1;margin:0;font-size:clamp(70px,9.2vw,150px);line-height:.88;letter-spacing:-.075em}
 .cinemaIntro h2 span{display:block;animation:introWords .9s cubic-bezier(.16,1,.3,1) both}
 .cinemaIntro h2 span+span{color:var(--signal);animation-delay:.12s}
 @keyframes introWords{from{opacity:0;transform:translateY(55px);clip-path:inset(100% 0 0)}}
-.cinemaIntro>p{position:relative;z-index:2;margin:30px 0 0;color:rgba(0,0,0,.62);font:700 9px/1 monospace;letter-spacing:.16em}
+.cinemaIntro>p{position:relative;z-index:2;order:2;margin:25px 0 0;color:rgba(0,0,0,.62);font:700 9px/1 monospace;letter-spacing:.16em}
 .cinemaIntro h2,.cinemaIntro>p{transition:opacity .28s,transform .5s cubic-bezier(.16,1,.3,1)}
 .cinemaIntro.is-leaving h2,.cinemaIntro.is-leaving>p{opacity:0;transform:scale(.94)}
 .cinemaIntro.is-leaving .cinemaIntroTop{opacity:0;transform:translateY(-12px)}
@@ -3112,8 +3112,8 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .cinemaIntro{padding-inline:16px}
   .cinemaIntroTop{left:16px;right:16px}
   .cinemaIntro h2{font-size:17vw;line-height:.9}
-  .cinemaIntroCounter{right:16px;bottom:5vh;width:44vw;row-gap:4px}
-  .cinemaIntroCounter strong{font-size:28vw}
+  .cinemaIntroCounter{width:auto;gap:7px;margin-top:14px}
+  .cinemaIntroCounter strong{font-size:26px}
   .cinemaIntroCounter small,.cinemaIntroCounter em{font-size:7px}
   .cinemaIntroLine{left:16px;right:16px}
   .cinemaPlayerOverlay{padding:0;background:#000;place-items:center}
