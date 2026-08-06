@@ -28,6 +28,10 @@ type TileStyle = CSSProperties & {
 const catalog = catalogData as Work[];
 const featuredTitles = [
   "BITE INTO YOUTH",
+  "CHROMATIC DRIVE",
+  "EARTHNIQ: HOW TO USE",
+  "LIPCERIN RITUAL",
+  "PIELLA GROOVE",
   "MEGA MOMENT",
   "EXTREME TERRAIN",
   "UNLOCK THE NIGHT",
@@ -35,18 +39,19 @@ const featuredTitles = [
   "IRON PULSE",
   "CITY OF GLASS",
   "PIELLA: MADE FOR LIVING",
+  "BEAUTY IN BRUSHSTROKES",
+  "SCENT IN MOTION",
+  "MONO CUBE: ONE",
 ];
 
-const placements = [
-  { x: 30, y: 30, z: 60, turn: 0, shape: "candidate" },
-  { x: 49, y: 30, z: 60, turn: 0, shape: "candidate" },
-  { x: 68, y: 30, z: 60, turn: 0, shape: "candidate" },
-  { x: 87, y: 30, z: 60, turn: 0, shape: "candidate" },
-  { x: 30, y: 69, z: 60, turn: 0, shape: "candidate" },
-  { x: 49, y: 69, z: 60, turn: 0, shape: "candidate" },
-  { x: 68, y: 69, z: 60, turn: 0, shape: "candidate" },
-  { x: 87, y: 69, z: 60, turn: 0, shape: "candidate" },
-];
+const flatShapes = ["disc", "square", "triangle", "hexagon", "diamond"];
+const placements = Array.from({ length: 15 }, (_, index) => ({
+  x: 0,
+  y: 0,
+  z: 0,
+  turn: 0,
+  shape: flatShapes[index % flatShapes.length],
+}));
 
 function WorkObject({ work, index }: { work: Work; index: number }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -174,7 +179,7 @@ export default function CinematicHome() {
 
       <section className="cinemaWorkStage" aria-labelledby="cinema-work-title">
         <div className="cinemaWorkHeading">
-          <small>SELECTED / 08</small>
+          <small>SELECTED / 15</small>
           <h1 id="cinema-work-title">WORK</h1>
           <p>MOVE TO REVEAL<br />CLICK TO PLAY</p>
         </div>
