@@ -41,8 +41,8 @@ export default function AboutPage() {
             브랜드의 상상을 움직이는 영상 제작 스튜디오입니다.
           </p>
           <div className="aboutRecognition">
-            <small>RECENT RECOGNITION</small>
-            <span><b>대상</b> · 2026 K포럼 AI AD CREATION CHALLENGE</span>
+            <small>수상 이력 / 2026</small>
+            <span>2026 K포럼 AI AD CREATION CHALLENGE <b>대상</b></span>
           </div>
         </div>
 

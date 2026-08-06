@@ -3359,9 +3359,9 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .aboutStatement b{display:block;margin-bottom:26px;font:800 11px/1.5 monospace;letter-spacing:.1em}
 .aboutStatement p{margin:0;font-size:clamp(15px,1.15vw,20px);font-weight:650;line-height:1.65;letter-spacing:-.025em;word-break:keep-all}
 .aboutRecognition{margin-top:26px;padding-top:18px;border-top:1px solid rgba(154,69,39,.3)}
-.aboutRecognition small{display:block;margin-bottom:8px;font:800 8px/1 monospace;letter-spacing:.1em;opacity:.66}
-.aboutRecognition span{display:block;font-size:12px;font-weight:650;line-height:1.45;word-break:keep-all}
-.aboutRecognition span b{display:inline;margin:0;font-size:12px;font-weight:800;line-height:1;letter-spacing:0}
+.aboutRecognition small{display:block;margin-bottom:9px;font-size:10px;font-weight:750;line-height:1;letter-spacing:.04em;opacity:.7}
+.aboutRecognition span{display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:12px;font-weight:650;line-height:1.45;word-break:keep-all}
+.aboutRecognition span b{flex:none;display:inline-block;margin:0;padding:5px 8px;background:#9A4527;color:#fff;font-size:11px;font-weight:800;line-height:1;letter-spacing:0}
 .aboutIndex{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.38);border-bottom:1px solid rgba(255,255,255,.38)}
 .aboutIndex>div{min-height:112px;padding:18px 22px;border-right:1px solid rgba(255,255,255,.3)}
 .aboutIndex>div:last-child{border-right:0}
