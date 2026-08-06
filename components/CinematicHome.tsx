@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import ContactInquiry from "@/components/ContactInquiry";
 import catalogData from "@/data/video-catalog.json";
-import brandLogo from "@/img/logo/transparent_smooth.png";
+import brandLogo from "@/img/logo/transparent_brand.png";
 import { mediaUrl } from "@/lib/media-url";
 
 type Work = {
