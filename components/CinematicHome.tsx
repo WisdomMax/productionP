@@ -193,7 +193,13 @@ export default function CinematicHome() {
         </div>
 
         <div className="cinemaStageFooter">
-          <span>AI FILM STUDIO · SEOUL</span>
+          <div className="cinemaContactBlock">
+            <span>AI FILM STUDIO · SEOUL</span>
+            <div>
+              <a href="tel:01065154600">010-6515-4600</a>
+              <a href="mailto:contact@productionp.com">contact@productionp.com</a>
+            </div>
+          </div>
           <Link href="/archive?category=all"><b>작품 더보기</b><i>→</i></Link>
         </div>
       </section>
