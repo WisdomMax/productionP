@@ -124,7 +124,7 @@ export default function CinematicHome() {
   );
   const [introVisible, setIntroVisible] = useState(true);
   const [introLeaving, setIntroLeaving] = useState(false);
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
   const [selected, setSelected] = useState<Work | null>(null);
 
   useEffect(() => {
@@ -133,7 +133,7 @@ export default function CinematicHome() {
     const tick = (now: number) => {
       const progress = Math.min((now - startedAt) / 2100, 1);
       const eased = 1 - Math.pow(1 - progress, 4);
-      setCount(1 + Math.round(eased * 239));
+      setCount(Math.round(eased * 240));
       if (progress < 1) frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
@@ -222,7 +222,7 @@ export default function CinematicHome() {
           <div className="cinemaIntroTop"><span>PRODUCTION P</span><span>SEOUL / KR</span></div>
           <div className="cinemaIntroCounter">
             <small>FRAME</small>
-            <strong>{String(count).padStart(3, "0")}</strong>
+            <strong>{count}</strong>
             <em>/ 240 FPS</em>
           </div>
           <div className="cinemaIntroLine"><i style={{ width: `${(count / 240) * 100}%` }} /></div>
