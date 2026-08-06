@@ -2954,10 +2954,11 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .cinemaObjectHitArea:hover .cinemaObjectFace img,.cinemaWorkObject:focus-visible .cinemaObjectFace img{opacity:0;filter:none;transform:scale(1)}
 .cinemaObjectHitArea:hover .cinemaObjectMeta,.cinemaWorkObject:focus-visible .cinemaObjectMeta{opacity:1;transform:translate(-50%,0)}
 .cinemaStageFooter{position:absolute;z-index:25;left:4vw;right:4vw;bottom:24px;display:flex;justify-content:space-between;align-items:end;color:rgba(0,0,0,.68);font:8px/1 monospace;letter-spacing:.12em}
-.cinemaStageFooter>a{display:flex;align-items:center;gap:18px;color:var(--paper)}
-.cinemaStageFooter>a b{font:700 10px/1 monospace;letter-spacing:.09em}
-.cinemaStageFooter>a i{width:36px;height:36px;border:1px solid rgba(255,255,255,.65);border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:15px;transition:.3s}
-.cinemaStageFooter>a:hover i{background:#000;border-color:#000;transform:rotate(45deg)}
+.cinemaStageFooter>a{display:flex;align-items:center;gap:20px;padding:8px 8px 8px 22px;border:1px solid rgba(255,255,255,.72);border-radius:999px;background:rgba(0,0,0,.08);color:var(--paper);transition:background .3s,border-color .3s,transform .3s}
+.cinemaStageFooter>a b{font:700 16px/1 Arial,sans-serif;letter-spacing:-.025em}
+.cinemaStageFooter>a i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--paper);color:var(--signal);font-style:normal;font-size:24px;line-height:1;transition:.3s}
+.cinemaStageFooter>a:hover{background:#000;border-color:#000;transform:translateY(-3px)}
+.cinemaStageFooter>a:hover i{transform:translateX(3px)}
 .cinemaIntro{position:fixed;z-index:2000;inset:0;padding:25px 30px 34px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:transparent;color:#080909;text-align:center}
 .cinemaIntroPanels{position:absolute;z-index:0;inset:0;pointer-events:none}
 .cinemaIntroPanels i{position:absolute;inset:-1px;display:block;background-color:#f4f1eb;background-image:radial-gradient(circle at 74% 18%,rgba(154,69,39,.13),transparent 31%),linear-gradient(rgba(0,0,0,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.035) 1px,transparent 1px);background-size:auto,5vw 5vw,5vw 5vw;transition:transform 1.12s cubic-bezier(.76,0,.24,1);will-change:transform}

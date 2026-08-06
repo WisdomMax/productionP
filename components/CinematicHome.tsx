@@ -189,7 +189,7 @@ export default function CinematicHome() {
 
         <div className="cinemaStageFooter">
           <span>AI FILM STUDIO · SEOUL</span>
-          <Link href="/archive"><b>VIEW ALL WORKS</b><i>↗</i></Link>
+          <Link href="/archive"><b>작품 더보기</b><i>→</i></Link>
         </div>
       </section>
 
