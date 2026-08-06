@@ -3069,8 +3069,10 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .archiveWorkMeta{display:block;padding:10px 2px 0}
 .archiveWorkMeta strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:clamp(11px,1vw,15px);letter-spacing:-.02em}
 .archiveWorkMeta small{display:block;margin-top:5px;color:rgba(0,0,0,.64);font:7px/1 monospace;letter-spacing:.08em}
-.archiveStatus{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding:12px 14px;border:1px solid #333431;color:#aaa;font-size:11px}
-.archiveStatus button{border:0;background:none;color:var(--signal-hot);font:700 9px/1 monospace}
+.archiveAwardFilters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:22px;border:1px solid rgba(0,0,0,.38)}
+.archiveAwardFilters button{min-height:52px;padding:12px;border:0;border-right:1px solid rgba(0,0,0,.38);background:rgba(0,0,0,.06);color:#080909;font:700 14px/1 "Pretendard Variable",sans-serif;cursor:pointer;transition:.25s}
+.archiveAwardFilters button:last-child{border-right:0}
+.archiveAwardFilters button:hover,.archiveAwardFilters button.is-active{background:#080909;color:var(--paper)}
 
 @media(min-width:1700px){.archiveWorksGrid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1200px){.archiveWorksGrid{grid-template-columns:repeat(4,minmax(0,1fr))}}

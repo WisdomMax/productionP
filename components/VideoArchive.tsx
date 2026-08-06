@@ -102,12 +102,13 @@ export default function VideoArchive() {
   const visible = activeCategory === "all"
     ? catalog.filter((item) => !activeStatus || item.status === activeStatus)
     : catalog.filter((item) => item.categories.includes(activeCategory) && (!activeStatus || item.status === activeStatus));
+  const isAwards = activeCategory === "awards";
 
   return (
     <section className="archiveGallery" id="video-archive">
       <header className="archiveGalleryHero">
         <small>PRODUCTION P / FILM INDEX</small>
-        <h1><span>ALL</span><span>WORKS</span></h1>
+        <h1><span>{isAwards ? "AWARD" : "ALL"}</span><span>WORKS</span></h1>
         <div><b>{String(visible.length).padStart(2, "0")}</b><p>SELECT A CATEGORY<br />HOVER TO PREVIEW</p></div>
       </header>
 
@@ -127,10 +128,11 @@ export default function VideoArchive() {
         ))}
       </nav>
 
-      {activeStatus && (
-        <div className="archiveStatus">
-          <span>P LAB 교육생 {activeStatus}</span>
-          <button type="button" onClick={() => setActiveStatus(null)}>공모전 전체 보기</button>
+      {isAwards && (
+        <div className="archiveAwardFilters" role="group" aria-label="공모전 작품 구분">
+          <button className={!activeStatus ? "is-active" : ""} type="button" onClick={() => setActiveStatus(null)}>공모전 전체</button>
+          <button className={activeStatus === "수상작" ? "is-active" : ""} type="button" onClick={() => setActiveStatus("수상작")}>수상작</button>
+          <button className={activeStatus === "출품작" ? "is-active" : ""} type="button" onClick={() => setActiveStatus("출품작")}>출품작</button>
         </div>
       )}
 

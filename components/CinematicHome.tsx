@@ -171,8 +171,8 @@ export default function CinematicHome() {
           <Image src={brandLogo} alt="Production P" priority />
         </Link>
         <nav aria-label="주요 메뉴">
-          <Link href="/archive">ALL WORKS</Link>
-          <Link href="/archive?category=awards&status=수상작">AWARDS</Link>
+          <Link href="/archive?category=all">ALL WORKS</Link>
+          <Link href="/archive?category=awards">AWARDS</Link>
           <button type="button" onClick={openInquiry}>CONTACT ↗</button>
         </nav>
       </header>
@@ -194,7 +194,7 @@ export default function CinematicHome() {
 
         <div className="cinemaStageFooter">
           <span>AI FILM STUDIO · SEOUL</span>
-          <Link href="/archive"><b>작품 더보기</b><i>→</i></Link>
+          <Link href="/archive?category=all"><b>작품 더보기</b><i>→</i></Link>
         </div>
       </section>
 
