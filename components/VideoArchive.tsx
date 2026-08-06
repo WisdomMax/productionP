@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import catalogData from "@/data/video-catalog.json";
 import { mediaUrl } from "@/lib/media-url";
 
@@ -66,17 +67,17 @@ function VideoCard({ item, index, onSelect }: { item: VideoItem; index: number; 
 }
 
 export default function VideoArchive() {
+  const searchParams = useSearchParams();
+  const requestedCategory = searchParams.get("category");
+  const requestedStatus = searchParams.get("status");
   const [activeCategory, setActiveCategory] = useState("all");
   const [activeStatus, setActiveStatus] = useState<string | null>(null);
   const [selected, setSelected] = useState<VideoItem | null>(null);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const category = params.get("category");
-    const status = params.get("status");
-    if (category && categoryOrder.includes(category)) setActiveCategory(category);
-    if (status === "출품작" || status === "수상작") setActiveStatus(status);
-  }, []);
+    setActiveCategory(requestedCategory && categoryOrder.includes(requestedCategory) ? requestedCategory : "all");
+    setActiveStatus(requestedStatus === "출품작" || requestedStatus === "수상작" ? requestedStatus : null);
+  }, [requestedCategory, requestedStatus]);
 
   useEffect(() => {
     if (!selected) return;

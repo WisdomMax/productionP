@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { journalArticles } from "@/data/journal";
+import brandLogo from "@/img/logo/transparent_brand.png";
 
 export const metadata: Metadata = {
   title: "Journal — Production P",
@@ -10,10 +12,15 @@ export const metadata: Metadata = {
 export default function JournalIndexPage() {
   return (
     <main className="journalIndexPage">
-      <nav className="journalArticleNav">
-        <Link href="/">← PRODUCTION P</Link>
-        <span>AI FILMMAKING NOTES</span>
-      </nav>
+      <header className="journalIndexNav">
+        <Link href="/" aria-label="Production P 홈으로 이동"><Image src={brandLogo} alt="Production P" priority /></Link>
+        <nav aria-label="주요 메뉴">
+          <Link href="/archive/?category=all">ALL WORKS</Link>
+          <Link href="/archive/?category=awards">AWARDS</Link>
+          <Link className="is-active" href="/journal/">JOURNAL</Link>
+          <a href="mailto:contact@productionp.com">CONTACT ↗</a>
+        </nav>
+      </header>
       <header className="journalIndexHero">
         <small>PRODUCTION P / JOURNAL</small>
         <h1>NOTES ON<br /><span>MOVING</span> IMAGES.</h1>

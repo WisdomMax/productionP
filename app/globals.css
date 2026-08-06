@@ -2933,6 +2933,24 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   cursor:pointer;
   pointer-events:none;
 }
+.cinemaWorkObject:before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  inset:8%;
+  display:block;
+  background:rgba(31,9,4,.78);
+  transform:translate(10px,14px);
+  filter:blur(5px);
+  opacity:.9;
+  transition:opacity .28s,transform .55s cubic-bezier(.16,1,.3,1);
+  pointer-events:none;
+}
+.cinemaWorkObject.is-disc:before{border-radius:50%;clip-path:circle(49% at 50% 50%)}
+.cinemaWorkObject.is-square:before{border-radius:2px;clip-path:inset(1% round 2px)}
+.cinemaWorkObject.is-triangle:before{clip-path:polygon(50% 1%,99% 99%,1% 99%)}
+.cinemaWorkObject.is-hexagon:before{clip-path:polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%)}
+.cinemaWorkObject.is-diamond:before{inset:12%;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
 @keyframes cinemaObjectIn{from{opacity:0;transform:translateY(22px) scale(.72)}}
 .cinemaSculpture{
   position:absolute;
@@ -2940,7 +2958,8 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   display:block;
   overflow:hidden;
   background:#9A4527;
-  filter:drop-shadow(0 0 1px rgba(255,255,255,.94)) drop-shadow(3px 4px 2px rgba(0,0,0,.3)) drop-shadow(11px 16px 11px rgba(0,0,0,.48));
+  z-index:1;
+  filter:drop-shadow(0 0 1px rgba(255,255,255,.94));
   transition:opacity .28s,transform .55s cubic-bezier(.16,1,.3,1);
 }
 .cinemaSculpture img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.88) contrast(1.04);transform:scale(1.04);transition:filter .35s,transform .55s cubic-bezier(.16,1,.3,1)}
@@ -2988,6 +3007,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   outline:none;
 }
 .cinemaObjectHitArea:hover .cinemaSculpture,.cinemaWorkObject:focus-visible .cinemaSculpture{opacity:0;transform:rotateY(80deg) scale(.35)}
+.cinemaObjectHitArea:hover .cinemaWorkObject:before,.cinemaWorkObject:focus-visible:before{opacity:0;transform:translate(3px,5px) scale(.45)}
 .cinemaObjectHitArea:hover .cinemaObjectFace,.cinemaWorkObject:focus-visible .cinemaObjectFace{opacity:1;transform:translate(-50%,-50%);border-radius:4px;border-color:rgba(255,255,255,.82);box-shadow:0 26px 70px rgba(0,0,0,.72),0 0 0 1px rgba(154,69,39,.28)}
 .cinemaObjectHitArea:hover .cinemaObjectFace video,.cinemaWorkObject:focus-visible .cinemaObjectFace video{opacity:1}
 .cinemaObjectHitArea:hover .cinemaObjectFace img,.cinemaWorkObject:focus-visible .cinemaObjectFace img{opacity:0;filter:none;transform:scale(1)}
@@ -3059,6 +3079,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .cinemaObjectSlot,.cinemaObjectSlot:nth-child(7),.cinemaObjectSlot:nth-child(8){display:block;grid-column:auto;min-width:0}
   .cinemaObjectHitArea{display:block;height:auto}
   .cinemaWorkObject,.cinemaWorkObject:hover,.cinemaWorkObject:focus-visible{position:relative;left:auto;top:auto;width:100%;height:auto;aspect-ratio:auto;transform:none;animation:cinemaObjectInMobile .7s var(--delay) both}
+  .cinemaWorkObject:before{display:none}
   @keyframes cinemaObjectInMobile{from{opacity:0;transform:translateY(30px) scale(.85)}}
   .cinemaSculpture,.cinemaObjectHitArea:hover .cinemaSculpture,.cinemaWorkObject:hover .cinemaSculpture,.cinemaWorkObject:focus-visible .cinemaSculpture{display:none}
   .cinemaObjectFace,.cinemaObjectHitArea:hover .cinemaObjectFace,.cinemaWorkObject:hover .cinemaObjectFace,.cinemaWorkObject:focus-visible .cinemaObjectFace{position:relative;left:auto;top:auto;width:100%;height:auto;aspect-ratio:16/9;opacity:1;transform:none;border-radius:4px;border-color:rgba(255,255,255,.4);box-shadow:0 12px 28px rgba(0,0,0,.3)}
@@ -3153,4 +3174,116 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .archiveWorksGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 9px;padding-top:26px}
   .archiveWorkMedia{aspect-ratio:1}
   .archiveWorkMeta strong{font-size:11px}
+}
+
+/* Shared red/white identity for film index and journal. */
+.archivePage{position:relative;isolation:isolate;overflow:hidden;background:#9A4527}
+.archivePage:before{
+  content:"P";
+  position:fixed;
+  z-index:-1;
+  left:1.8vw;
+  bottom:-.2em;
+  color:rgba(255,255,255,.045);
+  font:900 clamp(180px,22vw,360px)/.72 Arial,sans-serif;
+  letter-spacing:-.12em;
+  pointer-events:none;
+}
+.archivePage:after{
+  content:"";
+  position:fixed;
+  z-index:-2;
+  inset:0;
+  opacity:1;
+  background-image:
+    radial-gradient(circle at 89% 16%,rgba(255,255,255,.075) 0 1px,transparent 1.4px),
+    linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:14px 14px,5vw 5vw,5vw 5vw;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0 72%,#000 92%);
+  mask-image:linear-gradient(90deg,transparent 0 72%,#000 92%);
+  pointer-events:none;
+}
+.archiveSiteHeader,.journalIndexNav{
+  position:relative;
+  z-index:100;
+  min-height:76px;
+  padding:17px 28px 22px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  background:linear-gradient(180deg,rgba(154,69,39,.98),rgba(154,69,39,.5) 68%,transparent);
+}
+.archiveSiteHeader:before,.journalIndexNav:before{content:"";position:absolute;z-index:-1;left:0;top:0;width:clamp(520px,38vw,680px);height:104px;background:#180b08;clip-path:polygon(0 0,100% 0,0 100%);pointer-events:none}
+.archiveSiteHeader>a,.journalIndexNav>a{width:clamp(138px,11vw,174px);line-height:0}
+.archiveSiteHeader img,.journalIndexNav img{width:100%;height:auto}
+.archiveSiteHeader nav,.journalIndexNav nav{display:flex;align-items:center;gap:clamp(28px,3vw,52px);font:700 14px/1 monospace;letter-spacing:.08em}
+.archiveSiteHeader nav a,.journalIndexNav nav a{position:relative;padding:12px 2px;color:#fff}
+.archiveSiteHeader nav a:after,.journalIndexNav nav a:after{content:"";position:absolute;left:2px;right:calc(100% - 2px);bottom:5px;height:1px;background:#fff;transition:right .3s}
+.archiveSiteHeader nav a:hover:after,.journalIndexNav nav a:hover:after,.journalIndexNav nav a.is-active:after{right:0}
+.archiveSiteHeader nav a:first-child:after{right:42%}
+.archiveLoading{min-height:70vh;display:grid;place-items:center;color:#fff;font:700 11px/1 monospace;letter-spacing:.12em}
+.archiveGallery{z-index:1;padding-top:5vh;background:transparent}
+.archiveGallery:before{
+  content:"";
+  position:fixed;
+  z-index:-1;
+  left:18vw;
+  top:-24vh;
+  width:66vw;
+  height:132vh;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:50%;
+  background:none;
+  pointer-events:none;
+}
+.archiveGalleryHero{border-color:rgba(255,255,255,.28)}
+.archiveGalleryHero>small{color:rgba(255,255,255,.7)}
+.archiveGalleryHero h1 span:last-child{color:#fff;-webkit-text-stroke:1px rgba(255,255,255,.94)}
+.archiveGalleryHero>div b{color:#fff}
+.archiveGalleryHero>div p{color:rgba(255,255,255,.68)}
+.archiveCategoryRail{top:0;background:rgba(154,69,39,.94);border-color:rgba(255,255,255,.26);backdrop-filter:blur(12px)}
+.archiveCategoryRail button{border-color:rgba(255,255,255,.24);color:rgba(255,255,255,.72)}
+.archiveCategoryRail button span:after{background:#fff}
+.archiveCategoryRail button:hover{color:#fff;background:rgba(255,255,255,.08)}
+.archiveCategoryRail button.is-active{background:#fff;color:#9A4527}
+.archiveWorkCard{color:#fff}
+.archiveWorkMedia{border-color:rgba(255,255,255,.32);box-shadow:0 13px 24px rgba(43,12,5,.22)}
+.archiveWorkCard:hover .archiveWorkMedia,.archiveWorkCard:focus-visible .archiveWorkMedia{border-color:#fff;box-shadow:0 19px 35px rgba(43,12,5,.36)}
+.archiveWorkMeta small{color:rgba(255,255,255,.62)}
+.archiveAwardFilters{border-color:rgba(255,255,255,.34)}
+.archiveAwardFilters button{border-color:rgba(255,255,255,.34);background:rgba(255,255,255,.04);color:#fff}
+.archiveAwardFilters button:hover,.archiveAwardFilters button.is-active{background:#fff;color:#9A4527}
+
+.journalIndexPage{isolation:isolate;background:#9A4527}
+.journalIndexNav{position:relative}
+.journalIndexHero{border-color:rgba(255,255,255,.28)}
+.journalIndexHero:before{
+  opacity:1;
+  background-image:
+    radial-gradient(circle at 88% 18%,rgba(255,255,255,.1) 0 1px,transparent 1.4px),
+    linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px),
+    radial-gradient(ellipse at 32% 52%,transparent 0 39%,rgba(255,255,255,.09) 39.1% 39.25%,transparent 39.4%);
+  background-size:14px 14px,5vw 5vw,5vw 5vw,auto;
+}
+.journalIndexHero small{color:rgba(255,255,255,.72)}
+.journalIndexHero small:before{height:1px;background:#fff}
+.journalIndexHero h1 span{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.82)}
+.journalIndexHero p{border-color:#fff;color:rgba(255,255,255,.82)}
+.journalIndexList>a{border-color:rgba(255,255,255,.28)}
+.journalIndexList>a>span,.journalIndexList>a>div small{color:rgba(255,255,255,.65)}
+.journalIndexList>a>span:before{height:1px;background:#fff}
+.journalIndexList p{color:rgba(255,255,255,.74)}
+.journalIndexList>a:hover h2{color:rgba(255,255,255,.66)}
+
+@media(max-width:760px){
+  .archiveSiteHeader,.journalIndexNav{position:relative;min-height:64px;padding:13px 16px 22px}
+  .archiveSiteHeader:before,.journalIndexNav:before{width:360px;height:82px}
+  .archiveSiteHeader>a,.journalIndexNav>a{width:122px}
+  .archiveSiteHeader nav,.journalIndexNav nav{gap:14px;font-size:12px}
+  .archiveSiteHeader nav a:first-child,.archiveSiteHeader nav a:nth-child(2),.journalIndexNav nav a:first-child,.journalIndexNav nav a:nth-child(2){display:none}
+  .archiveGallery{padding-top:24px}
+  .archiveCategoryRail button:hover,.archiveCategoryRail button.is-active{background:#fff;color:#9A4527}
+  .journalIndexHero{padding-top:7vh}
 }
