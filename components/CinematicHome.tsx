@@ -181,6 +181,7 @@ export default function CinematicHome() {
           <Link href="/archive/?category=all">ALL WORKS</Link>
           <Link href="/archive/?category=awards">AWARDS</Link>
           <Link href="/journal/">JOURNAL</Link>
+          <Link href="/about/">ABOUT</Link>
           <button type="button" onClick={openInquiry}>CONTACT ↗</button>
         </nav>
       </header>

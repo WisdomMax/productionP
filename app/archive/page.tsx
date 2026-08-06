@@ -15,6 +15,7 @@ export default function ArchivePage() {
           <a href="/archive/?category=all">ALL WORKS</a>
           <a href="/archive/?category=awards">AWARDS</a>
           <Link href="/journal/">JOURNAL</Link>
+          <Link href="/about/">ABOUT</Link>
           <a href="mailto:contact@productionp.com">CONTACT ↗</a>
         </nav>
       </header>

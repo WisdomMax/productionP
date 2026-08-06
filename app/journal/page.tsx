@@ -18,6 +18,7 @@ export default function JournalIndexPage() {
           <Link href="/archive/?category=all">ALL WORKS</Link>
           <Link href="/archive/?category=awards">AWARDS</Link>
           <Link className="is-active" href="/journal/">JOURNAL</Link>
+          <Link href="/about/">ABOUT</Link>
           <a href="mailto:contact@productionp.com">CONTACT ↗</a>
         </nav>
       </header>
