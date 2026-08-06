@@ -2910,7 +2910,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .sculpture-triangle:before{clip-path:polygon(50% 0,100% 100%,0 100%);background:conic-gradient(from 30deg at 50% 62%,#fff8ed 0 33.333%,#c98265 0 66.666%,#28130c 0 100%)}
 .sculpture-hexagon:before{clip-path:polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);background:conic-gradient(from 30deg at 50% 50%,#fff8ed 0 16.666%,#e2c5b1 0 33.333%,#c98265 0 50%,#7d432f 0 66.666%,#24120c 0 83.333%,#6f301f 0 100%)}
 .sculpture-diamond:before{inset:14%;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);background:conic-gradient(from 45deg at 50% 50%,#fff8ed 0 25%,#d8bbaa 0 50%,#722f1d 0 75%,#24120c 0 100%)}
-.cinemaSculpture:after{content:attr(data-candidate);position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);padding:4px 5px;background:#080909;color:#fff;font:7px/1 monospace;letter-spacing:.08em}
+.cinemaSculpture:after{display:none}
 .cinemaObjectHitArea:hover .cinemaSculpture:before{filter:drop-shadow(4px 5px 0 rgba(42,18,10,.3));transform:translate(5px,5px)}
 .cinemaObjectFace{
   position:absolute;
