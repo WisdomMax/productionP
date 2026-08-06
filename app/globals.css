@@ -2940,16 +2940,16 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   display:block;
   overflow:hidden;
   background:#9A4527;
-  filter:drop-shadow(0 0 1px rgba(255,255,255,.94)) drop-shadow(12px 17px 11px rgba(0,0,0,.44));
+  filter:drop-shadow(0 0 1px rgba(255,255,255,.94)) drop-shadow(3px 4px 2px rgba(0,0,0,.3)) drop-shadow(11px 16px 11px rgba(0,0,0,.48));
   transition:opacity .28s,transform .55s cubic-bezier(.16,1,.3,1);
 }
 .cinemaSculpture img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.88) contrast(1.04);transform:scale(1.04);transition:filter .35s,transform .55s cubic-bezier(.16,1,.3,1)}
-.cinemaSculpture:before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.58)}
-.sculpture-disc:before{background:radial-gradient(circle at 30% 18%,rgba(255,255,255,.28),transparent 35%),linear-gradient(132deg,transparent 58%,rgba(154,69,39,.24) 58%)}
-.sculpture-square:before{background:conic-gradient(from 45deg at 50% 50%,rgba(255,255,255,.78) 0 25%,transparent 0 50%,rgba(154,69,39,.42) 0 75%,rgba(255,255,255,.08) 0);opacity:.62}
-.sculpture-triangle:before{background:conic-gradient(from 30deg at 50% 64%,rgba(255,255,255,.7) 0 33.333%,transparent 0 66.666%,rgba(154,69,39,.38) 0);opacity:.54}
-.sculpture-hexagon:before{background:conic-gradient(from 30deg at 50% 50%,rgba(255,255,255,.56) 0 16.666%,transparent 0 33.333%,rgba(154,69,39,.32) 0 50%,transparent 0 66.666%,rgba(255,255,255,.12) 0 83.333%,transparent 0);opacity:.48}
-.sculpture-diamond:before{background:conic-gradient(from 45deg at 50% 50%,rgba(255,255,255,.62) 0 25%,transparent 0 50%,rgba(154,69,39,.36) 0 75%,rgba(255,255,255,.1) 0);opacity:.5}
+.cinemaSculpture:before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.62),inset -12px -16px 22px rgba(0,0,0,.22)}
+.sculpture-disc:before{background:radial-gradient(circle at 27% 18%,rgba(255,255,255,.42),transparent 34%),linear-gradient(132deg,transparent 46%,rgba(0,0,0,.12) 58%,rgba(0,0,0,.62) 100%)}
+.sculpture-square:before{background:conic-gradient(from 45deg at 50% 50%,rgba(255,255,255,.44) 0 25%,rgba(0,0,0,.64) 0 50%,rgba(154,69,39,.28) 0 75%,rgba(0,0,0,.26) 0)}
+.sculpture-triangle:before{background:conic-gradient(from 30deg at 50% 64%,rgba(255,255,255,.38) 0 33.333%,rgba(0,0,0,.66) 0 66.666%,rgba(154,69,39,.3) 0)}
+.sculpture-hexagon:before{background:conic-gradient(from 30deg at 50% 50%,rgba(255,255,255,.34) 0 16.666%,rgba(0,0,0,.58) 0 33.333%,rgba(154,69,39,.28) 0 50%,rgba(0,0,0,.18) 0 66.666%,rgba(255,255,255,.16) 0 83.333%,rgba(0,0,0,.48) 0)}
+.sculpture-diamond:before{background:conic-gradient(from 45deg at 50% 50%,rgba(255,255,255,.38) 0 25%,rgba(0,0,0,.64) 0 50%,rgba(154,69,39,.3) 0 75%,rgba(0,0,0,.22) 0)}
 .cinemaSculpture i{position:absolute;z-index:2;left:50%;top:50%;width:30px;height:30px;border:1px solid rgba(255,255,255,.76);border-radius:50%;background:rgba(154,69,39,.18);transform:translate(-50%,-50%);opacity:.82;transition:opacity .3s,transform .35s}
 .cinemaSculpture i:after{content:"";position:absolute;left:52%;top:50%;width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:6px solid #fff;transform:translate(-35%,-50%)}
 .sculpture-disc{border-radius:50%;clip-path:circle(49% at 50% 50%)}
