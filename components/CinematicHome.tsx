@@ -99,6 +99,7 @@ function WorkObject({ work, index }: { work: Work; index: number }) {
           aria-hidden="true"
         >
           <img src={work.poster} alt="" loading={index < 5 ? "eager" : "lazy"} />
+          <i />
         </span>
         <span className="cinemaObjectFace">
           <img src={work.poster} alt="" />
@@ -201,10 +202,13 @@ export default function CinematicHome() {
 
         <div className="cinemaStageFooter">
           <div className="cinemaContactBlock">
-            <span>AI FILM STUDIO · SEOUL</span>
-            <div>
-              <a href="tel:01065154600">010-6515-4600</a>
-              <a href="mailto:contact@productionp.com">contact@productionp.com</a>
+            <b className="cinemaContactSeal" aria-hidden="true">P.</b>
+            <div className="cinemaContactCopy">
+              <span>AI FILM STUDIO · SEOUL</span>
+              <div>
+                <a href="tel:01065154600">010-6515-4600</a>
+                <a href="mailto:contact@productionp.com">contact@productionp.com</a>
+              </div>
             </div>
           </div>
           <Link href="/archive?category=all"><b>작품 더보기</b><i>→</i></Link>

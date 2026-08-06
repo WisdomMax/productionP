@@ -2860,8 +2860,8 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   position:absolute;
   inset:0;
   opacity:1;
-  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
-  background-size:5vw 5vw;
+  background-image:radial-gradient(circle at 58% 42%,rgba(255,255,255,.055),transparent 39%),linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:auto,5vw 5vw,5vw 5vw;
 }
 .cinemaAmbient:after{
   content:"";
@@ -2896,14 +2896,15 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   justify-content:space-between;
   background:linear-gradient(180deg,rgba(154,69,39,.96),rgba(154,69,39,.45) 68%,transparent);
 }
-.cinemaHeader:before{display:none}
+.cinemaHeader:before{content:"";position:absolute;z-index:-1;left:0;top:0;width:clamp(520px,38vw,680px);height:104px;background:#180b08;clip-path:polygon(0 0,100% 0,0 100%);pointer-events:none}
 .cinemaHeader>a{position:relative;z-index:1;width:clamp(138px,11vw,174px);line-height:0}
-.cinemaHeader img{width:100%;height:auto;filter:grayscale(1) brightness(0) invert(1)}
+.cinemaHeader img{width:100%;height:auto;filter:none}
 .cinemaHeader nav{display:flex;align-items:center;gap:clamp(28px,3vw,52px);font:700 14px/1 monospace;letter-spacing:.08em}
 .cinemaHeader nav a,.cinemaHeader nav button{position:relative;padding:12px 2px;border:0;background:none;color:var(--paper);font:inherit;letter-spacing:inherit;transition:color .25s}
 .cinemaHeader nav a:after,.cinemaHeader nav button:after{content:"";position:absolute;left:2px;right:calc(100% - 2px);bottom:5px;height:1px;background:#fff;transition:right .3s}
 .cinemaHeader nav a:hover,.cinemaHeader nav button:hover{color:rgba(255,255,255,.7)}
 .cinemaHeader nav a:hover:after,.cinemaHeader nav button:hover:after{right:0}
+.cinemaHeader nav a:first-child:after{right:42%}
 .cinemaWorkStage{position:absolute;inset:0;opacity:0;transform:scale(1.025);transition:opacity 1.1s .2s,transform 1.4s cubic-bezier(.16,1,.3,1)}
 .cinematicHome.is-ready .cinemaWorkStage{opacity:1;transform:none}
 .cinemaWorkHeading{position:absolute;z-index:20;left:4vw;top:14vh;width:17vw;pointer-events:none}
@@ -2912,10 +2913,11 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .cinemaWorkHeading p{margin:0;color:rgba(255,255,255,.72);font:700 9px/1.65 monospace;letter-spacing:.08em}
 .cinemaObjectField{position:absolute;z-index:10;left:29vw;right:4vw;top:calc(14vh + 9px);bottom:9vh;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:1.4vh 1.25vw}
 .cinemaObjectField:before{content:"";position:absolute;z-index:-1;inset:-.7vh -.625vw;background-image:linear-gradient(90deg,rgba(255,255,255,.075) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.075) 1px,transparent 1px);background-size:20% 100%,100% 33.333%;pointer-events:none}
+.cinemaObjectField:after{content:"";position:absolute;z-index:-1;inset:-.7vh -.625vw;background-image:radial-gradient(circle,rgba(255,255,255,.52) 0 1px,transparent 1.4px);background-size:20% 33.333%;pointer-events:none}
 .cinemaObjectSlot{position:relative;min-width:0;min-height:0}
 .cinemaObjectHitArea{position:relative;width:100%;height:100%;display:grid;place-items:start center;cursor:pointer}
 .cinemaWorkObject{
-  --object-size:clamp(72px,6.4vw,100px);
+  --object-size:clamp(98px,7.5vw,132px);
   --preview-width:clamp(250px,23vw,380px);
   --preview-height:clamp(141px,12.94vw,214px);
   position:relative;
@@ -2938,16 +2940,25 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   display:block;
   overflow:hidden;
   background:#9A4527;
-  filter:drop-shadow(0 0 1px rgba(255,255,255,.9)) drop-shadow(7px 10px 8px rgba(0,0,0,.2));
+  filter:drop-shadow(0 0 1px rgba(255,255,255,.94)) drop-shadow(12px 17px 11px rgba(0,0,0,.44));
   transition:opacity .28s,transform .55s cubic-bezier(.16,1,.3,1);
 }
 .cinemaSculpture img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.88) contrast(1.04);transform:scale(1.04);transition:filter .35s,transform .55s cubic-bezier(.16,1,.3,1)}
+.cinemaSculpture:before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.58)}
+.sculpture-disc:before{background:radial-gradient(circle at 30% 18%,rgba(255,255,255,.28),transparent 35%),linear-gradient(132deg,transparent 58%,rgba(154,69,39,.24) 58%)}
+.sculpture-square:before{background:conic-gradient(from 45deg at 50% 50%,rgba(255,255,255,.78) 0 25%,transparent 0 50%,rgba(154,69,39,.42) 0 75%,rgba(255,255,255,.08) 0);opacity:.62}
+.sculpture-triangle:before{background:conic-gradient(from 30deg at 50% 64%,rgba(255,255,255,.7) 0 33.333%,transparent 0 66.666%,rgba(154,69,39,.38) 0);opacity:.54}
+.sculpture-hexagon:before{background:conic-gradient(from 30deg at 50% 50%,rgba(255,255,255,.56) 0 16.666%,transparent 0 33.333%,rgba(154,69,39,.32) 0 50%,transparent 0 66.666%,rgba(255,255,255,.12) 0 83.333%,transparent 0);opacity:.48}
+.sculpture-diamond:before{background:conic-gradient(from 45deg at 50% 50%,rgba(255,255,255,.62) 0 25%,transparent 0 50%,rgba(154,69,39,.36) 0 75%,rgba(255,255,255,.1) 0);opacity:.5}
+.cinemaSculpture i{position:absolute;z-index:2;left:50%;top:50%;width:30px;height:30px;border:1px solid rgba(255,255,255,.76);border-radius:50%;background:rgba(154,69,39,.18);transform:translate(-50%,-50%);opacity:.82;transition:opacity .3s,transform .35s}
+.cinemaSculpture i:after{content:"";position:absolute;left:52%;top:50%;width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:6px solid #fff;transform:translate(-35%,-50%)}
 .sculpture-disc{border-radius:50%;clip-path:circle(49% at 50% 50%)}
 .sculpture-square{border-radius:2px;clip-path:inset(1% round 2px)}
 .sculpture-triangle{clip-path:polygon(50% 1%,99% 99%,1% 99%)}
 .sculpture-hexagon{clip-path:polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%)}
 .sculpture-diamond{inset:12%;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
 .cinemaObjectHitArea:hover .cinemaSculpture img{filter:saturate(1) contrast(1.02);transform:scale(1.09)}
+.cinemaObjectHitArea:hover .cinemaSculpture i{opacity:1;transform:translate(-50%,-50%) scale(1.08)}
 .cinemaObjectFace{
   position:absolute;
   left:50%;
@@ -2970,7 +2981,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .cinemaObjectFace i{position:absolute;z-index:3;left:9px;top:9px;font:8px/1 monospace;font-style:normal;color:rgba(255,255,255,.8)}
 .cinemaObjectMeta{position:absolute;left:50%;top:calc(50% + var(--preview-height)/2 + 11px);width:var(--preview-width);display:flex;justify-content:space-between;align-items:baseline;gap:12px;opacity:0;transform:translate(-50%,8px);transition:opacity .3s .08s,transform .35s .08s;text-align:left;white-space:nowrap}
 .cinemaObjectMeta strong{overflow:hidden;text-overflow:ellipsis;font-size:13px;letter-spacing:-.025em}
-.cinemaObjectMeta small{flex:none;color:rgba(255,255,255,.7);font:7px/1 monospace;letter-spacing:.06em}
+.cinemaObjectMeta small{flex:none;color:rgba(255,255,255,.68);font:7px/1 monospace;letter-spacing:.06em}
 .cinemaObjectHitArea:hover .cinemaWorkObject,.cinemaWorkObject:focus-visible{
   z-index:30;
   animation-play-state:paused;
@@ -2981,9 +2992,12 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .cinemaObjectHitArea:hover .cinemaObjectFace video,.cinemaWorkObject:focus-visible .cinemaObjectFace video{opacity:1}
 .cinemaObjectHitArea:hover .cinemaObjectFace img,.cinemaWorkObject:focus-visible .cinemaObjectFace img{opacity:0;filter:none;transform:scale(1)}
 .cinemaObjectHitArea:hover .cinemaObjectMeta,.cinemaWorkObject:focus-visible .cinemaObjectMeta{opacity:1;transform:translate(-50%,0)}
-.cinemaStageFooter{position:absolute;z-index:25;left:4vw;right:4vw;bottom:24px;display:flex;justify-content:space-between;align-items:end;color:rgba(255,255,255,.74);font:8px/1 monospace;letter-spacing:.1em}
-.cinemaContactBlock>span{display:block;font-weight:700}
-.cinemaContactBlock>div{display:flex;gap:18px;margin-top:7px}
+.cinemaStageFooter{position:absolute;z-index:25;left:2vw;right:3vw;bottom:24px;display:flex;justify-content:space-between;align-items:end;color:rgba(255,255,255,.74);font:8px/1 monospace;letter-spacing:.1em}
+.cinemaContactBlock{display:flex;align-items:center;gap:17px}
+.cinemaContactSeal{width:54px;height:54px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.78);border-radius:50%;color:#fff;font:800 25px/1 Arial,sans-serif;letter-spacing:-.08em}
+.cinemaContactCopy{padding-left:17px;border-left:1px solid rgba(255,255,255,.72)}
+.cinemaContactCopy>span{display:block;font-weight:700}
+.cinemaContactCopy>div{display:flex;gap:18px;margin-top:8px}
 .cinemaContactBlock a{color:var(--paper);font:700 11px/1.1 "Pretendard Variable",sans-serif;letter-spacing:.01em;transition:color .25s}
 .cinemaContactBlock a:hover{color:rgba(255,255,255,.7)}
 .cinemaStageFooter>a{display:flex;align-items:center;gap:20px;padding:8px 8px 8px 22px;border:1px solid rgba(255,255,255,.72);border-radius:999px;background:rgba(255,255,255,.04);color:var(--paper);transition:background .3s,border-color .3s,transform .3s,color .3s}
@@ -3054,7 +3068,10 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .cinemaObjectMeta strong{display:block;font-size:18px}
   .cinemaObjectMeta small{display:block;margin-top:0;font-size:9px}
   .cinemaStageFooter{position:relative;left:auto;right:auto;bottom:auto;margin-top:54px;align-items:flex-end;gap:20px}
-  .cinemaContactBlock>div{display:grid;gap:6px}
+  .cinemaContactBlock{gap:10px}
+  .cinemaContactSeal{width:42px;height:42px;font-size:20px}
+  .cinemaContactCopy{padding-left:10px}
+  .cinemaContactCopy>div{display:grid;gap:6px}
   .cinemaContactBlock a{font-size:10px}
   .cinemaIntro{padding-inline:16px}
   .cinemaIntroTop{left:16px;right:16px}
