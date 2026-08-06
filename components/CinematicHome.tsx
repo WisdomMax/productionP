@@ -173,6 +173,7 @@ export default function CinematicHome() {
         <nav aria-label="주요 메뉴">
           <Link href="/archive?category=all">ALL WORKS</Link>
           <Link href="/archive?category=awards">AWARDS</Link>
+          <Link href="/journal">JOURNAL</Link>
           <button type="button" onClick={openInquiry}>CONTACT ↗</button>
         </nav>
       </header>
