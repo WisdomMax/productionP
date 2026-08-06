@@ -72,7 +72,20 @@ export default function SiteMotion() {
       );
     }
 
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const removeBasicListeners = () => {
+      window.removeEventListener("popstate", markHistoryTraversal);
+      window.removeEventListener("scroll", trackHomePosition);
+      window.removeEventListener("click", captureHomeBeforeNavigation, true);
+    };
+
+    // The new homepage is a fixed work stage. Do not keep Lenis/GSAP RAF loops
+    // alive when there is no scroll-driven scene to animate.
+    if (
+      document.querySelector(".cinematicHome") ||
+      matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return removeBasicListeners;
+    }
 
     gsap.registerPlugin(ScrollTrigger);
     const lenis = new Lenis({ duration: 1.02, smoothWheel: true });
@@ -1304,9 +1317,7 @@ export default function SiteMotion() {
     const refreshFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
 
     return () => {
-      window.removeEventListener("popstate", markHistoryTraversal);
-      window.removeEventListener("scroll", trackHomePosition);
-      window.removeEventListener("click", captureHomeBeforeNavigation, true);
+      removeBasicListeners();
       cancelAnimationFrame(animationFrame);
       cancelAnimationFrame(refreshFrame);
       cancelAnimationFrame(restoreFrame);

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import TemporalCursor from "@/components/TemporalCursor";
 import SiteMotion from "@/components/SiteMotion";
 import "./globals.css";
 
@@ -76,7 +75,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body>
         {children}
         <SiteMotion />
-        <TemporalCursor />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
