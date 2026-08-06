@@ -3033,7 +3033,8 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 
 /* Film-index archive — compact category-led gallery. */
 .archivePage{min-height:100vh;background:var(--signal);color:var(--paper)}
-.archiveBack{position:fixed;z-index:100;left:24px;top:20px;color:var(--paper);font:700 9px/1 monospace;letter-spacing:.12em;mix-blend-mode:difference}
+.archiveBack{position:fixed;z-index:100;left:28px;top:17px;width:clamp(138px,11vw,174px);padding:0;background:none;backdrop-filter:none;line-height:0;mix-blend-mode:normal}
+.archiveBack img{width:100%;height:auto;filter:grayscale(1) brightness(0) invert(1)}
 .archiveGallery{position:relative;min-height:100vh;padding:11vh 2.4vw 9vh;background:var(--signal);color:var(--paper)}
 .archiveGallery:before{content:"";position:absolute;inset:0 0 auto;height:70vh;pointer-events:none;background:linear-gradient(120deg,transparent 54%,rgba(0,0,0,.1) 54%)}
 .archiveGalleryHero{position:relative;display:grid;grid-template-columns:1fr auto;align-items:end;border-bottom:1px solid #333431;padding:0 0 5vh}
@@ -3074,7 +3075,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 @media(min-width:1700px){.archiveWorksGrid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1200px){.archiveWorksGrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:760px){
-  .archiveBack{left:16px;top:17px}
+  .archiveBack{left:16px;top:13px;width:122px}
   .archiveGallery{padding:86px 16px 72px}
   .archiveGalleryHero{grid-template-columns:1fr;padding-bottom:30px}
   .archiveGalleryHero h1{gap:.1em;font-size:21vw;line-height:.78;margin-top:25px}
