@@ -38,14 +38,14 @@ const featuredTitles = [
 ];
 
 const placements = [
-  { x: 27, y: 27, z: 78, turn: -8, shape: "prism" },
-  { x: 52, y: 22, z: 20, turn: 5, shape: "disc" },
-  { x: 77, y: 29, z: 62, turn: -4, shape: "prism" },
-  { x: 38, y: 53, z: 115, turn: 7, shape: "disc" },
-  { x: 65, y: 51, z: 42, turn: -7, shape: "prism" },
-  { x: 86, y: 60, z: 90, turn: 6, shape: "disc" },
-  { x: 20, y: 72, z: 34, turn: 5, shape: "prism" },
-  { x: 55, y: 77, z: 102, turn: -5, shape: "disc" },
+  { x: 30, y: 30, z: 60, turn: 0, shape: "portal" },
+  { x: 49, y: 30, z: 60, turn: 0, shape: "portal" },
+  { x: 68, y: 30, z: 60, turn: 0, shape: "portal" },
+  { x: 87, y: 30, z: 60, turn: 0, shape: "portal" },
+  { x: 30, y: 69, z: 60, turn: 0, shape: "portal" },
+  { x: 49, y: 69, z: 60, turn: 0, shape: "portal" },
+  { x: 68, y: 69, z: 60, turn: 0, shape: "portal" },
+  { x: 87, y: 69, z: 60, turn: 0, shape: "portal" },
 ];
 
 function WorkObject({ work, index }: { work: Work; index: number }) {
@@ -85,6 +85,9 @@ function WorkObject({ work, index }: { work: Work; index: number }) {
       onBlur={pause}
       aria-label={`${work.title} 재생`}
     >
+      <span className={`cinemaSculpture sculpture-${placement.shape}`} aria-hidden="true">
+        <i /><i /><i /><i />
+      </span>
       <span className="cinemaObjectFace">
         <img src={work.poster} alt="" />
         <video ref={videoRef} src={mediaUrl(work.src)} muted loop playsInline preload="none" />

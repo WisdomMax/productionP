@@ -2891,13 +2891,45 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   background:transparent;
   color:inherit;
   transform-style:preserve-3d;
-  transform:translate3d(-50%,-50%,var(--z)) rotateX(53deg) rotateZ(var(--turn));
+  transform:translate3d(-50%,-50%,var(--z)) rotateZ(var(--turn));
   transition:width .55s cubic-bezier(.16,1,.3,1),height .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1),filter .4s;
-  animation:cinemaObjectIn .9s var(--delay) both,cinemaObjectFloat 5s calc(1s + var(--delay)) ease-in-out infinite alternate;
+  animation:cinemaObjectIn .9s var(--delay) both;
   cursor:pointer;
 }
-@keyframes cinemaObjectIn{from{opacity:0;transform:translate3d(-50%,-30%,calc(var(--z) - 180px)) rotateX(70deg) rotateZ(var(--turn)) scale(.45)}}
-@keyframes cinemaObjectFloat{to{margin-top:-9px}}
+@keyframes cinemaObjectIn{from{opacity:0;transform:translate3d(-50%,-30%,calc(var(--z) - 180px)) rotateZ(var(--turn)) scale(.45)}}
+.cinemaSculpture{
+  position:absolute;
+  inset:-5%;
+  display:block;
+  transform-style:preserve-3d;
+  transition:opacity .28s,transform .55s cubic-bezier(.16,1,.3,1);
+  filter:drop-shadow(0 20px 14px rgba(0,0,0,.32));
+}
+.cinemaSculpture i{position:absolute;display:block;font-style:normal}
+.sculpture-portal{
+  border-radius:50%;
+  background:linear-gradient(145deg,#fff 0 7%,#817a76 13%,#111 28%,#020303 67%,#5a514d 84%,#fff 97%);
+  transform:rotateX(58deg) rotateZ(-14deg);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.72),inset 0 0 0 9px rgba(0,0,0,.52),0 13px 0 #090a0a,0 20px 0 rgba(255,255,255,.5),0 32px 24px rgba(0,0,0,.42);
+}
+.sculpture-portal:before{
+  content:"";
+  position:absolute;
+  inset:21%;
+  border-radius:50%;
+  background:radial-gradient(circle at 44% 34%,rgba(255,255,255,.72),#6a2a16 8%,#160a06 34%,#020303 70%);
+  border:1px solid rgba(255,255,255,.72);
+  box-shadow:inset 0 9px 16px rgba(0,0,0,.82),0 0 0 7px rgba(255,255,255,.08);
+}
+.sculpture-portal:after{
+  content:"";
+  position:absolute;
+  left:15%;right:15%;top:47%;height:1px;
+  background:rgba(255,255,255,.72);
+  box-shadow:0 0 10px rgba(255,255,255,.45);
+}
+.sculpture-portal i:first-child{inset:8%;border:1px solid rgba(255,255,255,.46);border-radius:50%}
+.sculpture-portal i:nth-child(2){left:48%;top:5%;width:4%;height:14%;border-radius:999px;background:#fff}
 .cinemaObjectFace{
   position:absolute;
   inset:0;
@@ -2906,10 +2938,10 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   border:1px solid rgba(241,239,232,.48);
   background:#171818;
   box-shadow:0 17px 0 rgba(0,0,0,.5),0 28px 50px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.06);
-  transition:border-radius .5s,clip-path .5s,box-shadow .5s,border-color .3s;
+  opacity:0;
+  transform:scale(.62) rotateX(28deg);
+  transition:opacity .3s,transform .55s cubic-bezier(.16,1,.3,1),box-shadow .5s,border-color .3s;
 }
-.cinemaWorkObject.is-disc .cinemaObjectFace{border-radius:50%}
-.cinemaWorkObject.is-prism .cinemaObjectFace{clip-path:polygon(17% 0,83% 0,100% 17%,100% 83%,83% 100%,17% 100%,0 83%,0 17%)}
 .cinemaObjectFace img,.cinemaObjectFace video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
 .cinemaObjectFace img{filter:grayscale(.75) saturate(.6) brightness(.62) contrast(1.15);transform:scale(1.08);transition:opacity .3s,filter .5s,transform .7s}
 .cinemaObjectFace video{opacity:0;filter:saturate(.85);transition:opacity .3s}
@@ -2926,7 +2958,8 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   animation-play-state:paused;
   outline:none;
 }
-.cinemaWorkObject:hover .cinemaObjectFace,.cinemaWorkObject:focus-visible .cinemaObjectFace{border-radius:4px;clip-path:polygon(0 0,100% 0,100% 100%,0 100%);border-color:rgba(255,255,255,.82);box-shadow:0 26px 70px rgba(0,0,0,.72),0 0 0 1px rgba(154,69,39,.28)}
+.cinemaWorkObject:hover .cinemaSculpture,.cinemaWorkObject:focus-visible .cinemaSculpture{opacity:0;transform:rotateY(80deg) scale(.35)}
+.cinemaWorkObject:hover .cinemaObjectFace,.cinemaWorkObject:focus-visible .cinemaObjectFace{opacity:1;transform:none;border-radius:4px;border-color:rgba(255,255,255,.82);box-shadow:0 26px 70px rgba(0,0,0,.72),0 0 0 1px rgba(154,69,39,.28)}
 .cinemaWorkObject:hover .cinemaObjectFace video,.cinemaWorkObject:focus-visible .cinemaObjectFace video{opacity:1}
 .cinemaWorkObject:hover .cinemaObjectFace img,.cinemaWorkObject:focus-visible .cinemaObjectFace img{opacity:0;filter:none;transform:scale(1)}
 .cinemaWorkObject:hover .cinemaObjectMeta,.cinemaWorkObject:focus-visible .cinemaObjectMeta{opacity:1;transform:none}
@@ -2975,7 +3008,9 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .cinemaObjectSlot{display:block;min-width:0}
   .cinemaWorkObject,.cinemaWorkObject:hover,.cinemaWorkObject:focus-visible{position:relative;left:auto;top:auto;width:100%;height:auto;aspect-ratio:1;transform:none;animation:cinemaObjectInMobile .7s var(--delay) both}
   @keyframes cinemaObjectInMobile{from{opacity:0;transform:translateY(30px) scale(.85)}}
-  .cinemaObjectFace,.cinemaWorkObject:hover .cinemaObjectFace,.cinemaWorkObject:focus-visible .cinemaObjectFace{border-radius:4px;clip-path:none;box-shadow:0 12px 28px rgba(0,0,0,.42)}
+  .cinemaSculpture{inset:17%}
+  .cinemaWorkObject:hover .cinemaSculpture,.cinemaWorkObject:focus-visible .cinemaSculpture{opacity:1;transform:initial}
+  .cinemaObjectFace,.cinemaWorkObject:hover .cinemaObjectFace,.cinemaWorkObject:focus-visible .cinemaObjectFace{opacity:0;transform:scale(.62);border-radius:4px;box-shadow:0 12px 28px rgba(0,0,0,.42)}
   .cinemaObjectFace img{filter:grayscale(.45) brightness(.7)}
   .cinemaObjectFace video{display:none}
   .cinemaObjectMeta,.cinemaWorkObject:hover .cinemaObjectMeta,.cinemaWorkObject:focus-visible .cinemaObjectMeta{position:relative;top:auto;margin-top:9px;display:block;opacity:1;transform:none;white-space:normal}
