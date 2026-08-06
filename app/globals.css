@@ -2923,6 +2923,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .cinemaWorkHeading small{display:block;color:rgba(255,255,255,.74);font:700 10px/1 monospace;letter-spacing:.1em}
 .cinemaWorkHeading h1{margin:12px 0 18px;color:var(--paper);font-size:clamp(64px,9vw,148px);line-height:.75;letter-spacing:-.09em}
 .cinemaWorkHeading p{margin:0;color:rgba(255,255,255,.72);font:700 9px/1.65 monospace;letter-spacing:.08em}
+.cinemaParticleBust{position:absolute;z-index:11;left:5.2vw;top:42vh;width:clamp(145px,10.5vw,205px);height:auto;aspect-ratio:.78;display:block;opacity:.9;pointer-events:none;filter:drop-shadow(12px 18px 18px rgba(38,8,3,.2));mix-blend-mode:screen}
 .cinemaObjectField{position:absolute;z-index:10;left:29vw;right:4vw;top:calc(14vh + 9px);bottom:9vh;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:1.4vh 1.25vw}
 .cinemaObjectField:before{content:"";position:absolute;z-index:-1;inset:-.7vh -.625vw;background-image:linear-gradient(90deg,rgba(255,255,255,.075) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.075) 1px,transparent 1px);background-size:20% 100%,100% 33.333%;pointer-events:none}
 .cinemaObjectField:after{content:"";position:absolute;z-index:-1;inset:-.7vh -.625vw;background-image:radial-gradient(circle,rgba(255,255,255,.52) 0 1px,transparent 1.4px);background-size:20% 33.333%;pointer-events:none}
@@ -3089,6 +3090,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .cinemaWorkHeading{position:relative;left:auto;top:auto;width:auto;margin-bottom:34px}
   .cinemaWorkHeading h1{font-size:24vw;margin:12px 0 14px}
   .cinemaWorkHeading p{display:none}
+  .cinemaParticleBust{display:none}
   .cinemaObjectField{position:relative;inset:auto;display:grid;grid-template-columns:1fr;grid-template-rows:none;gap:36px}
   .cinemaObjectSlot,.cinemaObjectSlot:nth-child(7),.cinemaObjectSlot:nth-child(8){display:block;grid-column:auto;min-width:0}
   .cinemaObjectHitArea{display:block;height:auto}
