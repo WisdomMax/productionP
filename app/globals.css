@@ -3034,9 +3034,9 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .archiveGalleryHero>div{display:flex;align-items:end;gap:18px;padding-bottom:2px}
 .archiveGalleryHero>div b{font:400 clamp(50px,6vw,96px)/.75 monospace;color:#080909;letter-spacing:-.08em}
 .archiveGalleryHero>div p{margin:0;color:rgba(0,0,0,.68);font:8px/1.6 monospace;letter-spacing:.1em}
-.archiveCategoryRail{position:sticky;z-index:70;top:0;display:flex;gap:0;overflow-x:auto;padding:12px 0;background:rgba(154,69,39,.94);border-bottom:1px solid rgba(0,0,0,.35);scrollbar-width:none}
+.archiveCategoryRail{position:sticky;z-index:70;top:0;display:flex;gap:0;overflow-x:auto;padding:16px 0;background:rgba(154,69,39,.94);border-bottom:1px solid rgba(0,0,0,.35);scrollbar-width:none}
 .archiveCategoryRail::-webkit-scrollbar{display:none}
-.archiveCategoryRail button{flex:none;padding:9px 17px;border:0;border-right:1px solid rgba(0,0,0,.3);background:none;color:rgba(0,0,0,.62);font:650 9px/1 monospace;letter-spacing:.08em;cursor:pointer}
+.archiveCategoryRail button{flex:none;padding:11px 22px;border:0;border-right:1px solid rgba(0,0,0,.3);background:none;color:rgba(0,0,0,.68);font:680 13px/1 monospace;letter-spacing:.055em;cursor:pointer}
 .archiveCategoryRail button:first-child{padding-left:0}
 .archiveCategoryRail button span{position:relative;display:block}
 .archiveCategoryRail button span:after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:#fff;transition:right .35s}
@@ -3071,6 +3071,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .archiveGalleryHero>div b{font-size:13vw}
   .archiveGalleryHero>div p{display:none}
   .archiveCategoryRail{top:0;margin-inline:-16px;padding-inline:16px}
+  .archiveCategoryRail button{padding:10px 15px;font-size:11px}
   .archiveCategoryRail button:first-child{padding-left:0}
   .archiveWorksGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 9px;padding-top:26px}
   .archiveWorkMedia{aspect-ratio:1}
