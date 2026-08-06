@@ -3130,7 +3130,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .archiveCategoryRail{position:sticky;z-index:70;top:0;display:flex;flex-wrap:wrap;gap:0;overflow:visible;padding:16px 0;background:rgba(154,69,39,.96);border-bottom:1px solid rgba(0,0,0,.35)}
 .archiveCategoryRail::-webkit-scrollbar{display:none}
 .archiveCategoryRail button{flex:none;padding:12px 22px;border:0;border-right:1px solid rgba(255,255,255,.28);background:none;color:var(--paper);font:700 14px/1 monospace;letter-spacing:.035em;cursor:pointer;transition:color .25s,background .25s}
-.archiveCategoryRail button:first-child{padding-left:0}
+.archiveCategoryRail button:first-child{padding-left:22px}
 .archiveCategoryRail button span{position:relative;display:block}
 .archiveCategoryRail button span:after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:#080909;transition:right .35s}
 .archiveCategoryRail button:hover{color:#080909}
