@@ -22,6 +22,9 @@ const industryOverrides = JSON.parse(
 const categoryOverrides = JSON.parse(
   readFileSync(join(projectRoot, "data", "video-category-overrides.json"), "utf8"),
 );
+const statusOverrides = JSON.parse(
+  readFileSync(join(projectRoot, "data", "video-status-overrides.json"), "utf8"),
+);
 
 const categories = {
   "01-commercial": { order: 1, slug: "commercial", label: "광고" },
@@ -136,12 +139,13 @@ const discovered = walk(videoRoot)
       return assignedCategory;
     });
 
-    const status =
+    const defaultStatus =
       parts[0] === "07-awards"
         ? parts[1] === "winners"
           ? "수상작"
           : "출품작"
         : null;
+    const status = statusOverrides[fileName] ?? statusOverrides[id] ?? defaultStatus;
     const metadata = probe(filePath);
     const ratio = metadata.displayRatio;
     const orientation = ratio <= 1.08 ? "portrait" : "landscape";
@@ -181,8 +185,13 @@ const awardCounters = { 출품작: 0, 수상작: 0 };
 const catalog = discovered.map((item) => {
   let title = item.fileName.replace(/\.mp4$/i, "").replaceAll("_", " ").trim();
   if (item.category === "awards" && item.status) {
-    awardCounters[item.status] += 1;
-    title = `P LAB 교육생 ${item.status} ${String(awardCounters[item.status]).padStart(2, "0")}`;
+    const numberingStatus = item.fileName.startsWith("plab-winner-")
+      ? "수상작"
+      : item.fileName.startsWith("plab-submission-")
+        ? "출품작"
+        : item.status;
+    awardCounters[numberingStatus] += 1;
+    title = `P LAB 교육생 ${item.status} ${String(awardCounters[numberingStatus]).padStart(2, "0")}`;
   }
   title = titleOverrides[item.fileName] ?? titleOverrides[item.id] ?? title;
   const industries =
