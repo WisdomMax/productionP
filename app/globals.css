@@ -3267,15 +3267,44 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
     radial-gradient(ellipse at 32% 52%,transparent 0 39%,rgba(255,255,255,.09) 39.1% 39.25%,transparent 39.4%);
   background-size:14px 14px,5vw 5vw,5vw 5vw,auto;
 }
-.journalIndexHero small{color:rgba(255,255,255,.72)}
-.journalIndexHero small:before{height:1px;background:#fff}
-.journalIndexHero h1 span{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.82)}
-.journalIndexHero p{border-color:#fff;color:rgba(255,255,255,.82)}
+.journalIndexHero small{
+  width:max-content;
+  padding:9px 12px 8px;
+  background:#fff;
+  color:#9A4527;
+}
+.journalIndexHero small:before{display:none}
+.journalIndexHero h1 span{
+  display:inline-block;
+  margin:.04em 0 .07em;
+  padding:.01em .1em .07em .06em;
+  background:#fff;
+  color:#9A4527;
+  -webkit-text-stroke:0;
+}
+.journalIndexHero p{
+  margin-bottom:0;
+  padding:22px 24px;
+  border:0;
+  background:#fff;
+  color:#9A4527;
+  font-weight:650;
+}
 .journalIndexList>a{border-color:rgba(255,255,255,.28)}
-.journalIndexList>a>span,.journalIndexList>a>div small{color:rgba(255,255,255,.65)}
-.journalIndexList>a>span:before{height:1px;background:#fff}
+.journalIndexList>a>span{
+  width:42px;
+  height:42px;
+  justify-content:center;
+  padding:0;
+  background:#fff;
+  color:#9A4527;
+}
+.journalIndexList>a>span:before{display:none}
+.journalIndexList>a>div small{color:rgba(255,255,255,.62)}
 .journalIndexList p{color:rgba(255,255,255,.74)}
-.journalIndexList>a:hover h2{color:rgba(255,255,255,.66)}
+.journalIndexList>a>b{padding:10px 12px;border:1px solid rgba(255,255,255,.55);transition:background .25s,color .25s}
+.journalIndexList>a:hover h2{color:rgba(255,255,255,.68)}
+.journalIndexList>a:hover>b{background:#fff;color:#9A4527}
 
 @media(max-width:760px){
   .archiveSiteHeader,.journalIndexNav{position:relative;min-height:64px;padding:13px 16px 22px}
@@ -3286,4 +3315,6 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .archiveGallery{padding-top:24px}
   .archiveCategoryRail button:hover,.archiveCategoryRail button.is-active{background:#fff;color:#9A4527}
   .journalIndexHero{padding-top:7vh}
+  .journalIndexHero p{padding:18px}
+  .journalIndexList>a>span{width:34px;height:34px}
 }
