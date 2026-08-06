@@ -38,14 +38,14 @@ const featuredTitles = [
 ];
 
 const placements = [
-  { x: 30, y: 30, z: 60, turn: 0, shape: "portal" },
-  { x: 49, y: 30, z: 60, turn: 0, shape: "portal" },
-  { x: 68, y: 30, z: 60, turn: 0, shape: "portal" },
-  { x: 87, y: 30, z: 60, turn: 0, shape: "portal" },
-  { x: 30, y: 69, z: 60, turn: 0, shape: "portal" },
-  { x: 49, y: 69, z: 60, turn: 0, shape: "portal" },
-  { x: 68, y: 69, z: 60, turn: 0, shape: "portal" },
-  { x: 87, y: 69, z: 60, turn: 0, shape: "portal" },
+  { x: 30, y: 30, z: 60, turn: 0, shape: "candidate" },
+  { x: 49, y: 30, z: 60, turn: 0, shape: "candidate" },
+  { x: 68, y: 30, z: 60, turn: 0, shape: "candidate" },
+  { x: 87, y: 30, z: 60, turn: 0, shape: "candidate" },
+  { x: 30, y: 69, z: 60, turn: 0, shape: "candidate" },
+  { x: 49, y: 69, z: 60, turn: 0, shape: "candidate" },
+  { x: 68, y: 69, z: 60, turn: 0, shape: "candidate" },
+  { x: 87, y: 69, z: 60, turn: 0, shape: "candidate" },
 ];
 
 function WorkObject({ work, index }: { work: Work; index: number }) {
@@ -85,7 +85,11 @@ function WorkObject({ work, index }: { work: Work; index: number }) {
       onBlur={pause}
       aria-label={`${work.title} 재생`}
     >
-      <span className={`cinemaSculpture sculpture-${placement.shape}`} aria-hidden="true">
+      <span
+        className={`cinemaSculpture sculpture-${placement.shape}`}
+        data-candidate={String(index + 1).padStart(2, "0")}
+        aria-hidden="true"
+      >
         <i /><i /><i /><i />
       </span>
       <span className="cinemaObjectFace">

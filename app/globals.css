@@ -2899,37 +2899,24 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 @keyframes cinemaObjectIn{from{opacity:0;transform:translate3d(-50%,-30%,calc(var(--z) - 180px)) rotateZ(var(--turn)) scale(.45)}}
 .cinemaSculpture{
   position:absolute;
-  inset:-5%;
+  inset:-32%;
   display:block;
-  transform-style:preserve-3d;
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-position:center;
   transition:opacity .28s,transform .55s cubic-bezier(.16,1,.3,1);
   filter:drop-shadow(0 20px 14px rgba(0,0,0,.32));
 }
-.cinemaSculpture i{position:absolute;display:block;font-style:normal}
-.sculpture-portal{
-  border-radius:50%;
-  background:linear-gradient(145deg,#fff 0 7%,#817a76 13%,#111 28%,#020303 67%,#5a514d 84%,#fff 97%);
-  transform:rotateX(58deg) rotateZ(-14deg);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.72),inset 0 0 0 9px rgba(0,0,0,.52),0 13px 0 #090a0a,0 20px 0 rgba(255,255,255,.5),0 32px 24px rgba(0,0,0,.42);
-}
-.sculpture-portal:before{
-  content:"";
-  position:absolute;
-  inset:21%;
-  border-radius:50%;
-  background:radial-gradient(circle at 44% 34%,rgba(255,255,255,.72),#6a2a16 8%,#160a06 34%,#020303 70%);
-  border:1px solid rgba(255,255,255,.72);
-  box-shadow:inset 0 9px 16px rgba(0,0,0,.82),0 0 0 7px rgba(255,255,255,.08);
-}
-.sculpture-portal:after{
-  content:"";
-  position:absolute;
-  left:15%;right:15%;top:47%;height:1px;
-  background:rgba(255,255,255,.72);
-  box-shadow:0 0 10px rgba(255,255,255,.45);
-}
-.sculpture-portal i:first-child{inset:8%;border:1px solid rgba(255,255,255,.46);border-radius:50%}
-.sculpture-portal i:nth-child(2){left:48%;top:5%;width:4%;height:14%;border-radius:999px;background:#fff}
+.cinemaSculpture i{display:none}
+.cinemaSculpture:after{content:attr(data-candidate);position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);padding:4px 5px;background:#080909;color:#fff;font:7px/1 monospace;letter-spacing:.08em}
+.cinemaObjectSlot:nth-child(1) .cinemaSculpture{background-image:url('/assets/objects/candidate-01.webp')}
+.cinemaObjectSlot:nth-child(2) .cinemaSculpture{background-image:url('/assets/objects/candidate-02.webp')}
+.cinemaObjectSlot:nth-child(3) .cinemaSculpture{background-image:url('/assets/objects/candidate-03.webp')}
+.cinemaObjectSlot:nth-child(4) .cinemaSculpture{background-image:url('/assets/objects/candidate-04.webp')}
+.cinemaObjectSlot:nth-child(5) .cinemaSculpture{background-image:url('/assets/objects/candidate-05.webp')}
+.cinemaObjectSlot:nth-child(6) .cinemaSculpture{background-image:url('/assets/objects/candidate-06.webp')}
+.cinemaObjectSlot:nth-child(7) .cinemaSculpture{background-image:url('/assets/objects/candidate-07.webp')}
+.cinemaObjectSlot:nth-child(8) .cinemaSculpture{background-image:url('/assets/objects/candidate-08.webp')}
 .cinemaObjectFace{
   position:absolute;
   inset:0;
