@@ -3058,7 +3058,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .archiveWorkCard{min-width:0;padding:0;border:0;background:none;color:inherit;text-align:left;cursor:pointer;outline:none}
 .archiveWorkMedia{position:relative;display:block;overflow:hidden;aspect-ratio:4/3;border:1px solid rgba(241,239,232,.16);background:#101111;transition:transform .55s cubic-bezier(.16,1,.3,1),border-color .3s}
 .archiveWorkMedia img,.archiveWorkMedia video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;transition:opacity .3s,transform .8s cubic-bezier(.16,1,.3,1),filter .45s}
-.archiveWorkMedia img{filter:grayscale(.55) saturate(.7) brightness(.7)}
+.archiveWorkMedia img{filter:none}
 .archiveWorkMedia video{opacity:0}
 .archiveWorkMedia i{position:absolute;z-index:3;left:8px;top:8px;padding:4px;background:rgba(5,6,6,.7);font:8px/1 monospace;font-style:normal}
 .archiveWorkMedia b{position:absolute;z-index:3;right:9px;bottom:9px;opacity:0;transform:translateY(6px);font:700 8px/1 monospace;letter-spacing:.1em;transition:.3s}
