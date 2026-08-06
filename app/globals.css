@@ -2889,10 +2889,10 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   z-index:-1;
   left:0;
   top:0;
-  width:clamp(205px,14.5vw,242px);
-  height:76px;
+  width:clamp(210px,14.5vw,242px);
+  height:78px;
   background:#292725;
-  clip-path:polygon(0 0,100% 0,78% 100%,0 100%);
+  border-radius:0 0 30px 0;
   pointer-events:none;
 }
 .cinemaHeader>a{position:relative;z-index:1;width:clamp(138px,11vw,174px);line-height:0}
@@ -3029,7 +3029,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .cinematicHome{width:100%;height:auto;min-height:100svh;overflow-x:hidden;overflow-y:visible}
   .cinemaAmbient i{animation:none}
   .cinemaHeader{position:fixed;min-height:64px;padding:13px 16px 22px}
-  .cinemaHeader:before{width:156px;height:64px;clip-path:polygon(0 0,100% 0,80% 100%,0 100%)}
+  .cinemaHeader:before{width:158px;height:64px;border-radius:0 0 22px 0}
   .cinemaHeader>a{width:122px}
   .cinemaHeader nav{gap:14px;font-size:12px}
   .cinemaHeader nav a:first-child,.cinemaHeader nav a:nth-child(2){display:none}
