@@ -24,7 +24,7 @@ export default function JournalIndexPage() {
       </header>
       <header className="journalIndexHero">
         <small>PRODUCTION P / JOURNAL</small>
-        <h1>NOTES ON<br /><span>MOVING</span> IMAGES.</h1>
+        <h1><span className="is-outline">NOTES ON</span><br /><span className="is-reverse">MOVING</span> <span className="is-solid">IMAGES.</span></h1>
         <p>AI 영상 제작의 기획, 연출, 제작 과정과 기술을 기록합니다.</p>
       </header>
       <section className="journalIndexList">
