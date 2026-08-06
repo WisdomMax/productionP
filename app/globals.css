@@ -2847,10 +2847,13 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   background-image:linear-gradient(rgba(0,0,0,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.18) 1px,transparent 1px);
   background-size:5vw 5vw;
 }
-.cinemaAmbient i{position:absolute;display:block;opacity:.1;background:#000;transform:rotate(28deg)}
-.cinemaAmbient i:nth-child(1){width:42vw;height:120vh;right:-20vw;top:-20vh}
-.cinemaAmbient i:nth-child(2){width:18vw;height:72vh;left:38vw;bottom:-46vh;background:#fff;opacity:.07}
-.cinemaAmbient i:nth-child(3){display:none}
+.cinemaAmbient i{position:absolute;display:block;opacity:.1;background:#000;transform:rotate(28deg);pointer-events:none}
+.cinemaAmbient i:nth-child(1){width:42vw;height:120vh;right:-20vw;top:-20vh;animation:cinemaAmbientDriftA 28s ease-in-out infinite}
+.cinemaAmbient i:nth-child(2){width:18vw;height:72vh;left:38vw;bottom:-46vh;background:#fff;opacity:.07;animation:cinemaAmbientDriftB 34s ease-in-out infinite}
+.cinemaAmbient i:nth-child(3){display:block;width:28vw;aspect-ratio:1;right:12vw;bottom:-17vw;background:transparent;border:1px solid rgba(255,255,255,.15);opacity:.45;animation:cinemaAmbientOrbit 42s ease-in-out infinite}
+@keyframes cinemaAmbientDriftA{50%{transform:translate3d(-2.5vw,1.8vh,0) rotate(31deg)}}
+@keyframes cinemaAmbientDriftB{50%{transform:translate3d(2vw,-2.4vh,0) rotate(24deg)}}
+@keyframes cinemaAmbientOrbit{0%,100%{transform:translate3d(0,0,0) rotate(38deg)}50%{transform:translate3d(-3vw,-2.5vh,0) rotate(52deg)}}
 .cinemaHeader{
   position:absolute;
   z-index:80;
@@ -2991,6 +2994,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 @media(max-width:760px){
   body:has(.cinematicHome){overflow-x:hidden;overflow-y:auto}
   .cinematicHome{width:100%;height:auto;min-height:100svh;overflow-x:hidden;overflow-y:visible}
+  .cinemaAmbient i{animation:none}
   .cinemaHeader{position:fixed;min-height:64px;padding:13px 16px 22px}
   .cinemaHeader>a{width:122px}
   .cinemaHeader nav{gap:14px;font-size:12px}
