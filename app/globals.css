@@ -2989,8 +2989,8 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .has-cinema-player{overflow:hidden}
 
 @media(max-width:760px){
-  body:has(.cinematicHome){overflow:auto}
-  .cinematicHome{height:auto;min-height:100svh;overflow:visible}
+  body:has(.cinematicHome){overflow-x:hidden;overflow-y:auto}
+  .cinematicHome{width:100%;height:auto;min-height:100svh;overflow-x:hidden;overflow-y:visible}
   .cinemaHeader{position:fixed;min-height:64px;padding:13px 16px 22px}
   .cinemaHeader>a{width:122px}
   .cinemaHeader nav{gap:14px;font-size:12px}
@@ -2998,19 +2998,19 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .cinemaWorkStage{position:relative;min-height:100svh;padding:92px 16px 74px}
   .cinemaWorkHeading{position:relative;left:auto;top:auto;width:auto;margin-bottom:34px}
   .cinemaWorkHeading h1{font-size:24vw;margin:12px 0 14px}
-  .cinemaObjectField{position:relative;inset:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;gap:34px 12px}
+  .cinemaWorkHeading p{display:none}
+  .cinemaObjectField{position:relative;inset:auto;display:grid;grid-template-columns:1fr;grid-template-rows:none;gap:36px}
   .cinemaObjectSlot,.cinemaObjectSlot:nth-child(7),.cinemaObjectSlot:nth-child(8){display:block;grid-column:auto;min-width:0}
-  .cinemaObjectHitArea{height:auto}
-  .cinemaWorkObject,.cinemaWorkObject:hover,.cinemaWorkObject:focus-visible{position:relative;left:auto;top:auto;width:100%;height:auto;aspect-ratio:1;transform:none;animation:cinemaObjectInMobile .7s var(--delay) both}
+  .cinemaObjectHitArea{display:block;height:auto}
+  .cinemaWorkObject,.cinemaWorkObject:hover,.cinemaWorkObject:focus-visible{position:relative;left:auto;top:auto;width:100%;height:auto;aspect-ratio:auto;transform:none;animation:cinemaObjectInMobile .7s var(--delay) both}
   @keyframes cinemaObjectInMobile{from{opacity:0;transform:translateY(30px) scale(.85)}}
-  .cinemaSculpture{inset:17%}
-  .cinemaWorkObject:hover .cinemaSculpture,.cinemaWorkObject:focus-visible .cinemaSculpture{opacity:1;transform:initial}
-  .cinemaObjectFace,.cinemaWorkObject:hover .cinemaObjectFace,.cinemaWorkObject:focus-visible .cinemaObjectFace{opacity:0;transform:scale(.62);border-radius:4px;box-shadow:0 12px 28px rgba(0,0,0,.42)}
-  .cinemaObjectFace img{filter:grayscale(.45) brightness(.7)}
+  .cinemaSculpture,.cinemaObjectHitArea:hover .cinemaSculpture,.cinemaWorkObject:hover .cinemaSculpture,.cinemaWorkObject:focus-visible .cinemaSculpture{display:none}
+  .cinemaObjectFace,.cinemaObjectHitArea:hover .cinemaObjectFace,.cinemaWorkObject:hover .cinemaObjectFace,.cinemaWorkObject:focus-visible .cinemaObjectFace{position:relative;left:auto;top:auto;width:100%;height:auto;aspect-ratio:16/9;opacity:1;transform:none;border-radius:4px;border-color:rgba(255,255,255,.4);box-shadow:0 12px 28px rgba(0,0,0,.3)}
+  .cinemaObjectFace img,.cinemaObjectHitArea:hover .cinemaObjectFace img,.cinemaWorkObject:hover .cinemaObjectFace img,.cinemaWorkObject:focus-visible .cinemaObjectFace img{opacity:1;filter:saturate(.8) contrast(1.05);transform:none}
   .cinemaObjectFace video{display:none}
-  .cinemaObjectMeta,.cinemaWorkObject:hover .cinemaObjectMeta,.cinemaWorkObject:focus-visible .cinemaObjectMeta{position:relative;left:auto;top:auto;width:auto;margin-top:9px;display:block;opacity:1;transform:none;white-space:normal}
-  .cinemaObjectMeta strong{display:block;font-size:12px}
-  .cinemaObjectMeta small{display:block;margin-top:5px}
+  .cinemaObjectMeta,.cinemaObjectHitArea:hover .cinemaObjectMeta,.cinemaWorkObject:hover .cinemaObjectMeta,.cinemaWorkObject:focus-visible .cinemaObjectMeta{position:relative;left:auto;top:auto;width:auto;margin-top:12px;display:flex;opacity:1;transform:none;white-space:normal}
+  .cinemaObjectMeta strong{display:block;font-size:18px}
+  .cinemaObjectMeta small{display:block;margin-top:0;font-size:9px}
   .cinemaStageFooter{position:relative;left:auto;right:auto;bottom:auto;margin-top:54px}
   .cinemaStageFooter>span{display:none}
   .cinemaIntro{padding-inline:16px}
@@ -3018,10 +3018,10 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .cinemaIntro h2{font-size:18vw}
   .cinemaIntro>strong{font-size:55vw;right:0}
   .cinemaIntroLine{left:16px;right:16px}
-  .cinemaPlayerOverlay{padding:68px 14px 20px}
-  .cinemaPlayer,.cinemaPlayer.is-portrait,.cinemaPlayer.is-square{width:100%}
-  .cinemaPlayer video{max-height:72vh}
-  .cinemaPlayer footer{display:block}
+  .cinemaPlayerOverlay{padding:0;background:#000;place-items:center}
+  .cinemaPlayer,.cinemaPlayer.is-portrait,.cinemaPlayer.is-square{width:100%;height:100svh;padding:60px 0 18px;display:flex;flex-direction:column;justify-content:center}
+  .cinemaPlayer video{width:100%;max-height:calc(100svh - 120px);border:0}
+  .cinemaPlayer footer{display:block;padding:13px 16px 0}
   .cinemaPlayer footer span{display:block;margin-top:7px}
   .cinemaPlayerClose{right:14px;top:14px}
 }
