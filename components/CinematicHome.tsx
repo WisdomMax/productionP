@@ -98,7 +98,7 @@ function WorkObject({ work, index }: { work: Work; index: number }) {
           data-candidate={String(index + 1).padStart(2, "0")}
           aria-hidden="true"
         >
-          <i /><i /><i /><i />
+          <img src={work.poster} alt="" loading={index < 5 ? "eager" : "lazy"} />
         </span>
         <span className="cinemaObjectFace">
           <img src={work.poster} alt="" />
@@ -164,7 +164,13 @@ export default function CinematicHome() {
 
   return (
     <main className={`cinematicHome${introVisible ? " is-intro" : " is-ready"}`}>
-      <div className="cinemaAmbient" aria-hidden="true"><i /><i /><i /></div>
+      <div className="cinemaAmbient" aria-hidden="true">
+        <i className="cinemaArc cinemaArcPrimary" />
+        <i className="cinemaArc cinemaArcSecondary" />
+        <i className="cinemaStructureLine" />
+        <span className="cinemaDotField" />
+        <b className="cinemaAmbientMark">P</b>
+      </div>
 
       <header className="cinemaHeader">
         <Link href="/" aria-label="Production P home">
