@@ -74,34 +74,38 @@ function WorkObject({ work, index }: { work: Work; index: number }) {
   };
 
   return (
-    <button
-      className={`cinemaWorkObject is-${placement.shape} is-${work.orientation}`}
-      style={style}
-      type="button"
-      data-work-id={work.id}
+    <div
+      className="cinemaObjectHitArea"
       onPointerEnter={preview}
       onPointerLeave={pause}
-      onFocus={preview}
-      onBlur={pause}
-      aria-label={`${work.title} 재생`}
     >
-      <span
-        className={`cinemaSculpture sculpture-${placement.shape}`}
-        data-candidate={String(index + 1).padStart(2, "0")}
-        aria-hidden="true"
+      <button
+        className={`cinemaWorkObject is-${placement.shape} is-${work.orientation}`}
+        style={style}
+        type="button"
+        data-work-id={work.id}
+        onFocus={preview}
+        onBlur={pause}
+        aria-label={`${work.title} 재생`}
       >
-        <i /><i /><i /><i />
-      </span>
-      <span className="cinemaObjectFace">
-        <img src={work.poster} alt="" />
-        <video ref={videoRef} src={mediaUrl(work.src)} muted loop playsInline preload="none" />
-        <i>{String(index + 1).padStart(2, "0")}</i>
-      </span>
-      <span className="cinemaObjectMeta">
-        <strong>{work.title}</strong>
-        <small>{work.categoryLabel}</small>
-      </span>
-    </button>
+        <span
+          className={`cinemaSculpture sculpture-${placement.shape}`}
+          data-candidate={String(index + 1).padStart(2, "0")}
+          aria-hidden="true"
+        >
+          <i /><i /><i /><i />
+        </span>
+        <span className="cinemaObjectFace">
+          <img src={work.poster} alt="" />
+          <video ref={videoRef} src={mediaUrl(work.src)} muted loop playsInline preload="none" />
+          <i>{String(index + 1).padStart(2, "0")}</i>
+        </span>
+        <span className="cinemaObjectMeta">
+          <strong>{work.title}</strong>
+          <small>{work.categoryLabel}</small>
+        </span>
+      </button>
+    </div>
   );
 }
 
