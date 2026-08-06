@@ -2889,22 +2889,10 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   z-index:-1;
   left:0;
   top:0;
-  width:clamp(210px,14.5vw,242px);
-  height:74px;
-  background:#292725;
-  pointer-events:none;
-}
-.cinemaHeader:after{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  left:clamp(210px,14.5vw,242px);
-  top:0;
-  width:176px;
-  height:1px;
-  background:#292725;
-  transform:rotate(24deg);
-  transform-origin:left center;
+  width:clamp(520px,38vw,680px);
+  height:104px;
+  background:var(--signal-deep);
+  clip-path:polygon(0 0,100% 0,0 100%);
   pointer-events:none;
 }
 .cinemaHeader>a{position:relative;z-index:1;width:clamp(138px,11vw,174px);line-height:0}
@@ -3041,8 +3029,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .cinematicHome{width:100%;height:auto;min-height:100svh;overflow-x:hidden;overflow-y:visible}
   .cinemaAmbient i{animation:none}
   .cinemaHeader{position:fixed;min-height:64px;padding:13px 16px 22px}
-  .cinemaHeader:before{width:158px;height:64px}
-  .cinemaHeader:after{left:158px;width:120px;transform:rotate(32deg)}
+  .cinemaHeader:before{width:360px;height:82px;clip-path:polygon(0 0,100% 0,0 100%)}
   .cinemaHeader>a{width:122px}
   .cinemaHeader nav{gap:14px;font-size:12px}
   .cinemaHeader nav a:first-child,.cinemaHeader nav a:nth-child(2){display:none}
