@@ -2955,17 +2955,28 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .cinemaStageFooter>a b{font:700 10px/1 monospace;letter-spacing:.09em}
 .cinemaStageFooter>a i{width:36px;height:36px;border:1px solid rgba(255,255,255,.65);border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:15px;transition:.3s}
 .cinemaStageFooter>a:hover i{background:#000;border-color:#000;transform:rotate(45deg)}
-.cinemaIntro{position:fixed;z-index:2000;inset:0;padding:25px 30px 34px;display:flex;flex-direction:column;justify-content:center;background:var(--signal);color:var(--paper);clip-path:inset(0);transition:clip-path .9s cubic-bezier(.76,0,.24,1)}
-.cinemaIntro.is-leaving{clip-path:inset(0 0 100% 0)}
-.cinemaIntroTop{position:absolute;left:30px;right:30px;top:25px;display:flex;justify-content:space-between;color:rgba(0,0,0,.68);font:8px/1 monospace;letter-spacing:.14em}
-.cinemaIntro>strong{position:absolute;right:3vw;bottom:-.08em;font:800 clamp(180px,37vw,600px)/.72 monospace;letter-spacing:-.12em;color:transparent;-webkit-text-stroke:1px rgba(241,239,232,.22)}
-.cinemaIntroLine{position:absolute;left:30px;right:30px;bottom:28px;height:1px;background:rgba(0,0,0,.28)}
-.cinemaIntroLine i{display:block;height:100%;background:#fff;transition:width .08s linear}
+.cinemaIntro{position:fixed;z-index:2000;inset:0;padding:25px 30px 34px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:transparent;color:#080909;text-align:center}
+.cinemaIntroPanels{position:absolute;z-index:0;inset:0;pointer-events:none}
+.cinemaIntroPanels i{position:absolute;inset:-1px;display:block;background-color:#f4f1eb;background-image:radial-gradient(circle at 74% 18%,rgba(154,69,39,.13),transparent 31%),linear-gradient(rgba(0,0,0,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.035) 1px,transparent 1px);background-size:auto,5vw 5vw,5vw 5vw;transition:transform 1.12s cubic-bezier(.76,0,.24,1);will-change:transform}
+.cinemaIntroPanels i:first-child{clip-path:polygon(0 0,100% 0,0 100%)}
+.cinemaIntroPanels i:last-child{clip-path:polygon(100% 0,100% 100%,0 100%)}
+.cinemaIntro.is-leaving{pointer-events:none}
+.cinemaIntro.is-leaving .cinemaIntroPanels i:first-child{transform:translate3d(-102%,-102%,0)}
+.cinemaIntro.is-leaving .cinemaIntroPanels i:last-child{transform:translate3d(102%,102%,0)}
+.cinemaIntroTop{position:absolute;z-index:2;left:30px;right:30px;top:25px;display:flex;justify-content:space-between;color:rgba(0,0,0,.62);font:8px/1 monospace;letter-spacing:.14em;transition:opacity .3s,transform .45s}
+.cinemaIntro>strong{position:absolute;z-index:1;right:3vw;bottom:-.08em;font:800 clamp(180px,37vw,600px)/.72 monospace;letter-spacing:-.12em;color:transparent;-webkit-text-stroke:1px rgba(0,0,0,.12);transition:opacity .35s,transform .55s}
+.cinemaIntroLine{position:absolute;z-index:2;left:30px;right:30px;bottom:28px;height:1px;background:rgba(0,0,0,.2);transition:opacity .25s}
+.cinemaIntroLine i{display:block;height:100%;background:var(--signal);transition:width .08s linear}
 .cinemaIntro h2{position:relative;z-index:2;margin:0;font-size:clamp(72px,11vw,178px);line-height:.83;letter-spacing:-.085em}
 .cinemaIntro h2 span{display:block;animation:introWords .9s cubic-bezier(.16,1,.3,1) both}
-.cinemaIntro h2 span+span{color:#080909;animation-delay:.12s}
+.cinemaIntro h2 span+span{color:var(--signal);animation-delay:.12s}
 @keyframes introWords{from{opacity:0;transform:translateY(55px);clip-path:inset(100% 0 0)}}
-.cinemaIntro>p{position:relative;z-index:2;margin:26px 0 0;color:rgba(0,0,0,.68);font:8px/1 monospace;letter-spacing:.16em}
+.cinemaIntro>p{position:relative;z-index:2;margin:26px 0 0;color:rgba(0,0,0,.62);font:8px/1 monospace;letter-spacing:.16em}
+.cinemaIntro h2,.cinemaIntro>p{transition:opacity .28s,transform .5s cubic-bezier(.16,1,.3,1)}
+.cinemaIntro.is-leaving h2,.cinemaIntro.is-leaving>p{opacity:0;transform:scale(.94)}
+.cinemaIntro.is-leaving .cinemaIntroTop{opacity:0;transform:translateY(-12px)}
+.cinemaIntro.is-leaving>strong{opacity:0;transform:translateY(25px)}
+.cinemaIntro.is-leaving .cinemaIntroLine{opacity:0}
 .cinemaPlayerOverlay{position:fixed;z-index:1800;inset:0;display:grid;place-items:center;padding:7vh 7vw;background:rgba(2,3,3,.94);backdrop-filter:blur(18px);animation:cinemaPlayerFade .35s both}
 @keyframes cinemaPlayerFade{from{opacity:0}}
 .cinemaPlayer{width:min(82vw,1500px);animation:cinemaPlayerIn .65s cubic-bezier(.16,1,.3,1) both}

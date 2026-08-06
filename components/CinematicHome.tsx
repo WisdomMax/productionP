@@ -127,8 +127,8 @@ export default function CinematicHome() {
       if (progress < 1) frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
-    const leaveTimer = window.setTimeout(() => setIntroLeaving(true), 2550);
-    const removeTimer = window.setTimeout(() => setIntroVisible(false), 3450);
+    const leaveTimer = window.setTimeout(() => setIntroLeaving(true), 2600);
+    const removeTimer = window.setTimeout(() => setIntroVisible(false), 3800);
     return () => {
       cancelAnimationFrame(frame);
       clearTimeout(leaveTimer);
@@ -191,6 +191,7 @@ export default function CinematicHome() {
 
       {introVisible && (
         <div className={`cinemaIntro${introLeaving ? " is-leaving" : ""}`}>
+          <div className="cinemaIntroPanels" aria-hidden="true"><i /><i /></div>
           <div className="cinemaIntroTop"><span>PRODUCTION P</span><span>SEOUL / KR</span></div>
           <strong>{String(count).padStart(3, "0")}</strong>
           <div className="cinemaIntroLine"><i style={{ width: `${(count / 240) * 100}%` }} /></div>
