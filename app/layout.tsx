@@ -68,7 +68,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(()=>{if("scrollRestoration"in history)history.scrollRestoration="auto";const nav=performance.getEntriesByType("navigation")[0];if(location.pathname==="/"&&nav?.type!=="back_forward")scrollTo(0,0)})();`,
+            __html: `(()=>{if("scrollRestoration"in history)history.scrollRestoration="auto";const nav=performance.getEntriesByType("navigation")[0];if(location.pathname==="/"&&nav?.type!=="back_forward")scrollTo(0,0);let seen=new URLSearchParams(location.search).get("skipIntro")==="1"||document.cookie.split("; ").includes("productionp:intro-seen=1");try{seen=seen||sessionStorage.getItem("productionp:intro-seen")==="1"}catch{}if(seen)document.documentElement.dataset.introSeen="true"})();`,
           }}
         />
       </head>

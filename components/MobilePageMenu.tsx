@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const items = [
-  { label: "HOME", href: "/" },
+  { label: "HOME", href: "/?skipIntro=1" },
   { label: "ALL WORKS", href: "/archive/?category=all" },
   { label: "AWARDS", href: "/awards/" },
   { label: "JOURNAL", href: "/journal/" },

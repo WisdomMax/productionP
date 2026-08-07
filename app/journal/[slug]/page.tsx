@@ -39,7 +39,7 @@ export default async function JournalArticlePage({
   return (
     <main className="journalArticlePage">
       <nav className="journalArticleNav">
-        <Link className="journalArticleBrand" href="/" aria-label="Production P 홈으로 이동">
+        <Link className="journalArticleBrand" href="/?skipIntro=1" aria-label="Production P 홈으로 이동">
           <Image src={brandLogo} alt="Production P" priority />
         </Link>
         <div>

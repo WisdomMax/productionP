@@ -14,7 +14,7 @@ export default function JournalIndexPage() {
   return (
     <main className="journalIndexPage">
       <header className="journalIndexNav">
-        <Link href="/" aria-label="Production P 홈으로 이동"><Image src={brandLogo} alt="Production P" priority /></Link>
+        <Link href="/?skipIntro=1" aria-label="Production P 홈으로 이동"><Image src={brandLogo} alt="Production P" priority /></Link>
         <nav aria-label="주요 메뉴">
           <a href="/archive/?category=all">ALL WORKS</a>
           <Link href="/awards/">AWARDS</Link>

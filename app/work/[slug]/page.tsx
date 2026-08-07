@@ -51,7 +51,7 @@ export default async function WorkPage({
   return (
     <main className="categoryPage">
       <header className="categoryHeader">
-        <Link href="/#work">← PRODUCTION P</Link>
+        <Link href="/?skipIntro=1#work">← PRODUCTION P</Link>
         <small>SELECTED WORK / {String(works.length).padStart(2, "0")}</small>
         <h1>{category.label}</h1>
         <p>{category.description}</p>

@@ -162,7 +162,7 @@ export default function ShinhanCaseStudy() {
   return (
     <main className="caseStudyPage">
       <nav className="caseStudyNav">
-        <Link href="/">← PRODUCTION P</Link>
+        <Link href="/?skipIntro=1">← PRODUCTION P</Link>
         <span>CASE STUDY / 001</span>
       </nav>
 

@@ -82,7 +82,7 @@ export default function ContactInquiry({
       <header>
         <small>PROJECT INQUIRY / 240</small>
         {pageMode
-          ? <a href="/">HOME ×</a>
+          ? <a href="/?skipIntro=1">HOME ×</a>
           : <button type="button" onClick={() => setOpen(false)}>CLOSE ×</button>}
       </header>
       <div className="inquiryHeading">

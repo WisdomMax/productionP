@@ -9,7 +9,7 @@ export default function ArchivePage() {
   return (
     <main className="archivePage">
       <header className="archiveSiteHeader">
-        <Link href="/" aria-label="Production P 홈으로 이동">
+        <Link href="/?skipIntro=1" aria-label="Production P 홈으로 이동">
           <Image src={brandLogo} alt="Production P" priority />
         </Link>
         <nav aria-label="주요 메뉴">
