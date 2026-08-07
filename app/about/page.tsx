@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import brandLogo from "@/img/logo/transparent_brand.png";
+import MobilePageMenu from "@/components/MobilePageMenu";
 
 export const metadata: Metadata = {
   title: "About — Production P",
@@ -28,6 +29,7 @@ export default function AboutPage() {
           <Link className="is-active" href="/about/">ABOUT</Link>
           <a href="mailto:contact@productionp.com">CONTACT ↗</a>
         </nav>
+        <MobilePageMenu active="ABOUT" />
       </header>
 
       <section className="aboutHero">

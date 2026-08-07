@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { journalArticles } from "@/data/journal";
 import brandLogo from "@/img/logo/transparent_brand.png";
+import MobilePageMenu from "@/components/MobilePageMenu";
 
 export const metadata: Metadata = {
   title: "Journal — Production P",
@@ -21,6 +22,7 @@ export default function JournalIndexPage() {
           <Link href="/about/">ABOUT</Link>
           <a href="mailto:contact@productionp.com">CONTACT ↗</a>
         </nav>
+        <MobilePageMenu active="JOURNAL" />
       </header>
       <header className="journalIndexHero">
         <small>PRODUCTION P / JOURNAL</small>

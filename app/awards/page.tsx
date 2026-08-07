@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import VideoArchive from "@/components/VideoArchive";
+import MobilePageMenu from "@/components/MobilePageMenu";
 import brandLogo from "@/img/logo/transparent_brand.png";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function AwardsPage() {
           <Link href="/about/">ABOUT</Link>
           <a href="mailto:contact@productionp.com">CONTACT ↗</a>
         </nav>
+        <MobilePageMenu active="AWARDS" />
       </header>
       <Suspense fallback={<div className="archiveLoading">LOADING CONTEST ARCHIVE</div>}>
         <VideoArchive mode="awards" />

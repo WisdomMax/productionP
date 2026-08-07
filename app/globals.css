@@ -155,6 +155,74 @@ main{position:relative;z-index:2}
   .has-mobile-menu{overflow:hidden}
 }
 
+/* Shared mobile navigation for the cinematic site and its index pages. */
+.mobilePageMenu{display:none}
+@media(max-width:760px){
+  .cinemaHeader>nav,
+  .archiveSiteHeader>nav,
+  .journalIndexNav>nav,
+  .aboutHeader>nav{display:none}
+  .mobilePageMenu{display:block;position:relative;z-index:2200}
+  .mobilePageMenuToggle{
+    position:relative;
+    z-index:2202;
+    width:42px;
+    height:42px;
+    padding:0;
+    display:grid;
+    place-content:center;
+    gap:7px;
+    appearance:none;
+    border:1px solid rgba(255,255,255,.55);
+    border-radius:50%;
+    background:rgba(24,11,8,.18);
+    color:#fff;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .mobilePageMenuToggle span{display:block;width:17px;height:1px;background:currentColor;transition:transform .35s cubic-bezier(.16,1,.3,1)}
+  .mobilePageMenu.is-open .mobilePageMenuToggle span:first-child{transform:translateY(4px) rotate(45deg)}
+  .mobilePageMenu.is-open .mobilePageMenuToggle span:last-child{transform:translateY(-4px) rotate(-45deg)}
+  .mobilePageMenuPanel{
+    position:fixed;
+    z-index:2201;
+    inset:0;
+    min-height:100dvh;
+    padding:calc(86px + env(safe-area-inset-top)) 22px max(25px,env(safe-area-inset-bottom));
+    display:flex;
+    flex-direction:column;
+    background:#180b08;
+    color:#fff;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    clip-path:inset(0 0 100% 0);
+    transition:clip-path .58s cubic-bezier(.76,0,.24,1),opacity .25s,visibility 0s .58s;
+  }
+  .mobilePageMenu.is-open .mobilePageMenuPanel{opacity:1;visibility:visible;pointer-events:auto;clip-path:inset(0);transition-delay:0s}
+  .mobilePageMenuPanel header{display:flex;justify-content:space-between;padding-bottom:18px;color:rgba(255,255,255,.48);font:700 9px/1 monospace;letter-spacing:.1em}
+  .mobilePageMenuPanel header b{font:inherit}
+  .mobilePageMenuPanel nav{display:block;border-bottom:1px solid rgba(255,255,255,.2)}
+  .mobilePageMenuPanel nav a,.mobilePageMenuPanel nav button{
+    width:100%;
+    min-height:64px;
+    padding:0;
+    display:grid;
+    grid-template-columns:34px 1fr auto;
+    align-items:center;
+    border:0;
+    border-top:1px solid rgba(255,255,255,.2);
+    background:none;
+    color:#fff;
+    text-align:left;
+  }
+  .mobilePageMenuPanel nav i{color:#b96649;font:700 9px/1 monospace;font-style:normal}
+  .mobilePageMenuPanel nav strong{font:800 clamp(27px,8vw,38px)/1 "Pretendard Variable",sans-serif;letter-spacing:-.05em}
+  .mobilePageMenuPanel nav span{font:400 17px/1 sans-serif}
+  .mobilePageMenuPanel nav .is-active strong{color:#c9795c}
+  .mobilePageMenuPanel footer{margin-top:auto;display:flex;justify-content:space-between;color:rgba(255,255,255,.45);font:700 9px/1 monospace;letter-spacing:.08em}
+  .has-page-mobile-menu{overflow:hidden!important}
+}
+
 /* Home journal — editorial CTA layout. */
 .journalReactInner{
   width:100%;
@@ -3578,4 +3646,18 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .aboutAmbient .aboutArc{left:-50vw;width:150vw}
   .awardsIntroduction{grid-template-columns:1fr;gap:16px;padding:22px 20px;box-shadow:9px 11px 0 rgba(53,14,7,.18)}
   .awardsGallery .archiveGalleryHero h1{font-size:18vw}
+}
+
+/* Keep the compact menu authoritative over page-specific mobile header rules. */
+@media(max-width:760px){
+  .cinemaHeader>nav,
+  .archiveSiteHeader>nav,
+  .journalIndexNav>nav,
+  .aboutHeader>nav{display:none!important}
+  .cinemaHeader>.mobilePageMenu,
+  .archiveSiteHeader>.mobilePageMenu,
+  .journalIndexNav>.mobilePageMenu,
+  .aboutHeader>.mobilePageMenu{display:block}
+  .mobilePageMenu>.mobilePageMenuPanel>nav{display:block!important;font-size:inherit;gap:0}
+  .mobilePageMenu>.mobilePageMenuPanel>nav>a{display:grid!important}
 }

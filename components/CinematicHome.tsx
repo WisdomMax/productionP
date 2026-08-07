@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import ContactInquiry from "@/components/ContactInquiry";
+import MobilePageMenu from "@/components/MobilePageMenu";
 import catalogData from "@/data/video-catalog.json";
 import brandLogo from "@/img/logo/transparent_brand.png";
 import { mediaUrl } from "@/lib/media-url";
@@ -209,6 +210,7 @@ export default function CinematicHome() {
           <Link href="/about/">ABOUT</Link>
           <button type="button" onClick={openInquiry}>CONTACT ↗</button>
         </nav>
+        <MobilePageMenu active="HOME" contactAsDialog />
       </header>
 
       <section className="cinemaWorkStage" aria-labelledby="cinema-work-title">
