@@ -103,7 +103,6 @@ function WorkObject({ work, index }: { work: Work; index: number }) {
             aria-hidden="true"
           >
             <img src={work.poster} alt="" loading={index < 5 ? "eager" : "lazy"} />
-            <i />
           </span>
           <span className="cinemaObjectFace">
             <img src={work.poster} alt="" />

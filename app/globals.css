@@ -3107,15 +3107,12 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .sculpture-triangle:before{background:conic-gradient(from 30deg at 50% 64%,rgba(255,255,255,.38) 0 33.333%,rgba(0,0,0,.66) 0 66.666%,rgba(154,69,39,.3) 0)}
 .sculpture-hexagon:before{background:conic-gradient(from 30deg at 50% 50%,rgba(255,255,255,.34) 0 16.666%,rgba(0,0,0,.58) 0 33.333%,rgba(154,69,39,.28) 0 50%,rgba(0,0,0,.18) 0 66.666%,rgba(255,255,255,.16) 0 83.333%,rgba(0,0,0,.48) 0)}
 .sculpture-diamond:before{background:conic-gradient(from 45deg at 50% 50%,rgba(255,255,255,.38) 0 25%,rgba(0,0,0,.64) 0 50%,rgba(154,69,39,.3) 0 75%,rgba(0,0,0,.22) 0)}
-.cinemaSculpture i{position:absolute;z-index:2;left:50%;top:50%;width:30px;height:30px;border:1px solid rgba(255,255,255,.76);border-radius:50%;background:rgba(154,69,39,.18);transform:translate(-50%,-50%);opacity:.82;transition:opacity .3s,transform .35s}
-.cinemaSculpture i:after{content:"";position:absolute;left:52%;top:50%;width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:6px solid #fff;transform:translate(-35%,-50%)}
 .sculpture-disc{border-radius:50%;clip-path:circle(49% at 50% 50%)}
 .sculpture-square{border-radius:2px;clip-path:inset(1% round 2px)}
 .sculpture-triangle{clip-path:polygon(50% 1%,99% 99%,1% 99%)}
 .sculpture-hexagon{clip-path:polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%)}
 .sculpture-diamond{inset:12%;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
 .cinemaObjectHitArea:hover .cinemaSculpture img{filter:saturate(1) contrast(1.02);transform:scale(1.09)}
-.cinemaObjectHitArea:hover .cinemaSculpture i{opacity:1;transform:translate(-50%,-50%) scale(1.08)}
 .cinemaObjectFace{
   position:absolute;
   left:50%;
