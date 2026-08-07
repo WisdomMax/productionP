@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import catalogData from "@/data/video-catalog.json";
 import { mediaUrl } from "@/lib/media-url";
+import ResilientVideo from "@/components/ResilientVideo";
 
 type VideoItem = {
   id: string;
@@ -160,7 +161,14 @@ export default function VideoArchive({ mode = "works" }: { mode?: "works" | "awa
             <span /><span />
           </button>
           <div className={`cinemaPlayer is-${selected.orientation}`}>
-            <video src={mediaUrl(selected.src)} controls autoPlay playsInline />
+            <ResilientVideo
+              src={mediaUrl(selected.src)}
+              poster={selected.poster}
+              title={selected.title}
+              controls
+              autoPlay
+              playsInline
+            />
             <footer><strong>{selected.title}</strong><span>{selected.categoryLabel} / ESC TO CLOSE</span></footer>
           </div>
         </div>

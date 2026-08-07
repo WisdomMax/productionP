@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import CopyEmailButton from "@/components/CopyEmailButton";
 import MobilePageMenu from "@/components/MobilePageMenu";
+import ResilientVideo from "@/components/ResilientVideo";
 import catalogData from "@/data/video-catalog.json";
 import brandLogo from "@/img/logo/transparent_brand.png";
 import { mediaUrl } from "@/lib/media-url";
@@ -332,7 +333,15 @@ export default function CinematicHome() {
             <span />
           </button>
           <div className={`cinemaPlayer is-${selected.orientation}`}>
-            <video ref={playerVideoRef} src={mediaUrl(selected.src)} controls autoPlay playsInline />
+            <ResilientVideo
+              ref={playerVideoRef}
+              src={mediaUrl(selected.src)}
+              poster={selected.poster}
+              title={selected.title}
+              controls
+              autoPlay
+              playsInline
+            />
             <footer><strong>{selected.title}</strong><span>{selected.categoryLabel} / ESC TO CLOSE</span></footer>
           </div>
         </div>
