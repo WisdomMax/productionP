@@ -28,21 +28,21 @@ type TileStyle = CSSProperties & {
 
 const catalog = catalogData as Work[];
 const featuredTitles = [
-  "BITE INTO YOUTH",
-  "CHROMATIC DRIVE",
-  "EARTHNIQ: HOW TO USE",
-  "LIPCERIN RITUAL",
-  "PIELLA GROOVE",
-  "MEGA MOMENT",
-  "EXTREME TERRAIN",
-  "UNLOCK THE NIGHT",
-  "SHINHAN BANK",
+  "청춘버거",
+  "립세린",
+  "신한은행",
+  "로미오와 줄리엣 — EUREKA",
+  "타이타닉",
+  "메가커피",
+  "핫식스",
+  "AFTER HOURS: WONDERLAND",
+  "조선시대 가구 전문가",
   "IRON PULSE",
+  "무신사 공모전",
+  "부천 국제 판타스틱 영화제",
+  "초현실 웰빙 아트필름",
+  "버섯좀비",
   "CITY OF GLASS",
-  "PIELLA: MADE FOR LIVING",
-  "BEAUTY IN BRUSHSTROKES",
-  "SCENT IN MOTION",
-  "MONO CUBE: ONE",
 ];
 
 const flatShapes = ["disc", "square", "triangle", "hexagon", "diamond"];
