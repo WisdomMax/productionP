@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import ContactInquiry from "@/components/ContactInquiry";
 import catalogData from "@/data/video-catalog.json";
 import brandLogo from "@/img/logo/transparent_brand.png";
@@ -124,32 +124,57 @@ export default function CinematicHome() {
   );
   const [introVisible, setIntroVisible] = useState(true);
   const [introLeaving, setIntroLeaving] = useState(false);
-  const [count, setCount] = useState(0);
+  const [introMuted, setIntroMuted] = useState(true);
+  const introClosingRef = useRef(false);
+  const introTimerRef = useRef<number | null>(null);
+  const introFallbackRef = useRef<number | null>(null);
+  const introVideoRef = useRef<HTMLVideoElement>(null);
+  const playerVideoRef = useRef<HTMLVideoElement>(null);
   const [selected, setSelected] = useState<Work | null>(null);
 
-  useEffect(() => {
-    const startedAt = performance.now();
-    let frame = 0;
-    const tick = (now: number) => {
-      const progress = Math.min((now - startedAt) / 2100, 1);
-      const eased = 1 - Math.pow(1 - progress, 4);
-      setCount(Math.round(eased * 240));
-      if (progress < 1) frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    const leaveTimer = window.setTimeout(() => setIntroLeaving(true), 2600);
-    const removeTimer = window.setTimeout(() => setIntroVisible(false), 3800);
-    return () => {
-      cancelAnimationFrame(frame);
-      clearTimeout(leaveTimer);
-      clearTimeout(removeTimer);
-    };
+  const closePlayer = useCallback(() => {
+    const video = playerVideoRef.current;
+    if (video) video.pause();
+    setSelected(null);
   }, []);
+
+  const dismissIntro = useCallback(() => {
+    if (introClosingRef.current) return;
+    introClosingRef.current = true;
+    if (introFallbackRef.current !== null) clearTimeout(introFallbackRef.current);
+    setIntroLeaving(true);
+    introTimerRef.current = window.setTimeout(() => setIntroVisible(false), 720);
+  }, []);
+
+  const toggleIntroSound = () => {
+    const video = introVideoRef.current;
+    if (!video) return;
+    const nextMuted = !video.muted;
+    video.muted = nextMuted;
+    setIntroMuted(nextMuted);
+    if (!nextMuted) void video.play().catch(() => {
+      video.muted = true;
+      setIntroMuted(true);
+    });
+  };
+
+  useEffect(() => {
+    const skipWithEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") dismissIntro();
+    };
+    window.addEventListener("keydown", skipWithEscape);
+    introFallbackRef.current = window.setTimeout(dismissIntro, 22000);
+    return () => {
+      window.removeEventListener("keydown", skipWithEscape);
+      if (introTimerRef.current !== null) clearTimeout(introTimerRef.current);
+      if (introFallbackRef.current !== null) clearTimeout(introFallbackRef.current);
+    };
+  }, [dismissIntro]);
 
   useEffect(() => {
     if (!selected) return;
     const close = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelected(null);
+      if (event.key === "Escape") closePlayer();
     };
     document.body.classList.add("has-cinema-player");
     window.addEventListener("keydown", close);
@@ -157,7 +182,7 @@ export default function CinematicHome() {
       document.body.classList.remove("has-cinema-player");
       window.removeEventListener("keydown", close);
     };
-  }, [selected]);
+  }, [selected, closePlayer]);
 
   const openInquiry = () => {
     window.dispatchEvent(new CustomEvent("productionp:open-inquiry"));
@@ -217,28 +242,60 @@ export default function CinematicHome() {
       </section>
 
       {introVisible && (
-        <div className={`cinemaIntro${introLeaving ? " is-leaving" : ""}`}>
-          <div className="cinemaIntroPanels" aria-hidden="true"><i /><i /></div>
-          <div className="cinemaIntroTop"><span>PRODUCTION P</span><span>SEOUL / KR</span></div>
-          <div className="cinemaIntroCounter">
-            <small>FRAME</small>
-            <strong>{count}</strong>
-            <em>/ 240 FPS</em>
+        <div className={`cinemaVideoIntro${introLeaving ? " is-leaving" : ""}`}>
+          <div className="cinemaVideoIntroBrand">
+            <Image src={brandLogo} alt="Production P" priority />
           </div>
-          <div className="cinemaIntroLine"><i style={{ width: `${(count / 240) * 100}%` }} /></div>
-          <h2><span>상상을,</span><span>움직이다.</span></h2>
-          <p>IMAGINATION IN MOTION</p>
+          <div className="cinemaIntroPanel">
+            <div className="cinemaVideoFrame">
+              <video
+                ref={introVideoRef}
+                src="/videos/00-hero-depth/web/hero-intro.mp4?v=3"
+                autoPlay
+                muted={introMuted}
+                playsInline
+                preload="auto"
+                onEnded={dismissIntro}
+                onError={dismissIntro}
+              />
+            </div>
+            <div className="cinemaIntroControls">
+              <button className="cinemaIntroSkip" type="button" onClick={dismissIntro} aria-label="인트로 영상 건너뛰기">
+                <span>SKIP</span>
+                <small>ESC</small>
+              </button>
+              <button
+                className="cinemaIntroSound"
+                type="button"
+                onClick={toggleIntroSound}
+                aria-label={introMuted ? "인트로 영상 소리 켜기" : "인트로 영상 음소거"}
+              >
+                <span>SOUND</span>
+                <small>{introMuted ? "OFF" : "ON"}</small>
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
       {selected && (
         <div className="cinemaPlayerOverlay" role="dialog" aria-modal="true" aria-label={`${selected.title} 영상 재생`}>
-          <button className="cinemaPlayerClose" type="button" onClick={() => setSelected(null)} aria-label="영상 닫기">
+          <button
+            className="cinemaPlayerClose"
+            type="button"
+            onClick={closePlayer}
+            onTouchEnd={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              closePlayer();
+            }}
+            aria-label="영상 닫기"
+          >
             <span />
             <span />
           </button>
           <div className={`cinemaPlayer is-${selected.orientation}`}>
-            <video src={mediaUrl(selected.src)} controls autoPlay playsInline />
+            <video ref={playerVideoRef} src={mediaUrl(selected.src)} controls autoPlay playsInline />
             <footer><strong>{selected.title}</strong><span>{selected.categoryLabel} / ESC TO CLOSE</span></footer>
           </div>
         </div>

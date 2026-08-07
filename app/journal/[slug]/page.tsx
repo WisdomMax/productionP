@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import brandLogo from "@/img/logo/transparent_brand.png";
 import {
   getJournalArticle,
   journalArticles,
@@ -38,8 +39,14 @@ export default async function JournalArticlePage({
   return (
     <main className="journalArticlePage">
       <nav className="journalArticleNav">
-        <Link href="/">PRODUCTION P</Link>
-        <Link href="/journal">JOURNAL INDEX</Link>
+        <Link className="journalArticleBrand" href="/" aria-label="Production P 홈으로 이동">
+          <Image src={brandLogo} alt="Production P" priority />
+        </Link>
+        <div>
+          <Link href="/journal">JOURNAL INDEX</Link>
+          <Link href="/archive/?category=all">ALL WORKS</Link>
+          <a href="mailto:contact@productionp.com">CONTACT ↗</a>
+        </div>
       </nav>
 
       <article>
