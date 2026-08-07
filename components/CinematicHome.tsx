@@ -250,7 +250,7 @@ export default function CinematicHome() {
             <div className="cinemaVideoFrame">
               <video
                 ref={introVideoRef}
-                src="/videos/00-hero-depth/web/hero-intro.mp4?v=3"
+                src={`${mediaUrl("/videos/00-hero-depth/web/hero-intro.mp4")}?v=3`}
                 autoPlay
                 muted={introMuted}
                 playsInline
