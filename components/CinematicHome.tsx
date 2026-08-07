@@ -47,7 +47,6 @@ const featuredTitles = [
 ];
 
 const flatShapes = ["disc", "square", "triangle", "hexagon", "diamond"];
-const introSeenKey = "productionp:intro-seen";
 const placements = Array.from({ length: 15 }, (_, index) => ({
   x: 0,
   y: 0,
@@ -145,12 +144,6 @@ export default function CinematicHome() {
   const dismissIntro = useCallback(() => {
     if (introClosingRef.current) return;
     introClosingRef.current = true;
-    document.cookie = `${introSeenKey}=1; Path=/; SameSite=Lax`;
-    try {
-      window.sessionStorage.setItem(introSeenKey, "1");
-    } catch {
-      // The intro still closes normally when storage is unavailable.
-    }
     if (introFallbackRef.current !== null) clearTimeout(introFallbackRef.current);
     setIntroLeaving(true);
     introTimerRef.current = window.setTimeout(() => setIntroVisible(false), 720);
@@ -170,24 +163,13 @@ export default function CinematicHome() {
 
   useEffect(() => {
     const skipIntroRequested = new URLSearchParams(window.location.search).get("skipIntro") === "1";
-    const introWasSeen = document.cookie
-      .split("; ")
-      .some((cookie) => cookie === `${introSeenKey}=1`);
     if (skipIntroRequested) {
       window.history.replaceState(window.history.state, "", `${window.location.pathname}${window.location.hash}`);
     }
-    try {
-      if (skipIntroRequested || introWasSeen || window.sessionStorage.getItem(introSeenKey) === "1") {
-        introClosingRef.current = true;
-        setIntroVisible(false);
-        return;
-      }
-    } catch {
-      if (skipIntroRequested || introWasSeen) {
-        introClosingRef.current = true;
-        setIntroVisible(false);
-        return;
-      }
+    if (skipIntroRequested) {
+      introClosingRef.current = true;
+      setIntroVisible(false);
+      return;
     }
 
     const skipWithEscape = (event: KeyboardEvent) => {
