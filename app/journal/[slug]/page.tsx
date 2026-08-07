@@ -44,7 +44,7 @@ export default async function JournalArticlePage({
         </Link>
         <div>
           <Link href="/journal">JOURNAL INDEX</Link>
-          <Link href="/archive/?category=all">ALL WORKS</Link>
+          <a href="/archive/?category=all">ALL WORKS</a>
           <Link href="/contact/">CONTACT ↗</Link>
         </div>
       </nav>

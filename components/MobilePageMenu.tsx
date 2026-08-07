@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const items = [
@@ -48,7 +47,7 @@ export default function MobilePageMenu({ active }: { active?: string }) {
         </header>
         <nav aria-label="모바일 주요 메뉴">
           {items.map((item, index) => (
-            <Link
+            <a
               className={active === item.label ? "is-active" : undefined}
               href={item.href}
               key={item.label}
@@ -58,7 +57,7 @@ export default function MobilePageMenu({ active }: { active?: string }) {
               <i>{String(index + 1).padStart(2, "0")}</i>
               <strong>{item.label}</strong>
               <span>↗</span>
-            </Link>
+            </a>
           ))}
         </nav>
         <footer>

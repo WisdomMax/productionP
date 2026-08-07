@@ -23,7 +23,7 @@ export default function AboutPage() {
           <Image src={brandLogo} alt="Production P" priority />
         </Link>
         <nav aria-label="주요 메뉴">
-          <Link href="/archive/?category=all">ALL WORKS</Link>
+          <a href="/archive/?category=all">ALL WORKS</a>
           <Link href="/awards/">AWARDS</Link>
           <Link href="/journal/">JOURNAL</Link>
           <Link className="is-active" href="/about/">ABOUT</Link>
