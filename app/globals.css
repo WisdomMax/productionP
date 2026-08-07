@@ -3033,21 +3033,21 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .cinemaObjectSlot{position:relative;min-width:0;min-height:0}
 .cinemaObjectHitArea{position:relative;width:100%;height:100%;display:grid;place-items:start center;cursor:pointer}
 .cinemaObjectFloat{
-  --float-x:4px;
-  --float-y:-5px;
-  --float-r:.35deg;
-  --float-x-back:-2px;
-  --float-y-back:3px;
-  --float-r-back:-.18deg;
+  --float-x:10px;
+  --float-y:-12px;
+  --float-r:.65deg;
+  --float-x-back:-6px;
+  --float-y-back:8px;
+  --float-r-back:-.35deg;
   display:block;
   width:max-content;
   height:max-content;
-  animation:cinemaObjectFloat 11s ease-in-out infinite;
+  animation:cinemaObjectFloat 8.5s ease-in-out infinite;
   will-change:transform;
 }
-.cinemaObjectSlot:nth-child(3n+2) .cinemaObjectFloat{--float-x:-5px;--float-y:4px;--float-r:-.4deg;--float-x-back:3px;--float-y-back:-3px;--float-r-back:.2deg;animation-duration:13s;animation-delay:-4.5s}
-.cinemaObjectSlot:nth-child(3n) .cinemaObjectFloat{--float-x:3px;--float-y:6px;--float-r:.25deg;--float-x-back:-2px;--float-y-back:-4px;--float-r-back:-.12deg;animation-duration:9.5s;animation-delay:-7s}
-.cinemaObjectSlot:nth-child(5n) .cinemaObjectFloat{animation-duration:14s}
+.cinemaObjectSlot:nth-child(3n+2) .cinemaObjectFloat{--float-x:-12px;--float-y:9px;--float-r:-.75deg;--float-x-back:7px;--float-y-back:-7px;--float-r-back:.4deg;animation-duration:10.5s;animation-delay:-4.5s}
+.cinemaObjectSlot:nth-child(3n) .cinemaObjectFloat{--float-x:8px;--float-y:13px;--float-r:.55deg;--float-x-back:-7px;--float-y-back:-9px;--float-r-back:-.3deg;animation-duration:7.5s;animation-delay:-7s}
+.cinemaObjectSlot:nth-child(5n) .cinemaObjectFloat{animation-duration:11.5s}
 .cinemaObjectHitArea:hover .cinemaObjectFloat,.cinemaObjectHitArea:focus-within .cinemaObjectFloat{animation-play-state:paused}
 @keyframes cinemaObjectFloat{
   0%,100%{transform:translate3d(0,0,0) rotate(0)}
