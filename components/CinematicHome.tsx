@@ -250,14 +250,23 @@ export default function CinematicHome() {
             <div className="cinemaVideoFrame">
               <video
                 ref={introVideoRef}
-                src={`${mediaUrl("/videos/00-hero-depth/web/hero-intro.mp4")}?v=3`}
                 autoPlay
                 muted={introMuted}
                 playsInline
                 preload="auto"
                 onEnded={dismissIntro}
                 onError={dismissIntro}
-              />
+              >
+                <source
+                  media="(max-width: 760px)"
+                  src={`${mediaUrl("/videos/00-hero-depth/web/hero-intro-vertical.mp4")}?v=1`}
+                  type="video/mp4"
+                />
+                <source
+                  src={`${mediaUrl("/videos/00-hero-depth/web/hero-intro.mp4")}?v=3`}
+                  type="video/mp4"
+                />
+              </video>
             </div>
             <div className="cinemaIntroControls">
               <button className="cinemaIntroSkip" type="button" onClick={dismissIntro} aria-label="인트로 영상 건너뛰기">
