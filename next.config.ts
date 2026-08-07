@@ -21,10 +21,7 @@ const config: NextConfig = {
   env: {
     NEXT_PUBLIC_VIDEO_BASE_URL:
       process.env.NEXT_PUBLIC_VIDEO_BASE_URL ??
-      (isCloudflareBuild
-        ? process.env.CLOUDFLARE_PUBLIC_URL
-        : undefined) ??
-      "",
+      (isCloudflareBuild ? "https://video.productionp.com" : ""),
   },
 };
 

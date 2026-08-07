@@ -42,7 +42,7 @@ const featuredTitles = [
   "부천 국제 판타스틱 영화제",
   "초현실 웰빙 아트필름",
   "버섯좀비",
-  "CITY OF GLASS",
+  "호랑이와 파우더",
 ];
 
 const flatShapes = ["disc", "square", "triangle", "hexagon", "diamond"];

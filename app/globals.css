@@ -2984,7 +2984,6 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .cinemaHeader nav a:after,.cinemaHeader nav button:after{content:"";position:absolute;left:2px;right:calc(100% - 2px);bottom:5px;height:1px;background:#fff;transition:right .3s}
 .cinemaHeader nav a:hover,.cinemaHeader nav button:hover{color:rgba(255,255,255,.7)}
 .cinemaHeader nav a:hover:after,.cinemaHeader nav button:hover:after{right:0}
-.cinemaHeader nav a:first-child:after{right:42%}
 .cinemaWorkStage{position:absolute;inset:0;opacity:0;transform:scale(1.025);transition:opacity 1.1s .2s,transform 1.4s cubic-bezier(.16,1,.3,1)}
 .cinematicHome.is-ready .cinemaWorkStage{opacity:1;transform:none}
 .cinemaWorkHeading{position:absolute;z-index:20;left:4vw;top:14vh;width:17vw;pointer-events:none}
