@@ -85,33 +85,35 @@ function WorkObject({ work, index }: { work: Work; index: number }) {
       onPointerEnter={preview}
       onPointerLeave={pause}
     >
-      <button
-        className={`cinemaWorkObject is-${placement.shape} is-${work.orientation}`}
-        style={style}
-        type="button"
-        data-work-id={work.id}
-        onFocus={preview}
-        onBlur={pause}
-        aria-label={`${work.title} 재생`}
-      >
-        <span
-          className={`cinemaSculpture sculpture-${placement.shape}`}
-          data-candidate={String(index + 1).padStart(2, "0")}
-          aria-hidden="true"
+      <span className="cinemaObjectFloat">
+        <button
+          className={`cinemaWorkObject is-${placement.shape} is-${work.orientation}`}
+          style={style}
+          type="button"
+          data-work-id={work.id}
+          onFocus={preview}
+          onBlur={pause}
+          aria-label={`${work.title} 재생`}
         >
-          <img src={work.poster} alt="" loading={index < 5 ? "eager" : "lazy"} />
-          <i />
-        </span>
-        <span className="cinemaObjectFace">
-          <img src={work.poster} alt="" />
-          <video ref={videoRef} src={mediaUrl(work.src)} muted loop playsInline preload="none" />
-          <i>{String(index + 1).padStart(2, "0")}</i>
-        </span>
-        <span className="cinemaObjectMeta">
-          <strong>{work.title}</strong>
-          <small>{work.categoryLabel}</small>
-        </span>
-      </button>
+          <span
+            className={`cinemaSculpture sculpture-${placement.shape}`}
+            data-candidate={String(index + 1).padStart(2, "0")}
+            aria-hidden="true"
+          >
+            <img src={work.poster} alt="" loading={index < 5 ? "eager" : "lazy"} />
+            <i />
+          </span>
+          <span className="cinemaObjectFace">
+            <img src={work.poster} alt="" />
+            <video ref={videoRef} src={mediaUrl(work.src)} muted loop playsInline preload="none" />
+            <i>{String(index + 1).padStart(2, "0")}</i>
+          </span>
+          <span className="cinemaObjectMeta">
+            <strong>{work.title}</strong>
+            <small>{work.categoryLabel}</small>
+          </span>
+        </button>
+      </span>
     </div>
   );
 }

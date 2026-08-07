@@ -3032,6 +3032,28 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 .cinemaObjectField:after{content:"";position:absolute;z-index:-1;inset:-.7vh -.625vw;background-image:radial-gradient(circle,rgba(255,255,255,.52) 0 1px,transparent 1.4px);background-size:20% 33.333%;pointer-events:none}
 .cinemaObjectSlot{position:relative;min-width:0;min-height:0}
 .cinemaObjectHitArea{position:relative;width:100%;height:100%;display:grid;place-items:start center;cursor:pointer}
+.cinemaObjectFloat{
+  --float-x:4px;
+  --float-y:-5px;
+  --float-r:.35deg;
+  --float-x-back:-2px;
+  --float-y-back:3px;
+  --float-r-back:-.18deg;
+  display:block;
+  width:max-content;
+  height:max-content;
+  animation:cinemaObjectFloat 11s ease-in-out infinite;
+  will-change:transform;
+}
+.cinemaObjectSlot:nth-child(3n+2) .cinemaObjectFloat{--float-x:-5px;--float-y:4px;--float-r:-.4deg;--float-x-back:3px;--float-y-back:-3px;--float-r-back:.2deg;animation-duration:13s;animation-delay:-4.5s}
+.cinemaObjectSlot:nth-child(3n) .cinemaObjectFloat{--float-x:3px;--float-y:6px;--float-r:.25deg;--float-x-back:-2px;--float-y-back:-4px;--float-r-back:-.12deg;animation-duration:9.5s;animation-delay:-7s}
+.cinemaObjectSlot:nth-child(5n) .cinemaObjectFloat{animation-duration:14s}
+.cinemaObjectHitArea:hover .cinemaObjectFloat,.cinemaObjectHitArea:focus-within .cinemaObjectFloat{animation-play-state:paused}
+@keyframes cinemaObjectFloat{
+  0%,100%{transform:translate3d(0,0,0) rotate(0)}
+  32%{transform:translate3d(var(--float-x),var(--float-y),0) rotate(var(--float-r))}
+  68%{transform:translate3d(var(--float-x-back),var(--float-y-back),0) rotate(var(--float-r-back))}
+}
 .cinemaWorkObject{
   --object-size:clamp(98px,7.5vw,132px);
   --preview-width:clamp(250px,23vw,380px);
@@ -3193,6 +3215,7 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
   .cinemaObjectField{position:relative;inset:auto;display:grid;grid-template-columns:1fr;grid-template-rows:none;gap:36px}
   .cinemaObjectSlot,.cinemaObjectSlot:nth-child(7),.cinemaObjectSlot:nth-child(8){display:block;grid-column:auto;min-width:0}
   .cinemaObjectHitArea{display:block;height:auto}
+  .cinemaObjectFloat{display:block;width:100%;height:auto;animation:none;will-change:auto}
   .cinemaWorkObject,.cinemaWorkObject:hover,.cinemaWorkObject:focus-visible{position:relative;left:auto;top:auto;width:100%;height:auto;aspect-ratio:auto;transform:none;animation:cinemaObjectInMobile .7s var(--delay) both}
   .cinemaWorkObject:before{display:none}
   @keyframes cinemaObjectInMobile{from{opacity:0;transform:translateY(30px) scale(.85)}}
@@ -3244,7 +3267,8 @@ body:has(.cinematicHome){overflow:hidden;background:var(--signal)}
 
 @media(prefers-reduced-motion:reduce){
   .cinemaWorkStage{opacity:1;transform:none}
-  .cinemaWorkObject,.cinemaPlayer{animation:none}
+  .cinemaObjectFloat,.cinemaWorkObject,.cinemaPlayer{animation:none}
+  .cinemaObjectFloat{will-change:auto}
   .cinemaVideoIntro{transition-duration:.2s}
 }
 
