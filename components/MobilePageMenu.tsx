@@ -9,15 +9,10 @@ const items = [
   { label: "AWARDS", href: "/awards/" },
   { label: "JOURNAL", href: "/journal/" },
   { label: "ABOUT", href: "/about/" },
+  { label: "CONTACT", href: "/contact/" },
 ];
 
-export default function MobilePageMenu({
-  active,
-  contactAsDialog = false,
-}: {
-  active?: string;
-  contactAsDialog?: boolean;
-}) {
+export default function MobilePageMenu({ active }: { active?: string }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -31,15 +26,6 @@ export default function MobilePageMenu({
       window.removeEventListener("keydown", closeOnEscape);
     };
   }, [open]);
-
-  const contact = () => {
-    setOpen(false);
-    if (contactAsDialog) {
-      window.dispatchEvent(new CustomEvent("productionp:open-inquiry"));
-      return;
-    }
-    window.location.href = "mailto:contact@productionp.com";
-  };
 
   return (
     <div className={`mobilePageMenu${open ? " is-open" : ""}`}>
@@ -74,11 +60,6 @@ export default function MobilePageMenu({
               <span>↗</span>
             </Link>
           ))}
-          <button type="button" onClick={contact} tabIndex={open ? 0 : -1}>
-            <i>06</i>
-            <strong>CONTACT</strong>
-            <span>↗</span>
-          </button>
         </nav>
         <footer>
           <span>AI FILM STUDIO</span>

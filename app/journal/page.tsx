@@ -20,7 +20,7 @@ export default function JournalIndexPage() {
           <Link href="/awards/">AWARDS</Link>
           <Link className="is-active" href="/journal/">JOURNAL</Link>
           <Link href="/about/">ABOUT</Link>
-          <a href="mailto:contact@productionp.com">CONTACT ↗</a>
+          <Link href="/contact/">CONTACT ↗</Link>
         </nav>
         <MobilePageMenu active="JOURNAL" />
       </header>

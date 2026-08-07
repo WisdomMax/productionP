@@ -17,7 +17,7 @@ export default function ArchivePage() {
           <Link href="/awards/">AWARDS</Link>
           <Link href="/journal/">JOURNAL</Link>
           <Link href="/about/">ABOUT</Link>
-          <a href="mailto:contact@productionp.com">CONTACT ↗</a>
+          <Link href="/contact/">CONTACT ↗</Link>
         </nav>
         <MobilePageMenu active="ALL WORKS" />
       </header>

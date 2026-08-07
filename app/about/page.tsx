@@ -27,7 +27,7 @@ export default function AboutPage() {
           <Link href="/awards/">AWARDS</Link>
           <Link href="/journal/">JOURNAL</Link>
           <Link className="is-active" href="/about/">ABOUT</Link>
-          <a href="mailto:contact@productionp.com">CONTACT ↗</a>
+          <Link href="/contact/">CONTACT ↗</Link>
         </nav>
         <MobilePageMenu active="ABOUT" />
       </header>
@@ -51,7 +51,7 @@ export default function AboutPage() {
         <div className="aboutIndex">
           <div><small>01 / WHAT WE MAKE</small><p>AI COMMERCIAL · BRAND FILM<br />FILM &amp; CONTENT · ANIMATION</p></div>
           <div><small>02 / HOW WE WORK</small><p>IDEA · DIRECTION<br />GENERATIVE PRODUCTION · FINISH</p></div>
-          <div><small>03 / START A PROJECT</small><p><a href="tel:01065154600">010-6515-4600</a><br /><a href="mailto:contact@productionp.com">contact@productionp.com ↗</a></p></div>
+          <div><small>03 / START A PROJECT</small><p><a href="tel:01065154600">010-6515-4600</a><br /><Link href="/contact/">contact@productionp.com ↗</Link></p></div>
         </div>
       </section>
     </main>

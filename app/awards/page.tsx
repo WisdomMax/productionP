@@ -21,7 +21,7 @@ export default function AwardsPage() {
           <Link className="is-active" href="/awards/">AWARDS</Link>
           <Link href="/journal/">JOURNAL</Link>
           <Link href="/about/">ABOUT</Link>
-          <a href="mailto:contact@productionp.com">CONTACT ↗</a>
+          <Link href="/contact/">CONTACT ↗</Link>
         </nav>
         <MobilePageMenu active="AWARDS" />
       </header>

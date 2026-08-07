@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
-import ContactInquiry from "@/components/ContactInquiry";
+import CopyEmailButton from "@/components/CopyEmailButton";
 import MobilePageMenu from "@/components/MobilePageMenu";
 import catalogData from "@/data/video-catalog.json";
 import brandLogo from "@/img/logo/transparent_brand.png";
@@ -185,10 +185,6 @@ export default function CinematicHome() {
     };
   }, [selected, closePlayer]);
 
-  const openInquiry = () => {
-    window.dispatchEvent(new CustomEvent("productionp:open-inquiry"));
-  };
-
   return (
     <main className={`cinematicHome${introVisible ? " is-intro" : " is-ready"}`}>
       <div className="cinemaAmbient" aria-hidden="true">
@@ -208,9 +204,9 @@ export default function CinematicHome() {
           <Link href="/awards/">AWARDS</Link>
           <Link href="/journal/">JOURNAL</Link>
           <Link href="/about/">ABOUT</Link>
-          <button type="button" onClick={openInquiry}>CONTACT ↗</button>
+          <Link href="/contact/">CONTACT ↗</Link>
         </nav>
-        <MobilePageMenu active="HOME" contactAsDialog />
+        <MobilePageMenu active="HOME" />
       </header>
 
       <section className="cinemaWorkStage" aria-labelledby="cinema-work-title">
@@ -235,7 +231,7 @@ export default function CinematicHome() {
               <span>AI FILM STUDIO · SEOUL</span>
               <div>
                 <a href="tel:01065154600">010-6515-4600</a>
-                <a href="mailto:contact@productionp.com">contact@productionp.com</a>
+                <CopyEmailButton />
               </div>
             </div>
           </div>
@@ -312,7 +308,6 @@ export default function CinematicHome() {
         </div>
       )}
 
-      <ContactInquiry showTrigger={false} />
     </main>
   );
 }
