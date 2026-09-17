@@ -4,12 +4,14 @@ export type JournalSection = {
   quote?: string;
 };
 
-export type JournalImage = {
+export interface JournalImage {
   src: string;
   alt: string;
   caption: string;
   afterSection: number;
-};
+}
+
+// Build trigger: 2026-09-18 00:38:00 KST;
 
 export type JournalArticle = {
   slug: string;
