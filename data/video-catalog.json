@@ -1624,6 +1624,50 @@
     "industries": []
   },
   {
+    "id": "317a820dbb49",
+    "fileName": "plab-submission-19.mp4",
+    "src": "/videos/07-awards/submissions/plab-submission-19.mp4",
+    "poster": "/posters/auto/317a820dbb49.jpg",
+    "category": "awards",
+    "categoryLabel": "교육생 공모전",
+    "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
+    "status": "출품작",
+    "orientation": "landscape",
+    "width": 1280,
+    "height": 720,
+    "duration": 30,
+    "title": "P LAB 교육생 출품작 18",
+    "industries": []
+  },
+  {
+    "id": "cb06abec7d33",
+    "fileName": "plab-submission-20.mp4",
+    "src": "/videos/07-awards/submissions/plab-submission-20.mp4",
+    "poster": "/posters/auto/cb06abec7d33.jpg",
+    "category": "awards",
+    "categoryLabel": "교육생 공모전",
+    "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
+    "status": "출품작",
+    "orientation": "landscape",
+    "width": 1280,
+    "height": 720,
+    "duration": 30,
+    "title": "P LAB 교육생 출품작 19",
+    "industries": []
+  },
+  {
     "id": "7dda66a1e2dc",
     "fileName": "plab-winner-01.mp4",
     "src": "/videos/07-awards/winners/plab-winner-01.mp4",
@@ -1775,6 +1819,28 @@
     "height": 1080,
     "duration": 90,
     "title": "경주월드 AI숏폼",
+    "industries": []
+  },
+  {
+    "id": "a6b776ade6a5",
+    "fileName": "plab-winner-08.mp4",
+    "src": "/videos/07-awards/winners/plab-winner-08.mp4",
+    "poster": "/posters/auto/a6b776ade6a5.jpg",
+    "category": "awards",
+    "categoryLabel": "교육생 공모전",
+    "categoryOrder": 7,
+    "categories": [
+      "awards"
+    ],
+    "categoryLabels": [
+      "교육생 공모전"
+    ],
+    "status": "수상작",
+    "orientation": "portrait",
+    "width": 720,
+    "height": 1280,
+    "duration": 60,
+    "title": "중원대학교 AI숏폼 공모전 장려상",
     "industries": []
   }
 ]
