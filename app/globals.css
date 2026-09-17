@@ -3420,7 +3420,8 @@ html[data-intro-seen="true"] .cinemaVideoIntro{display:none!important}
 .archiveAwardFilters button:hover,.archiveAwardFilters button.is-active{background:#fff;color:#9A4527}
 .awardsIntroduction{display:grid;grid-template-columns:minmax(150px,.28fr) 1fr;gap:28px;margin-top:26px;padding:28px 30px;background:#fff;color:#9A4527;box-shadow:14px 16px 0 rgba(53,14,7,.18)}
 .awardsIntroduction b{font:800 11px/1.45 monospace;letter-spacing:.1em}
-.awardsIntroduction p{max-width:760px;margin:0;font-size:clamp(15px,1.15vw,20px);font-weight:650;line-height:1.65;letter-spacing:-.025em;word-break:keep-all}
+.awardsIntroduction p{max-width:none;margin:0;font-size:clamp(15px,1.15vw,20px);font-weight:650;line-height:1.65;letter-spacing:-.025em;word-break:keep-all}
+@media(min-width:980px){.awardsIntroduction p{white-space:nowrap}}
 .awardsGallery .archiveAwardFilters{margin-top:38px}
 
 .journalIndexPage{isolation:isolate;background:#9A4527}
