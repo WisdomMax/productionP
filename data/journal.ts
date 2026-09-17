@@ -191,15 +191,21 @@ export const journalArticles: JournalArticle[] = [
     dek: "100% AI로만 채운 광고는 아직 기술 시연에 가깝다. 클라이언트의 깐깐한 컨펌을 뚫고 브랜드 신뢰도를 지켜내는 진짜 무기는, 실사와 AI를 가르는 영리한 경계선이다.",
     images: [
       {
-        src: "/journal/ai-commercial-hybrid-production.png",
-        alt: "실물 제품과 AI 배경을 결합하는 하이브리드 광고 제작 현장",
-        caption: "제품의 신뢰감은 실사로 지키고, 배경의 파격적인 스케일은 AI로 확장한다.",
+        src: "/journal/uncanny-valley-shot-distance.png",
+        alt: "인물의 얼굴을 과하게 드러내지 않고 공간과 빛으로 감정을 설계한 프리미엄 광고 장면",
+        caption: "처음 3초의 시선은 얼굴의 디테일보다 공간과 빛의 분위기로 끌어오는 편이 안전하다.",
+        afterSection: 0,
+      },
+      {
+        src: "/journal/uncanny-valley-hybrid-product.png",
+        alt: "실물 화장품 병과 손을 촬영하고 거대한 초현실 풍경을 결합한 하이브리드 광고 제작 현장",
+        caption: "제품과 손의 물성은 현실에 남겨두고, 배경의 스케일만 AI로 과감하게 확장한다.",
         afterSection: 1,
       },
       {
-        src: "/journal/consistency-postproduction.png",
-        alt: "다빈치 리졸브와 애프터이펙트로 실사와 AI의 톤을 일치시키는 후반 작업실",
-        caption: "클라이언트가 돈을 지불하는 이유는 신기한 AI가 아니라 원하는 대로 고칠 수 있는 통제력이다.",
+        src: "/journal/uncanny-valley-production-control.png",
+        alt: "조명과 색을 통제하며 실사와 AI 장면을 재현 가능하게 다듬는 후반 작업실",
+        caption: "클라이언트가 신뢰하는 것은 신기한 결과가 아니라, 같은 장면을 원하는 방향으로 다시 조정할 수 있는 통제력이다.",
         afterSection: 2,
       },
     ],
