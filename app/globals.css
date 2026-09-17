@@ -3379,9 +3379,9 @@ html[data-intro-seen="true"] .cinemaVideoIntro{display:none!important}
   justify-content:space-between;
   background:linear-gradient(180deg,rgba(154,69,39,.98),rgba(154,69,39,.5) 68%,transparent);
 }
-.archiveSiteHeader:before,.journalIndexNav:before,.aboutHeader:before{content:"";position:absolute;z-index:-1;left:0;top:0;width:clamp(520px,38vw,680px);height:104px;background:#180b08;clip-path:polygon(0 0,100% 0,0 100%);pointer-events:none}
-.archiveSiteHeader>a,.journalIndexNav>a,.aboutHeader>a{width:clamp(138px,11vw,174px);line-height:0}
-.archiveSiteHeader img,.journalIndexNav img,.aboutHeader img{width:100%;height:auto}
+.archiveSiteHeader:before,.journalIndexNav:before,.aboutHeader:before,.journalArticleNav:before{content:"";position:absolute;z-index:0;left:0;top:0;width:clamp(520px,38vw,680px);height:104px;background:#180b08;clip-path:polygon(0 0,100% 0,0 100%);pointer-events:none}
+.archiveSiteHeader>a,.journalIndexNav>a,.aboutHeader>a,.journalArticleBrand{position:relative;z-index:1;width:clamp(138px,11vw,174px);line-height:0}
+.archiveSiteHeader img,.journalIndexNav img,.aboutHeader img,.journalArticleBrand img{width:100%;height:auto}
 .archiveSiteHeader nav,.journalIndexNav nav,.aboutHeader nav{display:flex;align-items:center;gap:clamp(22px,2.4vw,42px);font:700 14px/1 monospace;letter-spacing:.08em}
 .archiveSiteHeader nav a,.journalIndexNav nav a,.aboutHeader nav a{position:relative;padding:12px 2px;color:#fff}
 .archiveSiteHeader nav a:after,.journalIndexNav nav a:after,.aboutHeader nav a:after{content:"";position:absolute;left:2px;right:calc(100% - 2px);bottom:5px;height:1px;background:#fff;transition:right .3s}
@@ -3581,14 +3581,16 @@ html[data-intro-seen="true"] .cinemaVideoIntro{display:none!important}
 .journalIndexList>a:hover>b{background:#9A4527;color:#fff;border-color:#9A4527}
 
 .journalArticleNav{
+  position:relative;
+  overflow:hidden;
   min-height:76px;
   padding:14px 3vw;
   border-bottom:1px solid rgba(255,255,255,.24);
   background:#9A4527;
 }
-.journalArticleBrand{width:clamp(138px,11vw,174px);line-height:0}
+.journalArticleBrand{position:relative;z-index:1;width:clamp(138px,11vw,174px);line-height:0}
 .journalArticleBrand img{display:block;width:100%;height:auto}
-.journalArticleNav>div{display:flex;align-items:center;gap:clamp(20px,2.3vw,38px)}
+.journalArticleNav>div{position:relative;z-index:1;display:flex;align-items:center;gap:clamp(20px,2.3vw,38px)}
 .journalArticleNav>div a{position:relative;padding:10px 0;color:#fff}
 .journalArticleNav>div a:after{content:"";position:absolute;left:0;right:100%;bottom:4px;height:1px;background:#fff;transition:right .3s}
 .journalArticleNav>div a:hover{color:#fff}
@@ -3648,6 +3650,7 @@ html[data-intro-seen="true"] .cinemaVideoIntro{display:none!important}
   .journalIndexList p{margin-top:14px;font-size:13px;line-height:1.65}
   .journalIndexList>a:hover{padding-left:0;padding-right:0}
   .journalArticleNav{min-height:64px;padding:13px 16px}
+  .journalArticleNav:before{width:360px;height:82px;clip-path:polygon(0 0,100% 0,0 100%)}
   .journalArticleBrand{width:122px}
   .journalArticleNav>div{gap:16px;font-size:9px}
   .journalArticleNav>div a:nth-child(2){display:none}
