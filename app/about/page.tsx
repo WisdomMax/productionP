@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import brandLogo from "@/img/logo/transparent_brand.png";
 import MobilePageMenu from "@/components/MobilePageMenu";
+import SocialLinks from "@/components/SocialLinks";
 
 export const metadata: Metadata = {
   title: "About — Production P",
@@ -48,10 +49,11 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="aboutIndex">
+        <div className="aboutIndex has-four">
           <div><small>01 / WHAT WE MAKE</small><p>AI COMMERCIAL · BRAND FILM<br />FILM &amp; CONTENT · ANIMATION</p></div>
           <div><small>02 / HOW WE WORK</small><p>IDEA · DIRECTION<br />GENERATIVE PRODUCTION · FINISH</p></div>
           <div><small>03 / START A PROJECT</small><p><a href="tel:01065154600">010-6515-4600</a><br /><Link href="/contact/">contact@productionp.com ↗</Link></p></div>
+          <div><small>04 / CHANNELS</small><SocialLinks className="aboutSocials" /></div>
         </div>
       </section>
     </main>

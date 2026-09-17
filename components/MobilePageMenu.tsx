@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import SocialLinks from "@/components/SocialLinks";
 
 const items = [
   { label: "HOME", href: "/?skipIntro=1" },
@@ -61,8 +62,13 @@ export default function MobilePageMenu({ active }: { active?: string }) {
           ))}
         </nav>
         <footer>
-          <span>AI FILM STUDIO</span>
-          <span>010-6515-4600</span>
+          <div className="mobileMenuSocialsWrapper">
+            <SocialLinks className="mobileMenuSocials" />
+          </div>
+          <div className="mobileMenuInfo">
+            <span>AI FILM STUDIO</span>
+            <span>010-6515-4600</span>
+          </div>
         </footer>
       </aside>
     </div>

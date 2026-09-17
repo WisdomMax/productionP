@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import brandLogo from "@/img/logo/transparent_smooth.png";
+import SocialLinks from "@/components/SocialLinks";
 
 const menuItems = [
   { label: "WORK", href: "/archive", index: "01" },
@@ -122,8 +123,13 @@ export default function SiteNavigation() {
           ))}
         </nav>
         <footer>
-          <span>AI FILM STUDIO</span>
-          <span>SEOUL, KR</span>
+          <div className="mobileMenuSocialsWrapper">
+            <SocialLinks className="mobileMenuSocials" />
+          </div>
+          <div className="mobileMenuInfo">
+            <span>AI FILM STUDIO</span>
+            <span>SEOUL, KR</span>
+          </div>
         </footer>
       </aside>
     </>

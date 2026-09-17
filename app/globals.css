@@ -3732,3 +3732,30 @@ html[data-intro-seen="true"] .cinemaVideoIntro{display:none!important}
   .mobilePageMenu>.mobilePageMenuPanel>nav{display:block!important;font-size:inherit;gap:0}
   .mobilePageMenu>.mobilePageMenuPanel>nav>a{display:grid!important}
 }
+
+/* Production Social Links */
+.productionSocialLinks{display:flex;align-items:center;gap:14px;font:700 11px/1 monospace;letter-spacing:.06em}
+.socialItemLink{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.78);text-decoration:none;transition:color .25s,transform .25s}
+.socialItemLink:hover{color:#fff;transform:translateY(-1px)}
+.socialItemIcon{display:inline-flex;align-items:center;justify-content:center;opacity:.85;transition:opacity .25s,transform .25s}
+.socialItemLink:hover .socialItemIcon{opacity:1;transform:scale(1.1)}
+.socialItemLabel{font:inherit;letter-spacing:inherit}
+.socialItemArrow{font-style:normal;font-size:10px;opacity:.65;transition:transform .25s}
+.socialItemLink:hover .socialItemArrow{transform:translate(1px,-1px);opacity:1}
+
+/* Cinema Stage Footer Socials */
+.cinemaFooterSocials{margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.14);gap:16px}
+.cinemaFooterSocials .socialItemLink{font-size:11px}
+
+/* Mobile Menu Socials */
+.mobileMenuSocialsWrapper{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12);width:100%}
+.mobileMenuSocials{display:flex;flex-wrap:wrap;gap:14px}
+.mobileMenuSocials .socialItemLink{padding:4px 0;font-size:12px;color:rgba(255,255,255,.84)}
+.mobileMenuInfo{display:flex;justify-content:space-between;align-items:center;width:100%}
+.mobileSiteNavInfo{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:10px}
+
+/* About Page Socials */
+.aboutIndex.has-four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.aboutSocials{flex-direction:column;align-items:flex-start;gap:8px;margin-top:4px}
+.aboutSocials .socialItemLink{font-size:11px;color:rgba(255,255,255,.88)}
+

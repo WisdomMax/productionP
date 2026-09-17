@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties }
 import CopyEmailButton from "@/components/CopyEmailButton";
 import MobilePageMenu from "@/components/MobilePageMenu";
 import ResilientVideo from "@/components/ResilientVideo";
+import SocialLinks from "@/components/SocialLinks";
 import catalogData from "@/data/video-catalog.json";
 import brandLogo from "@/img/logo/transparent_brand.png";
 import { mediaUrl } from "@/lib/media-url";
@@ -245,6 +246,7 @@ export default function CinematicHome() {
                 <a href="tel:01065154600">010-6515-4600</a>
                 <CopyEmailButton />
               </div>
+              <SocialLinks className="cinemaFooterSocials" />
             </div>
           </div>
           <a href="/archive/?category=all"><b>작품 더보기</b><i>→</i></a>
