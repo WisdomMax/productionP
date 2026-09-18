@@ -328,6 +328,30 @@
     ]
   },
   {
+    "id": "7b7b209028ec",
+    "fileName": "shine-muscat.mp4",
+    "src": "/videos/01-commercial/shine-muscat.mp4",
+    "poster": "/posters/auto/7b7b209028ec.jpg",
+    "category": "commercial",
+    "categoryLabel": "광고",
+    "categoryOrder": 1,
+    "categories": [
+      "commercial"
+    ],
+    "categoryLabels": [
+      "광고"
+    ],
+    "status": null,
+    "orientation": "landscape",
+    "width": 1280,
+    "height": 720,
+    "duration": 22,
+    "title": "샤인머스캣",
+    "industries": [
+      "food-hospitality"
+    ]
+  },
+  {
     "id": "ceab2c1b7464",
     "fileName": "shinhan-premier-steady-tempo.mp4",
     "src": "/videos/01-commercial/shinhan-premier-steady-tempo.mp4",

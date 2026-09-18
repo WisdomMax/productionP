@@ -30,7 +30,7 @@ type TileStyle = CSSProperties & {
 
 const catalog = catalogData as Work[];
 const featuredTitles = [
-  "청춘버거",
+  "샤인머스캣",
   "립세린",
   "신한은행",
   "로미오와 줄리엣 — EUREKA",
@@ -44,7 +44,7 @@ const featuredTitles = [
   "부천 국제 판타스틱 영화제",
   "초현실 웰빙 아트필름",
   "버섯좀비",
-  "호랑이와 파우더",
+  "청춘버거",
 ];
 
 const flatShapes = ["disc", "square", "triangle", "hexagon", "diamond"];
