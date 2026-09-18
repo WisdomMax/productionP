@@ -21,6 +21,16 @@ export const metadata: Metadata = {
     "Production P",
     "프로덕션P",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   alternates: { canonical: "/" },
   openGraph: {
     title: socialTitle,
