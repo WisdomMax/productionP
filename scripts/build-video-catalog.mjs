@@ -5,6 +5,7 @@ import {
   mkdirSync,
   readFileSync,
   readdirSync,
+  statSync,
   writeFileSync,
 } from "node:fs";
 import { extname, join, relative, sep } from "node:path";
@@ -172,6 +173,7 @@ const discovered = walk(videoRoot)
       width: metadata.width,
       height: metadata.height,
       duration: Math.round(metadata.duration),
+      mtime: Math.round(statSync(filePath).mtimeMs),
     };
   })
   .filter(Boolean)
@@ -182,22 +184,29 @@ const discovered = walk(videoRoot)
   );
 
 const awardCounters = { 출품작: 0, 수상작: 0 };
-const catalog = discovered.map((item) => {
-  let title = item.fileName.replace(/\.mp4$/i, "").replaceAll("_", " ").trim();
-  if (item.category === "awards" && item.status) {
-    const numberingStatus = item.fileName.startsWith("plab-winner-")
-      ? "수상작"
-      : item.fileName.startsWith("plab-submission-")
-        ? "출품작"
-        : item.status;
-    awardCounters[numberingStatus] += 1;
-    title = `P LAB 교육생 ${item.status} ${String(awardCounters[numberingStatus]).padStart(2, "0")}`;
-  }
-  title = titleOverrides[item.fileName] ?? titleOverrides[item.id] ?? title;
-  const industries =
-    industryOverrides[item.fileName] ?? industryOverrides[item.id] ?? [];
-  return { ...item, title, industries };
-});
+const catalog = discovered
+  .map((item) => {
+    let title = item.fileName.replace(/\.mp4$/i, "").replaceAll("_", " ").trim();
+    if (item.category === "awards" && item.status) {
+      const numberingStatus = item.fileName.startsWith("plab-winner-")
+        ? "수상작"
+        : item.fileName.startsWith("plab-submission-")
+          ? "출품작"
+          : item.status;
+      awardCounters[numberingStatus] += 1;
+      title = `P LAB 교육생 ${item.status} ${String(awardCounters[numberingStatus]).padStart(2, "0")}`;
+    }
+    title = titleOverrides[item.fileName] ?? titleOverrides[item.id] ?? title;
+    const industries =
+      industryOverrides[item.fileName] ?? industryOverrides[item.id] ?? [];
+    return { ...item, title, industries };
+  })
+  .sort(
+    (a, b) =>
+      (b.mtime ?? 0) - (a.mtime ?? 0) ||
+      a.categoryOrder - b.categoryOrder ||
+      a.fileName.localeCompare(b.fileName, "ko"),
+  );
 
 writeFileSync(outputPath, `${JSON.stringify(catalog, null, 2)}\n`);
 console.log(`Video catalog: ${catalog.length} works`);

@@ -20,10 +20,11 @@ type VideoItem = {
   width: number;
   height: number;
   duration: number;
+  mtime?: number;
 };
 
 const catalog = catalogData as VideoItem[];
-const categoryOrder = ["all", "commercial", "brand-film", "film-content", "p-lab", "animation"];
+const categoryOrder = ["all", "commercial", "brand-film", "film-content", "p-lab", "animation", "awards"];
 const workCatalog = catalog.filter((item) => !item.categories.includes("awards"));
 const awardCatalog = catalog.filter((item) => item.categories.includes("awards"));
 
@@ -97,14 +98,14 @@ export default function VideoArchive({ mode = "works" }: { mode?: "works" | "awa
 
   const categories = useMemo(() => {
     const labels = new Map<string, string>();
-    workCatalog.forEach((item) => item.categories.forEach((category, index) => labels.set(category, item.categoryLabels[index])));
+    catalog.forEach((item) => item.categories.forEach((category, index) => labels.set(category, item.categoryLabels[index])));
     return categoryOrder
       .filter((key) => key === "all" || labels.has(key))
-      .map((key) => ({ key, label: key === "all" ? "ALL" : labels.get(key)! }));
+      .map((key) => ({ key, label: key === "all" ? "ALL" : key === "awards" ? "공모전" : labels.get(key)! }));
   }, []);
 
   const isAwards = mode === "awards";
-  const source = isAwards ? awardCatalog : workCatalog;
+  const source = isAwards ? awardCatalog : catalog;
   const visible = activeCategory === "all"
     ? source.filter((item) => !activeStatus || item.status === activeStatus)
     : source.filter((item) => item.categories.includes(activeCategory) && (!activeStatus || item.status === activeStatus));
@@ -126,6 +127,9 @@ export default function VideoArchive({ mode = "works" }: { mode?: "works" | "awa
               onClick={() => {
                 setActiveCategory(key);
                 setActiveStatus(null);
+                if (typeof window !== "undefined") {
+                  window.history.replaceState(null, "", `/archive/?category=${key}`);
+                }
               }}
               type="button"
             >
