@@ -26,6 +26,10 @@ const categoryOverrides = JSON.parse(
 const statusOverrides = JSON.parse(
   readFileSync(join(projectRoot, "data", "video-status-overrides.json"), "utf8"),
 );
+const posterTimeOverridesPath = join(projectRoot, "data", "video-poster-time-overrides.json");
+const posterTimeOverrides = existsSync(posterTimeOverridesPath)
+  ? JSON.parse(readFileSync(posterTimeOverridesPath, "utf8"))
+  : {};
 
 const categories = {
   "01-commercial": { order: 1, slug: "commercial", label: "광고" },
@@ -90,13 +94,13 @@ function probe(filePath) {
   };
 }
 
-function createPoster(filePath, posterPath, duration, displayRatio) {
-  if (existsSync(posterPath)) {
+function createPoster(filePath, posterPath, duration, displayRatio, customSeek) {
+  if (customSeek === undefined && existsSync(posterPath)) {
     const currentPoster = probe(posterPath);
     const currentRatio = currentPoster.width / currentPoster.height;
     if (Math.abs(currentRatio - displayRatio) < 0.04) return;
   }
-  const seek = Math.min(Math.max(duration * 0.2, 1), Math.max(duration - 0.5, 1));
+  const seek = customSeek !== undefined ? customSeek : Math.min(Math.max(duration * 0.2, 1), Math.max(duration - 0.5, 1));
   execFileSync(
     "ffmpeg",
     [
@@ -156,6 +160,7 @@ const discovered = walk(videoRoot)
       join(projectRoot, "public", posterRelative),
       metadata.duration,
       metadata.displayRatio,
+      posterTimeOverrides[fileName] ?? posterTimeOverrides[id],
     );
 
     return {

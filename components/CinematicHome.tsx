@@ -31,20 +31,20 @@ type TileStyle = CSSProperties & {
 const catalog = catalogData as Work[];
 const featuredTitles = [
   "샤인머스캣",
-  "립세린",
   "신한은행",
+  "지키지 못한 신호는 흉터로 남는다",
+  "슬픈 뮤직 비디오",
   "로미오와 줄리엣 — EUREKA",
-  "타이타닉",
   "메가커피",
+  "립세린",
   "핫식스",
-  "AFTER HOURS: WONDERLAND",
+  "가방에 양보한 헬멧",
   "조선시대 가구 전문가",
+  "AFTER HOURS: WONDERLAND",
   "IRON PULSE",
-  "무신사 공모전",
-  "부천 국제 판타스틱 영화제",
+  "타이타닉",
+  "화성시 CF 공모전",
   "초현실 웰빙 아트필름",
-  "버섯좀비",
-  "청춘버거",
 ];
 
 const flatShapes = ["disc", "square", "triangle", "hexagon", "diamond"];
